@@ -1,28 +1,28 @@
 {
-  "name": "L'Histoire de l'Argent",
-  "tagline": "L'argent a une mémoire.",
-  "taglineLong": "L'argent a une mémoire. Nous la racontons.",
-  "outro": "L'argent oublie vite. Nous, non.",
+  "name": "Fortunes & Ruines",
+  "tagline": "Comment on gagne tout. Comment on perd tout.",
+  "taglineLong": "Comment on gagne tout. Comment on perd tout. Les dossiers de l'argent.",
+  "outro": "Dossier classé. Le prochain arrive samedi.",
   "colors": {
-    "inkDeep": "#0B241A",
-    "ink": "#123829",
-    "paper": "#F2ECDC",
-    "red": "#C23A2B",
-    "gold": "#B8913A",
-    "dim": "#8FA597"
+    "inkDeep": "#0B0B0C",
+    "ink": "#161617",
+    "paper": "#F2F0EA",
+    "red": "#E5322D",
+    "gold": "#FFD400",
+    "dim": "#8A8A85"
   },
   "ratios": {
-    "ink": 70,
-    "paper": 20,
-    "red": 8,
-    "gold": 2
+    "noir": 70,
+    "papier": 18,
+    "jaune": 8,
+    "rouge": 4
   },
   "fonts": {
-    "display": "'Bodoni Moda', Didot, 'Bodoni 72', serif",
-    "body": "'IBM Plex Sans', Helvetica, Arial, sans-serif",
-    "mono": "'IBM Plex Mono', Menlo, Consolas, monospace",
-    "impact": "Anton, Impact, sans-serif",
-    "googleCss": "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,800;1,6..96,500&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&family=Anton&display=block"
+    "display": "'Archivo Black', 'Arial Black', sans-serif",
+    "body": "'Inter Tight', Helvetica, Arial, sans-serif",
+    "mono": "'JetBrains Mono', Menlo, Consolas, monospace",
+    "impact": "'Archivo Black', 'Arial Black', sans-serif",
+    "googleCss": "https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;800&family=Inter+Tight:ital,wght@0,500;0,700;0,800;1,700&display=block"
   },
   "fps": 30,
   "formats": {

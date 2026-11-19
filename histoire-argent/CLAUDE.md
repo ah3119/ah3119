@@ -1,6 +1,6 @@
-# CLAUDE.md — L'Histoire de l'Argent
+# CLAUDE.md — Fortunes & Ruines
 
-Tu travailles sur une chaîne vidéo d'histoire financière, animée en Remotion. Ces règles priment sur tes choix par défaut.
+Tu travailles sur la chaîne Fortunes & Ruines (histoire financière racontée comme des dossiers d'enquête), animée en Remotion. Ces règles priment sur tes choix par défaut.
 
 ## Règles éditoriales (non négociables)
 - **Chaque chiffre a une source** déclarée dans `content/research/sources.json` et référencée par la scène (`sources`). `npm run check` bloque un chiffre sans source.
@@ -10,15 +10,20 @@ Tu travailles sur une chaîne vidéo d'histoire financière, animée en Remotion
 - **Contexte colonial et esclavagiste** mentionné quand il fait partie de l'histoire (scène s09 du pilote).
 - Pas d'accusation de fraude intentionnelle sans preuve.
 
-## Charte (voir `branding/CHARTE.html`)
-- Concept : chaque épisode est un billet de banque. Couleurs : encre 70 %, papier 20 %, rouge 8 %, or 2 %. Le rouge sert uniquement aux pertes, fraudes et chutes.
-- Polices : Bodoni Moda (titres), Anton (chiffres), IBM Plex Mono (numéros, dates), IBM Plex Sans (texte).
-- Signatures : la rosace qui se trace (titre), le numéroteur (scène `counter`), **un seul tampon rouge par épisode** (vérifié par les tests).
+## Charte v3 « Dossier d'enquête » (voir `branding/CHARTE.html`)
+- Nom : **Fortunes & Ruines**. Accroche : « Comment on gagne tout. Comment on perd tout. »
+- Concept : chaque épisode est un dossier d'enquête numéroté, avec ses pièces, son ruban et son verdict.
+- Couleurs : noir #0B0B0C (70 %), papier #F2F0EA (18 %), jaune #FFD400 (8 %, pour montrer), rouge #E5322D (4 %, pour juger). **Jamais de vert « gain ».**
+- Polices : Archivo Black (titres, chiffres), JetBrains Mono (repères, dates), Inter Tight (texte, sous-titres).
+- Logo : pastille jaune « F&R », esperluette rouge, ombre rouge décalée (`src/Logo.tsx`).
+- Signatures : ruban jaune et noir, documents scellés, compteur qui frappe, **un seul tampon rouge par épisode** (vérifié par les tests).
+- Pas de faux visages : les personnes sont des silhouettes anonymes sur toise.
 - Toutes les valeurs viennent de `config/theme.json`. Ne jamais coder une couleur en dur ailleurs.
+- Catalogue des épisodes : `content/BACKLOG.md`.
 
 ## Architecture
 - `content/episodes/*.json` est la **seule source de vérité**. Les `script-*.md` sont générés (`npm run script`) : ne pas les modifier à la main.
-- Visuels disponibles : `title`, `card`, `quote`, `timeline`, `counter`, `curve`, `flow`, `lesson` (`src/scenes/index.tsx`). Pour en ajouter un : le déclarer dans `src/types.ts`, dans `VISUALS` (`scripts/lib.mjs`) et dans le `switch` de `src/Episode.tsx`.
+- Visuels disponibles : `title`, `card`, `quote`, `timeline`, `counter`, `curve`, `flow`, `lesson` (`src/scenes/index.tsx`) et les scènes illustrées `press`, `crowd`, `ticker`, `doc`, `machine`, `gold`, `burn`, `outro` (`src/scenes/illustrated.tsx`). Préférer les scènes illustrées : un plan de texte seul est l'exception. Pour en ajouter un : le déclarer dans `src/types.ts`, dans `VISUALS` (`scripts/lib.mjs`) et dans le `switch` de `src/Episode.tsx`.
 - Durée d'une scène : celle de l'audio s'il est synchronisé (`audioSec`), sinon 2,5 mots/s + 0,8 s.
 
 ## Garde-fous

@@ -27,5 +27,5 @@ test('le validateur impose un seul tampon', () => {
   assert.ok(validate(ep).errors.some((e) => e.includes('1 tampon')));
 });
 test('palette de la charte', () => {
-  assert.deepEqual(Object.values(theme.colors).slice(0, 5), ['#0B241A', '#123829', '#F2ECDC', '#C23A2B', '#B8913A']);
+  assert.deepEqual(Object.values(theme.colors).slice(0, 5), ['#0B0B0C', '#161617', '#F2F0EA', '#E5322D', '#FFD400']);
 });

@@ -10,33 +10,29 @@ Légende : ✅ établi (source officielle) · ⚠️ probable ou source secondai
 | Sujet | Décision | Raison |
 |---|---|---|
 | Niche | **Histoire financière racontée** : bulles, krachs, arnaques, empires business | Elle hérite de la prime de RPM finance sans conseil en placement, donc reste compatible halal. Les sujets ne vieillissent pas : un épisode sur 1720 reste regardé en 2030. |
-| Nom | **L'Histoire de l'Argent** | Clair, cherchable, et traduisible en « The History of Money » pour le doublage. |
-| Handle | `@HistoireDeLArgent`, sinon `@LHistoireDeLArgent`, sinon `@HistoireArgent` | Le même handle sur YouTube, TikTok et Instagram. |
+| Nom | **Fortunes & Ruines** (v3, 19/11) | Tient 60 épisodes et plus, couvre bulles, arnaques et empires, cohérent avec la ligne halal. |
+| Handle | `@FortunesEtRuines`, sinon `@FortunesRuines`, sinon `@FetR.dossiers` (⚠️ disponibilité à vérifier) | Le même handle sur YouTube, TikTok et Instagram. |
 | Langue | **Français d'abord**, anglais en piste audio doublée à partir du 4e mois | Il faut d'abord valider le format sur un seul marché, puis viser le RPM américain. |
 | Voix | **`Sakina-Kids-FR-IVC` (`LRnruiHfyadbJQKy1AZn`)**, la voix d'Alaa, validée le 19/11. La même voix que Sakina Kids. | Débloqué le 19/11 grâce au passage à une offre payante : la narration du pilote est générée. Le clone professionnel `Sakina-Kids-FR-PVC-V1` ⚠️ demande l'offre Creator. |
 | Cadence | 1 vidéo longue (7–10 min) et 3 Shorts par semaine | Plafond fixé dans le récap pour ne pas cannibaliser Sakina. |
 | Plateformes | YouTube (long + Shorts) en principal ; TikTok et Instagram Reels reçoivent les mêmes 9:16 | Une seule production, trois diffusions. |
 | Publicité payante | **Aucune pendant 90 jours** | Payer pour des vues avant d'avoir validé la rétention brûle du cash et pollue les signaux de l'algorithme. |
 
-## 2. Identité visuelle : charte officielle v2 (19/11)
-Référence unique : `branding/CHARTE.html`, publiée sur https://claude.ai/artifact/4jqmXQ1cjTGETARb77UQ8H. Elle remplace la v1 (noir et or).
-- **Concept** : la chaîne est un billet de banque. Encre verte fiduciaire, papier, guilloché, numéro de série, tampon rouge.
-- **Accroche officielle** : « L'argent a une mémoire. » Version longue : « L'argent a une mémoire. Nous la racontons. » Phrase de fin en voix : « L'argent oublie vite. Nous, non. »
-- **Logo** : rosace guillochée calculée et monogramme « HA », dont le A est rouge. Fichiers `branding/logo-mark.svg`, `logo-mark-paper.svg`, `avatar.png`.
-- **Couleurs** : encre profonde `#0B241A`, encre `#123829`, papier `#F2ECDC`, rouge numéroteur `#C23A2B`, or `#B8913A`. Proportions : encre 70, papier 20, rouge 8, or 2.
-- **Polices** : Bodoni Moda (titres), Anton (chiffres), IBM Plex Mono (numéros, dates), IBM Plex Sans (texte).
-- **Signature animée** : la rosace se trace, le numéroteur fait défiler les chiffres, le tampon rouge tombe une fois par épisode.
-- **Miniatures** : le nom, la démesure, le verdict (modèle : `branding/thumb-ep01.png`).
-- Pour regénérer les visuels : `npm run assets`. Les couleurs et polices viennent de `config/theme.json`, la source unique.
+## 2. Identité visuelle : charte v3 « Dossier d'enquête » (19/11)
+Référence : `branding/CHARTE.html`, publiée sur https://claude.ai/artifact/4jqmXQ1cjTGETARb77UQ8H. Elle remplace la v2 « billet de banque », rejetée.
+- **Nom** : **Fortunes & Ruines** (l'ancien nom de travail était « L'Histoire de l'Argent »). **Accroche** : « Comment on gagne tout. Comment on perd tout. »
+- Noir quadrillé, jaune enquête, rouge verdict, Archivo Black, JetBrains Mono, Inter Tight. Logo : pastille F&R.
+- 60 épisodes au catalogue : `content/BACKLOG.md`.
+- Visuels : `npm run assets` (avatar, bannière, miniature), tous générés depuis `config/theme.json`.
 
 ## 3. Textes de la chaîne
 
 **Description YouTube** (le début est ce qui apparaît dans la recherche) :
-> L'argent a une mémoire. Nous la racontons : bulles, krachs, arnaques et empires, en animation. Chaque chiffre est sourcé, chaque épisode finit par une leçon. Ce n'est pas du conseil en investissement, c'est de l'histoire.
+> Comment on gagne tout. Comment on perd tout. Les dossiers de l'argent : bulles, arnaques, empires, en animation. Chaque chiffre est sourcé. Chaque chiffre est sourcé, chaque épisode finit par une leçon. Ce n'est pas du conseil en investissement, c'est de l'histoire.
 > Nouvel épisode chaque semaine.
 
 **Bio TikTok et Instagram** (80 caractères max) :
-> L'argent a une mémoire. Bulles, krachs, arnaques, racontés et sourcés.
+> Les dossiers de l'argent : bulles, arnaques, empires. Chiffres sourcés.
 
 **Mots-clés de chaîne** : histoire de l'argent, histoire économique, krach boursier, bulle spéculative, arnaque célèbre, Ponzi, histoire de la finance, économie expliquée, documentaire animé
 

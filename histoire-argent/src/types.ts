@@ -18,4 +18,4 @@ export type Visual =
 export type Sfx = {name: string; at?: number; volume?: number; dur?: number};
 export type Scene = {id: string; text: string; sources: string[]; visual: Visual; stamp?: string; audio?: boolean; audioSec?: number; sfx?: Sfx[]};
 export type Episode = {id: string; serial: string; format: 'long' | 'short'; status: string; title: string;
-  thumbnail?: {place: string; name: string; big: string; stamp: string}; wordsPerSecond?: number; audioDir?: string; transitionSfx?: string; bed?: {name: string; volume: number}; scenes: Scene[]};
+  thumbnail?: {place: string; name: string; big: string; stamp: string; sub?: string}; wordsPerSecond?: number; audioDir?: string; transitionSfx?: string; bed?: {name: string; volume: number}; scenes: Scene[]};

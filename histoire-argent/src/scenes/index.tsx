@@ -2,7 +2,7 @@ import React from 'react';
 import {Easing, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C, F} from '../brand';
 import {Visual} from '../types';
-import {Rosette} from '../Rosette';
+import {LogoBadge} from '../Logo';
 import {fadeIn, rise, useScale} from '../kit';
 
 type V<T extends Visual['type']> = Extract<Visual, {type: T}>;
@@ -14,7 +14,7 @@ export const Title: React.FC<V<'title'> & {serial: string}> = ({title, subtitle,
   const draw = interpolate(f, [0, 0.9 * fps], [0, 1], {extrapolateRight: 'clamp', easing: Easing.inOut(Easing.cubic)});
   return (
     <div style={{display: 'grid', justifyItems: 'center', gap: 26 * s, textAlign: 'center'}}>
-      <Rosette size={260 * s} progress={draw} />
+      <LogoBadge size={220 * s} progress={draw} />
       <div style={{fontFamily: F.mono, color: C.red, fontSize: 30 * s, letterSpacing: 8 * s, opacity: fadeIn(f, 12)}}>N° {serial}</div>
       <div style={{fontFamily: F.display, fontWeight: 800, fontSize: 150 * s, lineHeight: 1, opacity: fadeIn(f, 14), transform: `translateY(${rise(f, 14)}px)`}}>{title}</div>
       <div style={{fontFamily: F.display, fontStyle: 'italic', fontSize: 50 * s, opacity: fadeIn(f, 26), maxWidth: 1400 * s}}>{subtitle}</div>
@@ -159,7 +159,7 @@ export const Lesson: React.FC<V<'lesson'> & {outro: string}> = ({lines, next, ou
           color: i ? C.gold : C.paper, opacity: fadeIn(f, i * 30)}}>{l}</div>
       ))}
       <div style={{display: 'flex', alignItems: 'center', gap: 28 * s, marginTop: 30 * s, opacity: fadeIn(f, outroAt)}}>
-        <Rosette size={120 * s} progress={interpolate(f, [outroAt, outroAt + fps], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})} />
+        <LogoBadge size={120 * s} progress={interpolate(f, [outroAt, outroAt + fps], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})} />
         <div style={{textAlign: 'left'}}>
           <div style={{fontFamily: F.display, fontStyle: 'italic', fontSize: 52 * s}}>{outro}</div>
           <div style={{fontFamily: F.mono, fontSize: 24 * s, letterSpacing: 4 * s, color: C.red, textTransform: 'uppercase', marginTop: 8 * s}}>{next}</div>

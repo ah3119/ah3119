@@ -2,6 +2,7 @@ import React, {useId, useMemo} from 'react';
 import {AbsoluteFill, Easing, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C, F} from '../brand';
 import {Rosette} from '../Rosette';
+import {LogoBadge} from '../Logo';
 import {fadeIn, useScale} from '../kit';
 
 // Générateur pseudo-aléatoire déterministe : même image à chaque rendu.
@@ -55,7 +56,7 @@ const Caption: React.FC<{kicker?: string; title: string; top?: number; color?: s
   return (
     <div style={{position: 'absolute', left: 0, right: 0, top: height * top, textAlign: 'center', padding: `0 ${60 * s}px`, zIndex: 5, textShadow: `0 ${4 * s}px ${24 * s}px ${C.bg}`}}>
       {kicker && <div style={{fontFamily: F.mono, fontSize: 30 * s, letterSpacing: 7 * s, color: C.gold, textTransform: 'uppercase', opacity: fadeIn(f)}}>{kicker}</div>}
-      <div style={{fontFamily: F.display, fontWeight: 800, fontSize: 96 * s, lineHeight: 1.02, color, marginTop: 12 * s,
+      <div style={{fontFamily: F.display, fontSize: 92 * s, lineHeight: 0.98, textTransform: 'uppercase', color, marginTop: 12 * s,
         transform: `scale(${0.92 + 0.08 * spring({frame: f - 2, fps: 30, config: {damping: 12}})})`, opacity: fadeIn(f, 2, 8)}}>{title}</div>
     </div>
   );
@@ -130,7 +131,7 @@ export const Crowd: React.FC<{kicker?: string; title: string; ticker: string}> =
             const x = ((p.x * width * 1.2 + (p.layer + 1) * f * 0.6) % (width * 1.2)) - width * 0.1;
             const bob = Math.abs(Math.sin(f / 5 + p.ph)) * 10 * scale;
             const y = ground + p.layer * 60 * s - bob;
-            const col = p.layer === 2 ? '#05140d' : p.layer === 1 ? '#0e2c20' : '#1d4a37';
+            const col = p.layer === 2 ? '#050505' : p.layer === 1 ? '#202022' : '#3a3a3c';
             return (
               <g key={i} transform={`translate(${x},${y}) scale(${scale})`}>
                 <path d="M-70 0 C -70 -150 -40 -190 0 -190 C 40 -190 70 -150 70 0 Z" fill={col} />
@@ -278,6 +279,10 @@ export const Burn: React.FC<{title: string; kicker?: string}> = ({title, kicker}
         const y = height - ((f * e.sp + e.ph * 10) % (height * 0.9));
         return <div key={`e${i}`} style={{position: 'absolute', left: e.x * width, top: y, width: 8 * s, height: 8 * s, borderRadius: '50%', background: i % 3 ? C.gold : C.red, opacity: 0.8}} />;
       })}
+      <div style={{position: 'absolute', left: -60 * s, right: -60 * s, top: height * 0.62, height: 80 * s, transform: 'rotate(-4deg)', zIndex: 4, display: 'flex', alignItems: 'center', justifyContent: 'center',
+        background: `repeating-linear-gradient(45deg, ${C.gold} 0 ${56 * s}px, ${C.bg} ${56 * s}px ${112 * s}px)`, opacity: fadeIn(f, 20)}}>
+        <span style={{background: C.gold, color: C.bg, fontFamily: F.mono, fontWeight: 800, fontSize: 38 * s, letterSpacing: 5 * s, padding: `0 ${24 * s}px`}}>DOSSIER CLASSÉ</span>
+      </div>
       <Caption kicker={kicker} title={title} top={0.1} color={C.paper} />
       <div style={{position: 'absolute', inset: 0, background: '#000', opacity: interpolate(f, [durationInFrames - 8, durationInFrames], [0, 0.6], {extrapolateLeft: 'clamp'})}} />
     </AbsoluteFill>
@@ -292,7 +297,7 @@ export const Outro: React.FC<{lines: string[]; cta: string}> = ({lines, cta}) =>
       {lines.map((l, i) => (
         <div key={i} style={{fontFamily: F.display, fontWeight: i ? 500 : 800, fontStyle: i ? 'italic' : 'normal', fontSize: 84 * s, lineHeight: 1.1, color: i ? C.gold : C.paper, opacity: fadeIn(f, i * 18)}}>{l}</div>
       ))}
-      <div style={{marginTop: 30 * s, transform: `scale(${spring({frame: f - 40, fps, config: {damping: 11}})})`}}><Rosette size={220 * s} progress={interpolate(f, [40, 70], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})} /></div>
+      <div style={{marginTop: 30 * s}}><LogoBadge size={240 * s} progress={interpolate(f, [40, 55], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})} /></div>
       <div style={{fontFamily: F.mono, fontSize: 34 * s, letterSpacing: 6 * s, color: C.red, textTransform: 'uppercase', opacity: fadeIn(f, 55)}}>{cta}</div>
     </AbsoluteFill>
   );
