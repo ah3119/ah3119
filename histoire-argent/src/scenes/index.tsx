@@ -11,13 +11,13 @@ const fmt = (n: number) => Math.round(n).toLocaleString('fr-FR').replace(/ | 
 // Signature n°1 : la rosace se trace, le numéro s'imprime.
 export const Title: React.FC<V<'title'> & {serial: string}> = ({title, subtitle, serial}) => {
   const f = useCurrentFrame(); const {fps} = useVideoConfig(); const {s} = useScale();
-  const draw = interpolate(f, [0, 1.6 * fps], [0, 1], {extrapolateRight: 'clamp', easing: Easing.inOut(Easing.cubic)});
+  const draw = interpolate(f, [0, 0.9 * fps], [0, 1], {extrapolateRight: 'clamp', easing: Easing.inOut(Easing.cubic)});
   return (
     <div style={{display: 'grid', justifyItems: 'center', gap: 26 * s, textAlign: 'center'}}>
       <Rosette size={260 * s} progress={draw} />
-      <div style={{fontFamily: F.mono, color: C.red, fontSize: 30 * s, letterSpacing: 8 * s, opacity: fadeIn(f, 30)}}>N° {serial}</div>
-      <div style={{fontFamily: F.display, fontWeight: 800, fontSize: 150 * s, lineHeight: 1, opacity: fadeIn(f, 36), transform: `translateY(${rise(f, 36)}px)`}}>{title}</div>
-      <div style={{fontFamily: F.display, fontStyle: 'italic', fontSize: 50 * s, opacity: fadeIn(f, 50), maxWidth: 1400 * s}}>{subtitle}</div>
+      <div style={{fontFamily: F.mono, color: C.red, fontSize: 30 * s, letterSpacing: 8 * s, opacity: fadeIn(f, 12)}}>N° {serial}</div>
+      <div style={{fontFamily: F.display, fontWeight: 800, fontSize: 150 * s, lineHeight: 1, opacity: fadeIn(f, 14), transform: `translateY(${rise(f, 14)}px)`}}>{title}</div>
+      <div style={{fontFamily: F.display, fontStyle: 'italic', fontSize: 50 * s, opacity: fadeIn(f, 26), maxWidth: 1400 * s}}>{subtitle}</div>
     </div>
   );
 };
@@ -93,13 +93,13 @@ export const Counter: React.FC<V<'counter'>> = ({from, to, unit, fromLabel, toLa
   );
 };
 
-export const Curve: React.FC<V<'curve'>> = ({points, unit, upTo, note}) => {
+export const Curve: React.FC<V<'curve'>> = ({points, unit, upTo, startAt = 0, note}) => {
   const f = useCurrentFrame(); const {durationInFrames} = useVideoConfig(); const {s, width, height, vertical} = useScale();
   const W = width - (vertical ? 140 : 300) * s, H = height * (vertical ? 0.3 : 0.42);
   const max = Math.max(...points.map((p) => p.v));
   const peak = points.findIndex((p) => p.v === max);
   const xy = points.map((p, i) => [(i / (points.length - 1)) * W, H - (p.v / max) * H] as const);
-  const progAt = (fr: number) => interpolate(fr, [8, durationInFrames * 0.7], [0, upTo], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.inOut(Easing.quad)});
+  const progAt = (fr: number) => interpolate(fr, [8, durationInFrames * 0.7], [startAt, upTo], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.inOut(Easing.quad)});
   const prog = progAt(f);
   const i0 = Math.floor(prog), frac = prog - i0;
   const head = i0 >= points.length - 1 ? xy[points.length - 1] : [xy[i0][0] + (xy[i0 + 1][0] - xy[i0][0]) * frac, xy[i0][1] + (xy[i0 + 1][1] - xy[i0][1]) * frac];
@@ -175,7 +175,7 @@ export const stampDelay = (v: Visual, frames: number) => {
   const max = Math.max(...v.points.map((p) => p.v));
   const peak = v.points.findIndex((p) => p.v === max);
   for (let fr = 0; fr < frames; fr++) {
-    const p = interpolate(fr, [8, frames * 0.7], [0, v.upTo], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.inOut(Easing.quad)});
+    const p = interpolate(fr, [8, frames * 0.7], [v.startAt ?? 0, v.upTo], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.inOut(Easing.quad)});
     if (p > peak + 0.05) return fr + 6;
   }
   return Math.round(frames * 0.6);

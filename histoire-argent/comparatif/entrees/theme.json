@@ -1,0 +1,28 @@
+{
+  "name": "L'Histoire de l'Argent",
+  "tagline": "L'argent a une mémoire.",
+  "taglineLong": "L'argent a une mémoire. Nous la racontons.",
+  "outro": "L'argent oublie vite. Nous, non.",
+  "colors": {
+    "inkDeep": "#0B241A",
+    "ink": "#123829",
+    "paper": "#F2ECDC",
+    "red": "#C23A2B",
+    "gold": "#B8913A",
+    "dim": "#8FA597"
+  },
+  "ratios": {"ink": 70, "paper": 20, "red": 8, "gold": 2},
+  "fonts": {
+    "display": "'Bodoni Moda', Didot, 'Bodoni 72', serif",
+    "body": "'IBM Plex Sans', Helvetica, Arial, sans-serif",
+    "mono": "'IBM Plex Mono', Menlo, Consolas, monospace",
+    "impact": "Anton, Impact, sans-serif",
+    "googleCss": "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,800;1,6..96,500&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&family=Anton&display=block"
+  },
+  "fps": 30,
+  "formats": {
+    "long": {"width": 1920, "height": 1080, "minSec": 420, "maxSec": 600},
+    "short": {"width": 1080, "height": 1920, "maxSec": 60}
+  },
+  "speech": {"wordsPerSecond": 2.5, "padSec": 0.8, "minSceneSec": 3.5}
+}

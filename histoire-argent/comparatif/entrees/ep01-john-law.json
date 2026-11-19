@@ -1,0 +1,445 @@
+{
+ "id": "ep01-long",
+ "serial": "001",
+ "format": "long",
+ "status": "DRAFT",
+ "title": "John Law, l'Écossais qui a ruiné la France",
+ "titleOptions": [
+  "John Law, l'Écossais qui a ruiné la France",
+  "L'homme qui a imprimé la France jusqu'à la ruine",
+  "500 → 10 000 : la première bulle de Paris"
+ ],
+ "thumbnail": {
+  "place": "Paris · 1720",
+  "name": "John\nLaw",
+  "big": "×20",
+  "stamp": "RUINÉ"
+ },
+ "description": "En 1719, une action de la Compagnie du Mississippi passe de 500 à près de 10 000 livres. Un an plus tard, le papier ne vaut presque plus rien. Voici l'histoire de John Law, l'homme qui a inventé la France du papier-monnaie, puis l'a ruinée.",
+ "scenes": [
+  {
+   "id": "s01",
+   "sources": [
+    "velde2003",
+    "moen2001"
+   ],
+   "text": "Janvier 1719. À Paris, une action de la Compagnie du Mississippi s'échange autour de 500 livres. Un an plus tard, elle approche les 10 000. Des fortunes naissent en quelques semaines. Puis, en quelques mois, tout s'effondre. Et avec elle, la confiance de tout un pays dans le papier-monnaie.",
+   "visual": {
+    "type": "counter",
+    "from": 500,
+    "to": 10000,
+    "unit": "livres",
+    "fromLabel": "janvier 1719",
+    "toLabel": "fin 1719"
+   }
+  },
+  {
+   "id": "s02",
+   "sources": [],
+   "text": "L'histoire de l'argent, numéro un. John Law, l'Écossais qui a ruiné la France.",
+   "visual": {
+    "type": "title",
+    "title": "John Law",
+    "subtitle": "L'Écossais qui a ruiné la France"
+   }
+  },
+  {
+   "id": "s03",
+   "sources": [
+    "murphy1997"
+   ],
+   "text": "Tout commence à Édimbourg, en 1671. John Law naît dans une famille d'orfèvres, ceux qui, à l'époque, gardent l'or des autres et prêtent de l'argent. Il grandit au milieu des balances, des pièces et des reconnaissances de dette. Et il a un don rare : il calcule vite. Très vite. À la mort de son père, il hérite d'une petite fortune, et part la dépenser à Londres.",
+   "visual": {
+    "type": "card",
+    "kicker": "Édimbourg · 1671",
+    "lines": [
+     "Fils d'orfèvre.",
+     "Élevé parmi les pièces",
+     "et les reconnaissances de dette."
+    ]
+   }
+  },
+  {
+   "id": "s04",
+   "sources": [
+    "murphy1997"
+   ],
+   "text": "En 1694, à Londres, il tue un homme en duel. Il est condamné à mort. Il échappe à la potence, s'évade de prison et fuit sur le continent. Pendant vingt ans, il vit en partie du jeu, parce qu'il calcule les probabilités mieux que ses adversaires. Et il observe de près les banques d'Amsterdam et de Gênes.",
+   "visual": {
+    "type": "timeline",
+    "focus": 1,
+    "events": [
+     {
+      "year": "1671",
+      "label": "Naissance à Édimbourg"
+     },
+     {
+      "year": "1694",
+      "label": "Duel à Londres, condamné à mort"
+     },
+     {
+      "year": "1695",
+      "label": "Évasion vers le continent"
+     },
+     {
+      "year": "1705",
+      "label": "Son livre sur la monnaie"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s05",
+   "sources": [
+    "law1705",
+    "murphy1997"
+   ],
+   "text": "Son idée tient en une phrase, et il la publie en 1705 : un pays manque de richesse parce qu'il manque de monnaie. L'or et l'argent sont trop rares. Créez une monnaie de papier, et le commerce repart, les bras inoccupés trouvent du travail, la richesse suit. Pour Law, une monnaie n'a pas besoin d'être en or. Elle a seulement besoin d'inspirer confiance. Retenez ce mot : confiance. Toute cette histoire tourne autour de lui.",
+   "visual": {
+    "type": "quote",
+    "quote": "La monnaie n'est pas la valeur pour laquelle on échange les biens, mais la valeur par laquelle on les échange.",
+    "author": "John Law, 1705 (trad.)"
+   }
+  },
+  {
+   "id": "s06",
+   "sources": [
+    "velde2003"
+   ],
+   "text": "En 1715, Louis XIV meurt. Il laisse un royaume épuisé par les guerres et écrasé de dettes, au point que l'État peine à en payer les seuls intérêts. Le nouveau Régent, Philippe d'Orléans, cherche une issue. Law en propose une.",
+   "visual": {
+    "type": "card",
+    "kicker": "Versailles · 1715",
+    "lines": [
+     "Le roi est mort.",
+     "Les dettes, elles, sont toujours là."
+    ]
+   }
+  },
+  {
+   "id": "s07",
+   "sources": [
+    "velde2003",
+    "moen2001"
+   ],
+   "text": "Mai 1716 : Law obtient le droit d'ouvrir une banque privée, la Banque générale. Elle émet des billets que l'on peut échanger contre des pièces. Et au début, ça marche. Les billets circulent, l'État les accepte pour payer l'impôt, la confiance s'installe. Pour Law, c'est la preuve que son idée fonctionne. Pour le Régent, c'est une bouffée d'air.",
+   "visual": {
+    "type": "timeline",
+    "focus": 0,
+    "events": [
+     {
+      "year": "1716",
+      "label": "Banque générale"
+     },
+     {
+      "year": "1717",
+      "label": "Compagnie d'Occident"
+     },
+     {
+      "year": "1718",
+      "label": "Banque royale"
+     },
+     {
+      "year": "1719",
+      "label": "Compagnie des Indes"
+     },
+     {
+      "year": "1720",
+      "label": "Contrôleur général"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s08",
+   "sources": [
+    "moen2001"
+   ],
+   "text": "Août 1717 : il prend le contrôle de la Compagnie d'Occident, qui reçoit le monopole du commerce avec la Louisiane, cet immense territoire autour du Mississippi. On vend aux Parisiens un rêve : des mines, des terres fertiles, des richesses sans fin. La réalité est un territoire marécageux, à peine colonisé. Mieux : les actions de la Compagnie se paient en partie avec de vieux titres de la dette de l'État, qui ne valent presque plus rien. Pour leurs détenteurs, l'affaire semble trop belle pour être refusée.",
+   "visual": {
+    "type": "card",
+    "kicker": "Louisiane · 1717",
+    "lines": [
+     "On vend un rêve.",
+     "On livre un marécage."
+    ]
+   }
+  },
+  {
+   "id": "s09",
+   "sources": [
+    "hall1992",
+    "moen2001"
+   ],
+   "text": "Il faut le dire aussi. Ce rêve s'est bâti sur des terres prises aux peuples amérindiens et, à partir de 1719, sur la traite de femmes et d'hommes africains réduits en esclavage, déportés vers la Louisiane par la Compagnie. L'histoire de l'argent, c'est aussi celle de ceux qui en ont payé le prix.",
+   "visual": {
+    "type": "card",
+    "kicker": "Ce que le prospectus ne disait pas",
+    "lines": [
+     "Des terres prises.",
+     "Des vies déportées."
+    ],
+    "sober": true
+   }
+  },
+  {
+   "id": "s10",
+   "sources": [
+    "velde2003"
+   ],
+   "text": "Décembre 1718 : la banque devient la Banque royale. Désormais, c'est le roi qui garantit les billets. Et Law peut en imprimer beaucoup plus.",
+   "visual": {
+    "type": "timeline",
+    "focus": 2,
+    "events": [
+     {
+      "year": "1716",
+      "label": "Banque générale"
+     },
+     {
+      "year": "1717",
+      "label": "Compagnie d'Occident"
+     },
+     {
+      "year": "1718",
+      "label": "Banque royale"
+     },
+     {
+      "year": "1719",
+      "label": "Compagnie des Indes"
+     },
+     {
+      "year": "1720",
+      "label": "Contrôleur général"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s11",
+   "sources": [
+    "velde2003",
+    "moen2001"
+   ],
+   "text": "En 1719, la Compagnie, devenue Compagnie des Indes, absorbe les autres compagnies de commerce, obtient la frappe des monnaies, puis la collecte des impôts. Enfin, elle propose de racheter la dette du roi : les créanciers de l'État échangent leurs titres contre des actions. En quelques mois, une seule entreprise contrôle le commerce lointain, la monnaie, les impôts et la dette du pays. Rarement une société aura concentré autant de pouvoir.",
+   "visual": {
+    "type": "flow",
+    "nodes": [
+     "Commerce",
+     "Monnaie",
+     "Impôts",
+     "Dette du roi"
+    ],
+    "caption": "Une seule compagnie avale tout"
+   }
+  },
+  {
+   "id": "s12",
+   "sources": [
+    "velde2003"
+   ],
+   "text": "Regardez la mécanique. La banque imprime des billets. Avec ces billets, on achète des actions. Avec l'argent des actions, on rembourse la dette. Et plus l'action monte, plus il faut de billets pour l'acheter. Tout tient, tant que personne ne demande de l'or. Et ce n'est pas une arnaque cachée : c'est un système public, défendu par le gouvernement lui-même. C'est justement ce qui rassure.",
+   "visual": {
+    "type": "flow",
+    "nodes": [
+     "Billets",
+     "Actions",
+     "Dette remboursée"
+    ],
+    "loop": true,
+    "caption": "Tout tient… tant que personne ne demande de l'or."
+   }
+  },
+  {
+   "id": "s13",
+   "sources": [
+    "moen2001",
+    "velde2003",
+    "nyfed2014"
+   ],
+   "text": "La rue Quincampoix, où s'échangent les actions, devient le centre de Paris. On y croise des nobles, des marchands, des domestiques, des étrangers venus de toute l'Europe. L'action passe de 500 livres à près de 10 000 à la fin de 1719. Certains relevés parlent même de 15 000. Pour suivre la demande, la Compagnie émet de nouvelles actions, payables en plusieurs fois. On achète avec un petit acompte, on revend plus cher quelques jours après.",
+   "visual": {
+    "type": "curve",
+    "unit": "livres",
+    "upTo": 3,
+    "points": [
+     {
+      "t": "janv. 1719",
+      "v": 500
+     },
+     {
+      "t": "août 1719",
+      "v": 3000
+     },
+     {
+      "t": "oct. 1719",
+      "v": 6000
+     },
+     {
+      "t": "déc. 1719",
+      "v": 10000
+     },
+     {
+      "t": "mars 1720",
+      "v": 9000
+     },
+     {
+      "t": "juin 1720",
+      "v": 6000
+     },
+     {
+      "t": "déc. 1720",
+      "v": 2000
+     }
+    ],
+    "note": "Valeurs arrondies, ordre de grandeur"
+   }
+  },
+  {
+   "id": "s14",
+   "sources": [
+    "murphy1997"
+   ],
+   "text": "Janvier 1720. John Law, l'Écossais condamné à mort à Londres, devient contrôleur général des finances. Il dirige l'économie du premier royaume d'Europe.",
+   "visual": {
+    "type": "card",
+    "kicker": "Janvier 1720",
+    "lines": [
+     "Condamné à mort en 1694.",
+     "Maître des finances du royaume."
+    ]
+   }
+  },
+  {
+   "id": "s15",
+   "sources": [
+    "velde2003"
+   ],
+   "text": "Mais une action ne vaut, au fond, que ce que rapporte la compagnie. Et la Louisiane rapporte très peu. Les plus avisés commencent à vendre, et à réclamer de l'or contre leurs billets. Et pour faire monter l'action, la banque a émis tant de billets que les prix, à Paris, commencent à grimper.",
+   "visual": {
+    "type": "card",
+    "kicker": "Le doute",
+    "lines": [
+     "Une action ne vaut que",
+     "ce que rapporte la compagnie."
+    ]
+   }
+  },
+  {
+   "id": "s16",
+   "sources": [
+    "velde2003"
+   ],
+   "text": "Law répond par des décrets. Il limite le droit de détenir de l'or et de l'argent. En mars 1720, il fixe le prix de l'action à 9 000 livres, payables en billets. Pour tenir ce prix, la banque doit imprimer encore plus. Le piège se referme. Soutenir l'action, c'est inonder le pays de papier. La laisser tomber, c'est ruiner tous ceux qui l'ont achetée.",
+   "visual": {
+    "type": "counter",
+    "from": 10000,
+    "to": 9000,
+    "unit": "livres",
+    "fromLabel": "le marché",
+    "toLabel": "mars 1720 · prix fixé par décret"
+   }
+  },
+  {
+   "id": "s17",
+   "sources": [
+    "velde2003",
+    "nyfed2014"
+   ],
+   "text": "Le 21 mai 1720, un édit annonce que la valeur des billets et des actions sera réduite par étapes. C'est la panique. L'édit est retiré quelques jours plus tard. Mais la confiance, elle, ne revient pas.",
+   "visual": {
+    "type": "curve",
+    "unit": "livres",
+    "upTo": 6,
+    "points": [
+     {
+      "t": "janv. 1719",
+      "v": 500
+     },
+     {
+      "t": "août 1719",
+      "v": 3000
+     },
+     {
+      "t": "oct. 1719",
+      "v": 6000
+     },
+     {
+      "t": "déc. 1719",
+      "v": 10000
+     },
+     {
+      "t": "mars 1720",
+      "v": 9000
+     },
+     {
+      "t": "juin 1720",
+      "v": 6000
+     },
+     {
+      "t": "déc. 1720",
+      "v": 2000
+     }
+    ],
+    "note": "Valeurs arrondies, ordre de grandeur"
+   },
+   "stamp": "KRACH"
+  },
+  {
+   "id": "s18",
+   "sources": [
+    "murphy1997",
+    "moen2001"
+   ],
+   "text": "Pendant l'été, la foule se presse devant la banque pour échanger ses billets. À l'automne, le papier ne vaut presque plus rien. En décembre 1720, Law quitte la France. Il mourra à Venise en 1729, loin de sa fortune. Ceux qui avaient vendu tôt gardent leur fortune. Ceux qui avaient tout placé en billets et en actions perdent presque tout.",
+   "visual": {
+    "type": "timeline",
+    "focus": 3,
+    "events": [
+     {
+      "year": "Mai 1720",
+      "label": "Édit, panique"
+     },
+     {
+      "year": "Été 1720",
+      "label": "Ruée sur la banque"
+     },
+     {
+      "year": "Déc. 1720",
+      "label": "Law quitte la France"
+     },
+     {
+      "year": "1729",
+      "label": "Mort à Venise"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s19",
+   "sources": [
+    "murphy1997",
+    "velde2003"
+   ],
+   "text": "Law était-il un escroc ? Son biographe, Antoin Murphy, voit surtout en lui un théoricien de premier plan. Plusieurs de ses idées, la monnaie de papier, une banque d'État, sont aujourd'hui partout. Son erreur : croire qu'on crée de la richesse en créant de la monnaie, et laisser la spéculation tenir lieu de valeur. Mais après lui, et pour longtemps, le seul mot de « banque » fera peur en France.",
+   "visual": {
+    "type": "quote",
+    "quote": "Créer de la monnaie n'est pas créer de la richesse.",
+    "author": "La leçon de 1720"
+   }
+  },
+  {
+   "id": "s20",
+   "sources": [],
+   "text": "La leçon tient en une phrase : un actif qui monte seulement parce que tout le monde l'achète finit par baisser parce que tout le monde le vend. L'argent oublie vite. Nous, non. Prochain épisode : la tulipe qui valait une maison.",
+   "visual": {
+    "type": "lesson",
+    "lines": [
+     "Ce qui monte parce que tout le monde achète",
+     "baisse parce que tout le monde vend."
+    ],
+    "next": "N° 002 · La tulipe qui valait une maison"
+   }
+  }
+ ]
+}
