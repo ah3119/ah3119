@@ -5,7 +5,7 @@ Tu travailles sur la chaîne Fortunes & Ruines (histoire financière racontée c
 ## Règles éditoriales (non négociables)
 - **Chaque chiffre a une source** déclarée dans `content/research/sources.json` et référencée par la scène (`sources`). `npm run check` bloque un chiffre sans source.
 - **Affirmations retirées** : l'anecdote du bossu-bureau, l'origine du mot « millionnaire » et la dette de 2,8 milliards. On ne les réintroduit qu'avec une source primaire, et après avoir mis à jour `BANNED` dans `scripts/lib.mjs`.
-- **Cours de l'action** : 500 livres (janvier 1719), environ 10 000 livres (fin 1719), selon Velde et Moen. La Fed de New York cite 15 000. Ne jamais présenter 10 000 comme le record incontesté. Le « ×20 » est une borne basse.
+- **Cours de l'action** : Velde relève 500 livres le 10 mai 1719 et situe le sommet de sa série au début de 1720, près de 10 000 livres. Utiliser « presque ×20 » pour ces deux repères. La Fed de New York cite un sommet différent. Toute valeur affichée doit être identifiable dans la source et les interpolations éventuelles restent sans valeur numérique.
 - **Halal** : on raconte et on explique. Aucune promotion de l'intérêt, du trading, de la crypto ou du jeu, ni d'esthétique « argent facile ».
 - **Contexte colonial et esclavagiste** mentionné quand il fait partie de l'histoire (scène s09 du pilote).
 - Pas d'accusation de fraude intentionnelle sans preuve.
@@ -25,6 +25,7 @@ Tu travailles sur la chaîne Fortunes & Ruines (histoire financière racontée c
 - `content/episodes/*.json` est la **seule source de vérité**. Les `script-*.md` sont générés (`npm run script`) : ne pas les modifier à la main.
 - Visuels disponibles : `title`, `card`, `quote`, `timeline`, `counter`, `curve`, `flow`, `lesson` (`src/scenes/index.tsx`) et les scènes illustrées `press`, `crowd`, `ticker`, `doc`, `machine`, `gold`, `burn`, `outro` (`src/scenes/illustrated.tsx`). Préférer les scènes illustrées : un plan de texte seul est l'exception. Pour en ajouter un : le déclarer dans `src/types.ts`, dans `VISUALS` (`scripts/lib.mjs`) et dans le `switch` de `src/Episode.tsx`.
 - Durée d'une scène : celle de l'audio s'il est synchronisé (`audioSec`), sinon 2,5 mots/s + 0,8 s.
+- Short John Law fusionné : `content/episodes/ep01-short-fusion.json`. L'aperçu lit `previewSec`, les prises réelles ont priorité après synchronisation. Lancer `npm run render:fusion` ou `npm run render:fusion-voice` pour un export de relecture.
 
 ## Garde-fous
 - Ne jamais lancer `voice:all` ou `voice:short-all` (payants) sans accord explicite. `voice:check` ne coûte rien.

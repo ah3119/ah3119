@@ -63,14 +63,14 @@ const Caption: React.FC<{kicker?: string; title: string; top?: number; color?: s
 };
 
 // ── Presse à billets : la plaque frappe, les billets s'envolent.
-export const Press: React.FC<{kicker?: string; title: string}> = ({kicker, title}) => {
+export const Press: React.FC<{kicker?: string; title: string; protectSources?: boolean}> = ({kicker, title, protectSources}) => {
   const f = useCurrentFrame(); const {s, width, height} = useScale();
   const period = 14; const phase = (f % period) / period;
   const plate = phase < 0.25 ? interpolate(phase, [0, 0.25], [0, 1], {easing: Easing.in(Easing.quad)}) : interpolate(phase, [0.25, 1], [1, 0]);
   const cx = width / 2, base = height * 0.62;
   const bills = useMemo(() => { const r = rng(7); return [...Array(14)].map(() => ({vx: (r() - 0.5) * 34, vy: -14 - r() * 16, rot: (r() - 0.5) * 30, delay: 0})); }, []);
   return (
-    <AbsoluteFill>
+    <AbsoluteFill style={protectSources ? {clipPath: 'inset(0 0 24% 0)'} : undefined}>
       <Push>
         {/* bâti de la presse */}
         <div style={{position: 'absolute', left: cx - 300 * s, top: base - 520 * s, width: 600 * s, height: 40 * s, background: C.ink, border: `${4 * s}px solid ${C.paper}`}} />
@@ -273,7 +273,7 @@ export const Burn: React.FC<{title: string; kicker?: string}> = ({title, kicker}
       <div style={{position: 'absolute', inset: 0, background: `radial-gradient(circle at 50% 100%, ${C.red}55 0%, transparent 55%)`}} />
       {bills.map((b, i) => {
         const t = Math.max(0, f - b.d);
-        const y = -300 * s + t * 14 * s * b.sp;
+        const y = height * 0.3 + t * 12 * s * b.sp;
         const burn = interpolate(t, [0, durationInFrames * 0.9], [0, 0.95], {extrapolateRight: 'clamp'});
         return <div key={i} style={{position: 'absolute', left: b.x * (width - 300 * s), top: y, transform: `rotate(${b.rot + t * 0.8}deg)`}}><Bill w={300 * s} burn={burn} /></div>;
       })}

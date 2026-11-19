@@ -7,6 +7,7 @@ import {useBrandFonts} from './fonts';
 import {Frame, Stamp, Subtitles} from './kit';
 import {Card, Counter, Curve, Flow, Lesson, Quote, Timeline, Title, stampDelay} from './scenes';
 import {Burn, Crowd, Doc, GoldDrain, Machine, Outro, Press, Ticker} from './scenes/illustrated';
+import {ActionPrice, Transaction} from './scenes/fusion';
 
 const Visual: React.FC<{scene: Scene; serial: string}> = ({scene, serial}) => {
   const v = scene.visual;
@@ -23,6 +24,8 @@ const Visual: React.FC<{scene: Scene; serial: string}> = ({scene, serial}) => {
     case 'crowd': return <Crowd {...v} />;
     case 'ticker': return <Ticker {...v} />;
     case 'doc': return <Doc {...v} />;
+    case 'action-price': return <ActionPrice {...v} />;
+    case 'transaction': return <Transaction {...v} />;
     case 'machine': return <Machine {...v} />;
     case 'gold': return <GoldDrain {...v} />;
     case 'burn': return <Burn {...v} />;
@@ -61,7 +64,8 @@ export const EpisodeVideo: React.FC<{episode: Ep; subtitles?: boolean}> = ({epis
               <Frame serial={episode.serial} sources={sc.sources}>
                 <Visual scene={sc} serial={episode.serial} />
               </Frame>
-              {sc.stamp && <Stamp text={sc.stamp} delay={stampDelay(sc.visual, frames)} low={sc.visual.type === 'doc'} />}
+              {sc.stamp && <Stamp text={sc.stamp} delay={sc.stampAt === undefined ? stampDelay(sc.visual, frames) : Math.round(sc.stampAt * FPS)}
+                low={sc.visual.type === 'doc'} centered={sc.stampAt !== undefined} />}
               {subtitles && <Subtitles text={sc.text} frames={sc.audioSec ? Math.round(sc.audioSec * FPS) + 6 : frames} />}
             </Series.Sequence>
           );

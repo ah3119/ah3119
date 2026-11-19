@@ -17,9 +17,15 @@
     "sync": "node scripts/sync-audio.mjs",
     "compare": "node scripts/compare.mjs",
     "render:pilot": "node scripts/render.mjs pilot",
+    "render:fusion": "node scripts/fusion.mjs preview",
+    "render:fusion-voice": "node scripts/fusion.mjs review",
+    "assets:fusion": "node scripts/fusion.mjs assets",
     "publication": "node scripts/publication.mjs"
   },
   "dependencies": {
+    "@fontsource/archivo-black": "5.3.0",
+    "@fontsource/inter-tight": "5.3.0",
+    "@fontsource/jetbrains-mono": "5.3.0",
     "@remotion/cli": "4.0.300",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

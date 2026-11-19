@@ -19,7 +19,7 @@ if (mode === 'preview') {
 } else if (mode === 'pilot') {
   // Version narrée complète pour relecture : exige toutes les voix, pas l'approbation. Non publiable.
   const missing = [];
-  for (const fmt of Object.keys(EPISODES)) for (const sc of loadEpisode(fmt).scenes)
+  for (const fmt of Object.keys(EPISODES).filter((key) => key !== 'shortFusion')) for (const sc of loadEpisode(fmt).scenes)
     if (!fs.existsSync(audioFile(fmt, sc)) || !sc.audioSec) missing.push(`${fmt}/${sc.id}`);
   if (missing.length) { console.error('Voix manquantes : ' + missing.join(', ')); process.exit(1); }
   remotion(['render', 'src/index.ts', 'ep01-short', 'output/ep01-pilote-short.mp4']);
@@ -28,7 +28,7 @@ if (mode === 'preview') {
   console.log('✓ output/ep01-pilote-*-master.mp4 (narrés, -14 LUFS, à valider avant publication)');
 } else if (mode === 'both') {
   const problems = [];
-  for (const fmt of Object.keys(EPISODES)) {
+  for (const fmt of Object.keys(EPISODES).filter((key) => key !== 'shortFusion')) {
     const ep = loadEpisode(fmt);
     const {errors} = validate(ep);
     problems.push(...errors);

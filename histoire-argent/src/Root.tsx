@@ -3,13 +3,16 @@ import {Composition, Still} from 'remotion';
 import longEp from '../content/episodes/ep01-john-law.json';
 import shortEp from '../content/episodes/ep01-short.json';
 import shortV2 from '../content/episodes/ep01-short-v2.json';
+import shortFusion from '../content/episodes/ep01-short-fusion.json';
 import {FPS, THEME} from './brand';
 import {EpisodeVideo} from './Episode';
 import {Avatar, Banner, Thumbnail} from './Stills';
 import {episodeFrames} from './timing';
 import {Episode} from './types';
+import {FusionThumbnail} from './scenes/fusion';
 
 const L = longEp as unknown as Episode, S = shortEp as unknown as Episode, S2 = shortV2 as unknown as Episode;
+const FUSION = shortFusion as Episode;
 const {long, short} = THEME.formats;
 
 export const RemotionRoot: React.FC = () => (
@@ -20,6 +23,12 @@ export const RemotionRoot: React.FC = () => (
       durationInFrames={episodeFrames(S)} defaultProps={{episode: S, subtitles: true}} />
     <Composition id="ep01-short-v2" component={EpisodeVideo} fps={FPS} width={short.width} height={short.height}
       durationInFrames={episodeFrames(S2)} defaultProps={{episode: S2, subtitles: true}} />
+    <Composition id="ep01-short-fusion" component={EpisodeVideo} fps={FPS} width={short.width} height={short.height}
+      durationInFrames={episodeFrames(FUSION)} defaultProps={{episode: FUSION, subtitles: true}}
+      calculateMetadata={({props}) => ({durationInFrames: episodeFrames(props.episode)})} />
+    <Still id="ep01-fusion-thumbnail" component={FusionThumbnail} width={1280} height={720}
+      defaultProps={{title: shortFusion.thumbnail.name, kicker: shortFusion.thumbnail.kicker,
+        value: shortFusion.thumbnail.big, place: shortFusion.thumbnail.place, serial: shortFusion.serial}} />
     <Still id="brand-avatar" component={Avatar} width={800} height={800} />
     <Still id="brand-banner" component={Banner} width={2560} height={1440} />
     <Still id="ep01-thumbnail" component={Thumbnail} width={1280} height={720} defaultProps={{episode: L}} />

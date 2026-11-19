@@ -4,7 +4,9 @@ Légende : ✅ établi par la source citée · ⚠️ à relire dans la source a
 
 | Scène | Affirmation | Statut | Source |
 |---|---|---|---|
-| s01, s13 | L'action passe d'environ 500 livres (janvier 1719) à environ 10 000 (fin 1719) | ✅ | velde2003, moen2001 |
+| f01, f02 | Velde relève 500 livres le 10 mai 1719 et situe le sommet de sa série au début de 1720, près de 10 000 livres. Les libellés de janvier et décembre des anciennes versions sont à revoir. | ✅ pour les deux repères du Short fusionné | velde2003, fig. 4 et sections 4–5 |
+| f05, f06, f07 | Conversion de la dette publique contre des actions, puis rachats d’actions par la Compagnie qui accroissent les billets en circulation. | ✅ | velde2003, sections 5.1 et 6.1 |
+| f08, f09 | L’arrêt du 21 mai 1720 prévoit la réduction des billets et des actions. La mesure est retirée le 27 mai. | ✅ | velde2003, section 6.2 |
 | s13 | Certains relevés donnent un pic à 15 000 livres | ⚠️ article non relu en entier | nyfed2014 |
 | s13, s17 | Points intermédiaires de la courbe (3 000, 6 000, 9 000, 6 000, 2 000) | ⚠️ ordre de grandeur, affiché « valeurs arrondies » ; à recaler sur la série de Velde | velde2003 |
 | s03 | Naissance à Édimbourg en 1671, famille d'orfèvres | ✅ | murphy1997 |

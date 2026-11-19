@@ -1,0 +1,235 @@
+{
+  "id": "ep01-short-fusion",
+  "serial": "001",
+  "format": "short",
+  "status": "DRAFT",
+  "audioDir": "shortFusion",
+  "wordsPerSecond": 3,
+  "title": "John Law. L’action qui a presque fait ×20",
+  "description": "Comment la Compagnie du Mississippi a lié le cours de ses actions à la circulation des billets, jusqu’à l’édit du 21 mai 1720.",
+  "thumbnail": {
+    "name": "John Law",
+    "kicker": "Presque",
+    "big": "×20",
+    "place": "Paris · 1719–1720"
+  },
+  "scenes": [
+    {
+      "id": "f01",
+      "previewSec": 3.8,
+      "text": "À Paris, cette action vaut cinq cents livres.",
+      "sources": [
+        "velde2003"
+      ],
+      "visual": {
+        "type": "action-price",
+        "date": "Paris · mai 1719",
+        "value": "500",
+        "press": true
+      },
+      "sfx": [
+        {
+          "name": "presse",
+          "volume": 0.42,
+          "dur": 2.4
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "previewSec": 4.4,
+      "text": "Quelques mois plus tard, elle approche les dix mille.",
+      "sources": [
+        "velde2003"
+      ],
+      "visual": {
+        "type": "action-price",
+        "date": "Hiver 1719–1720",
+        "value": "10 000",
+        "approximate": true,
+        "crowd": true
+      },
+      "sfx": [
+        {
+          "name": "foule",
+          "volume": 0.4,
+          "dur": 4
+        },
+        {
+          "name": "pieces",
+          "at": 0.15,
+          "volume": 0.25,
+          "dur": 1
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "previewSec": 4.5,
+      "text": "Derrière cette hausse, John Law. Un Écossais autrefois condamné à mort.",
+      "sources": [
+        "murphy1997"
+      ],
+      "visual": {
+        "type": "doc",
+        "kicker": "Londres · 1694",
+        "lines": [
+          "John Law",
+          "Condamné à mort",
+          "après un duel."
+        ]
+      },
+      "sfx": [
+        {
+          "name": "whoosh",
+          "volume": 0.23,
+          "dur": 0.4
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "previewSec": 4.5,
+      "text": "En janvier mille sept cent vingt, il prend la tête des finances du royaume.",
+      "sources": [
+        "murphy1997",
+        "velde2003"
+      ],
+      "visual": {
+        "type": "doc",
+        "kicker": "Paris · janvier 1720",
+        "lines": [
+          "John Law",
+          "Contrôleur général",
+          "des finances."
+        ]
+      },
+      "sfx": [
+        {
+          "name": "whoosh",
+          "volume": 0.23,
+          "dur": 0.4
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "previewSec": 4.5,
+      "text": "Les créanciers du roi échangent leurs titres de dette contre des actions.",
+      "sources": [
+        "velde2003"
+      ],
+      "visual": {
+        "type": "transaction",
+        "kicker": "Rachat de la dette",
+        "from": "Titres de dette",
+        "to": "Actions de la Compagnie",
+        "document": "DETTE"
+      }
+    },
+    {
+      "id": "f06",
+      "previewSec": 4.5,
+      "text": "Puis la Compagnie rachète ses propres actions avec des billets.",
+      "sources": [
+        "velde2003"
+      ],
+      "visual": {
+        "type": "transaction",
+        "kicker": "Soutien du cours",
+        "from": "Actions de la Compagnie",
+        "to": "Billets de banque",
+        "document": "ACTION"
+      },
+      "sfx": [
+        {
+          "name": "presse",
+          "at": 0.45,
+          "volume": 0.24,
+          "dur": 2.1
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "previewSec": 3.7,
+      "text": "Le cours est soutenu. Davantage de billets circulent.",
+      "sources": [
+        "velde2003"
+      ],
+      "visual": {
+        "type": "press",
+        "kicker": "Mars 1720",
+        "title": "Plus de billets",
+        "protectSources": true
+      },
+      "sfx": [
+        {
+          "name": "presse",
+          "volume": 0.3,
+          "dur": 2.4
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "previewSec": 5.2,
+      "text": "Un édit prévoit de réduire la valeur des billets et des actions.",
+      "sources": [
+        "velde2003"
+      ],
+      "visual": {
+        "type": "doc",
+        "kicker": "Paris · 21 mai 1720",
+        "lines": [
+          "La valeur des billets",
+          "et des actions",
+          "sera réduite."
+        ]
+      },
+      "stamp": "KRACH",
+      "stampAt": 1.6,
+      "sfx": [
+        {
+          "name": "tampon",
+          "at": 1.6,
+          "volume": 0.73,
+          "dur": 0.5
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "previewSec": 4.3,
+      "text": "Le texte est retiré six jours plus tard. La méfiance demeure.",
+      "sources": [
+        "velde2003"
+      ],
+      "visual": {
+        "type": "burn",
+        "kicker": "Paris · 27 mai 1720 · édit retiré",
+        "title": "La méfiance demeure."
+      },
+      "sfx": [
+        {
+          "name": "feu",
+          "volume": 0.5
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "previewSec": 5.2,
+      "text": "Un État peut retirer un édit. La confiance ne se décrète pas.",
+      "sources": [],
+      "visual": {
+        "type": "outro",
+        "lines": [
+          "La confiance",
+          "ne se décrète pas."
+        ],
+        "cta": "Fortunes & Ruines · abonne-toi"
+      }
+    }
+  ]
+}
