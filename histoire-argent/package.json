@@ -16,7 +16,8 @@
     "voice:short-all": "node scripts/voice.mjs short-all",
     "sync": "node scripts/sync-audio.mjs",
     "compare": "node scripts/compare.mjs",
-    "render:pilot": "node scripts/render.mjs pilot"
+    "render:pilot": "node scripts/render.mjs pilot",
+    "publication": "node scripts/publication.mjs"
   },
   "dependencies": {
     "@remotion/cli": "4.0.300",

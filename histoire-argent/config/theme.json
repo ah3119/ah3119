@@ -11,7 +11,12 @@
     "gold": "#B8913A",
     "dim": "#8FA597"
   },
-  "ratios": {"ink": 70, "paper": 20, "red": 8, "gold": 2},
+  "ratios": {
+    "ink": 70,
+    "paper": 20,
+    "red": 8,
+    "gold": 2
+  },
   "fonts": {
     "display": "'Bodoni Moda', Didot, 'Bodoni 72', serif",
     "body": "'IBM Plex Sans', Helvetica, Arial, sans-serif",
@@ -21,8 +26,31 @@
   },
   "fps": 30,
   "formats": {
-    "long": {"width": 1920, "height": 1080, "minSec": 420, "maxSec": 600},
-    "short": {"width": 1080, "height": 1920, "maxSec": 60}
+    "long": {
+      "width": 1920,
+      "height": 1080,
+      "minSec": 420,
+      "maxSec": 600
+    },
+    "short": {
+      "width": 1080,
+      "height": 1920,
+      "maxSec": 60
+    }
   },
-  "speech": {"wordsPerSecond": 2.5, "padSec": 0.8, "minSceneSec": 3.5}
+  "speech": {
+    "wordsPerSecond": 2.5,
+    "padSec": 0.8,
+    "minSceneSec": 3.5,
+    "minByVisual": {
+      "title": 3.5,
+      "card": 3.5,
+      "quote": 4.5,
+      "timeline": 4.5,
+      "counter": 4.5,
+      "curve": 5,
+      "flow": 4.5,
+      "lesson": 6
+    }
+  }
 }

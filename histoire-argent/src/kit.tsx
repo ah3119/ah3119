@@ -74,11 +74,13 @@ export const Stamp: React.FC<{text: string; delay: number}> = ({text, delay}) =>
 
 // Sous-titres (Shorts) : la narration découpée en groupes de mots, au rythme de la scène.
 export const Subtitles: React.FC<{text: string; frames: number}> = ({text, frames}) => {
+  // frames = durée de la voix (ou de la scène sans voix)
   const f = useCurrentFrame(); const {s} = useScale();
   const words = text.split(/\s+/);
-  const n = Math.max(1, Math.ceil(words.length / 5)), size = Math.ceil(words.length / n);
+  // Groupes de taille égale (≈5 mots) : jamais de mot orphelin en fin de phrase.
+  const n = Math.max(1, Math.round(words.length / 5));
   const chunks: string[] = [];
-  for (let i = 0; i < words.length; i += size) chunks.push(words.slice(i, i + size).join(' '));
+  for (let i = 0; i < n; i++) chunks.push(words.slice(Math.round((i * words.length) / n), Math.round(((i + 1) * words.length) / n)).join(' '));
   const per = (frames - 10) / chunks.length;
   const idx = Math.min(chunks.length - 1, Math.max(0, Math.floor(f / per)));
   return (

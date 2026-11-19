@@ -1,7 +1,7 @@
 # N° 001 · Il a imprimé la France jusqu'à la ruine
 
 > Fichier généré depuis `content/episodes/ep01-short.json` : ne pas modifier ici.
-> Statut : **DRAFT** · 7 scènes · ~47 s
+> Statut : **DRAFT** · 7 scènes · ~45 s
 
 **Titres possibles** : « Il a imprimé la France jusqu'à la ruine » · « 500 → 10 000 livres, puis plus rien »
 

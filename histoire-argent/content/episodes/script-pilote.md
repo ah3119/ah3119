@@ -1,7 +1,7 @@
 # N° 001 · John Law, l'Écossais qui a ruiné la France
 
 > Fichier généré depuis `content/episodes/ep01-john-law.json` : ne pas modifier ici.
-> Statut : **DRAFT** · 20 scènes · ~449 s
+> Statut : **DRAFT** · 20 scènes · ~512 s
 
 **Titres possibles** : « John Law, l'Écossais qui a ruiné la France » · « L'homme qui a imprimé la France jusqu'à la ruine » · « 500 → 10 000 : la première bulle de Paris »
 

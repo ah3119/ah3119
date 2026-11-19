@@ -33,7 +33,8 @@
     "toLabel": "fin 1719"
    },
    "audio": true,
-   "audioSec": 23.85
+   "audioSec": 23.85,
+   "chapter": "Une action à 500 livres"
   },
   {
    "id": "s02",
@@ -63,7 +64,8 @@
     ]
    },
    "audio": true,
-   "audioSec": 31.06
+   "audioSec": 31.06,
+   "chapter": "Un joueur condamné à mort"
   },
   {
    "id": "s04",
@@ -109,7 +111,8 @@
     "author": "John Law, 1705 (trad.)"
    },
    "audio": true,
-   "audioSec": 33.67
+   "audioSec": 33.67,
+   "chapter": "L'idée : la monnaie de papier"
   },
   {
    "id": "s06",
@@ -126,7 +129,8 @@
     ]
    },
    "audio": true,
-   "audioSec": 20.72
+   "audioSec": 20.72,
+   "chapter": "Une France ruinée"
   },
   {
    "id": "s07",
@@ -162,7 +166,8 @@
     ]
    },
    "audio": true,
-   "audioSec": 28.68
+   "audioSec": 28.68,
+   "chapter": "La machine de Law"
   },
   {
    "id": "s08",
@@ -198,7 +203,8 @@
     "sober": true
    },
    "audio": true,
-   "audioSec": 23.25
+   "audioSec": 23.25,
+   "chapter": "Le prix caché"
   },
   {
    "id": "s10",
@@ -319,7 +325,8 @@
     "note": "Valeurs arrondies, ordre de grandeur"
    },
    "audio": true,
-   "audioSec": 32.42
+   "audioSec": 32.42,
+   "chapter": "La fièvre de la rue Quincampoix"
   },
   {
    "id": "s14",
@@ -353,7 +360,8 @@
     ]
    },
    "audio": true,
-   "audioSec": 22.57
+   "audioSec": 22.57,
+   "chapter": "Le doute"
   },
   {
    "id": "s16",
@@ -418,7 +426,8 @@
    },
    "stamp": "KRACH",
    "audio": true,
-   "audioSec": 16.85
+   "audioSec": 16.85,
+   "chapter": "Le krach de 1720"
   },
   {
    "id": "s18",
@@ -465,7 +474,8 @@
     "author": "La leçon de 1720"
    },
    "audio": true,
-   "audioSec": 30.69
+   "audioSec": 30.69,
+   "chapter": "Escroc ou visionnaire ?"
   },
   {
    "id": "s20",
@@ -480,7 +490,20 @@
     "next": "N° 002 · La tulipe qui valait une maison"
    },
    "audio": true,
-   "audioSec": 17.58
+   "audioSec": 17.58,
+   "chapter": "La leçon"
   }
+ ],
+ "tags": [
+  "John Law",
+  "histoire de l'argent",
+  "bulle du Mississippi",
+  "krach 1720",
+  "histoire économique",
+  "papier-monnaie",
+  "Banque royale",
+  "Régence",
+  "histoire de France",
+  "bulle spéculative"
  ]
 }

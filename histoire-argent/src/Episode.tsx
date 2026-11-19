@@ -1,6 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, Audio, Series, staticFile} from 'remotion';
-import {C, THEME} from './brand';
+import {C, FPS, THEME} from './brand';
 import {Episode as Ep, Scene} from './types';
 import {sceneFrames} from './timing';
 import {useBrandFonts} from './fonts';
@@ -35,7 +35,7 @@ export const EpisodeVideo: React.FC<{episode: Ep; subtitles?: boolean}> = ({epis
                 <Visual scene={sc} serial={episode.serial} />
               </Frame>
               {sc.stamp && <Stamp text={sc.stamp} delay={stampDelay(sc.visual, frames)} />}
-              {subtitles && <Subtitles text={sc.text} frames={frames} />}
+              {subtitles && <Subtitles text={sc.text} frames={sc.audioSec ? Math.round(sc.audioSec * FPS) + 10 : frames} />}
             </Series.Sequence>
           );
         })}

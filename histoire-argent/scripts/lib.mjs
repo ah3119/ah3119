@@ -17,7 +17,11 @@ export const estimateSec = (scene) => {
   const {wordsPerSecond, padSec, minSceneSec} = theme.speech;
   return Math.max(minSceneSec, words(scene.text) / wordsPerSecond + padSec);
 };
-export const sceneSec = (scene) => scene.audioSec ? scene.audioSec + 0.6 : estimateSec(scene);
+// Durée : voix (ou estimation) + respiration, jamais sous le minimum lisible du visuel.
+export const sceneSec = (scene) => {
+  const min = theme.speech.minByVisual?.[scene.visual?.type] ?? theme.speech.minSceneSec;
+  return Math.max(min, scene.audioSec ? scene.audioSec + 0.6 : estimateSec(scene));
+};
 export const totalSec = (ep) => ep.scenes.reduce((a, s) => a + sceneSec(s), 0);
 
 // Affirmations retirées faute de source primaire : elles ne doivent pas revenir.

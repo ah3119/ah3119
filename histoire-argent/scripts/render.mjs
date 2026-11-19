@@ -4,6 +4,8 @@
 import fs from 'node:fs';
 import {EPISODES, loadEpisode, validate, audioFile} from './lib.mjs';
 import {remotion} from './run.mjs';
+import {spawnSync} from 'node:child_process';
+const master = (files) => { const r = spawnSync(process.execPath, ['scripts/master.mjs', ...files], {stdio: 'inherit'}); if (r.status) process.exit(r.status); };
 
 const mode = process.argv[2] ?? 'preview';
 fs.mkdirSync('output', {recursive: true});
@@ -22,7 +24,8 @@ if (mode === 'preview') {
   if (missing.length) { console.error('Voix manquantes : ' + missing.join(', ')); process.exit(1); }
   remotion(['render', 'src/index.ts', 'ep01-short', 'output/ep01-pilote-short.mp4']);
   remotion(['render', 'src/index.ts', 'ep01-long', 'output/ep01-pilote-long.mp4']);
-  console.log('✓ output/ep01-pilote-long.mp4 et output/ep01-pilote-short.mp4 (narrés, à valider avant publication)');
+  master(['output/ep01-pilote-short.mp4', 'output/ep01-pilote-long.mp4']);
+  console.log('✓ output/ep01-pilote-*-master.mp4 (narrés, -14 LUFS, à valider avant publication)');
 } else if (mode === 'both') {
   const problems = [];
   for (const fmt of Object.keys(EPISODES)) {
@@ -35,5 +38,6 @@ if (mode === 'preview') {
   if (problems.length) { console.error('Rendu final bloqué :\n  ' + problems.slice(0, 30).join('\n  ')); process.exit(1); }
   remotion(['render', 'src/index.ts', 'ep01-long', 'output/ep01-long.mp4']);
   remotion(['render', 'src/index.ts', 'ep01-short', 'output/ep01-short.mp4']);
-  console.log('✓ output/ep01-long.mp4 et output/ep01-short.mp4');
+  master(['output/ep01-long.mp4', 'output/ep01-short.mp4']);
+  console.log('✓ output/ep01-long-master.mp4 et output/ep01-short-master.mp4');
 } else { console.error('Mode inconnu : ' + mode); process.exit(1); }
