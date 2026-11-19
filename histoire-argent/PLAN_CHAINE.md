@@ -13,7 +13,7 @@ Légende : ✅ établi (source officielle) · ⚠️ probable ou source secondai
 | Nom | **L'Histoire de l'Argent** | Clair, cherchable, et traduisible en « The History of Money » pour le doublage. |
 | Handle | `@HistoireDeLArgent`, sinon `@LHistoireDeLArgent`, sinon `@HistoireArgent` | Le même handle sur YouTube, TikTok et Instagram. |
 | Langue | **Français d'abord**, anglais en piste audio doublée à partir du 4e mois | Il faut d'abord valider le format sur un seul marché, puis viser le RPM américain. |
-| Voix | **`Sakina-Kids-FR-IVC` (`LRnruiHfyadbJQKy1AZn`)**, la voix d'Alaa, validée le 19/11. La même voix que Sakina Kids. | Point bloquant : ElevenLabs refuse les clones instantanés avec l'offre actuelle (test du 19/11). Il faut passer au moins à Starter. Le clone professionnel `Sakina-Kids-FR-PVC-V1` ⚠️ demande l'offre Creator. |
+| Voix | **`Sakina-Kids-FR-IVC` (`LRnruiHfyadbJQKy1AZn`)**, la voix d'Alaa, validée le 19/11. La même voix que Sakina Kids. | Débloqué le 19/11 grâce au passage à une offre payante : la narration du pilote est générée. Le clone professionnel `Sakina-Kids-FR-PVC-V1` ⚠️ demande l'offre Creator. |
 | Cadence | 1 vidéo longue (7–10 min) et 3 Shorts par semaine | Plafond fixé dans le récap pour ne pas cannibaliser Sakina. |
 | Plateformes | YouTube (long + Shorts) en principal ; TikTok et Instagram Reels reçoivent les mêmes 9:16 | Une seule production, trois diffusions. |
 | Publicité payante | **Aucune pendant 90 jours** | Payer pour des vues avant d'avoir validé la rétention brûle du cash et pollue les signaux de l'algorithme. |

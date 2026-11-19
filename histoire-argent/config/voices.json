@@ -3,7 +3,7 @@
     "name": "Sakina-Kids-FR-IVC",
     "voiceId": "LRnruiHfyadbJQKy1AZn",
     "type": "instant_clone",
-    "note": "Voix d'Alaa, validée le 19/11/2026. Nécessite au moins l'offre ElevenLabs Starter (refusée avec l'offre actuelle le 19/11)."
+    "note": "Voix d'Alaa, validée le 19/11/2026. Fonctionne depuis le passage à une offre payante (19/11) : narration du pilote générée avec eleven_multilingual_v2."
   },
   "narratorPro": {
     "name": "Sakina-Kids-FR-PVC-V1",

@@ -31,7 +31,9 @@
     "unit": "livres",
     "fromLabel": "janvier 1719",
     "toLabel": "fin 1719"
-   }
+   },
+   "audio": true,
+   "audioSec": 23.85
   },
   {
    "id": "s02",
@@ -41,7 +43,9 @@
     "type": "title",
     "title": "John Law",
     "subtitle": "L'Écossais qui a ruiné la France"
-   }
+   },
+   "audio": true,
+   "audioSec": 4.86
   },
   {
    "id": "s03",
@@ -57,7 +61,9 @@
      "Élevé parmi les pièces",
      "et les reconnaissances de dette."
     ]
-   }
+   },
+   "audio": true,
+   "audioSec": 31.06
   },
   {
    "id": "s04",
@@ -86,7 +92,9 @@
       "label": "Son livre sur la monnaie"
      }
     ]
-   }
+   },
+   "audio": true,
+   "audioSec": 26.46
   },
   {
    "id": "s05",
@@ -99,7 +107,9 @@
     "type": "quote",
     "quote": "La monnaie n'est pas la valeur pour laquelle on échange les biens, mais la valeur par laquelle on les échange.",
     "author": "John Law, 1705 (trad.)"
-   }
+   },
+   "audio": true,
+   "audioSec": 33.67
   },
   {
    "id": "s06",
@@ -114,7 +124,9 @@
      "Le roi est mort.",
      "Les dettes, elles, sont toujours là."
     ]
-   }
+   },
+   "audio": true,
+   "audioSec": 20.72
   },
   {
    "id": "s07",
@@ -148,7 +160,9 @@
       "label": "Contrôleur général"
      }
     ]
-   }
+   },
+   "audio": true,
+   "audioSec": 28.68
   },
   {
    "id": "s08",
@@ -163,7 +177,9 @@
      "On vend un rêve.",
      "On livre un marécage."
     ]
-   }
+   },
+   "audio": true,
+   "audioSec": 41.87
   },
   {
    "id": "s09",
@@ -180,7 +196,9 @@
      "Des vies déportées."
     ],
     "sober": true
-   }
+   },
+   "audio": true,
+   "audioSec": 23.25
   },
   {
    "id": "s10",
@@ -213,7 +231,9 @@
       "label": "Contrôleur général"
      }
     ]
-   }
+   },
+   "audio": true,
+   "audioSec": 12.77
   },
   {
    "id": "s11",
@@ -231,7 +251,9 @@
      "Dette du roi"
     ],
     "caption": "Une seule compagnie avale tout"
-   }
+   },
+   "audio": true,
+   "audioSec": 37.43
   },
   {
    "id": "s12",
@@ -248,7 +270,9 @@
     ],
     "loop": true,
     "caption": "Tout tient… tant que personne ne demande de l'or."
-   }
+   },
+   "audio": true,
+   "audioSec": 28.92
   },
   {
    "id": "s13",
@@ -293,7 +317,9 @@
      }
     ],
     "note": "Valeurs arrondies, ordre de grandeur"
-   }
+   },
+   "audio": true,
+   "audioSec": 32.42
   },
   {
    "id": "s14",
@@ -308,7 +334,9 @@
      "Condamné à mort en 1694.",
      "Maître des finances du royaume."
     ]
-   }
+   },
+   "audio": true,
+   "audioSec": 10.95
   },
   {
    "id": "s15",
@@ -323,7 +351,9 @@
      "Une action ne vaut que",
      "ce que rapporte la compagnie."
     ]
-   }
+   },
+   "audio": true,
+   "audioSec": 22.57
   },
   {
    "id": "s16",
@@ -338,7 +368,9 @@
     "unit": "livres",
     "fromLabel": "le marché",
     "toLabel": "mars 1720 · prix fixé par décret"
-   }
+   },
+   "audio": true,
+   "audioSec": 27.95
   },
   {
    "id": "s17",
@@ -384,7 +416,9 @@
     "note": "Valeurs arrondies, ordre de grandeur",
     "startAt": 3
    },
-   "stamp": "KRACH"
+   "stamp": "KRACH",
+   "audio": true,
+   "audioSec": 16.85
   },
   {
    "id": "s18",
@@ -414,7 +448,9 @@
       "label": "Mort à Venise"
      }
     ]
-   }
+   },
+   "audio": true,
+   "audioSec": 27.4
   },
   {
    "id": "s19",
@@ -427,7 +463,9 @@
     "type": "quote",
     "quote": "Créer de la monnaie n'est pas créer de la richesse.",
     "author": "La leçon de 1720"
-   }
+   },
+   "audio": true,
+   "audioSec": 30.69
   },
   {
    "id": "s20",
@@ -440,7 +478,9 @@
      "baisse parce que tout le monde vend."
     ],
     "next": "N° 002 · La tulipe qui valait une maison"
-   }
+   },
+   "audio": true,
+   "audioSec": 17.58
   }
  ]
 }
