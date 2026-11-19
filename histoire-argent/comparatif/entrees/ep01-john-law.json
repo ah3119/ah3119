@@ -381,7 +381,8 @@
       "v": 2000
      }
     ],
-    "note": "Valeurs arrondies, ordre de grandeur"
+    "note": "Valeurs arrondies, ordre de grandeur",
+    "startAt": 3
    },
    "stamp": "KRACH"
   },

@@ -1,30 +1,177 @@
 {
-  "id": "ep01-short",
-  "serial": "001",
-  "format": "short",
-  "status": "DRAFT",
-  "title": "Il a imprimé la France jusqu'à la ruine",
-  "titleOptions": ["Il a imprimé la France jusqu'à la ruine", "500 → 10 000 livres, puis plus rien"],
-  "description": "John Law, 1720 : la première grande bulle de Paris. L'épisode complet est sur la chaîne.",
-  "scenes": [
-    {"id": "sh01", "sources": ["velde2003", "moen2001"], "text": "En 1719, à Paris, une action coûte 500 livres.",
-     "visual": {"type": "counter", "from": 0, "to": 500, "unit": "livres", "fromLabel": "", "toLabel": "janvier 1719"}},
-    {"id": "sh02", "sources": ["velde2003", "moen2001"], "text": "Un an plus tard, elle approche les 10 000.",
-     "visual": {"type": "curve", "unit": "livres", "upTo": 3, "points": [
-       {"t": "janv. 1719", "v": 500}, {"t": "août", "v": 3000}, {"t": "oct.", "v": 6000}, {"t": "déc. 1719", "v": 10000}, {"t": "mars 1720", "v": 9000}, {"t": "juin", "v": 6000}, {"t": "déc. 1720", "v": 2000}],
-      "note": "Valeurs arrondies"}},
-    {"id": "sh03", "sources": ["murphy1997"], "text": "Derrière, un seul homme : John Law. Un Écossais condamné à mort à Londres, devenu maître des finances de la France.",
-     "visual": {"type": "title", "title": "John Law", "subtitle": "Condamné à mort. Puis maître des finances."}},
-    {"id": "sh04", "sources": ["velde2003"], "text": "Sa machine : imprimer des billets, qui achètent des actions, qui remboursent la dette du roi.",
-     "visual": {"type": "flow", "nodes": ["Billets", "Actions", "Dette"], "loop": true, "caption": ""}},
-    {"id": "sh05", "sources": ["velde2003"], "text": "Tout tient, tant que personne ne demande de l'or.",
-     "visual": {"type": "card", "kicker": "", "lines": ["Tout tient…", "tant que personne ne demande de l'or."]}},
-    {"id": "sh06", "sources": ["velde2003", "nyfed2014"], "text": "Mai 1720 : un édit, la panique. En quelques mois, le papier ne vaut presque plus rien.",
-     "visual": {"type": "curve", "unit": "livres", "upTo": 6, "points": [
-       {"t": "janv. 1719", "v": 500}, {"t": "août", "v": 3000}, {"t": "oct.", "v": 6000}, {"t": "déc. 1719", "v": 10000}, {"t": "mars 1720", "v": 9000}, {"t": "juin", "v": 6000}, {"t": "déc. 1720", "v": 2000}],
-      "note": "Valeurs arrondies"},
-     "stamp": "KRACH"},
-    {"id": "sh07", "sources": [], "text": "Ce qui monte parce que tout le monde achète baisse parce que tout le monde vend. L'histoire complète est sur la chaîne.",
-     "visual": {"type": "lesson", "lines": ["Ce qui monte parce que tout le monde achète", "baisse parce que tout le monde vend."], "next": "Épisode complet sur la chaîne"}}
-  ]
+ "id": "ep01-short",
+ "serial": "001",
+ "format": "short",
+ "status": "DRAFT",
+ "title": "Il a imprimé la France jusqu'à la ruine",
+ "titleOptions": [
+  "Il a imprimé la France jusqu'à la ruine",
+  "500 → 10 000 livres, puis plus rien"
+ ],
+ "description": "John Law, 1720 : la première grande bulle de Paris. L'épisode complet est sur la chaîne.",
+ "scenes": [
+  {
+   "id": "sh01",
+   "sources": [
+    "velde2003",
+    "moen2001"
+   ],
+   "text": "En 1719, à Paris, une action coûte 500 livres.",
+   "visual": {
+    "type": "counter",
+    "from": 0,
+    "to": 500,
+    "unit": "livres",
+    "fromLabel": "",
+    "toLabel": "janvier 1719"
+   }
+  },
+  {
+   "id": "sh02",
+   "sources": [
+    "velde2003",
+    "moen2001"
+   ],
+   "text": "Un an plus tard, elle approche les 10 000.",
+   "visual": {
+    "type": "curve",
+    "unit": "livres",
+    "upTo": 3,
+    "points": [
+     {
+      "t": "janv. 1719",
+      "v": 500
+     },
+     {
+      "t": "août",
+      "v": 3000
+     },
+     {
+      "t": "oct.",
+      "v": 6000
+     },
+     {
+      "t": "déc. 1719",
+      "v": 10000
+     },
+     {
+      "t": "mars 1720",
+      "v": 9000
+     },
+     {
+      "t": "juin",
+      "v": 6000
+     },
+     {
+      "t": "déc. 1720",
+      "v": 2000
+     }
+    ],
+    "note": "Valeurs arrondies"
+   }
+  },
+  {
+   "id": "sh03",
+   "sources": [
+    "murphy1997"
+   ],
+   "text": "Derrière, un seul homme : John Law. Un Écossais condamné à mort à Londres, devenu maître des finances de la France.",
+   "visual": {
+    "type": "title",
+    "title": "John Law",
+    "subtitle": "Condamné à mort. Puis maître des finances."
+   }
+  },
+  {
+   "id": "sh04",
+   "sources": [
+    "velde2003"
+   ],
+   "text": "Sa machine : imprimer des billets, qui achètent des actions, qui remboursent la dette du roi.",
+   "visual": {
+    "type": "flow",
+    "nodes": [
+     "Billets",
+     "Actions",
+     "Dette"
+    ],
+    "loop": true,
+    "caption": ""
+   }
+  },
+  {
+   "id": "sh05",
+   "sources": [
+    "velde2003"
+   ],
+   "text": "Tout tient, tant que personne ne demande de l'or.",
+   "visual": {
+    "type": "card",
+    "kicker": "",
+    "lines": [
+     "Tout tient…",
+     "tant que personne ne demande de l'or."
+    ]
+   }
+  },
+  {
+   "id": "sh06",
+   "sources": [
+    "velde2003",
+    "nyfed2014"
+   ],
+   "text": "Mai 1720 : un édit, la panique. En quelques mois, le papier ne vaut presque plus rien.",
+   "visual": {
+    "type": "curve",
+    "unit": "livres",
+    "upTo": 6,
+    "points": [
+     {
+      "t": "janv. 1719",
+      "v": 500
+     },
+     {
+      "t": "août",
+      "v": 3000
+     },
+     {
+      "t": "oct.",
+      "v": 6000
+     },
+     {
+      "t": "déc. 1719",
+      "v": 10000
+     },
+     {
+      "t": "mars 1720",
+      "v": 9000
+     },
+     {
+      "t": "juin",
+      "v": 6000
+     },
+     {
+      "t": "déc. 1720",
+      "v": 2000
+     }
+    ],
+    "note": "Valeurs arrondies",
+    "startAt": 3
+   },
+   "stamp": "KRACH"
+  },
+  {
+   "id": "sh07",
+   "sources": [],
+   "text": "Ce qui monte parce que tout le monde achète baisse parce que tout le monde vend. L'histoire complète est sur la chaîne.",
+   "visual": {
+    "type": "lesson",
+    "lines": [
+     "Ce qui monte parce que tout le monde achète",
+     "baisse parce que tout le monde vend."
+    ],
+    "next": "Épisode complet sur la chaîne"
+   }
+  }
+ ]
 }
