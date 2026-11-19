@@ -3,3 +3,4 @@ out/
 output/
 .env
 public/audio/**/*.mp3
+comparatif/**/*.mp4

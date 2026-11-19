@@ -1,0 +1,64 @@
+{
+  "name": "Fortunes & Ruines",
+  "tagline": "Comment on gagne tout. Comment on perd tout.",
+  "taglineLong": "Comment on gagne tout. Comment on perd tout. Les dossiers de l'argent.",
+  "outro": "Dossier classé. Le prochain arrive samedi.",
+  "colors": {
+    "inkDeep": "#0B0B0C",
+    "ink": "#161617",
+    "paper": "#F2F0EA",
+    "red": "#E5322D",
+    "gold": "#FFD400",
+    "dim": "#8A8A85"
+  },
+  "ratios": {
+    "noir": 70,
+    "papier": 18,
+    "jaune": 8,
+    "rouge": 4
+  },
+  "fonts": {
+    "display": "'Archivo Black', 'Arial Black', sans-serif",
+    "body": "'Inter Tight', Helvetica, Arial, sans-serif",
+    "mono": "'JetBrains Mono', Menlo, Consolas, monospace",
+    "impact": "'Archivo Black', 'Arial Black', sans-serif",
+    "googleCss": "https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;800&family=Inter+Tight:ital,wght@0,500;0,700;0,800;1,700&display=block"
+  },
+  "fps": 30,
+  "formats": {
+    "long": {
+      "width": 1920,
+      "height": 1080,
+      "minSec": 420,
+      "maxSec": 600
+    },
+    "short": {
+      "width": 1080,
+      "height": 1920,
+      "maxSec": 60
+    }
+  },
+  "speech": {
+    "wordsPerSecond": 2.5,
+    "padSec": 0.8,
+    "minSceneSec": 3.5,
+    "minByVisual": {
+      "title": 3.5,
+      "card": 3.5,
+      "quote": 4.5,
+      "timeline": 4.5,
+      "counter": 4.5,
+      "curve": 4.5,
+      "flow": 4.5,
+      "lesson": 6,
+      "press": 3,
+      "crowd": 3,
+      "ticker": 3,
+      "doc": 3,
+      "machine": 3.5,
+      "gold": 3,
+      "burn": 3,
+      "outro": 4.5
+    }
+  }
+}

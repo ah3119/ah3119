@@ -1,0 +1,272 @@
+{
+ "id": "ep01-short-v2",
+ "serial": "001",
+ "format": "short",
+ "status": "DRAFT",
+ "audioDir": "shortV2",
+ "wordsPerSecond": 3.0,
+ "transitionSfx": "whoosh",
+ "bed": {
+  "name": "drone",
+  "volume": 0.22
+ },
+ "title": "Il a imprimé la France jusqu'à la ruine",
+ "titleOptions": [
+  "Il a imprimé la France jusqu'à la ruine",
+  "500 → 10 000 livres, puis plus rien",
+  "Le condamné à mort qui a dirigé la France"
+ ],
+ "description": "John Law, 1720 : la première grande bulle de Paris. L'épisode complet est sur la chaîne.",
+ "scenes": [
+  {
+   "id": "v01",
+   "sources": [
+    "velde2003"
+   ],
+   "text": "En 1719, un homme fait tourner la planche à billets. Et la France entière devient folle.",
+   "visual": {
+    "type": "press",
+    "kicker": "Paris · 1719",
+    "title": "La planche à billets"
+   },
+   "sfx": [
+    {
+     "name": "presse",
+     "volume": 0.55,
+     "dur": 4
+    }
+   ]
+  },
+  {
+   "id": "v02",
+   "sources": [
+    "moen2001"
+   ],
+   "text": "Rue Quincampoix, tout Paris se bat pour une action.",
+   "visual": {
+    "type": "crowd",
+    "kicker": "Paris · 1719",
+    "title": "Tout Paris achète",
+    "ticker": "ACTION DU MISSISSIPPI  ▲  HAUSSE"
+   },
+   "sfx": [
+    {
+     "name": "foule",
+     "volume": 0.5,
+     "dur": 4
+    }
+   ]
+  },
+  {
+   "id": "v03",
+   "sources": [
+    "velde2003",
+    "moen2001"
+   ],
+   "text": "500 livres. 2 000. 5 000. Près de 10 000 !",
+   "visual": {
+    "type": "ticker",
+    "values": [
+     500,
+     2000,
+     5000,
+     10000
+    ],
+    "unit": "livres",
+    "label": "Une action"
+   },
+   "sfx": [
+    {
+     "name": "pieces",
+     "volume": 0.45
+    }
+   ]
+  },
+  {
+   "id": "v04",
+   "sources": [
+    "murphy1997"
+   ],
+   "text": "Derrière tout ça, un Écossais : John Law. Condamné à mort à Londres.",
+   "visual": {
+    "type": "doc",
+    "kicker": "Londres · 1694 · Sentence",
+    "lines": [
+     "Le nommé John Law,",
+     "pour meurtre en duel,",
+     "condamné à mort."
+    ],
+    "seal": "1694",
+    "redLine": 2
+   },
+   "sfx": [
+    {
+     "name": "tampon",
+     "at": 0.75,
+     "volume": 0.5
+    }
+   ]
+  },
+  {
+   "id": "v05",
+   "sources": [
+    "murphy1997"
+   ],
+   "text": "Vingt-six ans plus tard, il dirige les finances du royaume.",
+   "visual": {
+    "type": "doc",
+    "kicker": "Paris · janvier 1720",
+    "lines": [
+     "Monsieur Law,",
+     "contrôleur général",
+     "des finances."
+    ],
+    "seal": "1720",
+    "redLine": 1
+   },
+   "sfx": [
+    {
+     "name": "tampon",
+     "at": 0.75,
+     "volume": 0.5
+    }
+   ]
+  },
+  {
+   "id": "v06",
+   "sources": [
+    "velde2003"
+   ],
+   "text": "Son astuce : des billets, qui achètent des actions, qui paient la dette du roi. Et ça tourne.",
+   "visual": {
+    "type": "machine",
+    "nodes": [
+     "Billets",
+     "Actions",
+     "Dette du roi"
+    ],
+    "center": "Plus vite. Toujours plus vite."
+   },
+   "sfx": [
+    {
+     "name": "presse",
+     "volume": 0.3,
+     "dur": 5
+    }
+   ]
+  },
+  {
+   "id": "v07",
+   "sources": [
+    "velde2003"
+   ],
+   "text": "Tout tient… tant que personne ne demande son or.",
+   "visual": {
+    "type": "gold",
+    "title": "Tant qu'on ne demande pas l'or…"
+   }
+  },
+  {
+   "id": "v08",
+   "sources": [
+    "velde2003"
+   ],
+   "text": "Puis les gros porteurs viennent le réclamer.",
+   "visual": {
+    "type": "gold",
+    "title": "Puis on le réclame.",
+    "drain": true
+   },
+   "sfx": [
+    {
+     "name": "pieces",
+     "volume": 0.6
+    }
+   ]
+  },
+  {
+   "id": "v09",
+   "sources": [
+    "velde2003",
+    "nyfed2014"
+   ],
+   "text": "Mai 1720 : un édit, la panique. L'action s'effondre.",
+   "visual": {
+    "type": "curve",
+    "unit": "livres",
+    "upTo": 6,
+    "startAt": 3,
+    "points": [
+     {
+      "t": "janv. 1719",
+      "v": 500
+     },
+     {
+      "t": "août",
+      "v": 3000
+     },
+     {
+      "t": "oct.",
+      "v": 6000
+     },
+     {
+      "t": "déc. 1719",
+      "v": 10000
+     },
+     {
+      "t": "mars 1720",
+      "v": 9000
+     },
+     {
+      "t": "juin",
+      "v": 6000
+     },
+     {
+      "t": "déc. 1720",
+      "v": 2000
+     }
+    ],
+    "note": "Valeurs arrondies"
+   },
+   "stamp": "KRACH",
+   "sfx": [
+    {
+     "name": "tampon",
+     "at": 0.9,
+     "volume": 0.8
+    }
+   ]
+  },
+  {
+   "id": "v10",
+   "sources": [
+    "moen2001"
+   ],
+   "text": "Le papier ne vaut presque plus rien. Des fortunes partent en fumée.",
+   "visual": {
+    "type": "burn",
+    "kicker": "Fin 1720",
+    "title": "Plus rien."
+   },
+   "sfx": [
+    {
+     "name": "feu",
+     "volume": 0.6
+    }
+   ]
+  },
+  {
+   "id": "v11",
+   "sources": [],
+   "text": "Ce qui monte parce que tout le monde achète… baisse parce que tout le monde vend.",
+   "visual": {
+    "type": "outro",
+    "lines": [
+     "Ce qui monte parce que tout le monde achète…",
+     "baisse parce que tout le monde vend."
+    ],
+    "cta": "Fortunes & Ruines · abonne-toi"
+   }
+  }
+ ]
+}
