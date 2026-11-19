@@ -50,7 +50,15 @@
       "counter": 4.5,
       "curve": 4.5,
       "flow": 4.5,
-      "lesson": 6
+      "lesson": 6,
+      "press": 3,
+      "crowd": 3,
+      "ticker": 3,
+      "doc": 3,
+      "machine": 3.5,
+      "gold": 3,
+      "burn": 3,
+      "outro": 4.5
     }
   }
 }

@@ -13,6 +13,7 @@ for (const fmt of Object.keys(EPISODES)) {
     md += `## ${s.id} · ${s.visual.type}${s.stamp ? ` · tampon « ${s.stamp} »` : ''}\n${s.text}\n${s.sources.length ? `\n_Sources : ${s.sources.join(', ')}_\n` : ''}\n`;
   }
   md += `## Sources\n` + [...used].map((k) => `- **${k}** : ${sources[k].full} ${sources[k].url}`).join('\n') + '\n';
-  fs.writeFileSync(out[fmt], md);
-  console.log('✓ ' + out[fmt]);
+  const file = out[fmt] ?? `content/episodes/script-${fmt}.md`;
+  fs.writeFileSync(file, md);
+  console.log('✓ ' + file);
 }

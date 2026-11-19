@@ -7,31 +7,32 @@ export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 export const readJson = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
 export const theme = readJson('config/theme.json');
 export const sources = readJson('content/research/sources.json');
-export const EPISODES = {long: 'content/episodes/ep01-john-law.json', short: 'content/episodes/ep01-short.json'};
+export const EPISODES = {long: 'content/episodes/ep01-john-law.json', short: 'content/episodes/ep01-short.json', shortV2: 'content/episodes/ep01-short-v2.json'};
 export const loadEpisode = (fmt) => readJson(EPISODES[fmt]);
 export const audioDir = (fmt) => path.join(ROOT, 'public', 'audio', fmt);
-export const audioFile = (fmt, scene) => path.join(audioDir(fmt), `${scene.id}.mp3`);
+export const audioFile = (fmt, scene) => path.join(audioDir(fmt), `${scene.id}.mp3`); // fmt = clé d'EPISODES
 
 export const words = (t) => t.trim().split(/\s+/).filter(Boolean).length;
-export const estimateSec = (scene) => {
+export const estimateSec = (scene, wps) => {
   const {wordsPerSecond, padSec, minSceneSec} = theme.speech;
-  return Math.max(minSceneSec, words(scene.text) / wordsPerSecond + padSec);
+  return Math.max(minSceneSec, words(scene.text) / (wps ?? wordsPerSecond) + padSec);
 };
 // Durée : voix (ou estimation) + respiration, jamais sous le minimum lisible du visuel.
-export const sceneSec = (scene) => {
+export const sceneSec = (scene, wps) => {
   const min = theme.speech.minByVisual?.[scene.visual?.type] ?? theme.speech.minSceneSec;
-  return Math.max(min, scene.audioSec ? scene.audioSec + 0.6 : estimateSec(scene));
+  return Math.max(min, scene.audioSec ? scene.audioSec + (wps ? 0.25 : 0.6) : estimateSec(scene, wps));
 };
-export const totalSec = (ep) => ep.scenes.reduce((a, s) => a + sceneSec(s), 0);
+export const totalSec = (ep) => ep.scenes.reduce((a, s) => a + sceneSec(s, ep.wordsPerSecond), 0);
 
 // Affirmations retirées faute de source primaire : elles ne doivent pas revenir.
 export const BANNED = [/bossu/i, /millionnaire/i, /2[,.]8\s*milliards/i];
-export const VISUALS = ['title', 'card', 'quote', 'timeline', 'counter', 'curve', 'flow', 'lesson'];
+export const VISUALS = ['title', 'card', 'quote', 'timeline', 'counter', 'curve', 'flow', 'lesson', 'press', 'crowd', 'ticker', 'doc', 'machine', 'gold', 'burn', 'outro'];
 export const STATUSES = ['DRAFT', 'REVIEWED', 'APPROVED_FOR_PUBLICATION'];
 
 export function validate(ep) {
   const errors = [], warnings = [];
   const fmt = ep.format, limits = theme.formats[fmt];
+  for (const s of ep.scenes) for (const x of s.sfx ?? []) if (!fs.existsSync(path.join(ROOT, 'public', 'sfx', `${x.name}.mp3`))) errors.push(`${ep.id}/${s.id} : bruitage absent « ${x.name} »`);
   if (!STATUSES.includes(ep.status)) errors.push(`statut inconnu : ${ep.status}`);
   const ids = new Set();
   let stamps = 0;
