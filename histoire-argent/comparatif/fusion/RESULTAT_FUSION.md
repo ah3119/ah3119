@@ -28,3 +28,24 @@ Il n'a pas suivi les messages 2 et 3 du protocole : la comparaison ci-dessous es
 - Les polices Georgia, Bahnschrift et Consolas : polices système Windows, absentes de Linux et de Remotion, et moins distinctives.
 - Le rythme de 125 mots par minute et les scènes de 8 à 10 s : contraires au rythme rapide demandé.
 - La génération de PDF en Python : le projet produit des vidéos, pas des planches.
+
+---
+
+# Second tour · fusion finale (19/11, soir)
+ChatGPT a vu la version de Claude et livré un patch (`ep01-short-fusion`). Claude l'a appliqué tel quel, puis a jugé à l'image.
+
+## Gardé de ChatGPT (il avait raison)
+- Script en 10 plans, 107 mots, 44,6 s : seuls 500 (mai 1719) et environ 10 000 (hiver 1719-1720) sont affichés, sans valeur interpolée.
+- Mécanisme exact en deux opérations distinctes : titres de dette → actions, puis actions → billets (Velde, sections 5.1 et 6.1).
+- Édit du 21 mai, puis son retrait le 27 mai (Velde, section 6.2).
+- Chute : « La confiance ne se décrète pas. »
+- Polices embarquées avec Fontsource, au lieu d'un téléchargement depuis Google pendant le rendu.
+- Composants `ActionPrice`, `Transaction`, `Certificate`, la nouvelle miniature, et 2 tests de plus.
+
+## Changé par Claude (énergie visuelle)
+- f01 : « 500 » géant qui frappe, devant la presse bien visible, avec un titre d'action plus petit.
+- f02 : « 10 000 » au-dessus de la foule de la rue Quincampoix et de son bandeau.
+- f09 : les billets qui brûlent, avec « La méfiance demeure. », au lieu d'un troisième document statique.
+- Correctif : `--concurrency=6` était codé en dur et faisait échouer le rendu sur une machine à 4 cœurs.
+
+Version officielle : composition `ep01-short-fusion`, rendu avec `npm run render:fusion`.
