@@ -171,7 +171,7 @@ th{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:up
   <p>Les trois premières secondes suivent toujours le même ordre : une image concrète, un fait qui ne devrait pas être possible, puis ce que le spectateur va comprendre.</p></div>
   <div class="tbl"><table>
     <tr><th>N°</th><th>Hook</th><th>Mécanique</th></tr>
-    <tr><td class="serial">001</td><td class="hook">« En 1719, un bossu louait son dos comme bureau. Ce qu'on y signait a ruiné un royaume. »</td><td>Détail absurde → enjeu énorme</td></tr>
+    <tr><td class="serial">001</td><td class="hook">« En 1719, une action coûte 500 livres. Un an plus tard, 10 000. Ce qui suit a ruiné un royaume. »</td><td>Chiffre sourcé → bascule annoncée</td></tr>
     <tr><td class="serial">002</td><td class="hook">« Cette fleur valait une maison. Trois semaines plus tard, elle ne valait plus rien. »</td><td>Prix délirant → retournement</td></tr>
     <tr><td class="serial">003</td><td class="hook">« Il n'a pas inventé l'arnaque. Il lui a juste donné son nom. »</td><td>Fausse croyance corrigée</td></tr>
     <tr><td class="serial">004</td><td class="hook">« En 1923, on payait son café avant de le boire. Parce qu'après, il coûtait plus cher. »</td><td>Geste quotidien rendu étrange</td></tr>
@@ -182,7 +182,7 @@ th{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:up
 
 <section>
   <div class="sec-head"><span class="label">Fichiers sources</span><h2>Tout est généré par code</h2></div>
-  <p>Le dossier <code>histoire-argent/branding</code> contient <code>logo.js</code> (la rosace calculée), <code>build.js</code> (bannière, avatar, miniature) et <code>common.css</code> (les couleurs et polices de la charte). Les vidéos Remotion lisent les mêmes valeurs dans <code>src/theme.ts</code>. Si une couleur change, elle change partout.</p>
+  <p>Couleurs, polices et formats sont définis une seule fois, dans <code>config/theme.json</code>. Les vidéos, l'avatar, la bannière et les miniatures sont tous rendus par Remotion à partir de ce fichier (<code>npm run assets</code>). La rosace est calculée dans <code>src/Rosette.tsx</code>. Si une couleur change, elle change partout.</p>
 </section>
 
 </div>

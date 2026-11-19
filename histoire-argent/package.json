@@ -2,18 +2,29 @@
   "name": "histoire-argent",
   "private": true,
   "scripts": {
-    "studio": "remotion studio src/index.ts",
-    "render:long": "remotion render src/index.ts JohnLawLong out/ep01-long.mp4",
-    "render:short": "remotion render src/index.ts JohnLawShort1 out/ep01-short1.mp4"
+    "check": "tsc -p . && node scripts/validate.mjs",
+    "test": "node --test \"tests/*.test.mjs\"",
+    "dev": "remotion studio src/index.ts",
+    "script": "node scripts/export-script.mjs",
+    "assets": "node scripts/assets.mjs",
+    "render:preview": "node scripts/render.mjs preview",
+    "render:preview-long": "node scripts/render.mjs preview-long",
+    "render:both": "node scripts/render.mjs both",
+    "voice:check": "node scripts/voice.mjs check",
+    "voice:one": "node scripts/voice.mjs one",
+    "voice:all": "node scripts/voice.mjs all",
+    "voice:short-all": "node scripts/voice.mjs short-all",
+    "sync": "node scripts/sync-audio.mjs"
   },
   "dependencies": {
-    "@remotion/cli": "^4.0.300",
+    "@remotion/cli": "4.0.300",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "remotion": "^4.0.300"
+    "remotion": "4.0.300"
   },
   "devDependencies": {
     "@types/react": "^18.3.12",
     "typescript": "^5.6.3"
-  }
+  },
+  "type": "module"
 }

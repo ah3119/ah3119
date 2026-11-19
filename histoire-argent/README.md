@@ -1,13 +1,16 @@
 # L'Histoire de l'Argent
 
-- Plan de chaîne : `PLAN_CHAINE.md`
-- Épisode 1 : `ep01-john-law/script.md`
-- Scènes : `src/scenes.ts` (les durées se recalent sur l'audio)
+Chaîne YouTube, TikTok et Instagram d'histoire financière. Les vidéos sont animées en code (Remotion).
+Accroche : « L'argent a une mémoire. »
 
-```
-npm install
-npx remotion studio src/index.ts      # aperçu
-npm run render:long && npm run render:short
-```
-Dans un conteneur sans Chrome : ajouter `--browser-executable=/opt/pw-browsers/chromium`.
-Voix : déposer `public/ep01.mp3`, puis passer `audio: 'ep01.mp3'` dans `src/Root.tsx`.
+| Quoi | Où |
+|---|---|
+| Consignes pour Claude Code | `CLAUDE.md` |
+| Démarrage pas à pas (Windows et Linux) | `START_HERE.md` |
+| Charte graphique | `branding/CHARTE.html` · https://claude.ai/artifact/4jqmXQ1cjTGETARb77UQ8H |
+| Plan de la chaîne de A à Z | `PLAN_CHAINE.md` |
+| Épisodes (source unique de vérité) | `content/episodes/*.json` |
+| Scripts à relire (générés) | `content/episodes/script-pilote.md`, `script-short.md` |
+| Sources et vérification des faits | `content/research/` |
+| Couleurs, polices, formats | `config/theme.json` |
+| Voix ElevenLabs | `config/voices.json`, `scripts/voice.mjs` |

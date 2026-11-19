@@ -1,0 +1,17 @@
+{
+  "narrator": {
+    "name": "Sakina-Kids-FR-IVC",
+    "voiceId": "LRnruiHfyadbJQKy1AZn",
+    "type": "instant_clone",
+    "note": "Voix d'Alaa, validée le 19/11/2026. Nécessite au moins l'offre ElevenLabs Starter (refusée avec l'offre actuelle le 19/11)."
+  },
+  "narratorPro": {
+    "name": "Sakina-Kids-FR-PVC-V1",
+    "voiceId": "J6rfvNCHan7tgGEN1Zfj",
+    "type": "professional_clone",
+    "note": "Nécessite l'offre Creator (à vérifier)."
+  },
+  "model": "eleven_multilingual_v2",
+  "outputFormat": "mp3_44100_128",
+  "settings": {"stability": 0.5, "similarity_boost": 0.8, "style": 0.15, "use_speaker_boost": true}
+}

@@ -13,7 +13,7 @@ Légende : ✅ établi (source officielle) · ⚠️ probable ou source secondai
 | Nom | **L'Histoire de l'Argent** | Clair, cherchable, et traduisible en « The History of Money » pour le doublage. |
 | Handle | `@HistoireDeLArgent`, sinon `@LHistoireDeLArgent`, sinon `@HistoireArgent` | Le même handle sur YouTube, TikTok et Instagram. |
 | Langue | **Français d'abord**, anglais en piste audio doublée à partir du 4e mois | Il faut d'abord valider le format sur un seul marché, puis viser le RPM américain. |
-| Voix | Clone ElevenLabs de la voix d'Alaa | Point bloquant : aucun clone personnel n'existe dans le compte (vérifié le 18/11). |
+| Voix | **`Sakina-Kids-FR-IVC` (`LRnruiHfyadbJQKy1AZn`)**, la voix d'Alaa, validée le 19/11. La même voix que Sakina Kids. | Point bloquant : ElevenLabs refuse les clones instantanés avec l'offre actuelle (test du 19/11). Il faut passer au moins à Starter. Le clone professionnel `Sakina-Kids-FR-PVC-V1` ⚠️ demande l'offre Creator. |
 | Cadence | 1 vidéo longue (7–10 min) et 3 Shorts par semaine | Plafond fixé dans le récap pour ne pas cannibaliser Sakina. |
 | Plateformes | YouTube (long + Shorts) en principal ; TikTok et Instagram Reels reçoivent les mêmes 9:16 | Une seule production, trois diffusions. |
 | Publicité payante | **Aucune pendant 90 jours** | Payer pour des vues avant d'avoir validé la rétention brûle du cash et pollue les signaux de l'algorithme. |
@@ -27,7 +27,7 @@ Référence unique : `branding/CHARTE.html`, publiée sur https://claude.ai/arti
 - **Polices** : Bodoni Moda (titres), Anton (chiffres), IBM Plex Mono (numéros, dates), IBM Plex Sans (texte).
 - **Signature animée** : la rosace se trace, le numéroteur fait défiler les chiffres, le tampon rouge tombe une fois par épisode.
 - **Miniatures** : le nom, la démesure, le verdict (modèle : `branding/thumb-ep01.png`).
-- Pour regénérer les visuels : `cd branding && node build.js && node shoot.js`.
+- Pour regénérer les visuels : `npm run assets`. Les couleurs et polices viennent de `config/theme.json`, la source unique.
 
 ## 3. Textes de la chaîne
 
@@ -105,14 +105,14 @@ Narration : voix d'Alaa, clonée avec ElevenLabs.
 
 ## 8. Banque de hooks (les 3 premières secondes)
 Règle : une image forte et une phrase qui crée un manque à combler. Jamais « Bonjour, aujourd'hui on va parler de… ».
-1. « En 1719, un bossu louait son dos comme bureau. Ce qu'on y signait a ruiné la France. »
+1. « En 1719, une action coûte 500 livres. Un an plus tard, 10 000. Ce qui suit a ruiné un royaume. » (Velde 2003 ; Moen)
 2. « Cette fleur a coûté plus cher qu'une maison à Amsterdam. »
 3. « Il a volé 65 milliards de dollars, et la police avait été prévenue neuf ans avant. » ⚠️ (chiffres Madoff à sourcer)
 4. « Dans ce pays, un pain coûtait le matin moins cher que le soir. »
 5. « Votre banque n'a pas l'argent que vous croyez y avoir déposé. »
 6. « Il a vendu un pont qui ne lui appartenait pas. Plusieurs fois. » ⚠️
 7. « Le jour où l'action la plus sûre du monde a perdu 90 %. »
-8. « Cet homme a inventé un mot que vous utilisez encore : millionnaire. »
+8. « Il était condamné à mort à Londres. Six ans plus tard, il dirigeait les finances du royaume de France. » (Murphy 1997)
 9. « Il a donné son nom à l'arnaque. Il n'en était même pas l'inventeur. » (Ponzi)
 10. « Pourquoi IKEA ne vous livre pas les meubles montés ? La réponse vaut des milliards. »
 

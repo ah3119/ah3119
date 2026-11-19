@@ -82,9 +82,9 @@ Page complète, avec les visuels : https://claude.ai/artifact/4jqmXQ1cjTGETARb77
    - Le nom en Bodoni à gauche, un chiffre géant en Anton (« ×20 »), un tampon rouge (« RUINÉ »), le lieu et la date en Plex Mono, la rosace en bas à gauche.
    - Trois textes au maximum. Pas d'émoji, de flèche ni de visage choqué.
 9. **Bannière** : rosace, « N° 001 — Série bulles · krachs · arnaques », le nom, l'accroche, « Nouvel épisode chaque samedi ».
-10. **Hooks, formule « image concrète → paradoxe → promesse »**. Exemple : « En 1719, un bossu louait son dos comme bureau. Ce qu'on y signait a ruiné un royaume. »
+10. **Hooks, formule « image concrète → paradoxe → promesse »**. Exemple : « En 1719, une action coûte 500 livres. Un an plus tard, 10 000. Ce qui suit a ruiné un royaume. »
 
-Fichiers dans le dépôt (`histoire-argent/branding/`) : `CHARTE.html`, `logo.js`, `build.js`, `banner.png`, `avatar.png`, `thumb-ep01.png`, `logo-mark*.svg`.
+Fichiers dans le dépôt (`histoire-argent/branding/`) : `CHARTE.html`, `logo.js`, `banner.png`, `avatar.png`, `thumb-ep01.png`, `logo-mark*.svg`.
 
 ---
 
@@ -110,7 +110,7 @@ Claude, ChatGPT ou fusion.
 - Pas de mélange au cas par cas des couleurs de l'une et du logo de l'autre : une identité hybride perd sa cohérence.
 - On garde **un seul concept central** (le plus haut score sur les critères 1, 2 et 6).
 - On ne lui greffe qu'un ou deux éléments de l'autre charte s'ils sont clairement meilleurs, en général l'accroche ou un geste animé.
-- Si ChatGPT gagne sur le concept, Claude recode la charte gagnante dans `src/theme.ts` et `branding/build.js`. Les deux fichiers sont prévus pour : changer les couleurs à un endroit les change partout.
+- Si ChatGPT gagne sur le concept, Claude recode la charte gagnante dans `config/theme.json`, la source unique : changer une couleur à cet endroit la change partout.
 
 **Pièges à surveiller dans la réponse de ChatGPT**
 - ⚠️ Des polices hors de Google Fonts, donc payantes ou indisponibles dans Remotion.
@@ -124,10 +124,10 @@ Claude, ChatGPT ou fusion.
 - **18/11** :
   - Niche (histoire financière, halal) et nom validés.
   - Plan A–Z : `PLAN_CHAINE.md`.
-  - Script sourcé du pilote John Law : `ep01-john-law/script.md`.
+  - Script sourcé du pilote John Law : `content/episodes/ep01-john-law.json` (version lisible : `script-pilote.md`).
   - Projet Remotion qui sort à la fois la vidéo 16:9 et le Short 9:16.
 - **19/11** : charte v2 (concept billet de banque) appliquée au thème vidéo, à la bannière, à l'avatar et à la miniature type.
-- **Point bloquant** : aucun clone de la voix d'Alaa n'existe dans ElevenLabs (vérifié le 18/11). Il faut 2 à 3 minutes d'audio propre.
+- **Voix (décidée le 19/11)** : `Sakina-Kids-FR-IVC` (`LRnruiHfyadbJQKy1AZn`), la voix d'Alaa. **Point bloquant** : avec l'offre actuelle, ElevenLabs refuse les clones instantanés, il faut passer au moins à Starter.
 - **Chiffres à vérifier avant d'enregistrer la voix** :
   - Cours le plus haut de l'action : 10 000 livres (Velde 2003) ou 18 000 (Britannica) ?
   - Dette de 1715 : 2,8 milliards de livres.

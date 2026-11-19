@@ -1,2 +1,5 @@
 node_modules/
 out/
+output/
+.env
+public/audio/**/*.mp3
