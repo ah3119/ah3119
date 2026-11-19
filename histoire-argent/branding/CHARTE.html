@@ -1,0 +1,208 @@
+<title>Charte L'Histoire de l'Argent</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,800;1,6..96,500&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&family=Anton&display=swap">
+<style>
+/* Layout : la charte est elle-même un billet — fond encre, filets guillochés, numéros de série en marge. Thème unique assumé (sombre). */
+:root{
+  --ink-deep:#0b241a; --ink:#123829; --paper:#f2ecdc; --paper-dim:#c9d3c8; --red:#c23a2b; --gold:#b8913a; --line:rgba(242,236,220,.14);
+  --display:'Bodoni Moda',Didot,'Bodoni 72',Georgia,serif; --body:'IBM Plex Sans',Helvetica,Arial,sans-serif;
+  --mono:'IBM Plex Mono',Menlo,Consolas,monospace; --impact:Anton,Impact,'Arial Narrow',sans-serif;
+  color-scheme:dark;
+}
+body{background:var(--ink-deep);color:var(--paper);font-family:var(--body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1080px;margin:0 auto;padding-block:48px 96px;display:grid;gap:88px}
+h1,h2,h3{font-family:var(--display);font-weight:800;text-wrap:balance;margin:0;line-height:1.05}
+h2{font-size:clamp(34px,5vw,54px)}
+h3{font-size:22px;font-weight:800}
+p{margin:0;max-width:65ch}
+.serial{font-family:var(--mono);font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--red)}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper-dim)}
+.muted{color:var(--paper-dim)}
+section{display:grid;gap:28px;border-top:1px solid var(--line);padding-top:36px}
+.sec-head{display:grid;gap:10px}
+a{color:var(--paper)}
+/* Hero */
+.hero{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:48px;align-items:center}
+.hero h1{font-size:clamp(52px,8.5vw,104px);letter-spacing:-1px}
+.tagline{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(24px,3.2vw,36px);color:var(--paper)}
+#rosette{width:100%;max-width:300px;aspect-ratio:1;display:block}
+@media (max-width:720px){.hero{grid-template-columns:1fr}#rosette{max-width:220px}}
+/* Grilles */
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.grid>*{min-width:0}
+.panel{background:var(--ink);border:1px solid var(--line);padding:22px;display:grid;gap:10px;align-content:start}
+.swatch{display:grid;grid-template-rows:120px auto}
+.swatch .chip{border:1px solid var(--line)}
+.swatch .meta{padding:14px 0;display:grid;gap:4px}
+.ratio{display:flex;height:22px;border:1px solid var(--line)}
+.ratio span{display:block}
+.type-row{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:24px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line)}
+@media (max-width:640px){.type-row{grid-template-columns:1fr;gap:6px}}
+.stamp{display:inline-block;font-family:var(--impact);color:var(--red);border:5px solid var(--red);padding:2px 16px;font-size:44px;letter-spacing:3px;transform:rotate(-8deg)}
+.figure{display:grid;gap:10px}
+.figure img{width:100%;height:auto;border:1px solid var(--line);display:block}
+.do,.dont{display:grid;gap:8px;padding:0;margin:0;list-style:none}
+.do li::before{content:"✓ ";color:var(--paper)}
+.dont li::before{content:"✕ ";color:var(--red)}
+table{border-collapse:collapse;width:100%;min-width:560px}
+.tbl{overflow-x:auto}
+td,th{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-dim);font-weight:500}
+.hook{font-family:var(--display);font-size:22px;line-height:1.3}
+.big-tag{font-family:var(--display);font-weight:800;font-size:clamp(40px,7vw,84px);line-height:1;letter-spacing:-1px}
+.big-tag em{color:var(--red);font-style:italic;font-weight:500}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+</style>
+
+<div class="wrap">
+
+<header class="hero">
+  <svg id="rosette" viewBox="0 0 200 200" role="img" aria-label="Logo : rosace guillochée et monogramme HA"></svg>
+  <div style="display:grid;gap:18px">
+    <div class="serial">Charte officielle · N° 001 · version 2 · 19.11.2026</div>
+    <h1>L'Histoire de l'Argent</h1>
+    <div class="tagline">L'argent a une mémoire.</div>
+    <p class="muted">Une chaîne qui se présente comme un billet de banque : encre fiduciaire, papier, guilloché, numéro de série et tampon rouge. Tout ce qui est publié sous ce nom suit cette charte.</p>
+  </div>
+</header>
+
+<section>
+  <div class="sec-head"><span class="label">Le concept</span><h2>Chaque épisode est un billet</h2></div>
+  <p>Les grandes chaînes du créneau ont un point commun : on les reconnaît en une seconde, sans lire le nom. Notre univers ne vient pas d'une autre chaîne, il vient de l'objet raconté : <strong>le billet de banque</strong>. Ses codes existent depuis trois siècles, ils inspirent confiance, et John Law en est le point de départ historique.</p>
+  <div class="grid">
+    <div class="panel"><span class="label">Encre et papier</span><p>Fond vert encre fiduciaire, texte couleur papier. Pas de noir pur, pas de fond blanc.</p></div>
+    <div class="panel"><span class="label">Guilloché</span><p>Rosaces et ondes tracées par calcul, comme les motifs anti-contrefaçon. C'est notre texture.</p></div>
+    <div class="panel"><span class="label">Numéro de série</span><p>Chaque épisode porte un numéro : N° 001, 002… Il apparaît dans l'intro, la miniature et la description.</p></div>
+    <div class="panel"><span class="label">Le tampon rouge</span><p>KRACH, RUINÉ, FAUX, ANNULÉ : un seul mot, une seule fois par vidéo, au moment de bascule.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="label">Ce qu'on retient des meilleures chaînes</span><h2>Des principes, pas des copies</h2>
+  <p class="muted">⚠️ Observations éditoriales sur des chaînes publiques, pas des données mesurées.</p></div>
+  <div class="tbl"><table>
+    <tr><th>Chaîne</th><th>Ce qu'elle fait bien</th><th>Notre traduction</th></tr>
+    <tr><td>Kurzgesagt</td><td>Un style graphique si constant qu'on le reconnaît sans logo.</td><td>Encre, papier, guilloché, tampon : jamais d'écart.</td></tr>
+    <tr><td>MagnatesMedia</td><td>Un personnage au centre de la miniature, un récit documentaire.</td><td>Un nom propre et une démesure chiffrée sur chaque miniature.</td></tr>
+    <tr><td>Coffeezilla</td><td>Les preuves à l'écran : documents, captures, sources.</td><td>Source affichée sous chaque chiffre. La rigueur fait partie du style.</td></tr>
+    <tr><td>How Money Works · Economics Explained</td><td>Un chiffre clair par écran, des graphiques lisibles.</td><td>Un compteur géant en Anton, une seule courbe à la fois.</td></tr>
+    <tr><td>Nota Bene (FR)</td><td>L'histoire portée par une voix et une personnalité.</td><td>La voix d'Alaa et une leçon assumée à la fin de chaque épisode.</td></tr>
+    <tr><td>Heu?reka (FR)</td><td>La finance rendue accessible, sans jargon gratuit.</td><td>Chaque terme technique est expliqué avec un objet du quotidien.</td></tr>
+  </table></div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="label">Accroche officielle</span><h2>Une phrase, partout</h2></div>
+  <div class="big-tag">L'argent a une <em>mémoire.</em></div>
+  <div class="grid">
+    <div class="panel"><span class="label">Version longue (bannière, description)</span><p class="hook">L'argent a une mémoire. Nous la racontons.</p></div>
+    <div class="panel"><span class="label">Fin de chaque épisode (voix)</span><p class="hook">« L'argent oublie vite. Nous, non. »</p></div>
+    <div class="panel"><span class="label">Bio TikTok et Instagram</span><p class="hook">L'argent a une mémoire. Bulles, krachs, arnaques, racontés et sourcés.</p></div>
+  </div>
+  <p class="muted">Pourquoi celle-ci : elle tient en cinq mots, elle donne une personnalité à l'argent, elle annonce l'histoire sans le mot « histoire », et elle se traduit sans perte : <em>Money remembers.</em></p>
+</section>
+
+<section>
+  <div class="sec-head"><span class="label">Logo</span><h2>La rosace et le monogramme</h2></div>
+  <div class="grid">
+    <div class="figure"><img src="avatar.png" alt="Logo sur fond encre"><span class="label">Version principale · avatar 800 × 800</span></div>
+    <div class="panel"><h3>Règles</h3>
+      <ul class="do"><li>Le « A » est toujours rouge numéroteur, le « H » couleur papier.</li><li>Zone de protection : un quart du diamètre autour du cercle.</li><li>Taille minimale : 48 px, où la rosace se réduit à deux anneaux.</li><li>Fichiers : <code>logo-mark.svg</code> (sur encre) et <code>logo-mark-paper.svg</code> (sur papier).</li></ul>
+      <ul class="dont"><li>Pas d'ombre, de dégradé ni de reflet doré.</li><li>Pas de signe € ou $ dans le logo.</li><li>Pas de rotation : seul le tampon est penché.</li></ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="label">Couleurs</span><h2>Cinq encres, des proportions fixes</h2></div>
+  <div class="grid">
+    <div class="swatch"><div class="chip" style="background:#0b241a"></div><div class="meta"><h3>Encre profonde</h3><span class="label">#0B241A · fonds</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#123829"></div><div class="meta"><h3>Encre fiduciaire</h3><span class="label">#123829 · panneaux, logo</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#f2ecdc"></div><div class="meta"><h3>Papier</h3><span class="label">#F2ECDC · texte, traits</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#c23a2b"></div><div class="meta"><h3>Rouge numéroteur</h3><span class="label">#C23A2B · krach, tampon, N°</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#b8913a"></div><div class="meta"><h3>Or de sceau</h3><span class="label">#B8913A · dates, filets</span></div></div>
+  </div>
+  <div style="display:grid;gap:8px">
+    <span class="label">Proportions à l'écran : encre 70 · papier 20 · rouge 8 · or 2</span>
+    <div class="ratio" aria-hidden="true"><span style="width:70%;background:#123829"></span><span style="width:20%;background:#f2ecdc"></span><span style="width:8%;background:#c23a2b"></span><span style="width:2%;background:#b8913a"></span></div>
+  </div>
+  <p class="muted">Le rouge a un sens : il signale la perte, la fraude ou la chute. Une courbe qui monte reste couleur papier et ne passe au rouge qu'à partir du sommet.</p>
+</section>
+
+<section>
+  <div class="sec-head"><span class="label">Typographie</span><h2>Quatre voix, quatre rôles</h2></div>
+  <div>
+    <div class="type-row"><span class="label">Titres · Bodoni Moda 800</span><span style="font-family:var(--display);font-weight:800;font-size:44px;line-height:1.1">L'Écossais qui a ruiné la France</span></div>
+    <div class="type-row"><span class="label">Citations · Bodoni Moda italique</span><span style="font-family:var(--display);font-style:italic;font-size:28px">« Tout tient tant que personne ne demande de l'or. »</span></div>
+    <div class="type-row"><span class="label">Chiffres · Anton</span><span style="font-family:var(--impact);font-size:64px;line-height:1">10 000 livres</span></div>
+    <div class="type-row"><span class="label">Numéros, dates · IBM Plex Mono</span><span class="serial" style="font-size:18px">N° 001 · Paris · 1720</span></div>
+    <div class="type-row"><span class="label">Texte, sources · IBM Plex Sans</span><span>Source : Velde (2003), Federal Reserve Bank of Chicago, WP 2003-31.</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="label">Signature animée</span><h2>Trois gestes reconnaissables</h2></div>
+  <div class="grid">
+    <div class="panel"><span class="label">1 · Ouverture</span><h3>La rosace se trace</h3><p>1,5 s : le guilloché se dessine trait par trait, puis le numéro de série s'imprime en rouge.</p></div>
+    <div class="panel"><span class="label">2 · Pendant le récit</span><h3>Le numéroteur</h3><p>Chaque chiffre clé défile comme un compteur mécanique, en Anton, avec la date en Plex Mono dessous.</p></div>
+    <div class="panel"><span class="label">3 · La bascule</span><h3>Le coup de tampon</h3><p>Le tampon arrive à 160 % et s'écrase à 100 %, penché à −8°. Un bruit sec, une seule fois par épisode.</p><div style="padding-top:14px"><span class="stamp">KRACH</span></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="label">Miniatures</span><h2>Nom, démesure, verdict</h2></div>
+  <div class="grid">
+    <div class="figure"><img src="thumb-ep01.png" alt="Miniature type de l'épisode 1 : John Law, ×20, tampon RUINÉ"><span class="label">Miniature type · N° 001</span></div>
+    <div class="panel"><h3>La formule</h3>
+      <ul class="do"><li><strong>Nom</strong> en Bodoni, à gauche : qui.</li><li><strong>Démesure</strong> en Anton, énorme : un chiffre, un multiple, un montant.</li><li><strong>Verdict</strong> au tampon rouge : un mot.</li><li>Lieu et date en Plex Mono or, en haut à gauche.</li><li>Rosace en bas à gauche, toujours au même endroit.</li></ul>
+      <ul class="dont"><li>Pas plus de 3 éléments de texte.</li><li>Pas de flèche, d'émoji ni de visage choqué.</li><li>Le chiffre doit être vrai et sourcé dans la vidéo.</li></ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="label">Bannière</span><h2>Ce qu'on voit sur la chaîne</h2></div>
+  <div class="figure"><img src="banner.png" alt="Bannière YouTube : logo, nom de la chaîne et accroche sur fond encre guilloché"><span class="label">2560 × 1440 · texte dans la zone sûre de 1546 × 423</span></div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="label">Hooks vidéo</span><h2>Une image, un paradoxe, une promesse</h2>
+  <p>Les trois premières secondes suivent toujours le même ordre : une image concrète, un fait qui ne devrait pas être possible, puis ce que le spectateur va comprendre.</p></div>
+  <div class="tbl"><table>
+    <tr><th>N°</th><th>Hook</th><th>Mécanique</th></tr>
+    <tr><td class="serial">001</td><td class="hook">« En 1719, un bossu louait son dos comme bureau. Ce qu'on y signait a ruiné un royaume. »</td><td>Détail absurde → enjeu énorme</td></tr>
+    <tr><td class="serial">002</td><td class="hook">« Cette fleur valait une maison. Trois semaines plus tard, elle ne valait plus rien. »</td><td>Prix délirant → retournement</td></tr>
+    <tr><td class="serial">003</td><td class="hook">« Il n'a pas inventé l'arnaque. Il lui a juste donné son nom. »</td><td>Fausse croyance corrigée</td></tr>
+    <tr><td class="serial">004</td><td class="hook">« En 1923, on payait son café avant de le boire. Parce qu'après, il coûtait plus cher. »</td><td>Geste quotidien rendu étrange</td></tr>
+    <tr><td class="serial">005</td><td class="hook">« Votre banque n'a pas l'argent que vous y avez déposé. Et c'est légal. »</td><td>Révélation qui concerne le spectateur</td></tr>
+  </table></div>
+  <p class="muted">⚠️ Le N° 002 (« trois semaines ») et le N° 004 (le café payé d'avance) sont des récits répandus : à sourcer précisément avant d'enregistrer, ou à reformuler.</p>
+</section>
+
+<section>
+  <div class="sec-head"><span class="label">Fichiers sources</span><h2>Tout est généré par code</h2></div>
+  <p>Le dossier <code>histoire-argent/branding</code> contient <code>logo.js</code> (la rosace calculée), <code>build.js</code> (bannière, avatar, miniature) et <code>common.css</code> (les couleurs et polices de la charte). Les vidéos Remotion lisent les mêmes valeurs dans <code>src/theme.ts</code>. Si une couleur change, elle change partout.</p>
+</section>
+
+</div>
+
+<script>
+(function(){
+  var svg=document.getElementById('rosette'),NS='http://www.w3.org/2000/svg',c=100;
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);svg.appendChild(e);return e}
+  function g(R,r,d){var p='',N=1800;for(var i=0;i<=N;i++){var t=i/N*Math.PI*2,x=c+(R+r)*Math.cos(t)-d*Math.cos((R+r)/r*t),y=c+(R+r)*Math.sin(t)-d*Math.sin((R+r)/r*t);p+=(i?'L':'M')+x.toFixed(1)+','+y.toFixed(1)}return p}
+  el('rect',{width:200,height:200,fill:'#123829'});
+  el('circle',{cx:c,cy:c,r:92,fill:'none',stroke:'#f2ecdc','stroke-width':2.5});
+  el('circle',{cx:c,cy:c,r:86,fill:'none',stroke:'#f2ecdc','stroke-width':.8});
+  var paths=[[62,6.2,18,.9,.95],[70,7,14,.75,.75],[52,4,22,.6,.55]].map(function(l){
+    var p=el('path',{d:g(l[0],l[1],l[2]),fill:'none',stroke:'#f2ecdc','stroke-width':l[3],'stroke-opacity':l[4]});return p});
+  el('circle',{cx:c,cy:c,r:53,fill:'#123829',stroke:'#f2ecdc','stroke-width':1.5});
+  var t=el('text',{x:c,y:117,'text-anchor':'middle','font-family':"'Bodoni Moda', Didot, Georgia, serif",'font-weight':800,'font-size':54,fill:'#f2ecdc',style:"font-variation-settings:'opsz' 6"});
+  t.textContent='H';var a=document.createElementNS(NS,'tspan');a.setAttribute('fill','#c23a2b');a.textContent='A';t.appendChild(a);
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    paths.forEach(function(p,i){var L=p.getTotalLength();p.style.strokeDasharray=L;p.style.strokeDashoffset=L;
+      p.animate([{strokeDashoffset:L},{strokeDashoffset:0}],{duration:1800,delay:i*250,easing:'cubic-bezier(.6,0,.3,1)',fill:'forwards'})});
+  }
+})();
+</script>

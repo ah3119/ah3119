@@ -18,21 +18,25 @@ Légende : ✅ établi (source officielle) · ⚠️ probable ou source secondai
 | Plateformes | YouTube (long + Shorts) en principal ; TikTok et Instagram Reels reçoivent les mêmes 9:16 | Une seule production, trois diffusions. |
 | Publicité payante | **Aucune pendant 90 jours** | Payer pour des vues avant d'avoir validé la rétention brûle du cash et pollue les signaux de l'algorithme. |
 
-## 2. Identité visuelle (fichiers prêts)
-- Bannière YouTube 2560×1440, texte dans la zone sûre 1546×423 : `branding/banner.png`
-- Avatar 800×800, monogramme « HA » dans une pièce dorée : `branding/avatar.png`
-- Palette : fond `#14110d`, papier `#efe3c8`, or `#d4a640`, rouge krach `#b5432f`. Titres en Georgia, chiffres en sans-serif gras.
-- Signature visuelle : une **courbe dorée qui vire au rouge** au moment du krach. Elle revient dans chaque épisode, c'est le marqueur de la marque.
-- Les sources de la bannière et de l'avatar sont en HTML, modifiables puis ré-exportables avec `node branding/shoot.js`.
+## 2. Identité visuelle : charte officielle v2 (19/11)
+Référence unique : `branding/CHARTE.html`, publiée sur https://claude.ai/artifact/4jqmXQ1cjTGETARb77UQ8H. Elle remplace la v1 (noir et or).
+- **Concept** : la chaîne est un billet de banque. Encre verte fiduciaire, papier, guilloché, numéro de série, tampon rouge.
+- **Accroche officielle** : « L'argent a une mémoire. » Version longue : « L'argent a une mémoire. Nous la racontons. » Phrase de fin en voix : « L'argent oublie vite. Nous, non. »
+- **Logo** : rosace guillochée calculée et monogramme « HA », dont le A est rouge. Fichiers `branding/logo-mark.svg`, `logo-mark-paper.svg`, `avatar.png`.
+- **Couleurs** : encre profonde `#0B241A`, encre `#123829`, papier `#F2ECDC`, rouge numéroteur `#C23A2B`, or `#B8913A`. Proportions : encre 70, papier 20, rouge 8, or 2.
+- **Polices** : Bodoni Moda (titres), Anton (chiffres), IBM Plex Mono (numéros, dates), IBM Plex Sans (texte).
+- **Signature animée** : la rosace se trace, le numéroteur fait défiler les chiffres, le tampon rouge tombe une fois par épisode.
+- **Miniatures** : le nom, la démesure, le verdict (modèle : `branding/thumb-ep01.png`).
+- Pour regénérer les visuels : `cd branding && node build.js && node shoot.js`.
 
 ## 3. Textes de la chaîne
 
 **Description YouTube** (le début est ce qui apparaît dans la recherche) :
-> Bulles, krachs, arnaques et empires : les grandes histoires derrière l'argent, racontées en animation. Chaque chiffre est sourcé, chaque épisode finit par une leçon. Ce n'est pas du conseil en investissement, c'est de l'histoire.
+> L'argent a une mémoire. Nous la racontons : bulles, krachs, arnaques et empires, en animation. Chaque chiffre est sourcé, chaque épisode finit par une leçon. Ce n'est pas du conseil en investissement, c'est de l'histoire.
 > Nouvel épisode chaque semaine.
 
 **Bio TikTok et Instagram** (80 caractères max) :
-> L'histoire derrière l'argent 💰 Bulles, krachs, arnaques. Chiffres sourcés.
+> L'argent a une mémoire. Bulles, krachs, arnaques, racontés et sourcés.
 
 **Mots-clés de chaîne** : histoire de l'argent, histoire économique, krach boursier, bulle spéculative, arnaque célèbre, Ponzi, histoire de la finance, économie expliquée, documentaire animé
 
