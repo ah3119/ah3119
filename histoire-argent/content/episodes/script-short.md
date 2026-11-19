@@ -13,7 +13,7 @@ En 1719, à Paris, une action coûte 500 livres.
 _Sources : velde2003, moen2001_
 
 ## sh02 · curve
-Un an plus tard, elle approche les 10 000.
+Un an plus tard, elle approche les 10 000. Vingt fois plus.
 
 _Sources : velde2003, moen2001_
 

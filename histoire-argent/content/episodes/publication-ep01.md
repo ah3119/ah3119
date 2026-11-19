@@ -43,7 +43,7 @@ Narration : voix du créateur, clonée avec ElevenLabs (contenu modifié ou synt
 
 **Commentaire épinglé** : Qui, aujourd'hui, ressemble le plus à John Law ?
 
-## YouTube Shorts · TikTok · Reels (00:45)
+## YouTube Shorts · TikTok · Reels (00:44)
 **Titre** : Il a imprimé la France jusqu'à la ruine
 **Légende** (à copier) :
 ```
