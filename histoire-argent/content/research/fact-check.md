@@ -33,3 +33,10 @@ Légende : ✅ établi par la source citée · ⚠️ à relire dans la source a
 | — | Dette de 2,8 milliards de livres en 1715 | ❌ retiré comme chiffre ferme | — |
 
 **Règle** : tant qu'une ligne ⚠️ porte sur un chiffre prononcé, le statut de l'épisode reste `DRAFT`.
+
+## Fusion avec la proposition ChatGPT (19/11)
+- Short : la courbe aux valeurs intermédiaires inventées est supprimée. Le compteur affiche les paliers 2 000 et 5 000 avec la mention « Paliers intermédiaires : schéma ». Seuls 500 et environ 10 000 sont sourcés.
+- Short : la mention « presque ×20 » remplace « ×20 ».
+- Short : la chute s'explique par le mécanisme réel, le rachat des actions par la banque avec des billets (Velde), et non plus par « les gros porteurs réclament l'or ».
+- Les documents d'époque à l'écran (sentence, nomination, édit) portent la mention « RECONSTITUTION » : ce sont des évocations, pas des fac-similés.
+- ⚠️ La vidéo longue garde encore l'ancienne courbe. À corriger lors de sa refonte.

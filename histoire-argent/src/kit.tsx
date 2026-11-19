@@ -36,12 +36,12 @@ export const Frame: React.FC<{children: React.ReactNode; serial: string; sources
 };
 
 // Signature n°3 : le tampon rouge, une seule fois par épisode.
-export const Stamp: React.FC<{text: string; delay: number}> = ({text, delay}) => {
+export const Stamp: React.FC<{text: string; delay: number; low?: boolean}> = ({text, delay, low}) => {
   const f = useCurrentFrame(); const {fps} = useVideoConfig(); const {s, vertical} = useScale();
   if (f < delay) return null;
   const k = spring({frame: f - delay, fps, config: {damping: 9, stiffness: 220}});
   return (
-    <div style={{position: 'absolute', right: (vertical ? 90 : 130) * s, top: (vertical ? 250 : 150) * s,
+    <div style={{position: 'absolute', right: (vertical ? 90 : 130) * s, top: (low ? (vertical ? 1180 : 620) : (vertical ? 250 : 150)) * s,
       transform: `rotate(-8deg) scale(${1.7 - 0.7 * k})`, opacity: Math.min(1, k * 2.5),
       border: `${11 * s}px solid ${C.red}`, color: C.red, fontFamily: F.impact, fontSize: 130 * s, lineHeight: 1.05,
       letterSpacing: 6 * s, padding: `${18 * s}px ${30 * s}px ${4 * s}px`}}>{text}</div>

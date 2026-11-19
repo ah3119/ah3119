@@ -1,14 +1,14 @@
 # N° 001 · Il a imprimé la France jusqu'à la ruine
 
 > Fichier généré depuis `content/episodes/ep01-short-v2.json` : ne pas modifier ici.
-> Statut : **DRAFT** · 11 scènes · ~53 s
+> Statut : **DRAFT** · 11 scènes · ~58 s
 
 **Titres possibles** : « Il a imprimé la France jusqu'à la ruine » · « 500 → 10 000 livres, puis plus rien » · « Le condamné à mort qui a dirigé la France »
 
 **Description** : John Law, 1720 : la première grande bulle de Paris. L'épisode complet est sur la chaîne.
 
 ## v01 · press
-En 1719, un homme fait tourner la planche à billets. Et la France entière devient folle.
+En 1719, un homme fait tourner la planche à billets. Et la France devient folle.
 
 _Sources : velde2003_
 
@@ -18,12 +18,12 @@ Rue Quincampoix, tout Paris se bat pour une action.
 _Sources : moen2001_
 
 ## v03 · ticker
-500 livres. 2 000. 5 000. Près de 10 000 !
+500 livres. 2 000. 5 000. Fin 1719 : près de 10 000. Presque vingt fois plus !
 
 _Sources : velde2003, moen2001_
 
 ## v04 · doc
-Derrière tout ça, un Écossais : John Law. Condamné à mort à Londres.
+Derrière, un Écossais : John Law. Condamné à mort à Londres.
 
 _Sources : murphy1997_
 
@@ -33,7 +33,7 @@ Vingt-six ans plus tard, il dirige les finances du royaume.
 _Sources : murphy1997_
 
 ## v06 · machine
-Son astuce : des billets, qui achètent des actions, qui paient la dette du roi. Et ça tourne.
+Son astuce : des billets, qui achètent des actions, qui paient la dette du roi.
 
 _Sources : velde2003_
 
@@ -42,20 +42,20 @@ Tout tient… tant que personne ne demande son or.
 
 _Sources : velde2003_
 
-## v08 · gold
-Puis les gros porteurs viennent le réclamer.
+## v08 · press
+Pour tenir le prix, la banque rachète les actions. Avec toujours plus de billets.
 
 _Sources : velde2003_
 
-## v09 · curve · tampon « KRACH »
-Mai 1720 : un édit, la panique. L'action s'effondre.
+## v09 · doc · tampon « KRACH »
+21 mai 1720 : un édit annonce la baisse des billets et des actions. Panique.
 
 _Sources : velde2003, nyfed2014_
 
 ## v10 · burn
-Le papier ne vaut presque plus rien. Des fortunes partent en fumée.
+L'édit est retiré. Mais la confiance ne revient pas. Le papier ne vaut presque plus rien.
 
-_Sources : moen2001_
+_Sources : velde2003, moen2001_
 
 ## v11 · outro
 Ce qui monte parce que tout le monde achète… baisse parce que tout le monde vend.

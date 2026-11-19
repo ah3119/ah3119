@@ -155,7 +155,7 @@ export const Crowd: React.FC<{kicker?: string; title: string; ticker: string}> =
 };
 
 // ── Compteur nerveux : paliers successifs, chaque palier frappe.
-export const Ticker: React.FC<{values: number[]; unit: string; label: string}> = ({values, unit, label}) => {
+export const Ticker: React.FC<{values: number[]; unit: string; label: string; note?: string}> = ({values, unit, label, note}) => {
   const f = useCurrentFrame(); const {fps, durationInFrames} = useVideoConfig(); const {s, width, height} = useScale();
   const step = Math.max(10, Math.floor((durationInFrames - 10) / values.length));
   const idx = Math.min(values.length - 1, Math.floor(f / step));
@@ -168,10 +168,11 @@ export const Ticker: React.FC<{values: number[]; unit: string; label: string}> =
     <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center'}}>
       {/* pile de billets qui monte */}
       <div style={{position: 'absolute', bottom: height * 0.18, left: width / 2 - 200 * s, width: 400 * s, height: height * 0.36 * pct,
-        background: `repeating-linear-gradient(0deg, ${C.paper} 0 ${10 * s}px, ${C.ink} ${10 * s}px ${13 * s}px)`, opacity: 0.25}} />
+        background: C.gold, opacity: 0.12}} />
       <div style={{fontFamily: F.mono, fontSize: 34 * s, letterSpacing: 7 * s, color: C.gold, textTransform: 'uppercase', marginBottom: 20 * s}}>{label}</div>
-      <div style={{fontFamily: F.impact, fontSize: 330 * s, lineHeight: 1, color: C.paper, fontVariantNumeric: 'tabular-nums', transform: `scale(${1.25 - 0.25 * punch})`}}>{fmt(v)}</div>
+      <div style={{fontFamily: F.impact, fontSize: 210 * s, lineHeight: 1, whiteSpace: 'nowrap', color: C.paper, fontVariantNumeric: 'tabular-nums', transform: `scale(${1.25 - 0.25 * punch})`}}>{fmt(v)}</div>
       <div style={{fontFamily: F.display, fontStyle: 'italic', fontSize: 70 * s}}>{unit}</div>
+      {note && <div style={{fontFamily: F.mono, fontWeight: 800, fontSize: 24 * s, letterSpacing: 3 * s, color: C.dim, marginTop: 24 * s, textTransform: 'uppercase'}}>{note}</div>}
       <div style={{position: 'absolute', inset: 0, background: C.paper, opacity: Math.max(0, 0.25 - local * 0.05)}} />
     </AbsoluteFill>
   );
@@ -193,6 +194,7 @@ export const Doc: React.FC<{kicker: string; lines: string[]; seal?: string; redL
               lineHeight: 1.15, marginTop: 34 * s, color: i === redLine ? C.red : C.bg, opacity: fadeIn(f, 10 + i * 8)}}>{l}</div>
           ))}
           {[...Array(5)].map((_, i) => <div key={i} style={{height: 3 * s, background: C.ink, opacity: 0.15, marginTop: 34 * s, width: `${90 - i * 9}%`}} />)}
+          <div style={{position: 'absolute', left: 70 * s, bottom: 40 * s, fontFamily: F.mono, fontWeight: 800, fontSize: 20 * s, letterSpacing: 4 * s, color: C.dim}}>RECONSTITUTION</div>
           {seal && (
             <div style={{position: 'absolute', right: 60 * s, bottom: 60 * s, width: 190 * s, height: 190 * s, borderRadius: '50%', background: C.red, color: C.paper,
               display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: F.display, fontWeight: 800, fontSize: 40 * s, textAlign: 'center',

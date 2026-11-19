@@ -9,7 +9,7 @@ export type Visual =
   | {type: 'lesson'; lines: string[]; next: string}
   | {type: 'press'; kicker?: string; title: string}
   | {type: 'crowd'; kicker?: string; title: string; ticker: string}
-  | {type: 'ticker'; values: number[]; unit: string; label: string}
+  | {type: 'ticker'; values: number[]; unit: string; label: string; note?: string}
   | {type: 'doc'; kicker: string; lines: string[]; seal?: string; redLine?: number}
   | {type: 'machine'; nodes: string[]; center: string}
   | {type: 'gold'; title: string; drain?: boolean}
@@ -18,4 +18,4 @@ export type Visual =
 export type Sfx = {name: string; at?: number; volume?: number; dur?: number};
 export type Scene = {id: string; text: string; sources: string[]; visual: Visual; stamp?: string; audio?: boolean; audioSec?: number; sfx?: Sfx[]};
 export type Episode = {id: string; serial: string; format: 'long' | 'short'; status: string; title: string;
-  thumbnail?: {place: string; name: string; big: string; stamp: string; sub?: string}; wordsPerSecond?: number; audioDir?: string; transitionSfx?: string; bed?: {name: string; volume: number}; scenes: Scene[]};
+  thumbnail?: {place: string; name: string; big: string; stamp: string; sub?: string; kicker?: string}; wordsPerSecond?: number; audioDir?: string; transitionSfx?: string; bed?: {name: string; volume: number}; scenes: Scene[]};

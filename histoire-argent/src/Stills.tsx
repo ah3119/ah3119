@@ -52,15 +52,16 @@ export const Banner: React.FC = () => {
 
 export const Thumbnail: React.FC<{episode: Episode}> = ({episode}) => {
   useBrandFonts();
-  const t = episode.thumbnail as {place: string; name: string; big: string; stamp: string; sub?: string};
+  const t = episode.thumbnail as {place: string; name: string; big: string; stamp: string; sub?: string; kicker?: string};
   return (
     <AbsoluteFill style={{background: C.bg, color: C.paper}}>
       <Grid step={80} />
       <div style={{position: 'absolute', left: 0, top: 0, bottom: 0, width: 540, overflow: 'hidden'}}><Mugshot w={540} h={720} /></div>
       <div style={{position: 'absolute', left: 36, top: 36, fontFamily: F.mono, fontWeight: 800, fontSize: 30, background: C.gold, color: C.bg, padding: '4px 14px'}}>{t.name.replace('\n', ' ').toUpperCase()}</div>
       <div style={{position: 'absolute', left: 590, top: 50, fontFamily: F.mono, fontWeight: 800, fontSize: 32, color: C.gold, letterSpacing: 3, textTransform: 'uppercase'}}>{t.place}</div>
-      <div style={{position: 'absolute', left: 580, top: 90, fontFamily: F.display, fontSize: 220, lineHeight: 1}}>{t.big}</div>
-      {t.sub && <div style={{position: 'absolute', left: 590, top: 320, fontFamily: F.display, fontSize: 76, textTransform: 'uppercase'}}>{t.sub.split(' ')[0]} <span style={{color: C.red}}>{t.sub.split(' ').slice(1).join(' ')}</span></div>}
+      {t.kicker && <div style={{position: 'absolute', left: 592, top: 108, fontFamily: F.display, fontSize: 44, color: C.paper, textTransform: 'uppercase'}}>{t.kicker}</div>}
+      <div style={{position: 'absolute', left: 580, top: t.kicker ? 140 : 90, fontFamily: F.display, fontSize: t.kicker ? 200 : 220, lineHeight: 1}}>{t.big}</div>
+      {t.sub && <div style={{position: 'absolute', left: 590, top: 345, fontFamily: F.display, fontSize: 70, textTransform: 'uppercase'}}>{t.sub.split(' ')[0]} <span style={{color: C.red}}>{t.sub.split(' ').slice(1).join(' ')}</span></div>}
       <div style={{position: 'absolute', left: 640, top: 445}}><Stamp text={t.stamp} size={100} /></div>
       <Tape text={`Fortunes & Ruines · N°${episode.serial}`} height={56} style={{bottom: 0}} />
     </AbsoluteFill>
