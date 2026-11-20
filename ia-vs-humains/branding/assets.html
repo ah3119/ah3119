@@ -1,0 +1,55 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@500;700&family=IBM+Plex+Mono:wght@500;700&display=block">
+<style>
+:root{--ink:#12141B;--ink2:#1C1F29;--chalk:#F4F4F0;--steel:#8B91A3;--ia:#3E6BFF;--hu:#FF6B2C}
+*{box-sizing:border-box;margin:0}
+body{background:#555;display:flex;flex-direction:column;gap:40px;padding:40px;font-family:Barlow,sans-serif}
+.anton{font-family:Anton,Impact,sans-serif}
+.mono{font-family:'IBM Plex Mono',monospace}
+#avatar{width:800px;height:800px;background:var(--ink)}
+#avatar svg{width:800px;height:800px;display:block}
+/* banner 2560x1440, safe zone 1546x423 centre */
+#banner{width:2560px;height:1440px;position:relative;overflow:hidden;background:var(--ink)}
+#banner .l{position:absolute;inset:0;background:var(--ia);clip-path:polygon(0 0,52% 0,48% 100%,0 100%)}
+#banner .r{position:absolute;inset:0;background:var(--hu);clip-path:polygon(52.6% 0,100% 0,100% 100%,48.6% 100%)}
+#banner .safe{position:absolute;left:507px;top:508px;width:1546px;height:423px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px}
+#banner .plate{background:var(--ink);padding:34px 56px 30px;display:flex;flex-direction:column;align-items:center;gap:16px;transform:skewX(-8deg)}
+#banner .plate>*{transform:skewX(8deg)}
+#banner .plate svg{height:150px;width:auto}
+#banner .tag{color:var(--chalk);font-size:44px;letter-spacing:.04em}
+#banner .tag b{color:var(--chalk)}
+#banner .grid{position:absolute;inset:0;background-image:linear-gradient(rgba(18,20,27,.13) 2px,transparent 2px),linear-gradient(90deg,rgba(18,20,27,.13) 2px,transparent 2px);background-size:80px 80px}
+/* thumbnail 1280x720 */
+.thumb{width:1280px;height:720px;position:relative;overflow:hidden;background:var(--ink)}
+.thumb .l{position:absolute;inset:0;background:var(--ia);clip-path:polygon(0 0,54% 0,46% 100%,0 100%)}
+.thumb .r{position:absolute;inset:0;background:var(--hu);clip-path:polygon(55% 0,100% 0,100% 100%,47% 100%)}
+.thumb .who{position:absolute;top:34px;font-size:64px;color:var(--ink);letter-spacing:.02em}
+.thumb .who.a{left:44px}.thumb .who.b{right:44px}
+.thumb .slot{position:absolute;top:140px;width:470px;height:300px;background:rgba(18,20,27,.85);border:4px solid var(--chalk);display:flex;align-items:center;justify-content:center;color:var(--steel);font-size:24px;text-align:center;padding:20px}
+.thumb .slot.a{left:44px;transform:rotate(-2deg)}.thumb .slot.b{right:44px;transform:rotate(2deg)}
+.thumb .vs{position:absolute;left:50%;top:250px;transform:translateX(-50%) skewX(-8deg);background:var(--ink);color:var(--chalk);font-size:96px;padding:6px 26px;line-height:1}
+.thumb .title{position:absolute;left:0;right:0;bottom:36px;text-align:center;font-size:108px;line-height:1;color:var(--chalk);-webkit-text-stroke:0;text-shadow:0 6px 0 var(--ink),0 -3px 0 var(--ink),4px 0 0 var(--ink),-4px 0 0 var(--ink)}
+.thumb .chip{position:absolute;left:50%;top:44px;transform:translateX(-50%);background:var(--chalk);color:var(--ink);font-size:24px;padding:8px 16px;font-weight:700}
+</style></head><body>
+<div id="avatar"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs><clipPath id="c"><circle cx="256" cy="256" r="256"/></clipPath></defs>
+  <g clip-path="url(#c)">
+    <rect width="512" height="512" fill="#12141B"/>
+    <polygon points="0,0 512,0 0,512" fill="#3E6BFF"/>
+    <polygon points="512,0 512,512 0,512" fill="#FF6B2C"/>
+    <line x1="512" y1="0" x2="0" y2="512" stroke="#12141B" stroke-width="22"/>
+  </g>
+  <g transform="skewX(-8) translate(36 0)">
+    <path d="M227.56 373.42L168.96 373.42L142.47 158.46L183.37 158.46L199.12 304.70L213.15 158.46L254.05 158.46L227.56 373.42ZM317.52 375.38L317.52 375.38Q288.10 375.38 275.10 360.73Q262.10 346.08 262.10 314.10L262.10 314.10L262.10 293.10L304.58 293.10L304.58 319.96Q304.58 327.40 306.84 331.61Q309.10 335.82 314.72 335.82L314.72 335.82Q320.58 335.82 322.83 332.41Q325.09 328.99 325.09 321.18L325.09 321.18Q325.09 311.29 323.14 304.64Q321.19 297.98 316.36 291.94Q311.54 285.90 303.00 277.84L303.00 277.84L283.71 259.53Q262.10 239.14 262.10 212.90L262.10 212.90Q262.10 185.43 274.86 171.03Q287.62 156.63 311.79 156.63L311.79 156.63Q341.33 156.63 353.72 172.37Q366.11 188.12 366.11 220.22L366.11 220.22L322.41 220.22L322.41 205.45Q322.41 201.06 319.90 198.62Q317.40 196.18 313.13 196.18L313.13 196.18Q308.00 196.18 305.62 199.04Q303.24 201.91 303.24 206.43L303.24 206.43Q303.24 210.95 305.68 216.20Q308.12 221.44 315.33 228.28L315.33 228.28L340.11 252.08Q347.55 259.16 353.78 267.04Q360.00 274.91 363.79 285.35Q367.57 295.79 367.57 310.80L367.57 310.80Q367.57 341.07 356.40 358.22Q345.23 375.38 317.52 375.38Z" fill="#12141B" />
+    <path d="M227.56 363.42L168.96 363.42L142.47 148.46L183.37 148.46L199.12 294.70L213.15 148.46L254.05 148.46L227.56 363.42ZM317.52 365.38L317.52 365.38Q288.10 365.38 275.10 350.73Q262.10 336.08 262.10 304.10L262.10 304.10L262.10 283.10L304.58 283.10L304.58 309.96Q304.58 317.40 306.84 321.61Q309.10 325.82 314.72 325.82L314.72 325.82Q320.58 325.82 322.83 322.41Q325.09 318.99 325.09 311.18L325.09 311.18Q325.09 301.29 323.14 294.64Q321.19 287.98 316.36 281.94Q311.54 275.90 303.00 267.84L303.00 267.84L283.71 249.53Q262.10 229.14 262.10 202.90L262.10 202.90Q262.10 175.43 274.86 161.03Q287.62 146.63 311.79 146.63L311.79 146.63Q341.33 146.63 353.72 162.37Q366.11 178.12 366.11 210.22L366.11 210.22L322.41 210.22L322.41 195.45Q322.41 191.06 319.90 188.62Q317.40 186.18 313.13 186.18L313.13 186.18Q308.00 186.18 305.62 189.04Q303.24 191.91 303.24 196.43L303.24 196.43Q303.24 200.95 305.68 206.20Q308.12 211.44 315.33 218.28L315.33 218.28L340.11 242.08Q347.55 249.16 353.78 257.04Q360.00 264.91 363.79 275.35Q367.57 285.79 367.57 300.80L367.57 300.80Q367.57 331.07 356.40 348.22Q345.23 365.38 317.52 365.38Z" fill="#F4F4F0" stroke="#12141B" stroke-width="10" paint-order="stroke" stroke-linejoin="round"/>
+  </g>
+</svg></div>
+<div id="banner"><div class="l"></div><div class="r"></div><div class="grid"></div>
+ <div class="safe"><div class="plate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 220" width="850" height="220"><path d="M41.41 178.75L14.84 178.75L14.84 41.25L41.41 41.25L41.41 178.75ZM75.31 178.75L48.59 178.75L61.88 41.25L108.52 41.25L121.56 178.75L95.55 178.75L93.59 156.56L77.03 156.56L75.31 178.75ZM84.22 64.69L78.98 134.61L91.48 134.61L85.47 64.69L84.22 64.69Z" fill="#3E6BFF"/><g transform="translate(210.85546875 110) skewX(-8) translate(-60.94921875 -54.8125)"><rect width="121.8984375" height="109.625" fill="#F4F4F0"/><path d="M50.94 92.63L30.31 92.63L20.99 16.96L35.38 16.96L40.93 68.43L45.87 16.96L60.26 16.96L50.94 92.63ZM82.61 93.31L82.61 93.31Q72.25 93.31 67.67 88.16Q63.10 83 63.10 71.74L63.10 71.74L63.10 64.35L78.05 64.35L78.05 73.80Q78.05 76.43 78.85 77.91Q79.64 79.39 81.62 79.39L81.62 79.39Q83.68 79.39 84.47 78.19Q85.27 76.98 85.27 74.23L85.27 74.23Q85.27 70.75 84.58 68.41Q83.89 66.07 82.20 63.94Q80.50 61.82 77.49 58.98L77.49 58.98L70.70 52.54Q63.10 45.36 63.10 36.12L63.10 36.12Q63.10 26.45 67.59 21.38Q72.08 16.31 80.59 16.31L80.59 16.31Q90.98 16.31 95.35 21.86Q99.71 27.40 99.71 38.70L99.71 38.70L84.32 38.70L84.32 33.50Q84.32 31.95 83.44 31.09Q82.56 30.23 81.06 30.23L81.06 30.23Q79.25 30.23 78.42 31.24Q77.58 32.25 77.58 33.84L77.58 33.84Q77.58 35.43 78.44 37.28Q79.30 39.13 81.83 41.54L81.83 41.54L90.55 49.91Q93.18 52.41 95.37 55.18Q97.56 57.95 98.89 61.62Q100.22 65.30 100.22 70.58L100.22 70.58Q100.22 81.24 96.29 87.28Q92.36 93.31 82.61 93.31Z" fill="#12141B" /></g><path d="M331.24 178.75L303.90 178.75L303.90 41.25L331.24 41.25L331.24 90.39L344.21 90.39L344.21 41.25L371.55 41.25L371.55 178.75L344.21 178.75L344.21 116.41L331.24 116.41L331.24 178.75ZM415.54 180L415.54 180Q398.35 180 390.23 170.35Q382.10 160.70 382.10 141.95L382.10 141.95L382.10 41.25L408.82 41.25L408.82 140.86Q408.82 144.30 409.21 147.46Q409.60 150.63 411.01 152.66Q412.41 154.69 415.54 154.69L415.54 154.69Q418.74 154.69 420.15 152.70Q421.55 150.70 421.91 147.50Q422.26 144.30 422.26 140.86L422.26 140.86L422.26 41.25L448.98 41.25L448.98 141.95Q448.98 160.70 440.85 170.35Q432.73 180 415.54 180ZM484.37 178.75L459.52 178.75L459.52 41.25L501.40 41.25L512.96 125.08L524.45 41.25L566.71 41.25L566.71 178.75L541.55 178.75L541.55 79.69L525.77 178.75L501.09 178.75L484.37 79.69L484.37 178.75ZM601.87 178.75L575.15 178.75L588.43 41.25L635.07 41.25L648.12 178.75L622.10 178.75L620.15 156.56L603.59 156.56L601.87 178.75ZM610.77 64.69L605.54 134.61L618.04 134.61L612.02 64.69L610.77 64.69ZM681.87 178.75L655.30 178.75L655.30 41.25L681.87 41.25L681.87 178.75ZM719.68 178.75L692.80 178.75L692.80 41.25L721.09 41.25L733.74 107.11L733.74 41.25L760.30 41.25L760.30 178.75L733.43 178.75L719.68 110L719.68 178.75ZM805.15 180L805.15 180Q786.32 180 778 170.63Q769.68 161.25 769.68 140.78L769.68 140.78L769.68 127.34L796.87 127.34L796.87 144.53Q796.87 149.30 798.31 151.99Q799.76 154.69 803.35 154.69L803.35 154.69Q807.10 154.69 808.55 152.50Q809.99 150.31 809.99 145.31L809.99 145.31Q809.99 138.98 808.74 134.73Q807.49 130.47 804.41 126.60Q801.32 122.73 795.85 117.58L795.85 117.58L783.51 105.86Q769.68 92.81 769.68 76.02L769.68 76.02Q769.68 58.44 777.84 49.22Q786.01 40 801.48 40L801.48 40Q820.38 40 828.31 50.08Q836.24 60.16 836.24 80.70L836.24 80.70L808.27 80.70L808.27 71.25Q808.27 68.44 806.67 66.88Q805.07 65.31 802.34 65.31L802.34 65.31Q799.05 65.31 797.53 67.15Q796.01 68.98 796.01 71.88L796.01 71.88Q796.01 74.77 797.57 78.13Q799.13 81.48 803.74 85.86L803.74 85.86L819.60 101.09Q824.37 105.63 828.35 110.66Q832.34 115.70 834.76 122.38Q837.18 129.06 837.18 138.67L837.18 138.67Q837.18 158.05 830.03 169.02Q822.88 180 805.15 180Z" fill="#FF6B2C"/></svg><div class="tag mono">MÊME MISSION · MÊME BRIEF · <b>UN VERDICT</b></div></div></div></div>
+<div class="thumb" id="thumb-template"><div class="l"></div><div class="r"></div>
+ <div class="who a anton">IA</div><div class="who b anton">HUMAIN</div>
+ <div class="chip mono">DUEL #01</div>
+ <div class="slot a mono">[ capture du résultat IA ]</div><div class="slot b mono">[ capture du résultat humain ]</div>
+ <div class="vs anton">VS</div>
+ <div class="title anton">QUI A MONTÉ ÇA ?</div></div>
+</body></html>
