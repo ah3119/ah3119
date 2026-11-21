@@ -18,10 +18,31 @@ Critère : est-ce que l'outil améliore **notre** pipeline (vidéos 100 % codée
 ## Intégré dans le projet
 **Sous-titres minutés mot à mot (Shorts).** Avant, les sous-titres étaient répartis à vitesse constante sur la durée de la voix, donc souvent décalés. Maintenant :
 - `voice.mjs` appelle `text-to-speech/{voix}/with-timestamps` et enregistre `public/audio/<fmt>/<id>.words.json` à côté de chaque MP3.
-- `npm run align` minute les prises **déjà enregistrées** via l'API ElevenLabs `forced-alignment` (audio + texte connu). Sans `--yes`, la commande liste seulement les prises. Avec `--yes`, l'appel est payant : il est facturé comme le Speech-to-Text, à la durée audio.
+- `npm run align` minute les prises **déjà enregistrées**, **gratuitement et en local** avec whisper.cpp (voir plus bas). L'option `npm run align -- --cloud --yes` passe par l'API ElevenLabs `forced-alignment` (payant, à la durée audio).
 - `npm run sync` écrit les pages de sous-titres (`captions`) dans le JSON de l'épisode : 5 mots maximum, coupure après la ponctuation, jamais de mot seul.
 - Au rendu, chaque page apparaît quand la voix la prononce et le mot en cours est surligné en jaune (charte : le jaune sert à montrer).
 - `npm run check` signale un minutage périmé si le texte a changé après l'enregistrement de la voix.
+
+## Alternative gratuite à l'alignement ElevenLabs : whisper.cpp (retenu le 21/11/2026)
+| Option | Coût | Installation | Windows | Verdict |
+|---|---|---|---|---|
+| **whisper.cpp via `@remotion/install-whisper-cpp`** | gratuit, local | `npm install` puis téléchargement automatique au premier lancement (binaire + modèle small de 466 Mo) | ✅ binaire fourni par Remotion | ✅ **retenu** : 100 % Node, même éditeur que notre moteur de rendu |
+| WhisperX / stable-ts | gratuit | Python + PyTorch (plusieurs Go) | ⚠️ installation lourde | ❌ trop lourd pour le gain |
+| openai/whisper (Python) | gratuit | Python + PyTorch | ⚠️ | ❌ minutage au mot moins fiable que WhisperX |
+| aeneas | gratuit | Python, eSpeak, compilation C | ❌ difficile | ❌ projet peu maintenu |
+| ElevenLabs forced-alignment | payant | aucune | ✅ | gardé en option (`--cloud`) |
+
+Whisper *transcrit* et peut mal entendre. On garde donc toujours **le texte du script** et Whisper ne fournit que les temps. `scripts/align-words.mjs` apparie les mots du script aux mots entendus (alignement global) et ignore les faux amis : petit mot identique mal placé, repère très éloigné de sa place attendue. Les mots non appariés, par exemple « dix mille » entendu « 10 000 », sont interpolés entre leurs voisins.
+
+**Mesure (21/11/2026).** Banc d'essai : les 10 scènes du Short fusion, soit 107 mots, prononcées mot à mot par une voix de synthèse (eSpeak) assemblée à des instants connus. C'est un cas plus dur que la voix ElevenLabs, car Whisper comprend mal eSpeak.
+
+| Variante | Erreur moyenne sur le début du mot | Mots à ≤ 0,2 s |
+|---|---|---|
+| Modèle small, repère DTW brut | 0,167 s | 71 % |
+| **Modèle small, repère DTW − 0,2 s (réglage par défaut)** | **0,087 s** | **85 %** |
+| Modèle base, repère DTW − 0,2 s | 0,172 s | 71 % |
+
+⚠️ La correction de 0,2 s a été mesurée sur eSpeak. Elle reste à confirmer sur ta vraie voix : un sous-titre en avance ou en retard se règle avec `WHISPER_SHIFT`. ❓ On ne sait pas encore ce que donne Whisper face à ta voix clonée. Une voix nette devrait être mieux transcrite qu'eSpeak, mais ce n'est pas encore mesuré.
 
 ## À installer sur ton poste (non versionné)
 **Compétences officielles Remotion** (`remotion-dev/skills`). Elles couvrent les sous-titres, les cartes, l'audio, les transitions et le rendu, et sont maintenues par Remotion.

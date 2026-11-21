@@ -25,11 +25,11 @@ Tu travailles sur la chaîne Fortunes & Ruines (histoire financière racontée c
 - `content/episodes/*.json` est la **seule source de vérité**. Les `script-*.md` sont générés (`npm run script`) : ne pas les modifier à la main.
 - Visuels disponibles : `title`, `card`, `quote`, `timeline`, `counter`, `curve`, `flow`, `lesson` (`src/scenes/index.tsx`) et les scènes illustrées `press`, `crowd`, `ticker`, `doc`, `machine`, `gold`, `burn`, `outro` (`src/scenes/illustrated.tsx`). Préférer les scènes illustrées : un plan de texte seul est l'exception. Pour en ajouter un : le déclarer dans `src/types.ts`, dans `VISUALS` (`scripts/lib.mjs`) et dans le `switch` de `src/Episode.tsx`.
 - Durée d'une scène : celle de l'audio s'il est synchronisé (`audioSec`), sinon 2,5 mots/s + 0,8 s.
-- Sous-titres des Shorts : minutés mot à mot quand la prise a son `<id>.words.json` (voir `OUTILS_VIDEO.md`). `npm run sync` les écrit dans `captions`. Ne jamais éditer `captions` à la main.
+- Sous-titres des Shorts : minutés mot à mot quand la prise a son `<id>.words.json`, produit par `voice.mjs` ou `npm run align` (voir `OUTILS_VIDEO.md`). `npm run sync` les écrit dans `captions`. Ne jamais éditer `captions` à la main.
 - Short John Law fusionné : `content/episodes/ep01-short-fusion.json`. L'aperçu lit `previewSec`, les prises réelles ont priorité après synchronisation. Lancer `npm run render:fusion` ou `npm run render:fusion-voice` pour un export de relecture.
 
 ## Garde-fous
-- Ne jamais lancer `voice:all` ou `voice:short-all` (payants) sans accord explicite. `voice:check` ne coûte rien. Même règle pour `voice.mjs ep <clé> --yes` et `align -- --yes`. `npm run align` sans `--yes` ne coûte rien.
+- Ne jamais lancer `voice:all` ou `voice:short-all` (payants) sans accord explicite. `voice:check` ne coûte rien. Même règle pour `voice.mjs ep <clé> --yes` et `align -- --cloud --yes`. `npm run align` (whisper.cpp local) est gratuit.
 - Outils vidéo externes : voir le verdict dans `OUTILS_VIDEO.md` avant d'en ajouter un.
 - Ne jamais commiter `.env`, des MP3 ou des MP4.
 - Ne passer un statut à `APPROVED_FOR_PUBLICATION` qu'après validation humaine du script.

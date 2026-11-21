@@ -4,3 +4,4 @@ output/
 .env
 public/audio/**/*.mp3
 comparatif/**/*.mp4
+whisper.cpp/
