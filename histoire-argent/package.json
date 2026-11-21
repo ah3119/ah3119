@@ -15,6 +15,7 @@
     "voice:all": "node scripts/voice.mjs all",
     "voice:short-all": "node scripts/voice.mjs short-all",
     "sync": "node scripts/sync-audio.mjs",
+    "align": "node scripts/align.mjs",
     "compare": "node scripts/compare.mjs",
     "render:pilot": "node scripts/render.mjs pilot",
     "render:fusion": "node scripts/fusion.mjs preview",

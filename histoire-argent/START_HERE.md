@@ -16,7 +16,7 @@ npm install
 ## 3. Vérifier, puis voir
 ```powershell
 npm run check            # TypeScript + règles éditoriales
-npm test                 # 8 tests
+npm test                 # 15 tests
 npm run dev              # studio Remotion dans le navigateur
 npm run render:preview   # output/ep01-preview-short.mp4 (muet)
 npm run assets           # avatar, bannière, miniature dans public/brand/
@@ -29,7 +29,8 @@ Dans un conteneur Linux sans Chrome, définir d'abord `REMOTION_BROWSER=/chemin/
 3. `npm run voice:check` : vérifie l'offre et la voix, sans rien dépenser.
 4. `npm run voice:one` : génère la scène 1 seulement. Écouter le résultat.
 5. `npm run voice:all -- --yes`, puis `npm run voice:short-all -- --yes`.
-6. `npm run sync` : mesure les durées des MP3 et cale chaque scène sur sa voix.
+6. `npm run sync` : mesure les durées des MP3, cale chaque scène sur sa voix et cale les sous-titres au mot près.
+7. Voix générées avant le 21/11, ou enregistrées soi-même : `npm run align` liste les prises sans minutage (gratuit). Ensuite `npm run align -- --yes` (payant, à la durée audio), puis `npm run sync`.
 
 Plan B : enregistrer sa voix soi-même et déposer `s01.mp3` … `s20.mp3` dans `public/audio/long/`, puis `sh01.mp3` … `sh07.mp3` dans `public/audio/short/`. Lancer ensuite `npm run sync`.
 

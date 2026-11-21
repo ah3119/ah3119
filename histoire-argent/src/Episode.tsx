@@ -66,7 +66,7 @@ export const EpisodeVideo: React.FC<{episode: Ep; subtitles?: boolean}> = ({epis
               </Frame>
               {sc.stamp && <Stamp text={sc.stamp} delay={sc.stampAt === undefined ? stampDelay(sc.visual, frames) : Math.round(sc.stampAt * FPS)}
                 low={sc.visual.type === 'doc'} centered={sc.stampAt !== undefined} />}
-              {subtitles && <Subtitles text={sc.text} frames={sc.audioSec ? Math.round(sc.audioSec * FPS) + 6 : frames} />}
+              {subtitles && <Subtitles text={sc.text} captions={sc.captions} frames={sc.audioSec ? Math.round(sc.audioSec * FPS) + 6 : frames} />}
             </Series.Sequence>
           );
         })}

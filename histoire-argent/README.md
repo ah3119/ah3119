@@ -14,4 +14,5 @@ Accroche : « Comment on gagne tout. Comment on perd tout. » (ancien nom de tra
 | Scripts à relire (générés) | `content/episodes/script-pilote.md`, `script-short.md` |
 | Sources et vérification des faits | `content/research/` |
 | Couleurs, polices, formats | `config/theme.json` |
+| Outils vidéo évalués (verdict) | `OUTILS_VIDEO.md` |
 | Voix ElevenLabs | `config/voices.json`, `scripts/voice.mjs` |

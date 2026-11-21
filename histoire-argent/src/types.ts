@@ -18,6 +18,7 @@ export type Visual =
   | {type: 'burn'; title: string; kicker?: string}
   | {type: 'outro'; lines: string[]; cta: string};
 export type Sfx = {name: string; at?: number; volume?: number; dur?: number};
-export type Scene = {id: string; text: string; sources: string[]; visual: Visual; stamp?: string; stampAt?: number; audio?: boolean; audioSec?: number; previewSec?: number; sfx?: Sfx[]};
+export type CaptionPage = {start: number; end: number; words: {t: string; s: number; e: number}[]};
+export type Scene = {id: string; text: string; sources: string[]; visual: Visual; stamp?: string; stampAt?: number; audio?: boolean; audioSec?: number; previewSec?: number; sfx?: Sfx[]; captions?: CaptionPage[]};
 export type Episode = {id: string; serial: string; format: 'long' | 'short'; status: string; title: string;
   thumbnail?: {place: string; name: string; big: string; stamp?: string; sub?: string; kicker?: string}; wordsPerSecond?: number; audioDir?: string; transitionSfx?: string; bed?: {name: string; volume: number}; scenes: Scene[]};

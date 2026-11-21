@@ -1,6 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C, F, SOURCES} from './brand';
+import type {CaptionPage} from './types';
 
 export const useScale = () => {
   const {width, height} = useVideoConfig();
@@ -50,10 +51,26 @@ export const Stamp: React.FC<{text: string; delay: number; low?: boolean; center
   );
 };
 
-// Sous-titres (Shorts) : la narration découpée en groupes de mots, au rythme de la scène.
-export const Subtitles: React.FC<{text: string; frames: number}> = ({text, frames}) => {
+// Sous-titres (Shorts). Avec minutage (captions, écrit par « npm run sync ») : chaque page apparaît quand la voix
+// la prononce et le mot dit est surligné en jaune (« montrer »). Sans minutage : groupes de mots au rythme de la scène.
+export const Subtitles: React.FC<{text: string; frames: number; captions?: CaptionPage[]}> = ({text, frames, captions}) => {
   // frames = durée de la voix (ou de la scène sans voix)
-  const f = useCurrentFrame(); const {s} = useScale();
+  const f = useCurrentFrame(); const {s} = useScale(); const {fps} = useVideoConfig();
+  const box = (children: React.ReactNode) => (
+    <div style={{position: 'absolute', left: 60 * s, right: 60 * s, bottom: 260 * s, textAlign: 'center'}}>
+      <span style={{background: C.paper, color: C.bg, fontFamily: F.body, fontWeight: 800, fontSize: 52 * s,
+        lineHeight: 1.35, padding: `${6 * s}px ${18 * s}px`, boxDecorationBreak: 'clone', WebkitBoxDecorationBreak: 'clone'}}>{children}</span>
+    </div>
+  );
+  if (captions?.length) {
+    const t = f / fps;
+    // Page courante : la dernière commencée (elle reste affichée pendant les silences).
+    const page = [...captions].reverse().find((p) => p.start <= t) ?? captions[0];
+    return box(page.words.map((w, i) => {
+      const on = w.s <= t && t < (page.words[i + 1]?.s ?? w.e + 0.15);
+      return <React.Fragment key={i}>{i > 0 && ' '}<span style={{background: on ? C.gold : 'transparent', boxDecorationBreak: 'clone', WebkitBoxDecorationBreak: 'clone'}}>{w.t}</span></React.Fragment>;
+    }));
+  }
   const words = text.split(/\s+/);
   // Groupes de taille égale (≈5 mots) : jamais de mot orphelin en fin de phrase.
   const n = Math.max(1, Math.round(words.length / 5));
@@ -61,10 +78,5 @@ export const Subtitles: React.FC<{text: string; frames: number}> = ({text, frame
   for (let i = 0; i < n; i++) chunks.push(words.slice(Math.round((i * words.length) / n), Math.round(((i + 1) * words.length) / n)).join(' '));
   const per = (frames - 10) / chunks.length;
   const idx = Math.min(chunks.length - 1, Math.max(0, Math.floor(f / per)));
-  return (
-    <div style={{position: 'absolute', left: 60 * s, right: 60 * s, bottom: 260 * s, textAlign: 'center'}}>
-      <span style={{background: C.paper, color: C.bg, fontFamily: F.body, fontWeight: 800, fontSize: 52 * s,
-        lineHeight: 1.35, padding: `${6 * s}px ${18 * s}px`, boxDecorationBreak: 'clone', WebkitBoxDecorationBreak: 'clone'}}>{chunks[idx]}</span>
-    </div>
-  );
+  return box(chunks[idx]);
 };
