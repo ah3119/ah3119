@@ -1,0 +1,39 @@
+<div id="app" class="fc is-loading"{{team_attr}}>
+  <aside class="fc-side card">
+    <h2>{{t:team_title}}</h2>
+    <div class="fc-add">
+      <input type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="fc-suggest" placeholder="{{t:add_placeholder}}" aria-label="{{t:add_placeholder}}" autocomplete="off" spellcheck="false" enterkeyhint="done">
+      <ul class="fc-suggest" id="fc-suggest" role="listbox" hidden></ul>
+    </div>
+    <ul class="fc-people"></ul>
+    <div class="fc-actions"><button type="button" class="fc-btn" data-act="share">{{t:share}}</button></div>
+    <p class="fc-muted">{{t:privacy_note}}</p>
+  </aside>
+  <div class="fc-main">
+    <section class="card fc-summary" aria-live="polite"><p class="fc-muted">{{t:loading}}</p></section>
+    <section class="card">
+      <div class="fc-gridbar">
+        <h2>{{t:day_view}} · <span class="fc-date"></span></h2>
+        <div class="fc-nav">
+          <button type="button" class="fc-btn small" data-nav="-1" aria-label="{{t:prev_day}}"><span class="arrow">←</span></button>
+          <button type="button" class="fc-btn small" data-nav="today">{{t:today}}</button>
+          <button type="button" class="fc-btn small" data-nav="1" aria-label="{{t:next_day}}"><span class="arrow">→</span></button>
+        </div>
+      </div>
+      <div class="fc-grid"></div>
+      <ul class="fc-legend">
+        <li><i class="c-work"></i>{{t:legend_work}}</li>
+        <li><i class="c-early"></i>{{t:legend_edge}}</li>
+        <li><i class="c-sleep"></i>{{t:legend_sleep}}</li>
+        <li><i class="c-off"></i>{{t:legend_off}}</li>
+        <li><i class="q-perfect"></i>{{t:legend_team}}</li>
+      </ul>
+    </section>
+    <section class="card"><h2>{{t:selected_slot}}</h2><div class="fc-slot"></div></section>
+    <div class="two">
+      <section class="card"><h2>{{t:best_title}} <small>· {{t:best_sub}}</small></h2><div class="fc-best"></div></section>
+      <section class="card"><h2>{{t:rotation_title}}</h2><div class="fc-rotation"></div></section>
+    </div>
+    <section class="card"><h2>{{t:off_title}} <small>· {{t:off_sub}}</small></h2><div class="fc-off"></div></section>
+  </div>
+</div>

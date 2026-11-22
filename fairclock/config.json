@@ -1,0 +1,16 @@
+{
+  "site_name": "Fairclock",
+  "domain": "https://www.fairclock.app",
+  "contact_email": "hello@fairclock.app",
+  "editor_name": "TO COMPLETE — your full name or company name",
+  "editor_status": "TO COMPLETE — e.g. Entrepreneur individuel (micro-entreprise), SIRET 000 000 000 00000",
+  "editor_address": "TO COMPLETE — postal address",
+  "editor_phone": "TO COMPLETE — phone number",
+  "host_name": "TO COMPLETE — e.g. Cloudflare, Inc.",
+  "host_address": "TO COMPLETE — host postal address",
+  "host_phone": "TO COMPLETE — host phone number",
+  "adsense_client": "",
+  "google_site_verification": "",
+  "cloudflare_analytics_token": "",
+  "last_updated": "November 22, 2026"
+}

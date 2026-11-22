@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-data="/data/">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fairclock — fair meeting times across time zones, weekends &amp; holidays</title>
+<meta name="description" content="Find a meeting time that works for your whole team: time zones, Friday–Saturday or Saturday–Sunday weekends and public holidays in 200+ countries. Free, no sign-up.">
+<link rel="canonical" href="https://www.fairclock.app/">
+<link rel="alternate" hreflang="en" href="https://www.fairclock.app/">
+<link rel="alternate" hreflang="es" href="https://www.fairclock.app/es/">
+<link rel="alternate" hreflang="fr" href="https://www.fairclock.app/fr/">
+<link rel="alternate" hreflang="de" href="https://www.fairclock.app/de/">
+<link rel="alternate" hreflang="pt" href="https://www.fairclock.app/pt/">
+<link rel="alternate" hreflang="ar" href="https://www.fairclock.app/ar/">
+<link rel="alternate" hreflang="x-default" href="https://www.fairclock.app/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d1020" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Fairclock">
+<meta property="og:title" content="Fairclock — fair meeting times across time zones, weekends &amp; holidays">
+<meta property="og:description" content="Find a meeting time that works for your whole team: time zones, Friday–Saturday or Saturday–Sunday weekends and public holidays in 200+ countries. Free, no sign-up.">
+<meta property="og:url" content="https://www.fairclock.app/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/style.cf96f8a36b.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Fairclock", "url": "https://www.fairclock.app/", "description": "Find a meeting time that works for your whole team: time zones, Friday–Saturday or Saturday–Sunday weekends and public holidays in 200+ countries. Free, no sign-up.", "inLanguage": "en", "applicationCategory": "BusinessApplication", "operatingSystem": "Any (web browser)", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="#4338ca"/><path d="M16 16 16 7" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M16 16 22.5 19.5" stroke="#34d399" stroke-width="3" stroke-linecap="round"/><circle cx="16" cy="16" r="2.4" fill="#fff"/></svg>
+      <span>Fairclock</span>
+    </a>
+    <nav class="lang" aria-label="Language"><a href="/" hreflang="en" lang="en" aria-current="true">English</a><a href="/es/" hreflang="es" lang="es">Español</a><a href="/fr/" hreflang="fr" lang="fr">Français</a><a href="/de/" hreflang="de" lang="de">Deutsch</a><a href="/pt/" hreflang="pt" lang="pt">Português</a><a href="/ar/" hreflang="ar" lang="ar">العربية</a></nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+<section class="hero"><h1>Meeting times that are fair to everyone</h1><p>Add your teammates&#x27; cities. Fairclock shows when everyone is in working hours, and it also knows that Friday is the weekend in Riyadh and that Diwali is a holiday in Mumbai.</p><ul class="pills"><li>Time zones &amp; daylight saving</li><li>Fri–Sat and Sat–Sun weekends</li><li>Public holidays in 200+ countries</li><li>Fair rotation</li><li>No sign-up</li></ul></section>
+<div id="app" class="fc is-loading">
+  <aside class="fc-side card">
+    <h2>Your team</h2>
+    <div class="fc-add">
+      <input type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="fc-suggest" placeholder="Add a city: London, Mumbai, Riyadh…" aria-label="Add a city: London, Mumbai, Riyadh…" autocomplete="off" spellcheck="false" enterkeyhint="done">
+      <ul class="fc-suggest" id="fc-suggest" role="listbox" hidden></ul>
+    </div>
+    <ul class="fc-people"></ul>
+    <div class="fc-actions"><button type="button" class="fc-btn" data-act="share">Copy share link</button></div>
+    <p class="fc-muted">No account. Your team is saved in the link and in this browser only.</p>
+  </aside>
+  <div class="fc-main">
+    <section class="card fc-summary" aria-live="polite"><p class="fc-muted">Loading…</p></section>
+    <section class="card">
+      <div class="fc-gridbar">
+        <h2>Day view · <span class="fc-date"></span></h2>
+        <div class="fc-nav">
+          <button type="button" class="fc-btn small" data-nav="-1" aria-label="Previous day"><span class="arrow">←</span></button>
+          <button type="button" class="fc-btn small" data-nav="today">Today</button>
+          <button type="button" class="fc-btn small" data-nav="1" aria-label="Next day"><span class="arrow">→</span></button>
+        </div>
+      </div>
+      <div class="fc-grid"></div>
+      <ul class="fc-legend">
+        <li><i class="c-work"></i>Working hours</li>
+        <li><i class="c-early"></i>Before / after work</li>
+        <li><i class="c-sleep"></i>Night</li>
+        <li><i class="c-off"></i>Weekend or public holiday</li>
+        <li><i class="q-perfect"></i>Team fit</li>
+      </ul>
+    </section>
+    <section class="card"><h2>Selected time</h2><div class="fc-slot"></div></section>
+    <div class="two">
+      <section class="card"><h2>Best times <small>· next 14 days</small></h2><div class="fc-best"></div></section>
+      <section class="card"><h2>Recurring meeting</h2><div class="fc-rotation"></div></section>
+    </div>
+    <section class="card"><h2>Days off ahead <small>· public holidays, next 60 days</small></h2><div class="fc-off"></div></section>
+  </div>
+</div>
+
+<article class="prose"><h2>Why another time zone tool?</h2><p>Classic converters only answer “what time is it there?”. Real teams also have different weekends, public holidays, and colleagues who always end up taking the 7 a.m. or 10 p.m. call. Fairclock puts all of this in one view.</p><ul><li><strong>Weekends that differ by country.</strong> Saudi Arabia, Qatar, Kuwait and Egypt rest on Friday and Saturday, most countries on Saturday and Sunday, Iran on Friday only. Fairclock applies the right weekend to each person, and you can change it.</li><li><strong>Public holidays.</strong> National holidays for 2026–2028 in more than 200 countries appear in the grid and in the “Days off ahead” list.</li><li><strong>Fairness.</strong> When no time works for everyone, Fairclock proposes two alternating weekly slots, so the inconvenience is shared instead of always falling on the same people.</li><li><strong>Privacy by design.</strong> No account and no server: your team lives in the share link and in your browser.</li></ul><h2>How to use it</h2><ol><li>Type a city and pick it from the list. Your own city is added automatically.</li><li>Open “Hours &amp; weekend” on a card to adjust working hours or weekend days.</li><li>Click an hour in the grid, or one of the best times, to see everyone's local time. Copy the invite text or download a calendar file.</li><li>Copy the share link and send it to your team. They will see the same plan in their own language.</li></ol><h2>Frequently asked questions</h2><div class="faq"><details><summary>Does Fairclock handle daylight saving time?</summary><p>Yes. Times are calculated with the official time zone database built into your browser, so clock changes, which happen on different dates in North America, Europe and the southern hemisphere, are always taken into account.</p></details><details><summary>Where do the public holidays come from?</summary><p>From the open-source <em>holidays</em> library, which tracks official national calendars. Regional holidays (a single state or province) and company-specific days off are not included. Islamic holidays depend on the sighting of the moon and can move by a day.</p></details><details><summary>What does “fair” mean here?</summary><p>Each half hour gets a cost for each person: zero inside working hours, a little just before or after, a lot at night, on a weekend or on a public holiday. The best time is the one where the worst cost for any single person is lowest, then the total. For recurring meetings, Fairclock looks for two slots whose combined cost is spread as evenly as possible.</p></details><details><summary>Is it really free?</summary><p>Yes, free and without sign-up. The site is funded by advertising.</p></details></div><h2>Popular city pairs</h2><ul class="links"><li><a href="/meet/new-york-london/">New York ↔ London</a></li><li><a href="/meet/new-york-bangalore/">New York ↔ Bangalore</a></li><li><a href="/meet/san-francisco-bangalore/">San Francisco ↔ Bangalore</a></li><li><a href="/meet/london-bangalore/">London ↔ Bangalore</a></li><li><a href="/meet/london-dubai/">London ↔ Dubai</a></li><li><a href="/meet/new-york-paris/">New York ↔ Paris</a></li><li><a href="/meet/london-sydney/">London ↔ Sydney</a></li><li><a href="/meet/new-york-tokyo/">New York ↔ Tokyo</a></li><li><a href="/meet/san-francisco-berlin/">San Francisco ↔ Berlin</a></li><li><a href="/meet/dubai-mumbai/">Dubai ↔ Mumbai</a></li><li><a href="/meet/riyadh-london/">Riyadh ↔ London</a></li><li><a href="/meet/london-lagos/">London ↔ Lagos</a></li><li><a href="/meet/toronto-manila/">Toronto ↔ Manila</a></li><li><a href="/meet/new-york-manila/">New York ↔ Manila</a></li><li><a href="/meet/london-singapore/">London ↔ Singapore</a></li><li><a href="/meet/san-francisco-sydney/">San Francisco ↔ Sydney</a></li><li><a href="/meet/paris-montreal/">Paris ↔ Montréal</a></li><li><a href="/meet/paris-casablanca/">Paris ↔ Casablanca</a></li><li><a href="/meet/madrid-mexico-city/">Madrid ↔ Mexico City</a></li><li><a href="/meet/new-york-mexico-city/">New York ↔ Mexico City</a></li><li><a href="/meet/sao-paulo-lisbon/">São Paulo ↔ Lisbon</a></li><li><a href="/meet/berlin-bangalore/">Berlin ↔ Bangalore</a></li><li><a href="/meet/dubai-cairo/">Dubai ↔ Cairo</a></li></ul></article>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <nav aria-label="Footer"><a href="/">Home</a> <a href="/about/">About</a> <a href="/privacy/">Privacy</a> <a href="/legal/">Legal notice</a></nav>
+    <p>© 2026 Fairclock — Free, no sign-up. Your team stays in your browser.</p>
+  </div>
+</footer>
+<script id="i18n" type="application/json">{"label_placeholder": "Name (optional)", "settings": "Hours & weekend", "work_hours": "Working hours", "weekend": "Weekend", "make_reference": "Use as main clock", "reference": "Main clock", "remove": "Remove", "status_work": "Working hours", "status_early": "Before work", "status_late": "After work", "status_sleep": "Night", "status_weekend": "Weekend", "status_holiday": "Public holiday", "need_two": "Add at least two cities to compare schedules.", "summary": "Your team spans {zones} time zones, {spread} hours apart. On a normal weekday, everyone is in working hours at the same time for {overlap} h.", "different_weekends": "Heads-up: not everyone has the same weekend. Friday or Sunday may be a day off for part of the team.", "everyone": "Team fit", "q_perfect": "Perfect: everyone in working hours", "q_good": "Good: just outside hours for someone", "q_stretch": "Stretch: someone's personal time", "q_bad": "Avoid: night, weekend or holiday", "pick_slot": "Click an hour in the grid, or a best time, to see everyone's local time.", "length": "Length", "add_calendar": "Add to calendar (.ics)", "copy_invite": "Copy invite text", "no_slots": "No acceptable time in the next two weeks: someone would be up at night. Try widening working hours.", "rotation_none": "Good news: one weekly time works for everyone.", "rotation_single": "No perfect time exists. This is the least painful weekly slot:", "rotation_pair": "No time works for everyone. Alternate these two slots so the same people don't always take the hit:", "every_week": "Every week", "week_a": "Week A", "week_b": "Week B", "easy_for": "Easy for: {who}", "no_days_off": "No public holidays in the next 60 days.", "no_holiday_data": "No holiday data for: {list}.", "city_not_found": "No city found. Try the English name or a nearby big city.", "invite_head": "Meeting", "copied": "Copied ✓", "you": "You", "summary_none": "Your team spans {zones} time zones, {spread} hours apart. Working hours never fully overlap, so someone always has to stretch. Here are the fairest options.", "cities": {"New York City": "New York", "Bengaluru": "Bangalore"}}</script>
+<script src="/assets/app.0c01b9b742.js" defer></script>
+</body>
+</html>

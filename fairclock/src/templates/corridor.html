@@ -1,0 +1,38 @@
+<section class="hero">
+  <h1>{{c:h1}}</h1>
+  <p>{{c:diff_main}} {{c:best_sentence}}</p>
+</section>
+<ul class="facts">
+  <li><b>{{c:diff_short}} {{t:h}}</b><span>{{t:fact_diff}}</span></li>
+  <li><b>{{c:overlap_h}} {{t:h}}</b><span>{{t:fact_overlap}}</span></li>
+  <li><b>{{c:shared_days}}/7</b><span>{{t:fact_shared}}</span></li>
+</ul>
+{{c:app}}
+<article class="prose">
+  <h2>{{t:c_best_title}}</h2>
+  <p>{{c:overlap_sentence}} {{c:best_sentence}}</p>
+  <h2>{{t:c_diff_title}}</h2>
+  <p>{{c:diff_main}} {{c:dst_note}}</p>
+  <p>{{c:dst_a}} {{c:dst_b}}</p>
+  <table>
+    <thead><tr><th>{{c:flag_a}} {{c:a}}</th><th>{{c:flag_b}} {{c:b}}</th></tr></thead>
+    <tbody>{{c:conv_rows}}</tbody>
+  </table>
+  <h2>{{t:c_weekend_title}}</h2>
+  <p>{{c:weekend_note}} {{t:c_shared_prefix}} {{c:shared_list}}.</p>
+  <h2>{{t:c_holidays_title}} {{c:year}}</h2>
+  <p>{{c:clash_sentence}}</p>
+  <h3>{{c:flag_a}} {{c:country_a}}</h3>
+  <table>
+    <thead><tr><th>{{t:col_date}}</th><th>{{t:col_holiday}}</th><th>{{t:col_other_works}} ({{c:b}})</th></tr></thead>
+    <tbody>{{c:hol_a_rows}}</tbody>
+  </table>
+  <h3>{{c:flag_b}} {{c:country_b}}</h3>
+  <table>
+    <thead><tr><th>{{t:col_date}}</th><th>{{t:col_holiday}}</th><th>{{t:col_other_works}} ({{c:a}})</th></tr></thead>
+    <tbody>{{c:hol_b_rows}}</tbody>
+  </table>
+  <p class="fc-muted">{{t:c_disclaimer}}</p>
+  <h2>{{t:c_more}}</h2>
+  <ul class="links">{{c:others}}</ul>
+</article>
