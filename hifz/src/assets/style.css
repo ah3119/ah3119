@@ -198,3 +198,91 @@ form .hz-btn.primary { width: 100%; padding: 12px; font-size: 1rem; }
   #hz-print th, #hz-print td { border: 1px solid #999; padding: 3px 5px; text-align: start; vertical-align: top; }
   #hz-print tr { break-inside: avoid; }
 }
+
+/* ===== Sakina Hifz — parcours famille ===== */
+.hz { display: grid; gap: 16px; margin: 20px 0; max-width: 760px; }
+.hz.is-loading { opacity: .6; }
+.hz-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.hz-tabs:empty { display: none; }
+.hz-tab { font: inherit; font-weight: 700; border: 1.5px solid var(--line); background: var(--surface); color: var(--text); border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+.hz-tab.is-on { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); }
+.hz-tab-add { border-style: dashed; color: var(--muted); }
+.hz-today-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+.hz-today-head h2 { margin: 0; font-size: 1.25rem; }
+.hz-who { font-weight: 700; color: var(--gold); }
+.hz-block { border-radius: 14px; padding: 12px 14px; margin: 10px 0; border: 1px solid var(--line); border-inline-start-width: 6px; }
+.b-new { border-inline-start-color: var(--sabaq); background: color-mix(in srgb, var(--sabaq-bg) 55%, var(--surface)); }
+.b-recent { border-inline-start-color: var(--sabqi); background: color-mix(in srgb, var(--sabqi-bg) 55%, var(--surface)); }
+.b-old { border-inline-start-color: var(--manzil); background: color-mix(in srgb, var(--manzil-bg) 55%, var(--surface)); }
+.hz-block-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.b-new .hz-tag { background: var(--sabaq-bg); color: var(--sabaq); }
+.b-recent .hz-tag { background: var(--sabqi-bg); color: var(--sabqi); }
+.b-old .hz-tag { background: var(--manzil-bg); color: var(--manzil); }
+.hz-listen { font-weight: 700; font-size: .9rem; white-space: nowrap; }
+.hz-passage { font-size: 1.15rem; font-weight: 700; margin: 8px 0; }
+.hz-note { color: var(--muted); font-size: .9rem; margin: 0 0 6px; }
+.hz-btns { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.hz-btn { min-height: 44px; }
+.hz-btn.small { min-height: 36px; padding: 6px 12px; font-size: .88rem; }
+.hz-btn.big { padding: 14px 22px; font-size: 1.05rem; }
+.hz-btn.link { background: none; border-color: transparent; color: var(--brand); text-decoration: underline; padding-inline: 4px; }
+.hz-btn.danger { background: #b42318; border-color: #b42318; color: #fff; }
+.hz-chip { display: inline-block; padding: 6px 12px; border-radius: 999px; font-weight: 800; font-size: .9rem; }
+.hz-chip.ok { background: var(--sabaq-bg); color: var(--sabaq); }
+.hz-chip.again { background: var(--sabqi-bg); color: var(--sabqi); }
+.hz-banner { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; justify-content: space-between; background: var(--warn-bg); color: var(--warn-ink); border-radius: 12px; padding: 10px 14px; margin-bottom: 10px; }
+.hz-banner p { margin: 0; }
+.hz-rest { color: var(--muted); }
+.hz-congrats { background: var(--gold-soft); border-radius: 12px; padding: 10px 14px; font-weight: 700; }
+.hz-footer-acts { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; margin-top: 8px; }
+.hz-stats { list-style: none; padding: 0; margin: 12px 0 6px; display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); }
+.hz-stats li { background: var(--surface-2); border-radius: 12px; padding: 10px 12px; }
+.hz-stats b { display: block; font-size: 1.25rem; font-variant-numeric: tabular-nums; }
+.hz-stats span { color: var(--muted); font-size: .82rem; font-weight: 600; }
+.hz-tablewrap { overflow-x: auto; margin: 8px 0 12px; }
+.hz-sheet { border-collapse: collapse; width: 100%; font-size: .9rem; }
+.hz-sheet th, .hz-sheet td { border: 1px solid var(--line); padding: 6px 8px; text-align: start; vertical-align: top; }
+.hz-sheet thead th { background: var(--surface-2); font-size: .8rem; }
+.hz-sheet tbody th { white-space: nowrap; }
+.hz-sheet tr.is-today th { color: var(--brand); }
+.hz-sheet .hz-tick { width: 52px; text-align: center; font-weight: 800; }
+.hz-miles-list li.is-done .hz-dot { background: var(--gold); }
+.hz-miles-list li.is-part .hz-dot { background: linear-gradient(90deg, var(--gold) 50%, transparent 50%); }
+.hz-miles-list small { grid-column: 2; color: var(--muted); }
+.hz-confirm { display: inline-flex; flex-wrap: wrap; gap: 6px; align-items: center; font-weight: 700; }
+/* Formulaire de configuration */
+.hz-form fieldset { border: 0; padding: 0; margin: 0 0 18px; min-width: 0; }
+.hz-form legend { font-weight: 800; font-size: 1.05rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; padding: 0; }
+.hz-step { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--brand); color: var(--brand-ink); font-size: .9rem; }
+.hz-choice { display: grid; gap: 8px; margin: 6px 0 10px; }
+.hz-choice > label { display: flex; gap: 8px; align-items: center; cursor: pointer; }
+.hz-choice input[type="radio"] { width: 20px; height: 20px; accent-color: var(--brand); }
+.hz-pills { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; }
+.hz-pill { position: relative; }
+.hz-pill input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.hz-pill span { display: inline-block; padding: 7px 12px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--bg); font-weight: 600; font-size: .92rem; }
+.hz-pill input:checked + span { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); }
+.hz-pill input:focus-visible + span { outline: 3px solid var(--focus); }
+.hz-all span { border-style: dashed; }
+.hz-inline { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; margin: 6px 0; }
+.hz-inline span { font-weight: 700; font-size: .92rem; }
+.hz-inline input, .hz-inline select { font: inherit; color: var(--text); background: var(--bg); border: 1.5px solid var(--line); border-radius: 10px; padding: 8px 10px; min-width: 0; }
+.hz-inline input[type="number"] { width: 90px; }
+.hz-label { font-weight: 700; margin: 4px 0; }
+.hz-error { background: #fde2e1; color: #8a1c13; border-radius: 10px; padding: 8px 12px; font-weight: 700; }
+.hz-form details { margin: 8px 0; }
+.hz-form summary { cursor: pointer; color: var(--muted); font-weight: 700; }
+/* Impression : une fiche A4 */
+@media print {
+  @page { size: A4 portrait; margin: 12mm; }
+  #hz-print h1 { font-size: 16px; margin: 0 0 4px; }
+  #hz-print p { margin: 2px 0 8px; font-size: 11px; }
+  #hz-print .hz-sheet { font-size: 11px; }
+  #hz-print .hz-sheet th, #hz-print .hz-sheet td { border: 1px solid #777; padding: 6px; height: 36px; }
+  #hz-print .hz-sign { margin-top: 14px; }
+  #hz-print .hz-small { color: #555; font-size: 9px; }
+}
+/* La grille ne doit jamais s'élargir à cause du tableau de la semaine */
+.hz { grid-template-columns: minmax(0, 1fr); }
+.hz > *, .hz-main > * { min-width: 0; }
+.hz-main { display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr); }

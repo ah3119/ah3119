@@ -1,0 +1,13 @@
+<div id="hz" class="hz is-loading" data-quran="{{quran_url}}" data-listen="{{listen}}"{{preview_attr}}>
+  <div class="hz-import card" hidden></div>
+  <nav class="hz-tabs" aria-label="{{t:children_nav}}"></nav>
+  <section class="hz-setup card" hidden><p>{{t:loading}}</p></section>
+  <div class="hz-main" hidden>
+    <section class="hz-today card" aria-live="polite"></section>
+    <section class="card"><h2>{{t:progress_title}}</h2><div class="hz-progress"></div></section>
+    <section class="card"><h2>{{t:week_title}}</h2><div class="hz-week"></div></section>
+    <section class="card"><h2>{{t:miles_title}}</h2><div class="hz-miles"></div></section>
+    <section class="card"><h2>{{t:tools_title}}</h2><div class="hz-tools"></div></section>
+  </div>
+</div>
+<div id="hz-print"></div>

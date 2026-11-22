@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Hifzly — static site generator (Python 3.9+, no dependency).
+"""Sakina Hifz — static site generator (Python 3.9+, no dependency).
 
     python3 build.py              → dist/ (full multilingual site)
     python3 build.py --standalone → dist-standalone/index.html (one self-contained page, for previews)
@@ -17,13 +17,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 SRC, DIST = ROOT / "src", ROOT / "dist"
-LANGS = ["en", "ar", "fr", "ur", "id", "tr"]   # first = default, served at /
 TOKEN = re.compile(r"\{\{(t:|c:)?(\w+)\}\}")
 META = re.compile(r"\A<!--meta\s+(\{.*?\})\s*-->\s*", re.S)
 POPULAR = [1, 18, 36, 55, 56, 67, 32, 73, 76, 78, 87, 93, 94, 97, 99, 100, 101, 102, 103, 105, 108, 109, 110, 112, 113, 114, 19, 12, 2, 62]
 
 cfg = json.loads((ROOT / "config.json").read_text(encoding="utf-8"))
 DOMAIN = cfg["domain"].rstrip("/")
+# Langues publiées (la première est servie à la racine). Pilote : ["fr", "en"].
+LANGS = cfg.get("languages") or ["fr", "en"]
+SURAH_PAGES = bool(cfg.get("surah_pages"))
 I18N = {l: json.loads((SRC / "i18n" / f"{l}.json").read_text(encoding="utf-8")) for l in LANGS}
 QURAN = json.loads((SRC / "data" / "quran.json").read_text(encoding="utf-8"))
 
@@ -132,7 +134,7 @@ def page_shell(lang, title, description, path, content, alternates, robots="inde
     ui = I18N[lang]["ui"]
     legal_lang = lang if (SRC / "pages" / lang).exists() else LANGS[0]
     prefix = "" if legal_lang == LANGS[0] else f"/{legal_lang}"
-    footer = [f'<a href="{home_url(lang)}">{esc(ui["nav_home"])}</a>', f'<a href="/surah/">{esc(ui["nav_surahs"])}</a>',
+    footer = [f'<a href="{home_url(lang)}">{esc(ui["nav_home"])}</a>'] + ([f'<a href="/surah/">{esc(ui["nav_surahs"])}</a>'] if SURAH_PAGES else []) + [
               f'<a href="{prefix}/about/">{esc(ui["nav_about"])}</a>', f'<a href="{prefix}/privacy/">{esc(ui["nav_privacy"])}</a>',
               f'<a href="{prefix}/legal/">{esc(ui["nav_legal"])}</a>']
     if standalone:
@@ -172,10 +174,12 @@ def write(path, text):
 
 def home_content(lang, standalone=False):
     h = I18N[lang]["home"]
-    planner = render(PLANNER, {"quran_url": "" if standalone else ASSETS["quran"], "preset_attr": ""}, lang, "planner.html")
-    body = h["content"].replace("{{duration_table}}", duration_table(lang))
+    listen = esc(json.dumps(cfg.get("listen") or {}))
+    planner = render(PLANNER, {"quran_url": "" if standalone else ASSETS["quran"], "listen": listen,
+                               "preview_attr": ' data-preview="1"' if standalone else ""}, lang, "app.html")
+    body = h["content"]
     links = ""
-    if lang == "en" and not standalone:
+    if SURAH_PAGES and lang == "en" and not standalone:
         links = "<h2>" + esc(h["popular_title"]) + '</h2><ul class="links">' + "".join(
             f'<li><a href="/surah/{slugify(QURAN["surahs"][n - 1]["tr_en"])}/">Surah {esc(QURAN["surahs"][n - 1]["tr_en"])}</a></li>' for n in POPULAR) + "</ul>"
     return (f'<section class="hero"><p class="bism" lang="ar">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p><h1>{esc(h["h1"])}</h1><p>{esc(h["lead"])}</p></section>\n'
@@ -185,7 +189,7 @@ def home_content(lang, standalone=False):
 def main():
     global LAYOUT, PLANNER, ASSETS, HEAD_EXTRA
     LAYOUT = (SRC / "templates" / "layout.html").read_text(encoding="utf-8")
-    PLANNER = (SRC / "templates" / "planner.html").read_text(encoding="utf-8")
+    PLANNER = (SRC / "templates" / "app.html").read_text(encoding="utf-8")
     HEAD_EXTRA = ""
     if cfg.get("google_site_verification"):
         HEAD_EXTRA += f'<meta name="google-site-verification" content="{esc(cfg["google_site_verification"])}">\n'
@@ -198,17 +202,18 @@ def main():
     if "--standalone" in sys.argv:
         out = ROOT / "dist-standalone"
         out.mkdir(exist_ok=True)
-        h = I18N["en"]["home"]
+        L0 = LANGS[0]
+        h = I18N[L0]["home"]
         ASSETS = {}
-        page = page_shell("en", cfg["site_name"] + " Quran Planner", h["description"], "/", home_content("en", standalone=True), None, with_app=True, standalone=True)
+        page = page_shell(L0, cfg["site_name"], h["description"], "/", home_content(L0, standalone=True), None, with_app=True, standalone=True)
         page = page.replace('href="/"', 'href="#"')
         (out / "index.html").write_text(page, encoding="utf-8")
         # Artifact preview: the host adds doctype/html/head/body itself
         head = re.search(r"<head>(.*?)</head>", page, re.S).group(1)
         body = re.search(r"<body>(.*?)</body>", page, re.S).group(1)
         head = re.sub(r'<meta charset="utf-8">\s*<meta name="viewport"[^>]*>\s*', "", head)
-        boot = "<script>document.documentElement.lang='en';document.documentElement.dir='ltr';document.documentElement.dataset.site=" + json.dumps(cfg["site_name"]) + ";</script>"
-        body = body.replace('id="planner" class="hz is-loading"', 'id="planner" class="hz is-loading" data-preview="1"')
+        boot = ("<script>document.documentElement.lang=" + json.dumps(L0) + ";document.documentElement.dir=" + json.dumps(I18N[L0]["meta"]["dir"])
+                + ";document.documentElement.dataset.site=" + json.dumps(cfg["site_name"]) + ";</script>")
         (out / "preview.html").write_text(head.strip() + "\n" + boot + "\n" + body.strip() + "\n", encoding="utf-8")
         print(f"✅ standalone page → dist-standalone/index.html ({len(page) // 1024} KB)")
         return
@@ -230,9 +235,9 @@ def main():
         write(home_url(lang), page_shell(lang, h["title"], h["description"], home_url(lang), home_content(lang), home_alts, jsonld=jsonld, with_app=True))
         sitemap.append(home_url(lang))
 
-    # Surah plans (English)
+    # Surah plans (English) — en pause tant que SURAH_PAGES est faux
     tpl = (SRC / "templates" / "surah.html").read_text(encoding="utf-8")
-    for n in POPULAR:
+    for n in (POPULAR if SURAH_PAGES else []):
         c = surah_values(n)
         c["planner"] = render(PLANNER, {"quran_url": ASSETS["quran"], "preset_attr": f" data-plan=\"{c['preset']}\""}, "en", "planner.html")
         c["others"] = "".join(f'<li><a href="/surah/{slugify(QURAN["surahs"][o - 1]["tr_en"])}/">Surah {esc(QURAN["surahs"][o - 1]["tr_en"])}</a></li>' for o in POPULAR if o != n)
@@ -246,21 +251,28 @@ def main():
 
     # Index of all surahs
     rows = []
-    for i, s in enumerate(QURAN["surahs"], start=1):
+    if not SURAH_PAGES:
+        QURAN_LIST = []
+    else:
+        QURAN_LIST = QURAN["surahs"]
+    for i, s in enumerate(QURAN_LIST, start=1):
         slug = slugify(s["tr_en"])
         link = f'/surah/{slug}/' if i in POPULAR else "/#p=" + esc(json.dumps({"scope": "surah", "sfrom": i, "sto": i, "unit": "ayah", "order": "start"}).replace(" ", ""))
         rows.append(f'<tr><td>{i}</td><td><a href="{link}">{esc(s["tr_en"])}</a></td><td lang="ar" dir="rtl">{esc(s["ar"])}</td><td>{s["n"]}</td><td>{s["p1"]}</td><td>{juz_of_page(s["p1"])}</td></tr>')
     idx = (f'<section class="hero"><h1>Memorization plans for all 114 surahs</h1><p>Pick a surah to get a ready-made, day-by-day memorization plan with revision built in.</p></section>'
            f'<article class="prose"><table><thead><tr><th>#</th><th>Surah</th><th>Arabic</th><th>Ayahs</th><th>Page</th><th>Juz</th></tr></thead><tbody>{"".join(rows)}</tbody></table></article>')
-    write("/surah/", page_shell("en", "Quran memorization plans for every surah — " + cfg["site_name"],
-                                "List of the 114 surahs with ayah count, page and juz, each with a free personal memorization plan.", "/surah/", idx, {"en": "/surah/"}))
-    sitemap.append("/surah/")
+    if SURAH_PAGES:
+        write("/surah/", page_shell("en", "Quran memorization plans for every surah — " + cfg["site_name"],
+                                    "List of the 114 surahs with ayah count, page and juz, each with a free personal memorization plan.", "/surah/", idx, {"en": "/surah/"}))
+        sitemap.append("/surah/")
 
     # Static pages
     todo = [k for k, v in cfg.items() if isinstance(v, str) and "TO COMPLETE" in v]
     cfg_vals = {k: (f'<mark class="todo">{esc(v)}</mark>' if "TO COMPLETE" in v else esc(v)) for k, v in cfg.items() if isinstance(v, str)}
     for lang_dir in sorted((SRC / "pages").iterdir()):
         lang = lang_dir.name
+        if lang not in LANGS:
+            continue
         for f in sorted(lang_dir.glob("*.html")):
             text = f.read_text(encoding="utf-8")
             mm = META.match(text)

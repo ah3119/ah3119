@@ -1,7 +1,7 @@
 {
-  "site_name": "Hifzly",
-  "domain": "https://www.hifzly.com",
-  "contact_email": "salam@hifzly.com",
+  "site_name": "Sakina Hifz",
+  "domain": "https://www.sakinahifz.com",
+  "contact_email": "contact@sakinahifz.com",
   "sister_name": "",
   "sister_url": "",
   "support_url": "",
@@ -15,5 +15,12 @@
   "adsense_client": "",
   "google_site_verification": "",
   "cloudflare_analytics_token": "",
-  "last_updated": "November 22, 2026"
+  "last_updated": "22 novembre 2026",
+  "languages": [
+    "fr",
+    "en"
+  ],
+  "surah_pages": false,
+  "listen": {},
+  "_listen_aide": "Pour relier une sourate à une récitation Sakina Kids : \"114\": \"https://www.youtube.com/watch?v=...\""
 }

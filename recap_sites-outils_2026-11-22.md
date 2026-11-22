@@ -1,5 +1,14 @@
 # Recap : sites d'outils gratuits financés par la pub (22/11/2026)
 
+> **Mise à jour (fin de journée) : version pilote « Sakina Hifz »**
+> - Revue de ChatGPT confrontée au code : tous les bugs moteur ont été reproduits, plus un bug plus grave sur les pages sourates, corrigé.
+> - Concurrence : HifzMate et HifzPath existent ; mon affirmation « aucun outil » était fausse. Nom « Hifzly » abandonné.
+> - Moteur reconstruit : il suit les versets **réellement récités**. Boutons Récité / À revoir / Reporter, révision continue, date cible exacte, plusieurs enfants, fiche de la semaine A4, rappel d'agenda, lien de sauvegarde sans prénom.
+> - Français (racine) + anglais. **18 scénarios de validation réussis.**
+> - Pilote proposé : 10 familles et 2 enseignants, **du 7 au 20 décembre 2026**. Tout est prêt dans `hifz/pilote/` (workflow, messages, questionnaires, suivi).
+> - Choix faits **par défaut**, à confirmer par Alaa : nom « Sakina Hifz », pilote en français, écoute via Quran.com tant que les liens de récitations Sakina ne sont pas fournis.
+> - Coût : ≈ 10-15 €/an (domaine) ; temps d'Alaa ≈ 2 h de mise en ligne, 2 h de recrutement, puis ≈ 15 min/jour pendant le pilote.
+
 > **Mise à jour du 22/11 (soir) : 3e projet, Hifzly.** Alaa a jugé les deux premiers projets décevants et a demandé « une idée originale, et fais tout ».
 > - **Hifzly** (dossier `hifz/`) : planificateur de mémorisation du Coran (sabaq / sabqi / manzil), anglais d'abord, 6 langues (EN, AR, FR, UR, ID, TR), 43 pages.
 > - ✅ Aucun outil trouvé qui génère un planning complet sabaq/sabqi/manzil à partir d'un objectif (recherche web non exhaustive). Les utilisateurs de Quran.com réclament cette fonction.
