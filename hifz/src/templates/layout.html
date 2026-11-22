@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="{{lang}}" dir="{{dir}}" data-site="{{site_name}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<link rel="canonical" href="{{canonical}}">
+{{hreflang}}
+<meta name="robots" content="{{robots}}">
+<meta name="theme-color" content="#f8f5ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c1412" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{site_name}}">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:url" content="{{canonical}}">
+<meta property="og:locale" content="{{og_locale}}">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="{{favicon}}" type="image/svg+xml">
+{{css_tag}}
+<script type="application/ld+json">{{jsonld}}</script>
+{{head_extra}}
+</head>
+<body>
+<a class="skip" href="#main">{{t:skip}}</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="{{home_url}}">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0b5d4b"/><path d="M8 10.5c2.6-.9 5.3-.6 8 1v12c-2.7-1.6-5.4-1.9-8-1z" fill="#f6ead0"/><path d="M24 10.5c-2.6-.9-5.3-.6-8 1v12c2.7-1.6 5.4-1.9 8-1z" fill="#fff"/><circle cx="23" cy="7" r="2.2" fill="#e2b85c"/></svg>
+      <span>{{site_name}}</span>
+    </a>
+    <nav class="lang" aria-label="{{t:language}}">{{lang_links}}</nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+{{content}}
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <nav aria-label="{{t:footer}}">{{footer_links}}</nav>
+    <p>© {{year}} {{site_name}} — {{t:footer_note}}</p>
+  </div>
+</footer>
+{{scripts}}
+</body>
+</html>

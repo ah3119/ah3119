@@ -1,5 +1,13 @@
 # Recap : sites d'outils gratuits financés par la pub (22/11/2026)
 
+> **Mise à jour du 22/11 (soir) : 3e projet, Hifzly.** Alaa a jugé les deux premiers projets décevants et a demandé « une idée originale, et fais tout ».
+> - **Hifzly** (dossier `hifz/`) : planificateur de mémorisation du Coran (sabaq / sabqi / manzil), anglais d'abord, 6 langues (EN, AR, FR, UR, ID, TR), 43 pages.
+> - ✅ Aucun outil trouvé qui génère un planning complet sabaq/sabqi/manzil à partir d'un objectif (recherche web non exhaustive). Les utilisateurs de Quran.com réclament cette fonction.
+> - Aperçu privé en ligne : https://claude.ai/artifact/79K9MCZ99eTHYjLTpMs5Er
+> - Lancement : `hifz/LANCEMENT.md`. ⚠️ Fenêtre clé : être en ligne avant mi-janvier 2027 (Ramadan estimé vers le 8 février 2027).
+> - Coût de démarrage : identique, ≈ 10-15 €/an de domaine et hébergement gratuit.
+> - Concept proposé par Claude, **à valider par Alaa** ; le nom « Hifzly » n'est pas vérifié (domaine et marque).
+
 ## 1. Contexte
 Alaa veut multiplier ses sources de revenus après avoir vu une vidéo YouTube sponsorisée par Hostinger. Le modèle présenté : des outils web gratuits, du trafic venu de Google, de la publicité AdSense.
 
