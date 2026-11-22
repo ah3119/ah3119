@@ -1,0 +1,59 @@
+<!--meta {"path": "/mots-finissant-par/", "group": "tools", "order": 4, "tool": true, "priority": 0.8,
+ "nav": "Finit / commence par", "card": "Mots qui finissent par, commencent par ou contiennent des lettres. Pratique pour les rimes.",
+ "h1": "Mots qui finissent par, commencent par ou contiennent…",
+ "title": "Mots finissant par… ou commençant par… — recherche par terminaison",
+ "description": "Trouvez les mots français qui finissent par, commencent par ou contiennent les lettres de votre choix. Idéal pour les rimes, la poésie, le rap et les jeux de lettres."} -->
+<section class="hero">
+  <h1>Mots qui finissent par, commencent par ou contiennent…</h1>
+  <p>Remplissez un ou plusieurs champs : l’outil liste tous les mots correspondants, classés par longueur. Parfait pour chercher des rimes, un préfixe ou une suite de lettres.</p>
+</section>
+
+<div class="tool">
+  <form data-tool="affixes" autocomplete="off" role="search">
+    <div class="grid">
+      <label class="field"><span>Commence par</span><input type="text" name="start" placeholder="ex. : anti" spellcheck="false"></label>
+      <label class="field"><span>Contient</span><input type="text" name="contains" placeholder="ex. : zz" spellcheck="false"></label>
+      <label class="field"><span>Finit par</span><input type="text" name="end" placeholder="ex. : ette" spellcheck="false"></label>
+    </div>
+    <div class="grid">
+      <label class="field"><span>Longueur minimale</span>
+        <select name="min"><option value="">Toutes</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>10</option><option>12</option></select></label>
+      <label class="field"><span>Longueur maximale</span>
+        <select name="max"><option value="">Toutes</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>10</option><option>12</option></select></label>
+    </div>
+    <div class="btn-row"><button class="btn btn-primary" type="submit">Chercher</button><button class="btn reset" type="button">Tout effacer</button></div>
+  </form>
+  <div class="results-bar"><p class="status" aria-live="polite"></p><button class="btn copy-results" type="button" hidden>Copier la liste</button></div>
+  <div class="results"></div>
+  <p class="legend">Touchez un mot pour voir sa définition. <span class="w b0">mot courant</span> <span class="w b4">mot rare</span></p>
+</div>
+
+<article class="prose">
+  <h2>Trouver des rimes avec la terminaison</h2>
+  <p>Pour trouver une rime, tapez la fin du mot dans « Finit par ». Gardez en tête que l’outil compare <strong>l’orthographe</strong>, pas la prononciation : « -ette » trouvera « miette » et « chouette », mais pas « tête », qui rime pourtant à l’oreille. Pensez donc à tester plusieurs graphies d’un même son (« -é », « -er », « -ez », « -ée »).</p>
+  <ul class="examples">
+    <li><a href="/mots-finissant-par/?end=ette&amp;max=6" data-example>Finit par -ETTE (6 lettres max.)</a></li>
+    <li><a href="/mots-finissant-par/?end=oir&amp;max=7" data-example>Finit par -OIR</a></li>
+    <li><a href="/mots-finissant-par/?start=anti&amp;min=12" data-example>Commence par ANTI-</a></li>
+    <li><a href="/mots-finissant-par/?contains=zz" data-example>Contient ZZ</a></li>
+    <li><a href="/mots-finissant-par/?start=k&amp;max=5" data-example>Commence par K (5 lettres max.)</a></li>
+  </ul>
+
+  <h2>Quelques usages</h2>
+  <ul>
+    <li><strong>Poésie, chanson, rap</strong> : trouver une rime riche, une allitération, ou un mot d’une longueur donnée pour respecter le rythme.</li>
+    <li><strong>Jeux de lettres</strong> : vérifier qu’un mot finissant par une lettre rare (X, Z, W) existe bien.</li>
+    <li><strong>Apprentissage</strong> : travailler une famille de mots (préfixe « re- », suffixe « -ment ») avec des élèves.</li>
+  </ul>
+
+  <h2>Questions fréquentes</h2>
+  <div class="faq">
+    <details><summary>Puis-je combiner plusieurs critères ?</summary>
+      <p>Oui. Par exemple « Commence par : re » et « Finit par : er » affiche tous les verbes en re-…-er. Ajoutez une longueur pour réduire la liste.</p></details>
+    <details><summary>Les verbes conjugués sont-ils inclus ?</summary>
+      <p>Oui, toutes les formes conjuguées et les pluriels sont présents. Les plus courantes apparaissent en premier dans chaque groupe.</p></details>
+  </div>
+
+  <h2>Nos autres outils</h2>
+  {{tool_cards}}
+</article>

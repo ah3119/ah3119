@@ -1,0 +1,88 @@
+<!--meta {"path": "/", "group": "tools", "order": 1, "tool": true, "priority": 1.0,
+ "nav": "Mots avec des lettres", "card": "Tous les mots qu'on peut former avec vos lettres, jokers compris.",
+ "h1": "Trouver des mots avec des lettres",
+ "title": "Trouver des mots avec des lettres — solveur gratuit (jokers, filtres)",
+ "description": "Tapez vos lettres : l'outil affiche tous les mots français que vous pouvez former, classés par longueur. Jokers, filtres, 330 000 mots, gratuit et sans inscription."} -->
+<section class="hero">
+  <h1>Trouver des mots avec des lettres</h1>
+  <p>Tapez vos lettres en vrac : l’outil affiche instantanément tous les mots français qu’on peut former, du plus long au plus court. Idéal pour les jeux de lettres, les mots croisés ou « le mot le plus long ».</p>
+</section>
+
+<div class="tool">
+  <form data-tool="subAnagrams" autocomplete="off" role="search">
+    <label class="label" for="letters">Vos lettres</label>
+    <div class="big-input">
+      <input id="letters" type="text" name="letters" placeholder="ex. : ORANGES ou PLAGE??" maxlength="20" autocapitalize="characters" spellcheck="false" enterkeyhint="search" aria-describedby="h-letters">
+      <button class="btn btn-primary" type="submit">Chercher</button>
+    </div>
+    <small class="hint" id="h-letters">Jusqu’à 20 lettres. Un <kbd>?</kbd> = une lettre joker (3 au maximum). Les accents sont ignorés : tapez E pour É, È, Ê…</small>
+    <details class="filters">
+      <summary>Filtres (commence par, finit par, longueur…)</summary>
+      <div class="grid">
+        <label class="field"><span>Commence par</span><input type="text" name="start" placeholder="ex. : re" spellcheck="false"></label>
+        <label class="field"><span>Se termine par</span><input type="text" name="end" placeholder="ex. : er" spellcheck="false"></label>
+        <label class="field"><span>Contient</span><input type="text" name="contains" placeholder="ex. : ch" spellcheck="false"></label>
+        <label class="field"><span>Longueur minimale</span>
+          <select name="min"><option value="">Toutes</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select>
+        </label>
+      </div>
+      <button class="btn reset" type="button">Tout effacer</button>
+    </details>
+  </form>
+  <div class="results-bar"><p class="status" aria-live="polite"></p><button class="btn copy-results" type="button" hidden>Copier la liste</button></div>
+  <div class="results"></div>
+  <p class="legend">Touchez un mot pour voir sa définition. <span class="w b0">mot courant</span> <span class="w b4">mot rare</span></p>
+</div>
+
+<article class="prose">
+  <h2>Comment ça marche ?</h2>
+  <ol>
+    <li><strong>Tapez vos lettres</strong> dans n’importe quel ordre, par exemple celles de votre chevalet.</li>
+    <li><strong>Ajoutez des jokers</strong> si besoin : chaque <kbd>?</kbd> remplace une lettre inconnue.</li>
+    <li><strong>Lisez les résultats</strong>, regroupés par longueur. Les mots les plus courants apparaissent en premier dans chaque groupe.</li>
+  </ol>
+  <p>Chaque lettre n’est utilisée qu’autant de fois que vous l’avez tapée : avec <strong>ORANGES</strong>, vous obtiendrez « organes » ou « songera », mais pas « orangers » (il manquerait un R).</p>
+
+  <h2>Exemples de recherches</h2>
+  <ul class="examples">
+    <li><a href="/?letters=oranges" data-example>ORANGES</a></li>
+    <li><a href="/?letters=esarint" data-example>ESARINT</a></li>
+    <li><a href="/?letters=chapeau" data-example>CHAPEAU</a></li>
+    <li><a href="/?letters=plage%3F%3F" data-example>PLAGE + 2 jokers</a></li>
+    <li><a href="/?letters=ecrivain&amp;end=er" data-example>ÉCRIVAIN, finissant par -ER</a></li>
+    <li><a href="/?letters=vacances&amp;min=5" data-example>VACANCES, 5 lettres et plus</a></li>
+  </ul>
+
+  <h2>À quoi sert un solveur de lettres ?</h2>
+  <ul>
+    <li><strong>Jeux de lettres</strong> (sur plateau ou sur mobile) : trouvez les mots jouables avec votre tirage et repérez les plus longs.</li>
+    <li><strong>« Le mot le plus long »</strong> : entraînez-vous avec 9 ou 10 lettres tirées au hasard et comparez avec la meilleure réponse.</li>
+    <li><strong>Mots croisés et mots fléchés</strong> : quand vous connaissez les lettres mais pas leur ordre. Si vous connaissez leur position, utilisez plutôt le <a href="/solveur-mots-croises/">solveur de mots croisés</a>.</li>
+    <li><strong>Enseignement et orthophonie</strong> : exercices de vocabulaire, jeux d’orthographe, ateliers d’écriture.</li>
+  </ul>
+
+  <h2>Astuces pour trouver plus de mots</h2>
+  <ul>
+    <li><strong>Pensez aux terminaisons</strong> : -ER, -ES, -ENT, -AIS, -ONS, -EZ transforment vite un radical en verbe conjugué ou en pluriel.</li>
+    <li><strong>Cherchez les préfixes</strong> : RE-, DÉ-, IN-, EN- permettent souvent d’allonger un mot déjà trouvé.</li>
+    <li><strong>Les lettres les plus fréquentes</strong> de notre dictionnaire sont E, S, I, A, R, N et T. Avec ces sept lettres, l’outil trouve 18 mots de 7 lettres, dont « entrais », « sentira », « transie » et « tsarine ».</li>
+    <li><strong>Séparez les lettres rares</strong> (K, W, X, Y, Z) : cherchez d’abord les mots qui les contiennent grâce au filtre « Contient ».</li>
+  </ul>
+
+  <h2>Questions fréquentes</h2>
+  <div class="faq">
+    <details><summary>Ce dictionnaire est-il celui des compétitions de Scrabble ?</summary>
+      <p>Non. Nous utilisons une liste libre d’environ 330 000 mots français (pluriels et verbes conjugués compris). Elle est très proche des dictionnaires usuels mais n’est pas la liste officielle utilisée en compétition (l’ODS). Pour une partie homologuée, vérifiez toujours un mot douteux dans l’ouvrage officiel.</p></details>
+    <details><summary>Comment fonctionnent les jokers ?</summary>
+      <p>Chaque point d’interrogation <kbd>?</kbd> remplace n’importe quelle lettre. Vous pouvez en mettre jusqu’à trois. Au-delà, les résultats deviennent trop nombreux pour être utiles.</p></details>
+    <details><summary>Faut-il taper les accents ?</summary>
+      <p>Non. Les accents et la cédille sont ignorés pendant la recherche, comme dans la plupart des jeux de lettres. Les résultats, eux, sont affichés avec leur orthographe exacte.</p></details>
+    <details><summary>Pourquoi certains mots sont-ils en gris ?</summary>
+      <p>Ce sont des mots rares ou peu utilisés à l’écrit (termes techniques, formes verbales littéraires comme le passé simple ou l’imparfait du subjonctif). Ils restent valables, mais vous les rencontrerez moins souvent.</p></details>
+    <details><summary>Mes lettres sont-elles envoyées sur un serveur ?</summary>
+      <p>Non. Le dictionnaire est chargé une seule fois dans votre navigateur et toutes les recherches se font sur votre appareil. Rien de ce que vous tapez n’est transmis ni enregistré.</p></details>
+  </div>
+
+  <h2>Nos autres outils</h2>
+  {{tool_cards}}
+</article>

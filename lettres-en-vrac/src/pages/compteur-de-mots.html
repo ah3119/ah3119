@@ -1,0 +1,75 @@
+<!--meta {"path": "/compteur-de-mots/", "group": "tools", "order": 5, "tool": true, "priority": 0.8,
+ "nav": "Compteur de mots", "card": "Mots, caractères, phrases, temps de lecture et mots les plus répétés.",
+ "h1": "Compteur de mots et de caractères",
+ "title": "Compteur de mots et de caractères en ligne — gratuit, avec et sans espaces",
+ "description": "Collez votre texte : nombre de mots, de caractères (avec et sans espaces), de phrases et de paragraphes, temps de lecture et mots les plus répétés. Rien n'est envoyé."} -->
+<section class="hero">
+  <h1>Compteur de mots et de caractères</h1>
+  <p>Collez ou tapez votre texte : les statistiques se mettent à jour en direct. Le texte reste sur votre appareil, rien n’est envoyé ni enregistré.</p>
+</section>
+
+<div class="tool" data-widget="counter">
+  <label class="label" for="texte">Votre texte</label>
+  <textarea id="texte" placeholder="Collez votre texte ici…" spellcheck="true"></textarea>
+  <div class="btn-row"><button class="btn clear" type="button">Effacer</button></div>
+  <div class="stats" aria-live="polite">
+    <div class="stat"><b data-stat="words">0</b><span>mots</span></div>
+    <div class="stat"><b data-stat="chars">0</b><span>caractères (espaces compris)</span></div>
+    <div class="stat"><b data-stat="nospace">0</b><span>caractères sans espaces</span></div>
+    <div class="stat"><b data-stat="sentences">0</b><span>phrases</span></div>
+    <div class="stat"><b data-stat="paragraphs">0</b><span>paragraphes</span></div>
+    <div class="stat"><b data-stat="read">0 s</b><span>temps de lecture</span></div>
+    <div class="stat"><b data-stat="speak">0 s</b><span>temps de parole</span></div>
+  </div>
+  <div class="limits">
+    <span>SMS : <b data-limit="160"></b></span>
+    <span>Post X (Twitter) : <b data-limit="280"></b></span>
+    <span>Bio Instagram : <b data-limit="150"></b></span>
+    <span>Meta description : <b data-limit="155"></b></span>
+  </div>
+  <h2 class="label" style="margin-top:16px">Mots les plus répétés</h2>
+  <ol class="top-words"></ol>
+</div>
+
+<article class="prose">
+  <h2>Comment sont comptés les mots et les caractères ?</h2>
+  <ul>
+    <li><strong>Mots</strong> : nous comptons les suites de caractères séparées par des espaces ou des retours à la ligne, comme la plupart des traitements de texte. « L’homme » et « porte-monnaie » comptent donc pour un mot chacun.</li>
+    <li><strong>Caractères</strong> : chaque lettre, chiffre, signe de ponctuation et espace compte pour un. La version « sans espaces » retire espaces, tabulations et retours à la ligne.</li>
+    <li><strong>Phrases</strong> : découpage automatique sur la ponctuation finale (. ! ? …).</li>
+    <li><strong>Temps de lecture</strong> : estimation sur une base de 230 mots par minute en lecture silencieuse. <strong>Temps de parole</strong> : base de 140 mots par minute, utile pour préparer un discours ou une vidéo. Ce sont des moyennes : votre rythme peut être différent.</li>
+  </ul>
+
+  <h2>Les limites de caractères à connaître</h2>
+  <table>
+    <thead><tr><th>Usage</th><th>Limite</th><th>Remarque</th></tr></thead>
+    <tbody>
+      <tr><td>SMS</td><td>160 caractères</td><td>Réduit à 70 si le message contient des caractères spéciaux (certains accents, emojis). Au-delà, le message est envoyé en plusieurs parties.</td></tr>
+      <tr><td>Post X (Twitter)</td><td>280 caractères</td><td>Pour un compte standard.</td></tr>
+      <tr><td>Bio Instagram</td><td>150 caractères</td><td></td></tr>
+      <tr><td>Meta description (Google)</td><td>≈ 155 caractères</td><td>Repère indicatif : Google coupe selon la largeur affichée, pas selon un nombre fixe.</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Les règles des plateformes changent régulièrement : vérifiez la limite en vigueur si elle est critique pour vous.</p>
+
+  <h2>Pourquoi compter ses mots ?</h2>
+  <ul>
+    <li><strong>Études</strong> : respecter la longueur imposée d’une dissertation, d’un mémoire ou d’une lettre de motivation.</li>
+    <li><strong>Rédaction web</strong> : calibrer un article, un titre ou une description pour les moteurs de recherche.</li>
+    <li><strong>Réseaux sociaux</strong> : écrire un post qui tient dans la limite sans être coupé.</li>
+    <li><strong>Style</strong> : la liste des mots les plus répétés aide à repérer les répétitions à corriger.</li>
+  </ul>
+
+  <h2>Questions fréquentes</h2>
+  <div class="faq">
+    <details><summary>Mon texte est-il envoyé sur un serveur ?</summary>
+      <p>Non. Le calcul se fait entièrement dans votre navigateur. Vous pouvez même couper votre connexion après le chargement de la page : l’outil continuera de fonctionner.</p></details>
+    <details><summary>Pourquoi mon traitement de texte donne-t-il un chiffre légèrement différent ?</summary>
+      <p>Chaque logiciel a ses conventions (traitement des tirets, des apostrophes, des nombres, des sauts de ligne). Les écarts sont en général de quelques mots sur un long texte.</p></details>
+    <details><summary>Quels mots sont exclus de la liste des « plus répétés » ?</summary>
+      <p>Les mots de moins de trois lettres et les mots grammaticaux très fréquents (articles, pronoms, prépositions courantes), qui n’apportent pas d’information sur le style.</p></details>
+  </div>
+
+  <h2>Nos autres outils</h2>
+  {{tool_cards}}
+</article>

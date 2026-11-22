@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="fr" data-worker="/assets/worker.07ef33bcb4.js?/assets/dico.3374a838b8.txt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Générateur d&#x27;anagrammes — anagramme d&#x27;un mot, d&#x27;un prénom ou d&#x27;un nom</title>
+<meta name="description" content="Trouvez toutes les anagrammes d&#x27;un mot, d&#x27;un prénom ou d&#x27;un nom, en un mot ou en deux mots. Gratuit, instantané, 330 000 mots français.">
+<link rel="canonical" href="https://www.lettresenvrac.fr/anagramme/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141210" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Lettres en vrac">
+<meta property="og:title" content="Générateur d&#x27;anagrammes — anagramme d&#x27;un mot, d&#x27;un prénom ou d&#x27;un nom">
+<meta property="og:description" content="Trouvez toutes les anagrammes d&#x27;un mot, d&#x27;un prénom ou d&#x27;un nom, en un mot ou en deux mots. Gratuit, instantané, 330 000 mots français.">
+<meta property="og:url" content="https://www.lettresenvrac.fr/anagramme/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/style.0cef5d6187.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Générateur d'anagrammes", "url": "https://www.lettresenvrac.fr/anagramme/", "description": "Trouvez toutes les anagrammes d'un mot, d'un prénom ou d'un nom, en un mot ou en deux mots. Gratuit, instantané, 330 000 mots français.", "inLanguage": "fr", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Tous (navigateur web)", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "publisher": {"@type": "Organization", "name": "Lettres en vrac", "url": "https://www.lettresenvrac.fr/"}}</script>
+
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Lettres en vrac — accueil">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><g font-family="system-ui,sans-serif" font-weight="800" font-size="13" text-anchor="middle"><rect x="2" y="9" width="17" height="17" rx="3.5" fill="#f6e7c8" stroke="#d8bf8e" transform="rotate(-10 10 17)"/><text x="10.5" y="22" fill="#3a2c14" transform="rotate(-10 10 17)">L</text><rect x="20" y="4" width="17" height="17" rx="3.5" fill="#b8430f" transform="rotate(8 28 12)"/><text x="28.5" y="17" fill="#fff" transform="rotate(8 28 12)">E</text><rect x="13" y="21" width="17" height="17" rx="3.5" fill="#f6e7c8" stroke="#d8bf8e" transform="rotate(4 21 29)"/><text x="21.5" y="34" fill="#3a2c14" transform="rotate(4 21 29)">V</text></g></svg>
+      <span>Lettres en vrac</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav class="site-nav" id="menu" aria-label="Outils">
+      <ul><li><a href="/">Mots avec des lettres</a></li><li><a href="/anagramme/" aria-current="page">Anagrammes</a></li><li><a href="/solveur-mots-croises/">Mots croisés</a></li><li><a href="/mots-finissant-par/">Finit / commence par</a></li><li><a href="/compteur-de-mots/">Compteur de mots</a></li><li><a href="/majuscules-minuscules/">Majuscules / minuscules</a></li></ul>
+    </nav>
+  </div>
+</header>
+<main id="contenu" class="wrap">
+<section class="hero">
+  <h1>Générateur d’anagrammes</h1>
+  <p>Entrez un mot, un prénom ou un nom complet : l’outil trouve tous les mots qui utilisent <strong>exactement les mêmes lettres</strong>, ainsi que des anagrammes en deux mots.</p>
+</section>
+
+<div class="tool">
+  <form data-tool="anagrams" autocomplete="off" role="search">
+    <label class="label" for="letters">Mot, prénom ou nom</label>
+    <div class="big-input">
+      <input id="letters" type="text" name="letters" placeholder="ex. : CHIEN ou BORIS VIAN" maxlength="30" spellcheck="false" enterkeyhint="search">
+      <button class="btn btn-primary" type="submit">Anagrammer</button>
+    </div>
+    <div class="checks">
+      <label><input type="checkbox" name="pairs" value="1" checked> Anagrammes en deux mots</label>
+      <label><input type="checkbox" name="rare" value="1"> Inclure les mots rares</label>
+    </div>
+  </form>
+  <div class="results-bar"><p class="status" aria-live="polite"></p><button class="btn copy-results" type="button" hidden>Copier</button></div>
+  <div class="results"></div>
+  <p class="legend">Les espaces, accents et tirets sont ignorés. <span class="w b0">mot courant</span> <span class="w b4">mot rare</span></p>
+</div>
+
+<article class="prose">
+  <h2>Qu’est-ce qu’une anagramme ?</h2>
+  <p>Une anagramme est un mot (ou une expression) obtenu en changeant l’ordre des lettres d’un autre mot, sans en ajouter ni en retirer. « Chien » donne ainsi « niche » et « chine » ; « Marie » donne « aimer » et « maire ».</p>
+  <p>Ce générateur cherche d’abord les <strong>anagrammes exactes en un seul mot</strong>, puis toutes les façons de répartir vos lettres en <strong>deux mots</strong> du dictionnaire. Pour trouver des mots qui n’utilisent qu’une partie de vos lettres, utilisez plutôt l’outil <a href="/">mots avec des lettres</a>.</p>
+
+  <h2>Des anagrammes célèbres</h2>
+  <table>
+    <thead><tr><th>Nom d’origine</th><th>Anagramme</th><th>Contexte</th></tr></thead>
+    <tbody>
+      <tr><td>François Rabelais</td><td>Alcofribas Nasier</td><td>Pseudonyme sous lequel Rabelais publie <em>Pantagruel</em>.</td></tr>
+      <tr><td>Boris Vian</td><td>Bison Ravi</td><td>Pseudonyme utilisé par l’écrivain et musicien.</td></tr>
+      <tr><td>Salvador Dalí</td><td>Avida Dollars</td><td>Surnom moqueur forgé par André Breton.</td></tr>
+    </tbody>
+  </table>
+  <p>Essayez : <a href="/anagramme/?letters=boris+vian&amp;pairs=1" data-example>Boris Vian</a> fait bien apparaître « bison ravi » parmi les résultats en deux mots.</p>
+
+  <h2>Trouver l’anagramme de son prénom</h2>
+  <p>Tapez votre prénom, ou votre prénom suivi de votre nom, puis laissez cochée l’option « deux mots ». Plus il y a de lettres, plus il y a de combinaisons. Au-delà d’une quinzaine de lettres, cochez « mots rares » pour découvrir des associations inattendues. Les combinaisons avec des mots courants sont affichées en premier.</p>
+  <ul class="examples">
+    <li><a href="/anagramme/?letters=chien&amp;pairs=1" data-example>Chien</a></li>
+    <li><a href="/anagramme/?letters=marie&amp;pairs=1" data-example>Marie</a></li>
+    <li><a href="/anagramme/?letters=oranges&amp;pairs=1" data-example>Oranges</a></li>
+    <li><a href="/anagramme/?letters=lettres+en+vrac&amp;pairs=1" data-example>Lettres en vrac</a></li>
+  </ul>
+
+  <h2>Anagramme, palindrome, contrepèterie : quelle différence ?</h2>
+  <ul>
+    <li><strong>Anagramme</strong> : mêmes lettres, ordre différent (« chien » → « niche »).</li>
+    <li><strong>Palindrome</strong> : mot qui se lit de la même façon dans les deux sens (« kayak », « radar »).</li>
+    <li><strong>Contrepèterie</strong> : on échange des sons ou des syllabes entre deux mots d’une phrase pour en créer une autre, souvent coquine.</li>
+  </ul>
+
+  <h2>Questions fréquentes</h2>
+  <div class="faq">
+    <details><summary>Pourquoi n’ai-je aucune anagramme en un mot ?</summary>
+      <p>La plupart des mots n’en ont pas. Cela concerne surtout les mots longs ou ceux qui contiennent des lettres rares. Essayez les anagrammes en deux mots, ou l’outil <a href="/">mots avec des lettres</a> pour utiliser une partie seulement des lettres.</p></details>
+    <details><summary>Les noms propres sont-ils inclus ?</summary>
+      <p>Non : les résultats ne contiennent que des noms communs, adjectifs, verbes (conjugués) et autres mots du dictionnaire. C’est pourquoi « Avida Dollars », qui n’est pas formé de mots français, n’apparaît pas.</p></details>
+    <details><summary>Les accents comptent-ils ?</summary>
+      <p>Non. « É », « È » et « E » sont considérés comme la même lettre, comme dans les jeux de lettres.</p></details>
+  </div>
+
+  <h2>Nos autres outils</h2>
+  <ul class="cards"><li><a href="/"><strong>Mots avec des lettres</strong><span>Tous les mots qu&#x27;on peut former avec vos lettres, jokers compris.</span></a></li><li><a href="/solveur-mots-croises/"><strong>Mots croisés</strong><span>Complétez un mot avec les lettres connues : S?L?IL → soleil. Aide Wordle et SUTOM.</span></a></li><li><a href="/mots-finissant-par/"><strong>Finit / commence par</strong><span>Mots qui finissent par, commencent par ou contiennent des lettres. Pratique pour les rimes.</span></a></li><li><a href="/compteur-de-mots/"><strong>Compteur de mots</strong><span>Mots, caractères, phrases, temps de lecture et mots les plus répétés.</span></a></li><li><a href="/majuscules-minuscules/"><strong>Majuscules / minuscules</strong><span>Passez un texte en MAJUSCULES, minuscules, Titre ou retirez les accents.</span></a></li></ul>
+</article>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div><h2>Outils</h2><ul><li><a href="/">Mots avec des lettres</a></li><li><a href="/anagramme/">Anagrammes</a></li><li><a href="/solveur-mots-croises/">Mots croisés</a></li><li><a href="/mots-finissant-par/">Finit / commence par</a></li><li><a href="/compteur-de-mots/">Compteur de mots</a></li><li><a href="/majuscules-minuscules/">Majuscules / minuscules</a></li></ul></div>
+      <div><h2>Le site</h2><ul><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/mentions-legales/">Mentions légales</a></li><li><a href="/confidentialite/">Confidentialité et cookies</a></li></ul></div>
+      <div><h2>Lettres en vrac</h2><p>Démêlez vos lettres, trouvez vos mots. Outils gratuits, sans inscription, qui fonctionnent directement dans votre navigateur.</p></div>
+    </div>
+    <p class="copy">© 2026 Lettres en vrac. Dictionnaire : listes libres (voir <a href="/a-propos/">À propos</a>).</p>
+  </div>
+</footer>
+<script src="/assets/app.27382933d4.js" defer></script>
+</body>
+</html>

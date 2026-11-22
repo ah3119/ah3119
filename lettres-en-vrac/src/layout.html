@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="{{lang}}" data-worker="{{worker}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<link rel="canonical" href="{{canonical}}">
+<meta name="robots" content="{{robots}}">
+<meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141210" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="{{site_name}}">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:url" content="{{canonical}}">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="{{css}}">
+<script type="application/ld+json">{{jsonld}}</script>
+{{head_extra}}
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="{{site_name}} — accueil">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><g font-family="system-ui,sans-serif" font-weight="800" font-size="13" text-anchor="middle"><rect x="2" y="9" width="17" height="17" rx="3.5" fill="#f6e7c8" stroke="#d8bf8e" transform="rotate(-10 10 17)"/><text x="10.5" y="22" fill="#3a2c14" transform="rotate(-10 10 17)">L</text><rect x="20" y="4" width="17" height="17" rx="3.5" fill="#b8430f" transform="rotate(8 28 12)"/><text x="28.5" y="17" fill="#fff" transform="rotate(8 28 12)">E</text><rect x="13" y="21" width="17" height="17" rx="3.5" fill="#f6e7c8" stroke="#d8bf8e" transform="rotate(4 21 29)"/><text x="21.5" y="34" fill="#3a2c14" transform="rotate(4 21 29)">V</text></g></svg>
+      <span>{{site_name}}</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav class="site-nav" id="menu" aria-label="Outils">
+      <ul>{{nav}}</ul>
+    </nav>
+  </div>
+</header>
+<main id="contenu" class="wrap">
+{{content}}
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div><h2>Outils</h2><ul>{{footer_tools}}</ul></div>
+      <div><h2>Le site</h2><ul>{{footer_site}}</ul></div>
+      <div><h2>{{site_name}}</h2><p>{{tagline}} Outils gratuits, sans inscription, qui fonctionnent directement dans votre navigateur.</p></div>
+    </div>
+    <p class="copy">© {{year}} {{site_name}}. Dictionnaire : listes libres (voir <a href="/a-propos/">À propos</a>).</p>
+  </div>
+</footer>
+<script src="{{js}}" defer></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!--meta {"path": "/majuscules-minuscules/", "group": "tools", "order": 6, "tool": true, "priority": 0.8,
+ "nav": "Majuscules / minuscules", "card": "Passez un texte en MAJUSCULES, minuscules, Titre ou retirez les accents.",
+ "h1": "Convertir un texte en majuscules ou minuscules",
+ "title": "Convertir en majuscules ou minuscules en ligne — avec accents",
+ "description": "Transformez un texte en MAJUSCULES (accents conservés), minuscules, majuscule en début de phrase, Titre, alterné, ou supprimez les accents. Gratuit, instantané."} -->
+<section class="hero">
+  <h1>Convertir un texte en majuscules ou minuscules</h1>
+  <p>Collez votre texte puis choisissez une transformation. Les majuscules accentuées (É, À, Ç…) sont conservées, comme le recommande l’usage français.</p>
+</section>
+
+<div class="tool" data-widget="case">
+  <label class="label" for="texte">Votre texte</label>
+  <textarea id="texte" placeholder="Collez votre texte ici…"></textarea>
+  <div class="btn-row">
+    <button class="btn btn-primary" type="button" data-case="upper">MAJUSCULES</button>
+    <button class="btn" type="button" data-case="lower">minuscules</button>
+    <button class="btn" type="button" data-case="sentence">Début de phrase</button>
+    <button class="btn" type="button" data-case="title">Chaque Mot</button>
+    <button class="btn" type="button" data-case="alternate">aLtErNé</button>
+    <button class="btn" type="button" data-case="invert">iNVERSER</button>
+    <button class="btn" type="button" data-case="noaccent">Sans accents</button>
+  </div>
+  <div class="btn-row"><button class="btn copy" type="button">Copier le texte</button><button class="btn clear" type="button">Effacer</button></div>
+</div>
+
+<article class="prose">
+  <h2>Les transformations disponibles</h2>
+  <table>
+    <thead><tr><th>Bouton</th><th>Exemple</th></tr></thead>
+    <tbody>
+      <tr><td>MAJUSCULES</td><td>L’ÉTÉ À LA MER</td></tr>
+      <tr><td>minuscules</td><td>l’été à la mer</td></tr>
+      <tr><td>Début de phrase</td><td>L’été à la mer. Il fait beau.</td></tr>
+      <tr><td>Chaque Mot</td><td>L’Été À La Mer</td></tr>
+      <tr><td>aLtErNé</td><td>l’ÉtÉ à La MeR</td></tr>
+      <tr><td>iNVERSER</td><td>Inverse la casse de chaque lettre</td></tr>
+      <tr><td>Sans accents</td><td>l’ete a la mer</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Faut-il mettre les accents sur les majuscules ?</h2>
+  <p>Oui. L’Académie française rappelle que l’accent a pleine valeur orthographique et qu’il faut le conserver sur les majuscules : on écrit « ÉCOLE », « À BIENTÔT », « ÇA VA ». L’omettre peut créer des ambiguïtés : « INTERNE » ou « INTERNÉ » ? « UN PECHEUR » ou « UN PÉCHEUR » ? Ce convertisseur garde donc toujours les accents en majuscules.</p>
+
+  <h2>Majuscules et titres : la règle française</h2>
+  <p>Contrairement à l’anglais, le français ne met pas une majuscule à chaque mot d’un titre. Pour un titre d’article, de document ou de chapitre, l’usage courant est simple : <strong>majuscule au premier mot</strong> et aux noms propres seulement (« Comment choisir son vélo »). Les titres d’œuvres suivent des règles typographiques plus fines, qui ajoutent parfois une majuscule au nom qui suit l’article (« Les Misérables », « Le Petit Prince »). Le bouton « Chaque Mot » sert donc surtout à un usage graphique (affiches, réseaux sociaux) ou aux titres en anglais.</p>
+
+  <h2>Questions fréquentes</h2>
+  <div class="faq">
+    <details><summary>Pourquoi retirer les accents ?</summary>
+      <p>Certains systèmes anciens, identifiants, noms de fichiers ou adresses web acceptent mal les caractères accentués. Le bouton « Sans accents » remplace aussi « œ » par « oe » et « æ » par « ae ».</p></details>
+    <details><summary>Le texte est-il conservé quelque part ?</summary>
+      <p>Non. Tout se passe dans votre navigateur : le texte n’est ni envoyé ni enregistré.</p></details>
+  </div>
+
+  <h2>Nos autres outils</h2>
+  {{tool_cards}}
+</article>

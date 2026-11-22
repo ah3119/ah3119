@@ -1,0 +1,69 @@
+<!--meta {"path": "/solveur-mots-croises/", "group": "tools", "order": 3, "tool": true, "priority": 0.9,
+ "nav": "Mots croisés", "card": "Complétez un mot avec les lettres connues : S?L?IL → soleil. Aide Wordle et SUTOM.",
+ "h1": "Solveur de mots croisés et mots fléchés",
+ "title": "Solveur de mots croisés et mots fléchés — trouver un mot avec des lettres manquantes",
+ "description": "Entrez les lettres connues et remplacez les autres par « ? » : le solveur trouve les mots qui rentrent dans votre grille. Aussi pour Wordle et SUTOM. Gratuit."} -->
+<section class="hero">
+  <h1>Solveur de mots croisés et mots fléchés</h1>
+  <p>Vous avez quelques lettres et des cases vides ? Tapez les lettres connues et remplacez chaque case vide par un <kbd>?</kbd>. L’outil affiche tous les mots qui correspondent.</p>
+</section>
+
+<div class="tool">
+  <form data-tool="pattern" autocomplete="off" role="search">
+    <label class="label" for="pattern">Mot à compléter</label>
+    <div class="big-input">
+      <input id="pattern" type="text" name="pattern" placeholder="ex. : S?L?IL" maxlength="30" autocapitalize="characters" spellcheck="false" enterkeyhint="search" aria-describedby="h-pattern">
+      <button class="btn btn-primary" type="submit">Chercher</button>
+    </div>
+    <small class="hint" id="h-pattern"><kbd>?</kbd> = une lettre inconnue · <kbd>*</kbd> = plusieurs lettres inconnues (longueur libre).</small>
+    <details class="filters">
+      <summary>Lettres obligatoires ou exclues (Wordle, SUTOM…)</summary>
+      <div class="grid">
+        <label class="field"><span>Doit contenir</span><input type="text" name="include" placeholder="ex. : ra" spellcheck="false"><small>Lettres présentes mais mal placées.</small></label>
+        <label class="field"><span>Ne doit pas contenir</span><input type="text" name="exclude" placeholder="ex. : tuo" spellcheck="false"><small>Lettres déjà éliminées.</small></label>
+      </div>
+      <button class="btn reset" type="button">Tout effacer</button>
+    </details>
+  </form>
+  <div class="results-bar"><p class="status" aria-live="polite"></p><button class="btn copy-results" type="button" hidden>Copier la liste</button></div>
+  <div class="results"></div>
+  <p class="legend">Touchez un mot pour voir sa définition. <span class="w b0">mot courant</span> <span class="w b4">mot rare</span></p>
+</div>
+
+<article class="prose">
+  <h2>Comment utiliser le solveur ?</h2>
+  <ol>
+    <li>Comptez les cases de la grille.</li>
+    <li>Tapez les lettres que vous connaissez à leur place, et un <kbd>?</kbd> pour chaque case vide. Pour un mot de 6 lettres qui commence par S et finit par IL : <code>S???IL</code>.</li>
+    <li>Parcourez la liste : les mots les plus courants s’affichent en premier, ce qui correspond le plus souvent aux réponses des grilles grand public.</li>
+  </ol>
+  <p>Vous ne connaissez pas la longueur ? Utilisez l’étoile : <code>*TION</code> affiche tous les mots qui finissent par « -tion », quelle que soit leur longueur.</p>
+  <ul class="examples">
+    <li><a href="/solveur-mots-croises/?pattern=s%3Fl%3Fil" data-example>S?L?IL</a></li>
+    <li><a href="/solveur-mots-croises/?pattern=%3F%3Fu%3F%3F%3Fe" data-example>??U???E</a></li>
+    <li><a href="/solveur-mots-croises/?pattern=ch%3F%3F%3Fau" data-example>CH???AU</a></li>
+    <li><a href="/solveur-mots-croises/?pattern=*tion&amp;include=z" data-example>*TION avec un Z</a></li>
+  </ul>
+
+  <h2>Aide pour Wordle, SUTOM et les jeux de mots à deviner</h2>
+  <p>Dans les jeux où l’on devine un mot en plusieurs essais, chaque tentative vous donne trois informations. Voici comment les reporter :</p>
+  <ul>
+    <li><strong>Lettre bien placée</strong> : écrivez-la à sa position dans le motif (ex. <code>T????</code>).</li>
+    <li><strong>Lettre présente mais mal placée</strong> : ajoutez-la dans « Doit contenir ».</li>
+    <li><strong>Lettre absente</strong> : ajoutez-la dans « Ne doit pas contenir ».</li>
+  </ul>
+  <p class="note">L’outil propose les mots compatibles, pas la solution du jour : à vous de choisir le meilleur essai. Notre dictionnaire contient aussi des formes conjuguées, que certains jeux n’acceptent pas.</p>
+
+  <h2>Questions fréquentes</h2>
+  <div class="faq">
+    <details><summary>Le solveur utilise-t-il les définitions de la grille ?</summary>
+      <p>Non. Il propose tous les mots qui ont la bonne longueur et les bonnes lettres. À vous de retenir celui qui correspond à la définition. Touchez un mot pour ouvrir sa définition sur le Wiktionnaire.</p></details>
+    <details><summary>Puis-je utiliser un point ou un tiret à la place du « ? » ?</summary>
+      <p>Oui : <kbd>.</kbd>, <kbd>_</kbd> et <kbd>-</kbd> sont acceptés et fonctionnent comme <kbd>?</kbd>.</p></details>
+    <details><summary>Les mots composés (« porte-monnaie ») sont-ils inclus ?</summary>
+      <p>Pas pour l’instant : seuls les mots d’un seul tenant sont proposés, ce qui correspond à la grande majorité des grilles.</p></details>
+  </div>
+
+  <h2>Nos autres outils</h2>
+  {{tool_cards}}
+</article>

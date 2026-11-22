@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="fr" data-worker="/assets/worker.07ef33bcb4.js?/assets/dico.3374a838b8.txt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compteur de mots et de caractères en ligne — gratuit, avec et sans espaces</title>
+<meta name="description" content="Collez votre texte : nombre de mots, de caractères (avec et sans espaces), de phrases et de paragraphes, temps de lecture et mots les plus répétés. Rien n&#x27;est envoyé.">
+<link rel="canonical" href="https://www.lettresenvrac.fr/compteur-de-mots/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141210" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Lettres en vrac">
+<meta property="og:title" content="Compteur de mots et de caractères en ligne — gratuit, avec et sans espaces">
+<meta property="og:description" content="Collez votre texte : nombre de mots, de caractères (avec et sans espaces), de phrases et de paragraphes, temps de lecture et mots les plus répétés. Rien n&#x27;est envoyé.">
+<meta property="og:url" content="https://www.lettresenvrac.fr/compteur-de-mots/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/style.0cef5d6187.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Compteur de mots et de caractères", "url": "https://www.lettresenvrac.fr/compteur-de-mots/", "description": "Collez votre texte : nombre de mots, de caractères (avec et sans espaces), de phrases et de paragraphes, temps de lecture et mots les plus répétés. Rien n'est envoyé.", "inLanguage": "fr", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Tous (navigateur web)", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "publisher": {"@type": "Organization", "name": "Lettres en vrac", "url": "https://www.lettresenvrac.fr/"}}</script>
+
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Lettres en vrac — accueil">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><g font-family="system-ui,sans-serif" font-weight="800" font-size="13" text-anchor="middle"><rect x="2" y="9" width="17" height="17" rx="3.5" fill="#f6e7c8" stroke="#d8bf8e" transform="rotate(-10 10 17)"/><text x="10.5" y="22" fill="#3a2c14" transform="rotate(-10 10 17)">L</text><rect x="20" y="4" width="17" height="17" rx="3.5" fill="#b8430f" transform="rotate(8 28 12)"/><text x="28.5" y="17" fill="#fff" transform="rotate(8 28 12)">E</text><rect x="13" y="21" width="17" height="17" rx="3.5" fill="#f6e7c8" stroke="#d8bf8e" transform="rotate(4 21 29)"/><text x="21.5" y="34" fill="#3a2c14" transform="rotate(4 21 29)">V</text></g></svg>
+      <span>Lettres en vrac</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav class="site-nav" id="menu" aria-label="Outils">
+      <ul><li><a href="/">Mots avec des lettres</a></li><li><a href="/anagramme/">Anagrammes</a></li><li><a href="/solveur-mots-croises/">Mots croisés</a></li><li><a href="/mots-finissant-par/">Finit / commence par</a></li><li><a href="/compteur-de-mots/" aria-current="page">Compteur de mots</a></li><li><a href="/majuscules-minuscules/">Majuscules / minuscules</a></li></ul>
+    </nav>
+  </div>
+</header>
+<main id="contenu" class="wrap">
+<section class="hero">
+  <h1>Compteur de mots et de caractères</h1>
+  <p>Collez ou tapez votre texte : les statistiques se mettent à jour en direct. Le texte reste sur votre appareil, rien n’est envoyé ni enregistré.</p>
+</section>
+
+<div class="tool" data-widget="counter">
+  <label class="label" for="texte">Votre texte</label>
+  <textarea id="texte" placeholder="Collez votre texte ici…" spellcheck="true"></textarea>
+  <div class="btn-row"><button class="btn clear" type="button">Effacer</button></div>
+  <div class="stats" aria-live="polite">
+    <div class="stat"><b data-stat="words">0</b><span>mots</span></div>
+    <div class="stat"><b data-stat="chars">0</b><span>caractères (espaces compris)</span></div>
+    <div class="stat"><b data-stat="nospace">0</b><span>caractères sans espaces</span></div>
+    <div class="stat"><b data-stat="sentences">0</b><span>phrases</span></div>
+    <div class="stat"><b data-stat="paragraphs">0</b><span>paragraphes</span></div>
+    <div class="stat"><b data-stat="read">0 s</b><span>temps de lecture</span></div>
+    <div class="stat"><b data-stat="speak">0 s</b><span>temps de parole</span></div>
+  </div>
+  <div class="limits">
+    <span>SMS : <b data-limit="160"></b></span>
+    <span>Post X (Twitter) : <b data-limit="280"></b></span>
+    <span>Bio Instagram : <b data-limit="150"></b></span>
+    <span>Meta description : <b data-limit="155"></b></span>
+  </div>
+  <h2 class="label" style="margin-top:16px">Mots les plus répétés</h2>
+  <ol class="top-words"></ol>
+</div>
+
+<article class="prose">
+  <h2>Comment sont comptés les mots et les caractères ?</h2>
+  <ul>
+    <li><strong>Mots</strong> : nous comptons les suites de caractères séparées par des espaces ou des retours à la ligne, comme la plupart des traitements de texte. « L’homme » et « porte-monnaie » comptent donc pour un mot chacun.</li>
+    <li><strong>Caractères</strong> : chaque lettre, chiffre, signe de ponctuation et espace compte pour un. La version « sans espaces » retire espaces, tabulations et retours à la ligne.</li>
+    <li><strong>Phrases</strong> : découpage automatique sur la ponctuation finale (. ! ? …).</li>
+    <li><strong>Temps de lecture</strong> : estimation sur une base de 230 mots par minute en lecture silencieuse. <strong>Temps de parole</strong> : base de 140 mots par minute, utile pour préparer un discours ou une vidéo. Ce sont des moyennes : votre rythme peut être différent.</li>
+  </ul>
+
+  <h2>Les limites de caractères à connaître</h2>
+  <table>
+    <thead><tr><th>Usage</th><th>Limite</th><th>Remarque</th></tr></thead>
+    <tbody>
+      <tr><td>SMS</td><td>160 caractères</td><td>Réduit à 70 si le message contient des caractères spéciaux (certains accents, emojis). Au-delà, le message est envoyé en plusieurs parties.</td></tr>
+      <tr><td>Post X (Twitter)</td><td>280 caractères</td><td>Pour un compte standard.</td></tr>
+      <tr><td>Bio Instagram</td><td>150 caractères</td><td></td></tr>
+      <tr><td>Meta description (Google)</td><td>≈ 155 caractères</td><td>Repère indicatif : Google coupe selon la largeur affichée, pas selon un nombre fixe.</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Les règles des plateformes changent régulièrement : vérifiez la limite en vigueur si elle est critique pour vous.</p>
+
+  <h2>Pourquoi compter ses mots ?</h2>
+  <ul>
+    <li><strong>Études</strong> : respecter la longueur imposée d’une dissertation, d’un mémoire ou d’une lettre de motivation.</li>
+    <li><strong>Rédaction web</strong> : calibrer un article, un titre ou une description pour les moteurs de recherche.</li>
+    <li><strong>Réseaux sociaux</strong> : écrire un post qui tient dans la limite sans être coupé.</li>
+    <li><strong>Style</strong> : la liste des mots les plus répétés aide à repérer les répétitions à corriger.</li>
+  </ul>
+
+  <h2>Questions fréquentes</h2>
+  <div class="faq">
+    <details><summary>Mon texte est-il envoyé sur un serveur ?</summary>
+      <p>Non. Le calcul se fait entièrement dans votre navigateur. Vous pouvez même couper votre connexion après le chargement de la page : l’outil continuera de fonctionner.</p></details>
+    <details><summary>Pourquoi mon traitement de texte donne-t-il un chiffre légèrement différent ?</summary>
+      <p>Chaque logiciel a ses conventions (traitement des tirets, des apostrophes, des nombres, des sauts de ligne). Les écarts sont en général de quelques mots sur un long texte.</p></details>
+    <details><summary>Quels mots sont exclus de la liste des « plus répétés » ?</summary>
+      <p>Les mots de moins de trois lettres et les mots grammaticaux très fréquents (articles, pronoms, prépositions courantes), qui n’apportent pas d’information sur le style.</p></details>
+  </div>
+
+  <h2>Nos autres outils</h2>
+  <ul class="cards"><li><a href="/"><strong>Mots avec des lettres</strong><span>Tous les mots qu&#x27;on peut former avec vos lettres, jokers compris.</span></a></li><li><a href="/anagramme/"><strong>Anagrammes</strong><span>Anagrammes exactes d&#x27;un mot, d&#x27;un prénom ou d&#x27;un nom, en un ou deux mots.</span></a></li><li><a href="/solveur-mots-croises/"><strong>Mots croisés</strong><span>Complétez un mot avec les lettres connues : S?L?IL → soleil. Aide Wordle et SUTOM.</span></a></li><li><a href="/mots-finissant-par/"><strong>Finit / commence par</strong><span>Mots qui finissent par, commencent par ou contiennent des lettres. Pratique pour les rimes.</span></a></li><li><a href="/majuscules-minuscules/"><strong>Majuscules / minuscules</strong><span>Passez un texte en MAJUSCULES, minuscules, Titre ou retirez les accents.</span></a></li></ul>
+</article>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div><h2>Outils</h2><ul><li><a href="/">Mots avec des lettres</a></li><li><a href="/anagramme/">Anagrammes</a></li><li><a href="/solveur-mots-croises/">Mots croisés</a></li><li><a href="/mots-finissant-par/">Finit / commence par</a></li><li><a href="/compteur-de-mots/">Compteur de mots</a></li><li><a href="/majuscules-minuscules/">Majuscules / minuscules</a></li></ul></div>
+      <div><h2>Le site</h2><ul><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/mentions-legales/">Mentions légales</a></li><li><a href="/confidentialite/">Confidentialité et cookies</a></li></ul></div>
+      <div><h2>Lettres en vrac</h2><p>Démêlez vos lettres, trouvez vos mots. Outils gratuits, sans inscription, qui fonctionnent directement dans votre navigateur.</p></div>
+    </div>
+    <p class="copy">© 2026 Lettres en vrac. Dictionnaire : listes libres (voir <a href="/a-propos/">À propos</a>).</p>
+  </div>
+</footer>
+<script src="/assets/app.27382933d4.js" defer></script>
+</body>
+</html>
