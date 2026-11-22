@@ -21,7 +21,7 @@
   "pre_mulk": "Surah Al-Mulk dalam 30 hari",
   "pre_mulk_d": "30 ayat, sekitar satu ayat per hari, dengan muraja'ah harian.",
   "pre_kahf": "Surah Al-Kahfi dalam 3 bulan",
-  "pre_kahf_d": "Hafalkan surah hari Jumat dengan langkah yang konsisten.",
+  "pre_kahf_d": "Hafalkan Surah Al-Kahfi dengan langkah yang konsisten.",
   "pre_page": "Satu halaman sehari",
   "pre_page_d": "Seluruh Al-Qur'an mulai dari Juz 30, 15 baris per hari.",
   "pre_3y": "Seluruh Al-Qur'an dalam 3 tahun",
@@ -113,7 +113,8 @@
   "col_date": "Tanggal",
   "copied": "Tautan disalin ✓",
   "card_save_hint": "Klik kanan atau tekan lama gambar untuk menyimpannya.",
-  "close": "Tutup"
+  "close": "Tutup",
+  "n_page": "{n} halaman"
  },
  "home": {
   "title": "Hifzly — perencana hafalan Al-Qur'an gratis (ziyadah dan muraja'ah)",

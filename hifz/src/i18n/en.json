@@ -21,7 +21,7 @@
   "pre_mulk": "Surah Al-Mulk in 30 days",
   "pre_mulk_d": "30 ayahs, about one a day, with daily review.",
   "pre_kahf": "Surah Al-Kahf in 3 months",
-  "pre_kahf_d": "Learn the Friday surah at a steady pace.",
+  "pre_kahf_d": "Learn Surah Al-Kahf at a steady pace.",
   "pre_page": "One page a day",
   "pre_page_d": "The whole Quran, starting with Juz 30, 15 lines a day.",
   "pre_3y": "Whole Quran in 3 years",
@@ -113,7 +113,8 @@
   "card_start": "Bismillah, today I start",
   "card_start_title": "my Quran memorization plan",
   "card_save_hint": "Right-click or long-press the image to save it.",
-  "close": "Close"
+  "close": "Close",
+  "n_page": "{n} page"
  },
  "home": {
   "title": "Hifzly — free Quran memorization planner (sabaq, sabqi, manzil)",

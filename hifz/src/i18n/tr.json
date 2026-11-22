@@ -21,7 +21,7 @@
   "pre_mulk": "Mülk suresi 30 günde",
   "pre_mulk_d": "30 ayet, günde yaklaşık bir ayet ve günlük tekrar.",
   "pre_kahf": "Kehf suresi 3 ayda",
-  "pre_kahf_d": "Cuma suresini düzenli bir tempoyla ezberleyin.",
+  "pre_kahf_d": "Kehf suresini düzenli bir tempoyla ezberleyin.",
   "pre_page": "Günde bir sayfa",
   "pre_page_d": "30. cüzden başlayarak tüm Kur'an, günde 15 satır.",
   "pre_3y": "Tüm Kur'an 3 yılda",
@@ -113,7 +113,8 @@
   "col_date": "Tarih",
   "copied": "Bağlantı kopyalandı ✓",
   "card_save_hint": "Kaydetmek için görsele uzun basın veya sağ tıklayın.",
-  "close": "Kapat"
+  "close": "Kapat",
+  "n_page": "{n} sayfa"
  },
  "home": {
   "title": "Hifzly — ücretsiz Kur'an ezber planlayıcısı (yeni ders, yakın ve eski tekrar)",

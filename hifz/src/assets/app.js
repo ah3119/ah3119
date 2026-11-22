@@ -210,7 +210,7 @@
     return { text: parts.length > (max || 3) ? parts.slice(0, max || 3).join(' · ') + ' …' : parts.join(' · '), link };
   }
   // Plural forms: optional "<key>_many" string for n > 10 (Arabic: 3–10 آيات, 11+ آية)
-  const PL = (key, n) => T(n > 10 && I[key + '_many'] ? key + '_many' : key, { n: nf.format(n) });
+  const PL = (key, n) => T(n <= 1 && I[key.replace(/s$/, '')] ? key.replace(/s$/, '') : (n > 10 && I[key + '_many'] ? key + '_many' : key), { n: nf.format(n) });
   function amountLabel(n, kind) { return kind === 'line' ? (n === 1 ? T('n_line', { n: 1 }) : PL('n_lines', n)) : (n === 1 ? T('n_ayah', { n: 1 }) : PL('n_ayahs', n)); }
 
   /* ---------------- Form ---------------- */
@@ -436,7 +436,7 @@
   function update() {
     P = readForm();
     try { history.replaceState(null, '', location.pathname + location.search + '#p=' + encodeURIComponent(JSON.stringify(P))); } catch (e) { /* sandboxed frame */ }
-    if (!app.dataset.preset) store.set('hifzly.plan', JSON.stringify(P));
+    if (!app.dataset.plan) store.set('hifzly.plan', JSON.stringify(P));
     render();
   }
   form.addEventListener('change', (e) => {
@@ -451,7 +451,7 @@
   form.addEventListener('submit', (e) => { e.preventDefault(); update(); $('.hz-results', app).scrollIntoView({ behavior: 'smooth' }); });
 
   app.addEventListener('click', (e) => {
-    const pre = e.target.closest('[data-preset]');
+    const pre = e.target.closest('button[data-preset]');
     if (pre) {
       const p = resolveRel(JSON.parse(pre.dataset.preset));
       P = sanitize(Object.assign({}, DEFAULT, p, { start: iso(today()) }));
@@ -493,7 +493,7 @@
     let init = null;
     const m = location.hash.match(/p=([^&]+)/);
     if (m) { try { init = JSON.parse(decodeURIComponent(m[1])); } catch (e) { init = null; } }
-    if (!init && app.dataset.preset) { try { init = resolveRel(JSON.parse(app.dataset.preset)); } catch (e) { init = null; } }
+    if (!init && app.dataset.plan) { try { init = resolveRel(JSON.parse(app.dataset.plan)); } catch (e) { init = null; } }
     if (!init) { try { init = JSON.parse(store.get('hifzly.plan') || 'null'); } catch (e) { init = null; } }
     P = sanitize(init);
     writeForm(P);

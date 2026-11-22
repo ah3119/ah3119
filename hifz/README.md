@@ -33,7 +33,7 @@ Fonctions :
 - Structure du mushaf : `quran-meta` 7.0.0 (MIT).
   - Contrôles faits : 604 pages, 6 236 versets, Juz Amma = 564 versets, Al-Kahf p. 293-304, Al-Mulk p. 562-564.
   - **4 juz (4, 7, 11, 26) commencent en milieu de page** ; c'est pris en compte dans le calcul.
-- Noms des sourates : `quran-json` 3.1.2 (CC BY 4.0, attribution sur la page À propos).
+- Noms des sourates : `quran-json` 3.1.2 (CC BY-SA 4.0, attribution sur la page À propos).
 - Le moteur a été contrôlé sur Juz Amma, 3 versets/jour sans changer de sourate en cours de journée : 200 jours d'étude calculés à la main, 200 obtenus.
 
 ## Structure

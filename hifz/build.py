@@ -234,7 +234,7 @@ def main():
     tpl = (SRC / "templates" / "surah.html").read_text(encoding="utf-8")
     for n in POPULAR:
         c = surah_values(n)
-        c["planner"] = render(PLANNER, {"quran_url": ASSETS["quran"], "preset_attr": f" data-preset=\"{c['preset']}\""}, "en", "planner.html")
+        c["planner"] = render(PLANNER, {"quran_url": ASSETS["quran"], "preset_attr": f" data-plan=\"{c['preset']}\""}, "en", "planner.html")
         c["others"] = "".join(f'<li><a href="/surah/{slugify(QURAN["surahs"][o - 1]["tr_en"])}/">Surah {esc(QURAN["surahs"][o - 1]["tr_en"])}</a></li>' for o in POPULAR if o != n)
         path = f"/surah/{slugify(QURAN['surahs'][n - 1]['tr_en'])}/"
         title = f"How to memorize Surah {QURAN['surahs'][n - 1]['tr_en']}: free daily plan ({c['ayahs']} ayahs)"

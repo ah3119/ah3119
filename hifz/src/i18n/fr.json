@@ -21,7 +21,7 @@
   "pre_mulk": "Sourate Al-Mulk en 30 jours",
   "pre_mulk_d": "30 versets, environ un par jour, avec révision quotidienne.",
   "pre_kahf": "Sourate Al-Kahf en 3 mois",
-  "pre_kahf_d": "Apprendre la sourate du vendredi à un rythme régulier.",
+  "pre_kahf_d": "Apprendre la sourate Al-Kahf à un rythme régulier.",
   "pre_page": "Une page par jour",
   "pre_page_d": "Tout le Coran en commençant par le juz 30, 15 lignes par jour.",
   "pre_3y": "Tout le Coran en 3 ans",
@@ -113,7 +113,8 @@
   "col_date": "Date",
   "copied": "Lien copié ✓",
   "card_save_hint": "Clic droit ou appui long sur l’image pour l’enregistrer.",
-  "close": "Fermer"
+  "close": "Fermer",
+  "n_page": "{n} page"
  },
  "home": {
   "title": "Hifzly — planificateur gratuit pour mémoriser le Coran (sabaq, sabqi, manzil)",
