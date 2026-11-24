@@ -25,8 +25,9 @@
     "fr",
     "bn",
     "pt",
-    "ru",
-    "id"
+    "id",
+    "ur",
+    "ru"
   ],
   "surah_pages": false,
   "listen": {},
@@ -34,5 +35,5 @@
   "signature": "",
   "editor_mode": "particulier",
   "_editor_mode_aide": "« particulier » : publication à titre non professionnel, sans adresse personnelle (LCEN art. 1-1, II) ; « professionnel » : remplir editor_name, editor_status, editor_address, editor_phone (obligatoire dès qu'il y a des revenus).",
-  "_languages_aide": "Ordre = ordre du menu Langues. La première langue est servie à la racine (/), les autres sous /code/. Top 10 des langues les plus parlées (Ethnologue 2025)."
+  "_languages_aide": "Ordre du menu Langues. La première langue est servie à la racine (/), les autres sous /code/. Top 10 Ethnologue 2026 par nombre total de locuteurs (l'ourdou y entre, le russe passe 11e : conservé en bonus)."
 }

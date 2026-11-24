@@ -75,6 +75,9 @@ a { color: var(--brand); text-underline-offset: .15em; }
 .lang-suggest button { flex: none; border: 0; background: none; font-size: 1.3rem; line-height: 1; color: var(--muted); cursor: pointer; padding: 4px 8px; }
 @media (max-width: 480px) { .lang-menu summary span { display: none; } .lang-menu summary { padding: 8px 10px; } }
 /* Écritures : polices et interlignes adaptés */
+:lang(ur) body, body:lang(ur) { font-family: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Urdu Typesetting", "Noto Naskh Arabic", system-ui, sans-serif; line-height: 2.1; }
+html:lang(ur) h1, html:lang(ur) h2 { line-height: 1.9; }
+html:lang(ur) .brand-tag { line-height: 1.9; }
 :lang(hi) body, body:lang(hi) { font-family: system-ui, -apple-system, "Segoe UI", "Noto Sans Devanagari", "Nirmala UI", "Kohinoor Devanagari", sans-serif; line-height: 1.75; }
 :lang(bn) body, body:lang(bn) { font-family: system-ui, -apple-system, "Segoe UI", "Noto Sans Bengali", "Nirmala UI", "Kohinoor Bangla", sans-serif; line-height: 1.75; }
 :lang(zh) body, body:lang(zh) { font-family: system-ui, -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", sans-serif; line-height: 1.75; }
@@ -245,17 +248,23 @@ form .hz-btn.primary { width: 100%; padding: 12px; font-size: 1rem; }
 .hz-listen { font-weight: 700; font-size: .9rem; white-space: nowrap; }
 .hz-links { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
 .hz-mushaf { font: inherit; font-weight: 700; font-size: .9rem; white-space: nowrap; color: var(--brand); background: none; border: 0; padding: 4px 0; cursor: pointer; text-decoration: underline; text-underline-offset: .15em; }
-/* Visionneuse du mushaf */
-.hz-overlay.hz-mushaf-view { background: rgba(6, 20, 16, .94); }
-.hz-mushaf-view figure { max-width: min(560px, 100%); width: 100%; gap: 8px; }
-.hz-mv-bar, .hz-mv-nav { display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%; }
+/* Visionneuse du mushaf (<dialog> natif) */
+dialog.hz-mushaf-view { border: 0; padding: 10px; margin: auto; background: transparent; color: #fff; width: min(560px, calc(100vw - 16px)); max-width: none; max-height: calc(100vh - 16px); box-sizing: border-box; overflow: visible; }
+dialog.hz-mushaf-view::backdrop { background: rgba(6, 20, 16, .94); }
+.hz-mv-bar, .hz-mv-nav { display: flex; justify-content: space-between; align-items: center; gap: 8px; width: 100%; margin-bottom: 8px; }
+.hz-mv-nav { flex-wrap: wrap; margin: 8px 0 4px; }
 .hz-mv-title { color: #fff; font-size: 1rem; }
-.hz-mv-page { width: 100%; background: #fff; border-radius: 12px; overflow: hidden; display: grid; place-items: center; min-height: 200px; }
-.hz-mushaf-view img { width: 100%; height: auto; max-height: calc(100vh - 170px); object-fit: contain; border-radius: 0; box-shadow: none; background: #fff; }
+.hz-mv-page { width: 100%; background: #fff; border-radius: 12px; overflow: hidden; display: grid; place-items: center; min-height: 200px; max-height: calc(100vh - 190px); }
+.hz-mv-page img { display: block; width: 100%; height: auto; max-height: calc(100vh - 190px); object-fit: contain; background: #fff; }
+.hz-mv-page.is-zoom { overflow: auto; place-items: start; -webkit-overflow-scrolling: touch; }
+.hz-mv-page.is-zoom img { width: 175%; max-width: none; max-height: none; }
 .hz-mv-err { color: #333; padding: 24px; text-align: center; margin: 0; }
-.hz-mv-nav .hz-btn { min-width: 96px; }
 .hz-mv-nav .hz-btn[disabled] { visibility: hidden; }
-.hz-mushaf-view figcaption { font-size: .8rem; opacity: .85; }
+.hz-mv-goto label { display: flex; align-items: center; gap: 6px; color: #fff; font-size: .85rem; }
+.hz-mv-goto input { width: 4.2em; min-height: 36px; border-radius: 8px; border: 1px solid #ccc; padding: 4px 6px; font: inherit; text-align: center; }
+.hz-arr { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 800; }
+@media (max-width: 480px) { .hz-mv-goto span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; } .hz-mv-nav { flex-wrap: nowrap; gap: 6px; } .hz-mv-nav .hz-btn { padding-inline: 10px; } }
+.hz-mv-credit { color: #fff; font-size: .78rem; opacity: .85; text-align: center; margin: 4px 0 0; }
 .hz-passage { font-size: 1.15rem; font-weight: 700; margin: 8px 0; }
 .hz-note { color: var(--muted); font-size: .9rem; margin: 0 0 6px; }
 .hz-btns { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }

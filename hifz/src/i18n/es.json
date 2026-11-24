@@ -137,8 +137,8 @@
   "copied": "Copiado ✓",
   "reminder_title": "Sesión de Corán",
   "reminder_desc": "Es la hora de la sesión de memorización.",
-  "import_q_one": "Este enlace contiene un plan con {n} aleya memorizada. ¿Añadirlo a este teléfono?",
-  "import_q_other": "Este enlace contiene un plan con {n} aleyas memorizadas. ¿Añadirlo a este teléfono?",
+  "import_q_one": "Esta copia de seguridad contiene un plan con {n} aleya memorizada. ¿Añadirlo a este teléfono?",
+  "import_q_other": "Esta copia de seguridad contiene un plan con {n} aleyas memorizadas. ¿Añadirlo a este teléfono?",
   "import_yes": "Añadir el plan",
   "card_head": "Sura memorizada",
   "card_text": "¡Alhamdulillah! Sura {s} memorizada 🌙",
@@ -154,7 +154,12 @@
   "mushaf_prev": "Página anterior",
   "mushaf_credit": "Mushaf de Medina (Hafs) · Complejo Rey Fahd para la Impresión del Sagrado Corán",
   "mushaf_error": "No se pudo cargar esta página. Comprueba tu conexión.",
-  "mushaf_preview_only": "Esta vista previa solo incluye Al-Fatiha y el yuz ʿAmma. Las 604 páginas están en el sitio publicado."
+  "mushaf_preview_only": "Esta página no está incluida en la vista previa. Las 604 páginas están en el sitio publicado.",
+  "mushaf_goto": "Ir a la página",
+  "mushaf_zoom": "Ampliar",
+  "btn_backup_file": "Guardar una copia en un archivo",
+  "btn_restore": "Restaurar desde un archivo",
+  "import_invalid": "Este archivo no es una copia de seguridad válida de Our Quran Time."
  },
  "home": {
   "title": "Our Quran Time — cuaderno de memorización del Corán para familias",

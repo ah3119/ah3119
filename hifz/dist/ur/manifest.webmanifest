@@ -1,0 +1,30 @@
+{
+ "name": "Our Quran Time",
+ "short_name": "Our Quran Time",
+ "lang": "ur",
+ "dir": "rtl",
+ "description": "ہر دن جانیے کہ بچے کے ساتھ کیا یاد کرنا ہے اور کیا دہرانا ہے۔ پارہ عمّ، چھوٹی سورتیں اور استاد کے لیے ہفتہ وار شیٹ۔ مفت، کسی اکاؤنٹ کے بغیر۔",
+ "start_url": "/ur/",
+ "scope": "/",
+ "display": "standalone",
+ "background_color": "#f8f5ee",
+ "theme_color": "#0b5d4b",
+ "icons": [
+  {
+   "src": "/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

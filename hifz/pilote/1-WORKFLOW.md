@@ -60,6 +60,13 @@ Tout est prêt : le site complet est dans `publication/ourqurantime-site.zip`, e
 2. Envoyer aux enseignants le message dédié (H1).
 3. Le soir, noter dans `4-suivi-pilote.csv` qui a confirmé avoir créé son plan. Une famille peut répondre simplement « ✅ ».
 
+## Indicateurs figés avant le 7 décembre (repris de la revue V3)
+- **Usage** : au moins 6 familles inscrites sur 10 valident 3 séances ou plus pendant la 2e semaine.
+- **Reprise** : on compte une reprise quand une famille valide une séance après une absence observée, alors qu'une autre séance restait possible pendant le pilote. Objectif : au moins 50 % de reprises dans le groupe observable. Si aucune famille n'est concernée, noter « non mesurable ».
+- **Intention** : note moyenne de continuation d'au moins 7/10, en indiquant le nombre de répondants.
+- **Enseignants** : au moins 1 sur 2 juge les portions et la fiche utiles.
+- Les résultats du pilote gratuit et ceux du futur test payant restent dans **deux colonnes séparées**.
+
 ## Partie 4 — Pendant le pilote (7 → 20 décembre)
 
 | Jour | Action (message prêt) | À noter dans le suivi |
@@ -69,7 +76,8 @@ Tout est prêt : le site complet est dans `publication/ourqurantime-site.zip`, e
 | J7 dim. 13 | E. Mi-parcours + questionnaire court | séances semaine 1 (déclarées), réponses J7 |
 | J7 dim. 13 | H2. Demander la fiche de la semaine aux enseignants | retour enseignant |
 | J10 mer. 16 | F. Encouragement + « séance manquée ? on reprend » | reprises après absence |
-| J14 dim. 20 | G. Fin + questionnaire final + merci | séances semaine 2, note, recommandation |
+| J12 ven. 18 | G. Questionnaire final envoyé (avant les vacances du samedi 19) | séances semaine 2, note, recommandation |
+| J14 dim. 20 | G2. Fin du pilote + merci ; relance du questionnaire si besoin | familles dont la routine a changé |
 | J14 dim. 20 | H3. Bilan enseignants | avis sur les portions |
 
 **Règle d'or** : ne relance pas une famille plus d'une fois par semaine en dehors de ces messages. Une absence de séance est **une donnée**, pas un échec à corriger.

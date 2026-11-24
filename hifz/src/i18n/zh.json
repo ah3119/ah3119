@@ -137,7 +137,7 @@
   "copied": "已复制 ✓",
   "reminder_title": "古兰经课",
   "reminder_desc": "背诵课的时间到了。",
-  "import_q": "此链接包含一个已背会 {n} 节的计划。要添加到这部手机吗？",
+  "import_q": "此备份包含一个已背会 {n} 节的计划。要添加到这部手机吗？",
   "import_yes": "添加计划",
   "card_head": "又背会了一章",
   "card_text": "感赞真主！{s}已背会 🌙",
@@ -153,7 +153,12 @@
   "mushaf_prev": "上一页",
   "mushaf_credit": "麦地那版古兰经（哈夫斯读法）· 法赫德国王古兰经印制中心",
   "mushaf_error": "无法加载此页，请检查网络连接。",
-  "mushaf_preview_only": "此预览仅包含开端章和第三十卷。完整的 604 页可在正式网站上查看。"
+  "mushaf_preview_only": "此预览不包含这一页。完整的 604 页可在正式网站上查看。",
+  "mushaf_goto": "跳到页码",
+  "mushaf_zoom": "放大",
+  "btn_backup_file": "保存备份文件",
+  "btn_restore": "从文件恢复",
+  "import_invalid": "此文件不是有效的 Our Quran Time 备份。"
  },
  "home": {
   "title": "Our Quran Time — 家庭古兰经背诵计划手册",

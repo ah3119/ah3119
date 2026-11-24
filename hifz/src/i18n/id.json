@@ -136,7 +136,7 @@
   "copied": "Tersalin ✓",
   "reminder_title": "Sesi hafalan Al-Qur'an",
   "reminder_desc": "Saatnya sesi hafalan.",
-  "import_q": "Tautan ini berisi rencana dengan {n} ayat yang sudah hafal. Tambahkan ke ponsel ini?",
+  "import_q": "Cadangan ini berisi rencana dengan {n} ayat yang sudah hafal. Tambahkan ke ponsel ini?",
   "import_yes": "Tambahkan rencana",
   "card_head": "Surah sudah hafal",
   "card_text": "Alhamdulillah! Surah {s} sudah hafal 🌙",
@@ -152,7 +152,12 @@
   "mushaf_prev": "Halaman sebelumnya",
   "mushaf_credit": "Mushaf Madinah (Hafs) · Kompleks Percetakan Al-Qur'an Raja Fahd",
   "mushaf_error": "Halaman ini tidak dapat dimuat. Periksa koneksi Anda.",
-  "mushaf_preview_only": "Pratinjau ini hanya berisi Al-Fatihah dan Juz 'Amma. Ke-604 halaman tersedia di situs yang sudah terbit."
+  "mushaf_preview_only": "Halaman ini tidak termasuk dalam pratinjau. Ke-604 halaman tersedia di situs yang sudah terbit.",
+  "mushaf_goto": "Ke halaman",
+  "mushaf_zoom": "Perbesar",
+  "btn_backup_file": "Simpan file cadangan",
+  "btn_restore": "Pulihkan dari file",
+  "import_invalid": "File ini bukan cadangan Our Quran Time yang valid."
  },
  "home": {
   "title": "Our Quran Time — agenda hafalan Al-Qur'an untuk keluarga",

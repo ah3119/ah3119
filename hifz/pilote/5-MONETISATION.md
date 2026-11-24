@@ -13,7 +13,7 @@
    - Il faudrait aussi un bandeau de consentement certifié en Europe.
 2. **Usage commercial des pages du mushaf** : la page du Complexe du Roi Fahd autorise les applications, programmes éducatifs et sites web, mais **ne dit rien de l'usage commercial**. Aucun produit payant ne doit contenir ces pages sans confirmation écrite du Complexe.
 3. **Dons à titre personnel** : leur traitement fiscal en France est à vérifier (micro-entreprise ou association loi 1901 ?). Une association est souvent mieux adaptée pour collecter des dons, mais seul un expert-comptable ou l'URSSAF peut trancher pour ton cas.
-4. **Mentions légales** : dès le premier euro, le mode « particulier » n'est plus valable. Il faut passer en « professionnel » (nom, statut, SIRET, adresse publiés).
+4. **Mentions légales** : avant toute collecte (vente ou soutien), confirmer le statut. La loi ne fixe pas de seuil automatique à « un euro », mais un site gratuit ne suffit pas à qualifier l'activité de non professionnelle. Pour vendre : micro-entreprise et mode « professionnel » (nom, statut, SIRET, adresse publiés).
 5. **Données d'enfants** : un espace enseignant avec comptes signifie des données de mineurs sur un serveur. Cela exige consentement parental, RGPD renforcé et sécurité. C'est un vrai chantier, pas un réglage.
 6. **Traductions non relues** : faire de la promotion payante dans une langue non relue, c'est risquer une erreur visible sur des termes religieux.
 

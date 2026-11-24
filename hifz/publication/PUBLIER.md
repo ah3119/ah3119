@@ -2,9 +2,9 @@
 
 **Durée** : environ 45 minutes. **Coût** : le prix du domaine, environ 10-12 € par an (⚠️ prix exact affiché par Cloudflare au moment de l'achat). L'hébergement est gratuit.
 **À préparer** : une carte bancaire et ton adresse e-mail personnelle.
-**Fichier à envoyer** : `ourqurantime-site.zip` (56 Mo, 675 fichiers). C'est le site complet : 10 langues, et les 604 pages du Mushaf de Médine du Complexe du Roi Fahd. Il est fourni à part (trop lourd pour le dépôt) ; pour le refaire : `python3 build.py --zip`.
+**Fichier à envoyer** : `ourqurantime-site.zip` (56 Mo, 681 fichiers). C'est le site complet : 11 langues, et les 604 pages du Mushaf de Médine du Complexe du Roi Fahd. Il est fourni à part (trop lourd pour le dépôt) ; pour le refaire : `python3 build.py --zip`.
 
-**Adresses** : l'anglais est à la racine (`ourqurantime.com`), les autres langues ont leur dossier : `/fr/`, `/ar/`, `/zh/`, `/hi/`, `/es/`, `/bn/`, `/pt/`, `/ru/`, `/id/`. **Pour les familles du pilote, partage `https://ourqurantime.com/fr/`.**
+**Adresses** : l'anglais est à la racine (`ourqurantime.com`), les autres langues ont leur dossier : `/zh/`, `/hi/`, `/es/`, `/ar/`, `/fr/`, `/bn/`, `/pt/`, `/id/`, `/ur/`, `/ru/`. **Pour les familles du pilote, partage `https://ourqurantime.com/fr/`.**
 
 > Vérification du 24 novembre 2026 : **ourqurantime.com n'était pas enregistré**. Le registre officiel des .com (Verisign) répondait « introuvable », alors qu'il répond normalement pour un domaine existant. Achète-le rapidement : un domaine libre peut partir à tout moment.
 >
@@ -68,4 +68,4 @@ Une ancienne version peut être restaurée en un clic depuis la liste des déplo
 ## Mode éditeur (mentions légales)
 Le site est configuré en **mode « particulier »**. Les mentions légales indiquent que le site est édité à titre non professionnel par une personne qui préserve son anonymat, avec l'hébergeur (Cloudflare) et l'e-mail de contact. C'est permis par l'**article 1-1, II de la LCEN** (anciennement article 6 ; ⚠️ texte consolidé à vérifier sur Légifrance), à condition d'avoir donné ton identité à l'hébergeur, ce que fait ton compte Cloudflare.
 
-**Dès que le site rapporte quoi que ce soit** (dons, carnet payant, publicité, affiliation), ce n'est plus non professionnel. Envoie-moi alors ton nom, ton statut et ton SIRET (micro-entreprise), ton adresse et ton téléphone : je passe le site en mode « professionnel » (une ligne dans `config.json`) et je te fournis un nouveau zip.
+**Avant de collecter un paiement ou un soutien** (kit payant, atelier, dons, publicité, affiliation), confirme ton statut. La loi ne fixe pas de seuil automatique à « un euro », mais un site gratuit ne suffit pas, à lui seul, à qualifier l'activité de non professionnelle. Pour une vente, il faut une micro-entreprise et des mentions professionnelles. Envoie-moi alors ton nom, ton statut et ton SIRET, ton adresse (ou celle d'une domiciliation) et ton téléphone : je passe le site en mode « professionnel » (une ligne dans `config.json`) et je te fournis un nouveau zip.

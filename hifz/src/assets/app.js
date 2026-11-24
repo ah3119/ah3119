@@ -52,7 +52,8 @@
   }
   const gOf = (s, a) => SS[s] + a - 1;
   function surahOf(g) { let lo = 1, hi = 114; while (lo < hi) { const m = (lo + hi + 1) >> 1; if (SS[m] <= g) lo = m; else hi = m - 1; } return lo; }
-  const sName = (s) => { const x = Q.surahs[s - 1]; return x['name_' + LANG] || (LANG === 'ar' ? x.ar : x.tr_en); };
+  const ARABIC_SCRIPT = LANG === 'ar' || LANG === 'ur';
+  const sName = (s) => { const x = Q.surahs[s - 1]; return x['name_' + LANG] || (ARABIC_SCRIPT ? x.ar : x.tr_en); };
   // Page du Mushaf de Médine (604 pages) qui contient le verset global g
   function pageOf(g) { let lo = 0, hi = PG.length - 1; while (lo < hi) { const m = (lo + hi + 1) >> 1; if (PG[m] <= g) lo = m; else hi = m - 1; } return lo + 1; }
   const ayahsOf = (s) => Array.from({ length: Q.surahs[s - 1].n }, (_, i) => SS[s] + i);
@@ -342,7 +343,7 @@
       if (s.old.length) parts.push(`${T('old')} ${label(s.old, 2)}`);
       return `${d} : ${parts.join(' | ')}`;
     });
-    return `${T('sheet_title')}${c.name ? ' — ' + c.name : ''}\n${lines.join('\n')}\n(${T('hafs_note')})`;
+    return `${T('sheet_title')}\n${lines.join('\n')}\n(${T('hafs_note')})`; // sans prénom : texte destiné à être partagé
   }
 
   function renderMilestones(c) {
@@ -363,7 +364,7 @@
 
   function renderTools(c) {
     $('.hz-tools', app).innerHTML = `<div class="hz-btns">
-      ${btn('edit', T('btn_edit'))}${PREVIEW ? '' : btn('reminder', T('btn_reminder'))}${PREVIEW ? '' : btn('backup', T('btn_backup'))}
+      ${btn('edit', T('btn_edit'))}${PREVIEW ? '' : btn('reminder', T('btn_reminder'))}${PREVIEW ? '' : btn('backup-file', T('btn_backup_file'))}${btn('restore', T('btn_restore'))}${PREVIEW ? '' : btn('backup', T('btn_backup'))}
       ${app.dataset.confirm === 'reset' ? `<span class="hz-confirm">${esc(T('confirm_reset'))} ${btn('reset-yes', T('yes_reset'), 'danger')}${btn('reset-no', T('cancel'), 'link')}</span>` : btn('reset', T('btn_reset'), 'link')}
     </div><p class="hz-muted">${esc(T('privacy_short'))}</p>`;
   }
@@ -499,6 +500,8 @@
       case 'print': window.print(); return;
       case 'reminder': downloadReminder(c); return;
       case 'backup': copy(backupLink(c), el); return;
+      case 'backup-file': downloadBackup(c); return;
+      case 'restore': restoreFromFile(); return;
       default: return;
     }
     if (e && e.view && e.ns === 'ok' && c.log.filter((x) => x.ns === 'ok').length > 0) { /* étoile gagnée */ }
@@ -530,7 +533,7 @@
     const esc2 = (s) => String(s).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
     const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//OurQuranTime//' + LANG.toUpperCase(), 'BEGIN:VEVENT', `UID:${c.id}-${d8}@ourqurantime`,
       'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, ''), `DTSTART:${d8}T${h}${m}00`, `DURATION:PT15M`,
-      `RRULE:FREQ=WEEKLY;BYDAY=${by}`, 'SUMMARY:' + esc2(T('reminder_title') + (c.name ? ' — ' + c.name : '')),
+      `RRULE:FREQ=WEEKLY;BYDAY=${by}`, 'SUMMARY:' + esc2(T('reminder_title')),
       'DESCRIPTION:' + esc2(T('reminder_desc') + ' ' + location.origin + location.pathname),
       'BEGIN:VALARM', 'TRIGGER:PT0M', 'ACTION:DISPLAY', 'DESCRIPTION:' + esc2(T('reminder_title')), 'END:VALARM', 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
     const a = document.createElement('a');
@@ -541,30 +544,82 @@
   // Lien de sauvegarde : réglages et progrès, sans le prénom de l'enfant.
   function backupLink(c) {
     const runs = segments(c.learned).map((x) => [SS[x.s] + x.a1 - 1, SS[x.s] + x.a2 - 1]);
-    const data = { v: 1, s: c.setup, l: runs, f: c.fragile, m: c.mp };
+    const data = backupData(c);
     const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(data)))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
     return location.origin + location.pathname + '#import=' + b64;
+  }
+  function backupData(c) {
+    const runs = segments(c.learned).map((x) => [SS[x.s] + x.a1 - 1, SS[x.s] + x.a2 - 1]);
+    return { app: 'our-quran-time', v: 1, s: c.setup, l: runs, f: c.fragile, m: c.mp };
+  }
+  // Ne garde que des valeurs attendues ; refuse tout le reste (fichier modifié, corrompu ou étranger).
+  function sanitize(d) {
+    const N = SS[115];
+    const int = (x, a, b) => Number.isInteger(x) && x >= a && x <= b;
+    const isoOk = (x) => x === '' || (typeof x === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(x) && parseISO(x) !== null);
+    if (!d || typeof d !== 'object' || d.v !== 1 || !d.s || typeof d.s !== 'object') return null;
+    const s0 = d.s;
+    const su = Array.isArray(s0.surahs) ? [...new Set(s0.surahs)].filter((x) => int(x, 1, 114)) : [];
+    if (!su.length) return null;
+    const setup = {
+      surahs: su,
+      known: (Array.isArray(s0.known) ? s0.known : []).filter((x) => int(x, 1, 114) && su.includes(x)),
+      order: s0.order === 'start' ? 'start' : 'end',
+      mode: s0.mode === 'date' ? 'date' : 'amount',
+      amount: int(s0.amount, 1, MAX_AMOUNT) ? s0.amount : DEFAULT_SETUP.amount,
+      target: isoOk(s0.target) ? s0.target : '',
+      days: typeof s0.days === 'string' && /^[no]{7}$/.test(s0.days) && s0.days.includes('n') ? s0.days : DEFAULT_SETUP.days,
+      recent: int(s0.recent, 1, 30) ? s0.recent : DEFAULT_SETUP.recent,
+      old: int(s0.old, 1, 300) ? s0.old : DEFAULT_SETUP.old,
+      time: typeof s0.time === 'string' && /^([01]\d|2[0-3]):[0-5]\d$/.test(s0.time) ? s0.time : DEFAULT_SETUP.time,
+      start: isoOk(s0.start) && s0.start ? s0.start : iso(todayMs()),
+    };
+    const learned = [];
+    for (const r of (Array.isArray(d.l) ? d.l : []).slice(0, 7000)) {
+      if (!Array.isArray(r) || !int(r[0], 0, N - 1) || !int(r[1], r[0], N - 1)) return null;
+      for (let g = r[0]; g <= r[1]; g++) learned.push(g);
+    }
+    const fragile = (Array.isArray(d.f) ? d.f : []).filter((g) => int(g, 0, N - 1));
+    return { setup, learned: [...new Set(learned)], fragile, mp: int(d.m, 0, N) ? d.m : 0 };
+  }
+  function offerImport(d, fromLink) {
+    const box = $('.hz-import', app);
+    box.hidden = false;
+    if (!d) { box.innerHTML = `<p>${esc(T('import_invalid'))}</p>${btn('import-no', T('close'), 'link')}`; }
+    else box.innerHTML = `<p>${esc(T('import_q', { n: d.learned.length }))}</p><div class="hz-btns">${btn('import-yes', T('import_yes'), 'primary')}${btn('import-no', T('cancel'), 'link')}</div>`;
+    box.onclick = (ev) => {
+      const b = ev.target.closest('[data-act]'); if (!b) return;
+      if (b.dataset.act === 'import-yes' && d) { const c = { id: newId(), name: '', setup: d.setup, learned: d.learned, fragile: d.fragile, log: [], mp: d.mp }; S.children.push(c); S.cur = c.id; app.dataset.editing = ''; save(); }
+      box.hidden = true;
+      if (fromLink) { try { history.replaceState(null, '', location.pathname); } catch (e) { /* cadre isolé */ } }
+      render();
+    };
+    box.scrollIntoView({ block: 'nearest' });
   }
   function checkImport() {
     const m = /#import=([A-Za-z0-9_-]+)/.exec(location.hash);
     if (!m) return;
-    try {
-      const json = decodeURIComponent(escape(atob(m[1].replace(/-/g, '+').replace(/_/g, '/'))));
-      const d = JSON.parse(json);
-      const learned = [];
-      (d.l || []).forEach(([a, b]) => { for (let g = a; g <= b && g < SS[115]; g++) learned.push(g); });
-      const setup = Object.assign({}, DEFAULT_SETUP, d.s);
-      const box = $('.hz-import', app);
-      box.hidden = false;
-      box.innerHTML = `<p>${esc(T('import_q', { n: learned.length }))}</p><div class="hz-btns">${btn('import-yes', T('import_yes'), 'primary')}${btn('import-no', T('cancel'), 'link')}</div>`;
-      box.addEventListener('click', (ev) => {
-        const b = ev.target.closest('[data-act]'); if (!b) return;
-        if (b.dataset.act === 'import-yes') { const c = { id: newId(), name: '', setup, learned, fragile: d.f || [], log: [], mp: d.m || 0 }; S.children.push(c); S.cur = c.id; save(); }
-        box.hidden = true;
-        try { history.replaceState(null, '', location.pathname); } catch (e) { /* cadre isolé */ }
-        render();
-      });
-    } catch (e) { /* lien invalide */ }
+    let d = null;
+    try { d = sanitize(JSON.parse(decodeURIComponent(escape(atob(m[1].replace(/-/g, '+').replace(/_/g, '/')))))); } catch (e) { d = null; }
+    offerImport(d, true);
+  }
+  function downloadBackup(c) {
+    const blob = new Blob([JSON.stringify(backupData(c), null, 1)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = `our-quran-time-${iso(todayMs())}.json`;
+    document.body.appendChild(a); a.click(); a.parentNode.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  }
+  function restoreFromFile() {
+    const inp = document.createElement('input');
+    inp.type = 'file'; inp.accept = 'application/json,.json';
+    inp.addEventListener('change', () => {
+      const f = inp.files && inp.files[0];
+      if (!f) return;
+      if (f.size > 500000) { offerImport(null); return; }
+      f.text().then((t) => { let d = null; try { d = sanitize(JSON.parse(t)); } catch (e) { d = null; } offerImport(d, false); });
+    });
+    inp.click();
   }
 
   /* ---------------- Carte de jalon ---------------- */
@@ -580,7 +635,7 @@
     const fit = (txt, w, size, y) => { let z = size; do { x.font = `${w} ${z}px system-ui, -apple-system, "Segoe UI", sans-serif`; z -= 4; } while (x.measureText(txt).width > 960 && z > 36); x.fillText(txt, 540, y); };
     x.fillStyle = '#fff'; fit(T('card_head'), 700, 60, 520);
     x.fillStyle = '#d6b25e';
-    if (LANG === 'ar') { x.font = '700 110px "Noto Naskh Arabic", "Geeza Pro", serif'; x.fillText('سورة ' + Q.surahs[su - 1].ar, 540, 740); }
+    if (ARABIC_SCRIPT) { x.font = '700 110px "Noto Naskh Arabic", "Geeza Pro", serif'; x.fillText((LANG === 'ur' ? 'سورۃ ' : 'سورة ') + Q.surahs[su - 1].ar, 540, 740); }
     else { fit(sName(su), 800, 100, 680); x.font = '700 80px "Noto Naskh Arabic", "Geeza Pro", serif'; x.fillText(Q.surahs[su - 1].ar, 540, 820); }
     x.fillStyle = '#fff'; x.font = '700 44px system-ui, sans-serif'; x.fillText(SITE, 540, 1220);
     if (SIGN) { x.fillStyle = 'rgba(255,255,255,.75)'; x.font = '500 32px system-ui, sans-serif'; x.fillText(SIGN, 540, 1272); }
@@ -598,42 +653,53 @@
   const pad3 = (n) => String(n).padStart(3, '0');
   function openMushaf(page, opener) {
     let p = page;
-    const ov = document.createElement('div');
-    ov.className = 'hz-overlay hz-mushaf-view'; ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-modal', 'true');
-    ov.innerHTML = `<figure>
-      <div class="hz-mv-bar"><b class="hz-mv-title"></b>${btn('close', T('close'), 'small')}</div>
+    const dlg = document.createElement('dialog');
+    dlg.className = 'hz-mushaf-view';
+    dlg.setAttribute('aria-labelledby', 'hz-mv-title');
+    dlg.innerHTML = `<div class="hz-mv-bar"><b class="hz-mv-title" id="hz-mv-title"></b><button type="button" class="hz-btn small" data-close autofocus>${esc(T('close'))}</button></div>
       <div class="hz-mv-page" dir="rtl"><img alt="" decoding="async"><p class="hz-mv-err" hidden></p></div>
-      <div class="hz-mv-nav" dir="ltr"><button type="button" class="hz-btn small" data-go="1"></button><button type="button" class="hz-btn small" data-go="-1"></button></div>
-      <figcaption>${esc(T('mushaf_credit'))}</figcaption></figure>`;
-    const img = $('img', ov), err = $('.hz-mv-err', ov), title = $('.hz-mv-title', ov);
+      <div class="hz-mv-nav" dir="ltr">
+        <button type="button" class="hz-btn small" data-go="1" dir="ltr"></button>
+        <form class="hz-mv-goto"><label><span>${esc(T('mushaf_goto'))}</span><input type="number" min="1" max="604" inputmode="numeric" required></label></form>
+        <button type="button" class="hz-btn small" data-zoom aria-pressed="false">🔍 ${esc(T('mushaf_zoom'))}</button>
+        <button type="button" class="hz-btn small" data-go="-1" dir="ltr"></button>
+      </div>
+      <p class="hz-mv-credit">${esc(T('mushaf_credit'))}</p>`;
+    const img = $('img', dlg), err = $('.hz-mv-err', dlg), title = $('.hz-mv-title', dlg), box = $('.hz-mv-page', dlg), input = $('input', dlg);
     const show = () => {
       title.textContent = T('mushaf_title', { p });
-      ov.setAttribute('aria-label', title.textContent);
       err.hidden = true; img.hidden = false;
       img.src = MUSHAF + pad3(p) + '.webp'; img.alt = title.textContent;
-      const [nx, pv] = $$('[data-go]', ov);
+      input.value = p;
+      const [nx, pv] = $$('[data-go]', dlg);
       nx.disabled = p >= 604; pv.disabled = p <= 1;
-      nx.textContent = '‹ ' + nf.format(Math.min(604, p + 1)); nx.setAttribute('aria-label', T('mushaf_next'));
-      pv.textContent = nf.format(Math.max(1, p - 1)) + ' ›'; pv.setAttribute('aria-label', T('mushaf_prev'));
+      nx.innerHTML = '<span class="hz-arr" aria-hidden="true">‹</span> ' + esc(nf.format(Math.min(604, p + 1))); nx.setAttribute('aria-label', T('mushaf_next'));
+      pv.innerHTML = esc(nf.format(Math.max(1, p - 1))) + ' <span class="hz-arr" aria-hidden="true">›</span>'; pv.setAttribute('aria-label', T('mushaf_prev'));
+      box.scrollTop = 0; box.scrollLeft = 0;
       [p + 1, p - 1].forEach((q) => { if (q >= 1 && q <= 604) { const im = new Image(); im.src = MUSHAF + pad3(q) + '.webp'; } });
     };
     img.addEventListener('error', () => { img.hidden = true; err.hidden = false; err.textContent = T(PREVIEW ? 'mushaf_preview_only' : 'mushaf_error'); });
     const go = (d) => { const q = p + d; if (q >= 1 && q <= 604) { p = q; show(); } };
-    const close = () => { document.removeEventListener('keydown', onKey); if (ov.parentNode) ov.parentNode.removeChild(ov); if (opener) opener.focus(); };
-    const onKey = (e) => { if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') go(1); else if (e.key === 'ArrowRight') go(-1); };
-    ov.addEventListener('click', (e) => {
+    dlg.addEventListener('click', (e) => {
       const g = e.target.closest('[data-go]');
       if (g) { go(+g.dataset.go); return; }
-      if (e.target === ov || e.target.closest('[data-act="close"]')) close();
+      const z = e.target.closest('[data-zoom]');
+      if (z) { const on = box.classList.toggle('is-zoom'); z.setAttribute('aria-pressed', String(on)); return; }
+      if (e.target.closest('[data-close]') || e.target === dlg) dlg.close();
     });
-    // Comme dans un mushaf : la page suivante est à gauche ; glisser vers la droite pour avancer.
+    $('form', dlg).addEventListener('submit', (e) => { e.preventDefault(); const q = parseInt(input.value, 10); if (q >= 1 && q <= 604) { p = q; show(); } });
+    // Comme dans un mushaf : la page suivante est à gauche ; flèche gauche ou glisser vers la droite pour avancer.
+    dlg.addEventListener('keydown', (e) => {
+      if (e.target === input) return;
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(1); } else if (e.key === 'ArrowRight') { e.preventDefault(); go(-1); }
+    });
     let x0 = null;
-    ov.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
-    ov.addEventListener('touchend', (e) => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 50) go(dx > 0 ? 1 : -1); });
-    document.addEventListener('keydown', onKey);
-    document.body.appendChild(ov);
+    box.addEventListener('touchstart', (e) => { x0 = box.classList.contains('is-zoom') ? null : e.touches[0].clientX; }, { passive: true });
+    box.addEventListener('touchend', (e) => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 50) go(dx > 0 ? 1 : -1); });
+    dlg.addEventListener('close', () => { if (dlg.parentNode) dlg.parentNode.removeChild(dlg); if (opener && opener.isConnected) opener.focus(); });
+    document.body.appendChild(dlg);
+    if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
     show();
-    $('[data-act="close"]', ov).focus();
   }
 
   /* ---------------- Événements ---------------- */

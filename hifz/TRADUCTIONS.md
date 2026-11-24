@@ -1,7 +1,7 @@
 # Traductions : état et relecture
 
 ## État (24/11/2026)
-- Les 10 langues sont complètes : carnet, accueil, À propos, Confidentialité, Mentions légales, visionneuse du mushaf, images d'aperçu WhatsApp. Le générateur refuse de construire le site s'il manque une seule phrase dans une langue.
+- Les 11 langues sont complètes (top 10 Ethnologue 2026, plus le russe conservé) : carnet, accueil, À propos, Confidentialité, Mentions légales, visionneuse du mushaf, images d'aperçu WhatsApp. Le générateur refuse de construire le site s'il manque une seule phrase dans une langue.
 - Les textes ont été **rédigés directement dans chaque langue**, pas traduits mot à mot, avec le vocabulaire des écoles de hifz du pays : *ziyadah* et *muraja'ah* en indonésien, *amparā*, *sabaq*, *sātsabaq* et *āmukhtā* en bengali, *sabaq*, *sabqī* et *manzil* en hindi, « حفظ جديد / مراجعة قريبة / مراجعة بعيدة » en arabe, noms des sourates de Ma Jian en chinois.
 - ⚠️ **Aucune langue n'a encore été relue par un locuteur natif.** C'est le niveau d'un bon rédacteur, pas celui d'une validation. Avant de promouvoir le site dans une langue, faire relire cette langue (30 à 45 minutes) par une personne native, idéalement un parent ou un enseignant de Coran.
 
@@ -9,7 +9,7 @@
 | Langue | Public visé | Points à faire valider en priorité |
 |---|---|---|
 | Arabe | Monde arabe, Maghreb | Termes « حفظ جديد / مراجعة قريبة / مراجعة بعيدة » ; tutoiement au masculin générique ; chiffres latins (choix actuel) ou indo-arabes ? |
-| Ourdou | (non publié) | Fichier archivé dans `src/i18n/archive-v1/` : à refaire si l'ourdou est ajouté |
+| Ourdou | Pakistan, Inde, diaspora (Royaume-Uni) | Écrit en nastaliq, de droite à gauche ; termes « نیا سبق / حالیہ دہرائی (سبقی) / پرانی دہرائی (منزل) » ; noms des sourates en arabe |
 | Bengali | Bangladesh, Bengale-Occidental | Noms des sourates en bengali ; « নতুন সবক / সাম্প্রতিক রিভিশন / পুরোনো রিভিশন » ; chiffres bengalis |
 | Hindi | Musulmans de l'Inde du Nord | Noms des sourates en devanagari ; registre hindi/ourdou (सबक़, दोहराई, उस्ताद) |
 | Indonésien | Indonésie, Malaisie (en partie) | *Lancar / Ulangi / setoran / muraja'ah* ; « Agenda hafalan » |

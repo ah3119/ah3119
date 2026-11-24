@@ -14,12 +14,14 @@
 | Réglages (nom, domaine, éditeur, langues, liens d'écoute) | `config.json`, puis `python3 build.py` et refaire le zip |
 
 ## Prêt à publier (24/11/2026)
-- **10 langues** (top 10 mondial, Ethnologue 2025) : anglais à la racine, puis `/zh/` `/hi/` `/es/` `/ar/` `/fr/` `/bn/` `/pt/` `/ru/` `/id/`. Menu 🌐 dans l'en-tête : tout le site change de langue et le plan de l'enfant suit. Bandeau discret qui propose la langue du téléphone, seulement sur l'accueil anglais. Arabe de droite à gauche ; noms des sourates dans l'écriture locale en chinois, hindi, bengali et russe ; pluriels et chiffres propres à chaque langue. Relecture par des locuteurs natifs : voir `TRADUCTIONS.md`.
+- **11 langues** : le top 10 Ethnologue 2026 (anglais à la racine, puis `/zh/` `/hi/` `/es/` `/ar/` `/fr/` `/bn/` `/pt/` `/id/` `/ur/`), plus le russe (`/ru/`), conservé. Menu 🌐 dans l'en-tête : tout le site change de langue et le plan de l'enfant suit. Bandeau discret qui propose la langue du téléphone, seulement sur l'accueil anglais. Arabe et ourdou de droite à gauche (ourdou en nastaliq) ; noms des sourates dans l'écriture locale en chinois, hindi, bengali et russe ; pluriels et chiffres propres à chaque langue. Relecture par des locuteurs natifs : voir `TRADUCTIONS.md`.
 - **Mushaf de Médine officiel** (Complexe du Roi Fahd, Hafs) : les 604 pages sont intégrées. Le bouton « 📖 Mushaf p. N » ouvre la page exacte du passage du jour. Source et contrôles : `../REFERENCE_CORAN.md`.
 - Domaine `ourqurantime.com` : non enregistré le 24/11 (registre .com de Verisign, réponse « introuvable »). À acheter.
 - Mentions légales en mode « particulier » dans les 10 langues. À passer en « professionnel » dès le premier revenu (`editor_mode` dans `config.json`).
 - Icônes, un manifeste par langue (l'icône d'écran d'accueil rouvre la bonne langue), images d'aperçu WhatsApp dans les 10 langues, en-têtes de sécurité, sitemap, hreflang.
-- Tests : 18 scénarios du carnet + 32 contrôles multilingues + 3 contrôles d'affichage, tous réussis (iPhone SE et iPhone 13).
+- Tests : 66 contrôles réussis : 18 scénarios du carnet, 34 contrôles multilingues, 3 d'affichage et 11 propres à la V3 (visionneuse, sauvegarde fichier, confidentialité, ourdou), sur iPhone SE et iPhone 13 simulés. ⚠️ Pas encore de test sur un téléphone physique.
+- V3 : visionneuse en fenêtre modale native (clavier, saisie de page, zoom) ; sauvegarde par fichier avec contrôle strict à l'import ; aucun prénom dans la fiche copiée, le rappel ou la sauvegarde.
+- **Plan final, workflow, budget et revenus : `PLAN-FINAL.md`.**
 - Monétisation : `pilote/5-MONETISATION.md`.
 
 ## Le produit
