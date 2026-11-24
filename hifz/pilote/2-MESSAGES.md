@@ -1,4 +1,4 @@
-# Messages prêts à copier — pilote Sakina Quran Planner
+# Messages prêts à copier — pilote Quran Steps
 
 Remplace `[LIEN]` par l'adresse du site et `[DATE]` si besoin. Ton : simple, chaleureux, sans promesse excessive.
 
@@ -6,12 +6,12 @@ Remplace `[LIEN]` par l'adresse du site et `[DATE]` si besoin. Ton : simple, cha
 
 ## A. Recrutement
 
-### A1. Story / post Sakina Kids
+### A1. Post pour un groupe de parents ou une affichette (avec l'accord de l'administrateur ou du responsable)
 > 🌙 **Parents, on a besoin de vous !**
 > On teste un **carnet de hifz gratuit** qui dit chaque soir à votre enfant quoi apprendre et quoi réviser dans Juz ʿAmma.
 > 🗓️ 2 semaines, du 7 au 20 décembre, 10 à 15 minutes par jour.
 > 📱 Sur le téléphone, sans compte ni inscription, sans données collectées.
-> 👉 Écrivez « HIFZ » en message privé pour participer (10 familles).
+> 👉 Pour participer (10 familles), écrivez « HIFZ » à [ton numéro ou ton e-mail].
 
 ### A2. Message WhatsApp direct à un parent
 > Salam [prénom du parent] 🙂

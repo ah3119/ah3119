@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Sakina Quran Planner — static site generator (Python 3.9+, no dependency).
+"""Quran Steps — static site generator (Python 3.9+, no dependency).
 
     python3 build.py              → dist/ (full multilingual site)
     python3 build.py --standalone → dist-standalone/index.html (one self-contained page, for previews)
@@ -162,7 +162,7 @@ def page_shell(lang, title, description, path, content, alternates, robots="inde
         "favicon": favicon, "css_tag": css_tag, "jsonld": json.dumps(jsonld or {}, ensure_ascii=False).replace("</", "<\\/"),
         "head_extra": "" if standalone else HEAD_EXTRA, "home_url": home_url(lang), "lang_links": "".join(lang_links),
         "content": content, "footer_links": " ".join(footer), "year": dt.date.today().year, "scripts": scripts,
-        "signature": (f'<a href="{esc(cfg["sister_url"])}" rel="noopener">{esc(cfg.get("signature", ""))}</a>' if cfg.get("sister_url") else esc(cfg.get("signature", ""))),
+        "signature": ("" if not cfg.get("signature") else " · " + (f'<a href="{esc(cfg["sister_url"])}" rel="noopener">{esc(cfg["signature"])}</a>' if cfg.get("sister_url") else esc(cfg["signature"]))),
     }
     return render(LAYOUT, values, lang, "layout.html")
 

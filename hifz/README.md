@@ -1,4 +1,4 @@
-# Sakina Quran Planner — carnet de mémorisation du Coran pour les familles (version pilote)
+# Quran Steps — carnet de mémorisation du Coran pour les familles (version pilote)
 
 **Aperçu en ligne (privé, version française) :** https://claude.ai/artifact/79K9MCZ99eTHYjLTpMs5Er
 
@@ -31,7 +31,7 @@ Le reste :
 - **Lien de sauvegarde** pour changer de téléphone. Il ne contient pas le prénom de l'enfant.
 - **Confidentialité** : aucun compte, aucun serveur, tout reste sur le téléphone. Le prénom est facultatif.
 - **Langues** : français (racine `/`) et anglais (`/en/`). L'arabe, l'ourdou, l'indonésien et le turc sont en pause : leurs fichiers ne couvrent pas les nouveaux textes et doivent être relus par des natifs.
-- **Écoute** : liens vers Quran.com par défaut. Pour utiliser les récitations Sakina Kids, remplir `listen` dans `config.json`, par exemple `"114": "https://www.youtube.com/watch?v=..."`.
+- **Écoute** : liens vers Quran.com par défaut. Pour utiliser d'autres récitations, remplir `listen` dans `config.json`, par exemple `"114": "https://www.youtube.com/watch?v=..."`.
 
 ## Validation (navigateur, dates figées, 18 scénarios, tous réussis)
 - Coche conservée après un changement de rythme (le verset 1 reste acquis, le passage suivant devient 2 à 4).

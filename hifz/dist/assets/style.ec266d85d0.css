@@ -199,7 +199,7 @@ form .hz-btn.primary { width: 100%; padding: 12px; font-size: 1rem; }
   #hz-print tr { break-inside: avoid; }
 }
 
-/* ===== Sakina Hifz — parcours famille ===== */
+/* ===== Quran Steps — parcours famille ===== */
 .hz { display: grid; gap: 16px; margin: 20px 0; max-width: 760px; }
 .hz.is-loading { opacity: .6; }
 .hz-tabs { display: flex; flex-wrap: wrap; gap: 6px; }

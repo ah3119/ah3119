@@ -1,6 +1,8 @@
 # Recap : sites d'outils gratuits financés par la pub (22/11/2026)
 
-> **Décision du 24/11 : nom définitif « Sakina Quran Planner »**, domaine principal `sakinaquranplanner.com` (identique au nom ; `sakinaquranplan.com` en redirection facultative), accroche « A Quran memorization planner for families » / « Le carnet de mémorisation du Coran pour les familles », signature « by Sakina Kids ». Appliqué partout (site, fiche, carte, documents du pilote).
+> **Décision du 24/11 (2) : projet indépendant de Sakina Kids.** Nom « Quran Steps » (aucun conflit trouvé ; domaine quransteps.com à vérifier), accroche inchangée, plus de signature Sakina. Recrutement du pilote via les enseignants, les mosquées et les groupes de parents.
+>
+> ~~**Décision du 24/11 : nom définitif « Sakina Quran Planner »**, domaine principal `sakinaquranplanner.com` (identique au nom ; `sakinaquranplan.com` en redirection facultative), accroche « A Quran memorization planner for families » / « Le carnet de mémorisation du Coran pour les familles », signature « by Sakina Kids ». Appliqué partout (site, fiche, carte, documents du pilote).~~ Remplacé par la décision ci-dessus.
 >
 > **Mise à jour (fin de journée) : version pilote « Sakina Hifz »**
 > - Revue de ChatGPT confrontée au code : tous les bugs moteur ont été reproduits, plus un bug plus grave sur les pages sourates, corrigé.
