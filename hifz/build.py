@@ -159,7 +159,8 @@ def page_shell(lang, title, description, path, content, alternates, robots="inde
     values = {
         "lang": lang, "dir": m["dir"], "title": esc(title), "description": esc(description), "canonical": DOMAIN + path,
         "hreflang": hreflang, "robots": robots, "site_name": esc(cfg["site_name"]), "og_locale": m["og_locale"],
-        "favicon": favicon, "css_tag": css_tag, "jsonld": json.dumps(jsonld or {}, ensure_ascii=False).replace("</", "<\\/"),
+        "favicon": favicon, "css_tag": css_tag,
+        "og_image": f"{DOMAIN}/og-{lang if lang in ('fr', 'en') else 'en'}.jpg", "jsonld": json.dumps(jsonld or {}, ensure_ascii=False).replace("</", "<\\/"),
         "head_extra": "" if standalone else HEAD_EXTRA, "home_url": home_url(lang), "lang_links": "".join(lang_links),
         "content": content, "footer_links": " ".join(footer), "year": dt.date.today().year, "scripts": scripts,
         "signature": ("" if not cfg.get("signature") else " · " + (f'<a href="{esc(cfg["sister_url"])}" rel="noopener">{esc(cfg["signature"])}</a>' if cfg.get("sister_url") else esc(cfg["signature"]))),
@@ -208,6 +209,8 @@ def main():
         ASSETS = {}
         page = page_shell(L0, cfg["site_name"], h["description"], "/", home_content(L0, standalone=True), None, with_app=True, standalone=True)
         page = page.replace('href="/"', 'href="#"')
+        # l'aperçu autonome n'a ni manifeste, ni icônes, ni image d'aperçu à côté de lui
+        page = re.sub(r'\n<link rel="(apple-touch-icon|manifest)"[^>]*>|\n<meta property="og:image[^>]*>', "", page)
         (out / "index.html").write_text(page, encoding="utf-8")
         # Artifact preview: the host adds doctype/html/head/body itself
         head = re.search(r"<head>(.*?)</head>", page, re.S).group(1)
@@ -225,6 +228,17 @@ def main():
     ASSETS = {"css": fingerprint(SRC / "assets" / "style.css"), "js": fingerprint(SRC / "assets" / "app.js"),
               "quran": fingerprint(SRC / "data" / "quran.json")}
     shutil.copyfile(SRC / "assets" / "favicon.svg", DIST / "favicon.svg")
+    for extra in ("icon-192.png", "icon-512.png", "apple-touch-icon.png", "og-fr.jpg", "og-en.jpg"):
+        if (SRC / "assets" / extra).exists():
+            shutil.copyfile(SRC / "assets" / extra, DIST / extra)
+    (DIST / "manifest.webmanifest").write_text(json.dumps({
+        "name": cfg["site_name"], "short_name": cfg["site_name"], "lang": LANGS[0],
+        "description": I18N[LANGS[0]]["home"]["description"], "start_url": "/", "scope": "/", "display": "standalone",
+        "background_color": "#f8f5ee", "theme_color": "#0b5d4b",
+        "icons": [{"src": "/icon-192.png", "sizes": "192x192", "type": "image/png"},
+                  {"src": "/icon-512.png", "sizes": "512x512", "type": "image/png"},
+                  {"src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}]},
+        ensure_ascii=False, indent=1), encoding="utf-8")
     sitemap = []
     home_alts = {l: home_url(l) for l in LANGS}
 
@@ -270,6 +284,18 @@ def main():
     # Static pages
     todo = [k for k, v in cfg.items() if isinstance(v, str) and "TO COMPLETE" in v]
     cfg_vals = {k: (f'<mark class="todo">{esc(v)}</mark>' if "TO COMPLETE" in v else esc(v)) for k, v in cfg.items() if isinstance(v, str)}
+    mail = esc(cfg["contact_email"])
+    if cfg.get("editor_mode", "particulier") == "particulier":
+        cfg_vals["editor_block_fr"] = (f"<p>Site édité par un particulier, à titre non professionnel. Conformément à l’article 1-1, II de la LCEN, "
+                                       f"l’éditeur a choisi de préserver son anonymat ; ses coordonnées ont été communiquées à l’hébergeur ci-dessous.<br>Contact : {mail}</p>")
+        cfg_vals["editor_block_en"] = (f"<p>This site is published by a private individual on a non-professional basis. As permitted by French law (LCEN, art. 1-1, II), "
+                                       f"the publisher remains anonymous; their identity has been provided to the hosting provider below.<br>Contact: {mail}</p>")
+        cfg_vals["controller"] = "l’éditeur du site (particulier)"
+        todo = [k for k in todo if not k.startswith("editor_")]
+    else:
+        cfg_vals["editor_block_fr"] = f"<p>{cfg_vals['editor_name']}<br>{cfg_vals['editor_status']}<br>{cfg_vals['editor_address']}<br>Téléphone : {cfg_vals['editor_phone']}<br>E-mail : {mail}</p><h2>Directeur de la publication</h2><p>{cfg_vals['editor_name']}</p>"
+        cfg_vals["editor_block_en"] = f"<p>{cfg_vals['editor_name']}<br>{cfg_vals['editor_status']}<br>{cfg_vals['editor_address']}<br>Phone: {cfg_vals['editor_phone']}<br>Email: {mail}</p><h2>Publication director</h2><p>{cfg_vals['editor_name']}</p>"
+        cfg_vals["controller"] = f"{cfg_vals['editor_name']}, {cfg_vals['editor_address']}"
     for lang_dir in sorted((SRC / "pages").iterdir()):
         lang = lang_dir.name
         if lang not in LANGS:
@@ -278,7 +304,10 @@ def main():
             text = f.read_text(encoding="utf-8")
             mm = META.match(text)
             meta = json.loads(mm.group(1))
-            body = TOKEN.sub(lambda m: cfg_vals.get(m.group(2), m.group(0)), text[mm.end():])
+            vals = dict(cfg_vals)
+            if lang == "en" and cfg.get("editor_mode", "particulier") == "particulier":
+                vals["controller"] = "the site publisher (private individual)"
+            body = TOKEN.sub(lambda m: vals.get(m.group(2), m.group(0)), text[mm.end():])
             slug = meta.get("slug")
             path = (home_url(lang) + slug + "/") if slug else "/404.html"
             alts = {l: home_url(l) + slug + "/" for l in LANGS if (SRC / "pages" / l / f.name).exists()} if slug else None
@@ -296,7 +325,7 @@ def main():
     (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {DOMAIN}/sitemap.xml\n", encoding="utf-8")
     if cfg.get("adsense_client"):
         (DIST / "ads.txt").write_text(f"google.com, {cfg['adsense_client'].replace('ca-', '')}, DIRECT, f08c47fec0942fa0\n", encoding="utf-8")
-    (DIST / "_headers").write_text("/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n\n/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n", encoding="utf-8")
+    (DIST / "_headers").write_text("/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n\n/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  X-Frame-Options: DENY\n  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()\n", encoding="utf-8")
     if todo:
         print("⚠️  Fields to complete in config.json before going live:", ", ".join(todo))
     print(f"✅ {len(sitemap)} indexable pages in {len(LANGS)} languages → dist/")

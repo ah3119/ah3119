@@ -25,28 +25,13 @@ Coût : **≈ 10-15 € par an** (nom de domaine). L'hébergement Cloudflare Pag
 
 ## Partie 1 — Mise en ligne (24 → 27 novembre)
 
-1. **Nom** : « Our Quran Time », projet indépendant. Vérifier :
-   - que le domaine ourqurantime.com est libre, et qu'aucune marque « QURAN TIME » ou « OUR QURAN TIME » n'est déposée (une appli iOS « Quran Time » existe déjà) ;
-   - qu'aucune marque identique n'est déposée pour des services éducatifs : recherche gratuite sur [data.inpi.fr](https://data.inpi.fr) et [euipo.europa.eu](https://euipo.europa.eu/eSearch/).
-2. **M'envoyer** :
-   - le domaine choisi ;
-   - les informations d'éditeur pour les mentions légales (nom, statut / SIRET, adresse, téléphone) ;
-   - l'e-mail de contact ;
-   - en option, d'autres liens de récitation par sourate, pour remplacer Quran.com.
+Tout est prêt : le site complet est dans `publication/ourqurantime-site.zip`, et le guide clic par clic dans **`publication/PUBLIER.md`** (environ 45 min).
 
-   Je mets à jour `config.json` et je régénère le site.
-3. **Cloudflare Pages** :
-   - créer un compte gratuit ;
-   - *Workers & Pages → Create → Pages → Upload assets* ;
-   - déposer le dossier `hifz/dist/` ;
-   - *Custom domains* : brancher le domaine.
-4. **Test sur 2 téléphones** (un iPhone et un Android), environ 15 min :
-   - [ ] créer un plan « Al-Fatiha et les 3 Qul » ;
-   - [ ] cocher « Récité », puis revenir le lendemain : le passage suivant apparaît ;
-   - [ ] « Ajouter un rappel à l'agenda » : le rappel arrive à l'heure choisie ;
-   - [ ] « Copier la fiche pour l'enseignant » puis la coller dans WhatsApp : c'est lisible ;
-   - [ ] « Imprimer la fiche » (sur ordinateur) : elle tient sur une page.
-5. Ajouter le site à l'écran d'accueil du téléphone (menu Partager → « Sur l'écran d'accueil »). C'est ce que tu montreras aux familles.
+1. **Domaine** : `ourqurantime.com` était libre le 24/11 (vérifié auprès du registre officiel des .com). L'acheter tout de suite chez Cloudflare.
+2. **Marque** : vérifier qu'aucune marque « QURAN TIME » ou « OUR QURAN TIME » n'est déposée (une appli iOS « Quran Time » existe) : [data.inpi.fr](https://data.inpi.fr) et la base de l'EUIPO (office des marques de l'Union européenne).
+3. **Mentions légales** : mode « particulier ». Le site peut être publié sans ton adresse personnelle tant qu'il est gratuit et ne rapporte rien. Le passage en mode « professionnel » est expliqué dans `PUBLIER.md`.
+4. **Publier** en suivant `PUBLIER.md` (compte Cloudflare, domaine, téléversement du zip, adresse `contact@`, vérifications).
+5. Ajouter le site à l'écran d'accueil de ton téléphone : c'est ce que tu montreras aux familles.
 
 ## Partie 2 — Recrutement (25 novembre → 4 décembre)
 

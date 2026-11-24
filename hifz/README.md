@@ -9,8 +9,15 @@
 | Messages prêts à copier (familles, enseignants, vidéos) | `pilote/2-MESSAGES.md` |
 | Questionnaires J7 / J14 / enseignants | `pilote/3-QUESTIONNAIRES.md` |
 | Tableau de suivi (sans prénoms) | `pilote/4-suivi-pilote.csv` |
-| Le site à mettre en ligne | `dist/` (à déposer sur Cloudflare Pages) |
-| Réglages (nom, domaine, éditeur, langues, liens d'écoute) | `config.json`, puis `python3 build.py` |
+| **Publier le site (guide pas à pas, 45 min)** | **`publication/PUBLIER.md`** |
+| Le site prêt à téléverser | `publication/ourqurantime-site.zip` (contenu de `dist/`) |
+| Réglages (nom, domaine, éditeur, langues, liens d'écoute) | `config.json`, puis `python3 build.py` et refaire le zip |
+
+## Prêt à publier (24/11/2026)
+- Domaine `ourqurantime.com` : non enregistré le 24/11 (registre .com de Verisign, réponse « introuvable »). À acheter.
+- Mentions légales en mode « particulier » (éditeur non professionnel anonyme, hébergeur Cloudflare). À passer en « professionnel » dès le premier revenu (`editor_mode` dans `config.json`).
+- Icônes (onglet, écran d'accueil iPhone/Android), manifeste, images d'aperçu WhatsApp/réseaux (FR et EN), en-têtes de sécurité (`_headers`), sitemap, robots.
+- Pages : accueil FR (`/`) et EN (`/en/`), À propos, Confidentialité, Mentions légales, 404.
 
 ## Le produit
 Chaque jour, le parent voit la séance de son enfant :

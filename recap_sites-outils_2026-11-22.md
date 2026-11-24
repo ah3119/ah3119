@@ -1,5 +1,7 @@
 # Recap : sites d'outils gratuits financés par la pub (22/11/2026)
 
+> **24/11 : site prêt à publier.** `ourqurantime.com` non enregistré à cette date (registre Verisign : « introuvable »). Le site complet est dans `hifz/publication/ourqurantime-site.zip`, le guide dans `hifz/publication/PUBLIER.md` (Cloudflare : domaine, Pages, adresse contact@, vérifications). Mentions légales en mode « particulier » tant que le site ne rapporte rien. Restent : marque « QURAN TIME » (INPI, EUIPO) et texte de l'article 1-1, II de la LCEN sur Légifrance.
+
 > **Décision du 24/11 (4), qui remplace les précédentes : carnet indépendant « Our Quran Time »**, adresse prévue `ourqurantime.com`, accroche « Le carnet de mémorisation du Coran pour les familles » / « A Quran memorization planner for families ». « Quran Steps » abandonné (académie quransteps.com et marque INPI FR5263176 signalées). ⚠️ Une appli iOS « Quran Time » existe : vérifier les marques « QURAN TIME ». Démarrage du pilote si 10 familles confirmées le 4 décembre ; sinon prétest du 7 au 13 décembre puis pilote du 4 au 17 janvier 2027.
 >
 > ~~**Décision du 24/11 (3) : « Sakina Quran Planner », signé « by Sakina Kids », adresse `sakinaquranplan.com`** (conseil : acheter aussi `sakinaquranplanner.com` en redirection). Accroches : « Mémoriser le Coran pas à pas, en famille » / « Memorize the Quran together, one step at a time ». Recrutement via la communauté Sakina Kids, puis les enseignants. Annule la décision (2) ci-dessous.~~
