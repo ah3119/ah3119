@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Sakina Hifz — static site generator (Python 3.9+, no dependency).
+"""Quran Steps — static site generator (Python 3.9+, no dependency).
 
     python3 build.py              → dist/ (full multilingual site)
     python3 build.py --standalone → dist-standalone/index.html (one self-contained page, for previews)

@@ -1,4 +1,4 @@
-# Sakina Hifz — carnet de mémorisation du Coran pour les familles (version pilote)
+# Quran Steps — carnet de mémorisation du Coran pour les familles (version pilote)
 
 **Aperçu en ligne (privé, version française) :** https://claude.ai/artifact/79K9MCZ99eTHYjLTpMs5Er
 

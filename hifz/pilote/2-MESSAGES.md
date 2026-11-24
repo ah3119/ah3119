@@ -1,4 +1,4 @@
-# Messages prêts à copier — pilote Sakina Hifz
+# Messages prêts à copier — pilote Quran Steps
 
 Remplace `[LIEN]` par l'adresse du site et `[DATE]` si besoin. Ton : simple, chaleureux, sans promesse excessive.
 
