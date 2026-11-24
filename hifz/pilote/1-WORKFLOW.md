@@ -12,7 +12,7 @@
 
 | Partie | Période | Qui | Temps pour toi |
 |---|---|---|---|
-| 1. Mise en ligne | 23 → 27 nov. | Toi, avec Claude | ≈ 2 h |
+| 1. Mise en ligne | 24 → 27 nov. | Toi, avec Claude | ≈ 2 h |
 | 2. Recrutement | 25 nov. → 4 déc. | Toi | ≈ 2 h |
 | 3. Démarrage | lun. 7 déc. | Toi | ≈ 30 min |
 | 4. Pilote | 7 → 20 déc. | Familles ; toi pour les messages | ≈ 15 min/jour au maximum |
@@ -23,7 +23,7 @@ Coût : **≈ 10-15 € par an** (nom de domaine). L'hébergement Cloudflare Pag
 
 ---
 
-## Partie 1 — Mise en ligne (23 → 27 novembre)
+## Partie 1 — Mise en ligne (24 → 27 novembre)
 
 1. **Nom** : « Sakina Hifz » par défaut. Vérifier :
    - que le domaine est libre (ex. sakinahifz.com ou .fr) chez un registraire ;
