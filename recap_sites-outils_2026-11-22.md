@@ -1,5 +1,7 @@
 # Recap : sites d'outils gratuits financés par la pub (22/11/2026)
 
+> **Décision du 24/11 : nom définitif « Sakina Quran Planner »**, domaine `sakinaquranplan.com`, accroche « A Quran memorization planner for families » / « Le carnet de mémorisation du Coran pour les familles », signature « by Sakina Kids ». Appliqué partout (site, fiche, carte, documents du pilote).
+>
 > **Mise à jour (fin de journée) : version pilote « Sakina Hifz »**
 > - Revue de ChatGPT confrontée au code : tous les bugs moteur ont été reproduits, plus un bug plus grave sur les pages sourates, corrigé.
 > - Concurrence : HifzMate et HifzPath existent ; mon affirmation « aucun outil » était fausse. Nom « Hifzly » abandonné.

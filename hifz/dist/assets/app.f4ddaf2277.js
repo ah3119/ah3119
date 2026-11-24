@@ -1,4 +1,4 @@
-/* Quran Steps — carnet de mémorisation du Coran pour les familles.
+/* Sakina Quran Planner — carnet de mémorisation du Coran pour les familles.
    Le plan suit ce que l'enfant a réellement récité (versets acquis), pas le calendrier.
    Les dates ne sont que des projections recalculées chaque jour.
    Tout reste dans le navigateur : pas de compte, pas de serveur. */
@@ -7,7 +7,8 @@
   const I = JSON.parse(document.getElementById('i18n').textContent);
   const LANG = document.documentElement.lang || 'fr';
   const LOC = LANG === 'ar' ? 'ar-u-nu-latn' : LANG;
-  const SITE = document.documentElement.dataset.site || 'Quran Steps';
+  const SITE = document.documentElement.dataset.site || 'Sakina Quran Planner';
+  const SIGN = (document.getElementById('hz') || { dataset: {} }).dataset.signature || '';
   const T = (k, v) => { let s = I[k] != null ? I[k] : k; if (v) for (const a in v) s = s.split('{' + a + '}').join(v[a]); return s; };
   const $ = (s, r) => (r || document).querySelector(s);
   const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
@@ -315,7 +316,7 @@
     $('#hz-print').innerHTML = `<h1>${esc(T('sheet_title'))}${c.name ? ' — ' + esc(c.name) : ''}</h1>
       <p>${esc(T('week_of', { a: fmt(monday, { day: 'numeric', month: 'long' }), b: fmt(monday + 6 * DAY, { day: 'numeric', month: 'long', year: 'numeric' }) }))} · ${esc(T('hafs_note'))}</p>
       <table class="hz-sheet"><thead><tr><th>${esc(T('col_day'))}</th><th>${esc(T('new'))}</th><th>${esc(T('recent'))}</th><th>${esc(T('old'))}</th><th>${esc(T('col_parent'))}</th><th>${esc(T('col_teacher'))}</th></tr></thead><tbody>${rows}</tbody></table>
-      <p class="hz-sign">${esc(T('sheet_teacher_note'))} ______________________________________________</p><p class="hz-small">${esc(SITE)}</p>`;
+      <p class="hz-sign">${esc(T('sheet_teacher_note'))} ______________________________________________</p><p class="hz-small">${esc(SITE)}${SIGN ? ' · ' + esc(SIGN) : ''}</p>`;
   }
   function weekText(c) {
     const lines = weekDays(c).map((w) => {
@@ -516,7 +517,7 @@
     const start = new Date(todayMs());
     const d8 = start.toISOString().slice(0, 10).replace(/-/g, '');
     const esc2 = (s) => String(s).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
-    const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//QuranSteps//FR', 'BEGIN:VEVENT', `UID:${c.id}-${d8}@quransteps`,
+    const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//SakinaQuranPlanner//FR', 'BEGIN:VEVENT', `UID:${c.id}-${d8}@sakinaquranplan`,
       'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, ''), `DTSTART:${d8}T${h}${m}00`, `DURATION:PT15M`,
       `RRULE:FREQ=WEEKLY;BYDAY=${by}`, 'SUMMARY:' + esc2(T('reminder_title') + (c.name ? ' — ' + c.name : '')),
       'DESCRIPTION:' + esc2(T('reminder_desc') + ' ' + location.origin + location.pathname),
@@ -568,7 +569,8 @@
     x.fillStyle = '#fff'; x.font = '700 60px system-ui, -apple-system, "Segoe UI", sans-serif'; x.fillText(T('card_head'), 540, 520);
     x.fillStyle = '#d6b25e'; x.font = '800 100px system-ui, -apple-system, "Segoe UI", sans-serif'; x.fillText(Q.surahs[su - 1].tr_en, 540, 680);
     x.font = '700 80px "Noto Naskh Arabic", "Geeza Pro", serif'; x.fillText(Q.surahs[su - 1].ar, 540, 820);
-    x.fillStyle = '#fff'; x.font = '700 44px system-ui, sans-serif'; x.fillText(SITE, 540, 1230);
+    x.fillStyle = '#fff'; x.font = '700 44px system-ui, sans-serif'; x.fillText(SITE, 540, 1220);
+    if (SIGN) { x.fillStyle = 'rgba(255,255,255,.75)'; x.font = '500 32px system-ui, sans-serif'; x.fillText(SIGN, 540, 1272); }
     const blob = await new Promise((r) => cv.toBlob(r, 'image/png'));
     const file = new File([blob], 'sourate-terminee.png', { type: 'image/png' });
     if (!PREVIEW && navigator.canShare && navigator.canShare({ files: [file] })) { try { await navigator.share({ files: [file], text: T('card_text', { s: sName(su) }) }); return; } catch (e) { /* annulé */ } }

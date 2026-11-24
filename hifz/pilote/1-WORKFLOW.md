@@ -1,4 +1,4 @@
-# Pilote Quran Steps — déroulé complet
+# Pilote Sakina Quran Planner — déroulé complet
 
 **Objectif du pilote** : savoir si des parents utilisent le carnet **plusieurs fois par semaine pendant 2 semaines** avec leur enfant, et s'ils reprennent après une séance manquée. Ce n'est pas un test de trafic ni de revenus.
 
@@ -25,8 +25,8 @@ Coût : **≈ 10-15 € par an** (nom de domaine). L'hébergement Cloudflare Pag
 
 ## Partie 1 — Mise en ligne (24 → 27 novembre)
 
-1. **Nom** : « Quran Steps ». Vérifier :
-   - que le domaine est libre (quransteps.com, sinon quransteps.app ou .org) chez un registraire ;
+1. **Nom** : « Sakina Quran Planner » (signature « by Sakina Kids »). Vérifier :
+   - que le domaine est libre (sakinaquranplan.com ; en option sakinaquranplanner.com en redirection) chez un registraire ;
    - qu'aucune marque identique n'est déposée pour des services éducatifs : recherche gratuite sur [data.inpi.fr](https://data.inpi.fr) et [euipo.europa.eu](https://euipo.europa.eu/eSearch/).
 2. **M'envoyer** :
    - le domaine choisi ;

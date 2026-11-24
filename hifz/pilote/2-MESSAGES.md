@@ -1,4 +1,4 @@
-# Messages prêts à copier — pilote Quran Steps
+# Messages prêts à copier — pilote Sakina Quran Planner
 
 Remplace `[LIEN]` par l'adresse du site et `[DATE]` si besoin. Ton : simple, chaleureux, sans promesse excessive.
 

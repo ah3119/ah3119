@@ -286,3 +286,12 @@ form .hz-btn.primary { width: 100%; padding: 12px; font-size: 1rem; }
 .hz { grid-template-columns: minmax(0, 1fr); }
 .hz > *, .hz-main > * { min-width: 0; }
 .hz-main { display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr); }
+
+/* Logo : nom + accroche */
+.brand-text { display: flex; flex-direction: column; line-height: 1.15; min-width: 0; }
+.brand-name { font-weight: 800; }
+.brand-tag { font-size: .72rem; font-weight: 600; color: var(--muted); letter-spacing: .01em; }
+@media (max-width: 420px) { .brand-name { font-size: 1.02rem; } .brand-tag { font-size: .68rem; } }
+
+/* En-tête : un peu d air quand le logo et les langues passent sur deux lignes */
+.site-header .wrap { padding-block: 8px; }
