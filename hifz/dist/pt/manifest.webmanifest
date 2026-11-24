@@ -1,0 +1,30 @@
+{
+ "name": "Our Quran Time",
+ "short_name": "Our Quran Time",
+ "lang": "pt",
+ "dir": "ltr",
+ "description": "Saiba todos os dias o que memorizar e o que revisar com seu filho. Juz ʿAmma, suratas curtas e uma ficha semanal para o professor. Grátis, sem cadastro.",
+ "start_url": "/pt/",
+ "scope": "/",
+ "display": "standalone",
+ "background_color": "#f8f5ee",
+ "theme_color": "#0b5d4b",
+ "icons": [
+  {
+   "src": "/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

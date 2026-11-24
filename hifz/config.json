@@ -15,15 +15,24 @@
   "adsense_client": "",
   "google_site_verification": "",
   "cloudflare_analytics_token": "",
-  "last_updated": "22 novembre 2026",
+  "last_updated": "2026-11-24",
   "languages": [
+    "en",
+    "zh",
+    "hi",
+    "es",
+    "ar",
     "fr",
-    "en"
+    "bn",
+    "pt",
+    "ru",
+    "id"
   ],
   "surah_pages": false,
   "listen": {},
   "_listen_aide": "Pour remplacer Quran.com par une autre récitation : \"114\": \"https://...\"",
   "signature": "",
   "editor_mode": "particulier",
-  "_editor_mode_aide": "« particulier » : publication à titre non professionnel, sans adresse personnelle (LCEN art. 1-1, II) ; « professionnel » : remplir editor_name, editor_status, editor_address, editor_phone (obligatoire dès qu'il y a des revenus)."
+  "_editor_mode_aide": "« particulier » : publication à titre non professionnel, sans adresse personnelle (LCEN art. 1-1, II) ; « professionnel » : remplir editor_name, editor_status, editor_address, editor_phone (obligatoire dès qu'il y a des revenus).",
+  "_languages_aide": "Ordre = ordre du menu Langues. La première langue est servie à la racine (/), les autres sous /code/. Top 10 des langues les plus parlées (Ethnologue 2025)."
 }

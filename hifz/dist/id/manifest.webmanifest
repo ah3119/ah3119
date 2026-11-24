@@ -1,0 +1,30 @@
+{
+ "name": "Our Quran Time",
+ "short_name": "Our Quran Time",
+ "lang": "id",
+ "dir": "ltr",
+ "description": "Setiap hari, ketahui apa yang harus dihafal dan dimuraja'ah bersama anak Anda. Juz 'Amma, surah-surah pendek, dan lembar pekanan untuk guru. Gratis, tanpa akun.",
+ "start_url": "/id/",
+ "scope": "/",
+ "display": "standalone",
+ "background_color": "#f8f5ee",
+ "theme_color": "#0b5d4b",
+ "icons": [
+  {
+   "src": "/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "name": "Our Quran Time",
+ "short_name": "Our Quran Time",
+ "lang": "zh-Hans",
+ "dir": "ltr",
+ "description": "每天都知道孩子该背什么、该复习什么。第三十卷、短章，以及给老师的每周记录表。免费，无需注册。",
+ "start_url": "/zh/",
+ "scope": "/",
+ "display": "standalone",
+ "background_color": "#f8f5ee",
+ "theme_color": "#0b5d4b",
+ "icons": [
+  {
+   "src": "/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

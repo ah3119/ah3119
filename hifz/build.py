@@ -23,11 +23,47 @@ POPULAR = [1, 18, 36, 55, 56, 67, 32, 73, 76, 78, 87, 93, 94, 97, 99, 100, 101, 
 
 cfg = json.loads((ROOT / "config.json").read_text(encoding="utf-8"))
 DOMAIN = cfg["domain"].rstrip("/")
-# Langues publiées (la première est servie à la racine). Pilote : ["fr", "en"].
-LANGS = cfg.get("languages") or ["fr", "en"]
+# Langues publiées (la première est servie à la racine, les autres sous /code/).
+LANGS = cfg.get("languages") or ["en", "fr"]
 SURAH_PAGES = bool(cfg.get("surah_pages"))
 I18N = {l: json.loads((SRC / "i18n" / f"{l}.json").read_text(encoding="utf-8")) for l in LANGS}
 QURAN = json.loads((SRC / "data" / "quran.json").read_text(encoding="utf-8"))
+# Noms des sourates dans l'écriture locale (zh, hi, bn, ru) → champ name_<langue>
+for _l, _names in json.loads((SRC / "data" / "surah_names.json").read_text(encoding="utf-8")).items():
+    if not _l.startswith("_"):
+        assert len(_names) == 114, _l
+        for _s, _n in zip(QURAN["surahs"], _names):
+            _s["name_" + _l] = _n
+GLOBE = '<svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18"><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M2.8 12h18.4M12 2.8c2.6 2.7 3.9 5.8 3.9 9.2s-1.3 6.5-3.9 9.2c-2.6-2.7-3.9-5.8-3.9-9.2s1.3-6.5 3.9-9.2z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>'
+
+
+def hl(l):
+    """Code de langue HTML/hreflang (ex. zh → zh-Hans)."""
+    return I18N[l]["meta"].get("html_lang", l)
+
+
+def check_keys():
+    """Chaque langue doit avoir toutes les chaînes de l'anglais (une variante de pluriel suffit)."""
+    ref = I18N["en"] if "en" in I18N else I18N[LANGS[0]]
+    bad = []
+    for l in LANGS:
+        for sec in ("meta", "ui", "app", "home", "legal"):
+            have = I18N[l].get(sec, {})
+            for k in ref.get(sec, {}):
+                base = k.rsplit("_", 1)[0] if k.rsplit("_", 1)[-1] in ("zero", "one", "two", "few", "many", "other") else k
+                if k not in have and not any(x == base or x.startswith(base + "_") for x in have):
+                    bad.append(f"{l}.{sec}.{k}")
+    if bad:
+        sys.exit("Missing translations: " + ", ".join(bad))
+
+
+LANG_SCRIPT = """<script>(function(){var d=document,m=d.querySelector('.lang-menu');if(m){d.addEventListener('click',function(e){if(m.open&&!m.contains(e.target))m.open=false});d.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.open){m.open=false;m.querySelector('summary').focus()}});m.querySelectorAll('a[data-l]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('oqt.lang',a.getAttribute('data-l'))}catch(e){}})})}
+var j=d.getElementById('lang-alts');if(!j)return;try{var A=JSON.parse(j.textContent),L=d.documentElement.getAttribute('data-lang');if(localStorage.getItem('oqt.lang.nobanner'))return;var p=localStorage.getItem('oqt.lang'),w=null;
+if(p){if(p!==L&&A[p])w=p}else if(L===d.documentElement.getAttribute('data-root')){var n=navigator.languages||[navigator.language||''];for(var i=0;i<n.length;i++){var c=String(n[i]).toLowerCase().split('-')[0];if(A[c]){if(c!==L)w=c;break}}}
+if(!w)return;var a=A[w],b=d.createElement('div');b.className='lang-suggest';b.setAttribute('lang',a.h);b.setAttribute('dir',a.d);
+b.innerHTML='<div class="wrap"><p><span></span> <a></a></p><button type="button" aria-label="×">×</button></div>';b.querySelector('span').textContent=a.s;var l=b.querySelector('a');l.textContent=a.n;l.href=a.u;
+l.addEventListener('click',function(){try{localStorage.setItem('oqt.lang',w)}catch(e){}});b.querySelector('button').addEventListener('click',function(){try{localStorage.setItem('oqt.lang.nobanner','1')}catch(e){}b.remove()});
+var h=d.querySelector('.site-header');h.parentNode.insertBefore(b,h.nextSibling)}catch(e){}})();</script>"""
 
 
 def esc(s):
@@ -82,6 +118,13 @@ def fingerprint(src: Path) -> str:
     return f"/assets/{name}"
 
 
+def write_quran():
+    text = json.dumps(QURAN, ensure_ascii=False, separators=(",", ":"))
+    name = f"quran.{hashlib.sha256(text.encode()).hexdigest()[:10]}.json"
+    (DIST / "assets" / name).write_text(text, encoding="utf-8")
+    return f"/assets/{name}"
+
+
 # ---------------------------------------------------------------- computed content
 def duration_table(lang):
     h = I18N[lang]["home"]
@@ -123,17 +166,22 @@ def page_shell(lang, title, description, path, content, alternates, robots="inde
     m = I18N[lang]["meta"]
     hreflang = ""
     if alternates and not standalone:
-        hreflang = "\n".join(f'<link rel="alternate" hreflang="{l}" href="{DOMAIN}{p}">' for l, p in alternates.items())
+        hreflang = "\n".join(f'<link rel="alternate" hreflang="{hl(l)}" href="{DOMAIN}{p}">' for l, p in alternates.items())
         if LANGS[0] in alternates:
             hreflang += f'\n<link rel="alternate" hreflang="x-default" href="{DOMAIN}{alternates[LANGS[0]]}">'
-    lang_links = []
-    for l in ([] if standalone else LANGS):
-        target = (alternates or {}).get(l, home_url(l))
-        cur = ' aria-current="true"' if l == lang else ""
-        lang_links.append(f'<a href="{target}" hreflang="{l}" lang="{l}"{cur}>{esc(I18N[l]["meta"]["lang_name"])}</a>')
+    items, alts_js = [], {}
+    for l in LANGS:
+        target = f"{l}.html" if standalone else (alternates or {}).get(l, home_url(l))
+        cur = ' aria-current="page"' if l == lang else ""
+        nm = esc(I18N[l]["meta"]["lang_name"])
+        items.append(f'<li><a href="{target}" hreflang="{hl(l)}" lang="{hl(l)}" dir="{I18N[l]["meta"]["dir"]}" data-l="{l}"{cur}>{nm}</a></li>')
+        alts_js[l] = {"n": I18N[l]["meta"]["lang_name"], "s": I18N[l]["meta"]["suggest"], "u": target, "h": hl(l), "d": I18N[l]["meta"]["dir"]}
     ui = I18N[lang]["ui"]
-    legal_lang = lang if (SRC / "pages" / lang).exists() else LANGS[0]
-    prefix = "" if legal_lang == LANGS[0] else f"/{legal_lang}"
+    lang_menu = (f'<details class="lang-menu"><summary aria-label="{esc(ui["language"])}: {esc(I18N[lang]["meta"]["lang_name"])}">{GLOBE}'
+                 f'<span>{esc(I18N[lang]["meta"]["lang_name"])}</span></summary><ul role="list">{"".join(items)}</ul></details>')
+    lang_script = LANG_SCRIPT if standalone else (
+        '<script id="lang-alts" type="application/json">' + json.dumps(alts_js, ensure_ascii=False).replace("</", "<\\/") + "</script>\n" + LANG_SCRIPT)
+    prefix = "" if lang == LANGS[0] else f"/{lang}"
     footer = [f'<a href="{home_url(lang)}">{esc(ui["nav_home"])}</a>'] + ([f'<a href="/surah/">{esc(ui["nav_surahs"])}</a>'] if SURAH_PAGES else []) + [
               f'<a href="{prefix}/about/">{esc(ui["nav_about"])}</a>', f'<a href="{prefix}/privacy/">{esc(ui["nav_privacy"])}</a>',
               f'<a href="{prefix}/legal/">{esc(ui["nav_legal"])}</a>']
@@ -157,11 +205,12 @@ def page_shell(lang, title, description, path, content, alternates, robots="inde
     favicon = ("data:image/svg+xml," + (SRC / "assets" / "favicon.svg").read_text(encoding="utf-8").replace("#", "%23").replace('"', "'")
                if standalone else "/favicon.svg")
     values = {
-        "lang": lang, "dir": m["dir"], "title": esc(title), "description": esc(description), "canonical": DOMAIN + path,
+        "lang": hl(lang), "code": lang, "root_lang": LANGS[0], "dir": m["dir"], "lang_menu": lang_menu, "lang_script": lang_script,
+        "manifest": home_url(lang) + "manifest.webmanifest", "title": esc(title), "description": esc(description), "canonical": DOMAIN + path,
         "hreflang": hreflang, "robots": robots, "site_name": esc(cfg["site_name"]), "og_locale": m["og_locale"],
         "favicon": favicon, "css_tag": css_tag,
-        "og_image": f"{DOMAIN}/og-{lang if lang in ('fr', 'en') else 'en'}.jpg", "jsonld": json.dumps(jsonld or {}, ensure_ascii=False).replace("</", "<\\/"),
-        "head_extra": "" if standalone else HEAD_EXTRA, "home_url": home_url(lang), "lang_links": "".join(lang_links),
+        "og_image": f"{DOMAIN}/og-{lang if (SRC / 'assets' / f'og-{lang}.jpg').exists() else 'en'}.jpg", "jsonld": json.dumps(jsonld or {}, ensure_ascii=False).replace("</", "<\\/"),
+        "head_extra": "" if standalone else HEAD_EXTRA, "home_url": home_url(lang),
         "content": content, "footer_links": " ".join(footer), "year": dt.date.today().year, "scripts": scripts,
         "signature": ("" if not cfg.get("signature") else " · " + (f'<a href="{esc(cfg["sister_url"])}" rel="noopener">{esc(cfg["signature"])}</a>' if cfg.get("sister_url") else esc(cfg["signature"]))),
     }
@@ -177,7 +226,7 @@ def write(path, text):
 def home_content(lang, standalone=False):
     h = I18N[lang]["home"]
     listen = esc(json.dumps(cfg.get("listen") or {}))
-    planner = render(PLANNER, {"quran_url": "" if standalone else ASSETS["quran"], "listen": listen, "signature": esc(cfg.get("signature", "")),
+    planner = render(PLANNER, {"quran_url": "" if standalone else ASSETS["quran"], "mushaf_url": "mushaf/" if standalone else "/mushaf/", "listen": listen, "signature": esc(cfg.get("signature", "")),
                                "preview_attr": ' data-preview="1"' if standalone else ""}, lang, "app.html")
     body = h["content"]
     links = ""
@@ -201,51 +250,66 @@ def main():
     if cfg.get("cloudflare_analytics_token"):
         HEAD_EXTRA += f"<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{json.dumps({'token': cfg['cloudflare_analytics_token']})}'></script>\n"
 
+    check_keys()
     if "--standalone" in sys.argv:
         out = ROOT / "dist-standalone"
         out.mkdir(exist_ok=True)
         L0 = LANGS[0]
-        h = I18N[L0]["home"]
         ASSETS = {}
-        page = page_shell(L0, cfg["site_name"], h["description"], "/", home_content(L0, standalone=True), None, with_app=True, standalone=True)
-        page = page.replace('href="/"', 'href="#"')
-        # l'aperçu autonome n'a ni manifeste, ni icônes, ni image d'aperçu à côté de lui
-        page = re.sub(r'\n<link rel="(apple-touch-icon|manifest)"[^>]*>|\n<meta property="og:image[^>]*>', "", page)
+        for l in LANGS:
+            h = I18N[l]["home"]
+            pg = page_shell(l, cfg["site_name"], h["description"], home_url(l), home_content(l, standalone=True), None, with_app=True, standalone=True)
+            pg = pg.replace(f'href="{home_url(l)}"', f'href="{l}.html"')
+            # l'aperçu autonome n'a ni manifeste, ni icônes, ni image d'aperçu à côté de lui
+            pg = re.sub(r'\n<link rel="(apple-touch-icon|manifest)"[^>]*>|\n<meta property="og:image[^>]*>', "", pg)
+            (out / f"{l}.html").write_text(pg, encoding="utf-8")
+            if l == L0:
+                page = pg
         (out / "index.html").write_text(page, encoding="utf-8")
         # Artifact preview: the host adds doctype/html/head/body itself
         head = re.search(r"<head>(.*?)</head>", page, re.S).group(1)
         body = re.search(r"<body>(.*?)</body>", page, re.S).group(1)
         head = re.sub(r'<meta charset="utf-8">\s*<meta name="viewport"[^>]*>\s*', "", head)
-        boot = ("<script>document.documentElement.lang=" + json.dumps(L0) + ";document.documentElement.dir=" + json.dumps(I18N[L0]["meta"]["dir"])
+        boot = ("<script>document.documentElement.lang=" + json.dumps(hl(L0)) + ";document.documentElement.dataset.lang=" + json.dumps(L0) + ";document.documentElement.dir=" + json.dumps(I18N[L0]["meta"]["dir"])
                 + ";document.documentElement.dataset.site=" + json.dumps(cfg["site_name"]) + ";</script>")
         (out / "preview.html").write_text(head.strip() + "\n" + boot + "\n" + body.strip() + "\n", encoding="utf-8")
-        print(f"✅ standalone page → dist-standalone/index.html ({len(page) // 1024} KB)")
+        print(f"✅ standalone pages → dist-standalone/ ({len(LANGS)} languages, {len(page) // 1024} KB each)")
         return
 
     if DIST.exists():
         shutil.rmtree(DIST)
     (DIST / "assets").mkdir(parents=True)
     ASSETS = {"css": fingerprint(SRC / "assets" / "style.css"), "js": fingerprint(SRC / "assets" / "app.js"),
-              "quran": fingerprint(SRC / "data" / "quran.json")}
+              "quran": write_quran()}
     shutil.copyfile(SRC / "assets" / "favicon.svg", DIST / "favicon.svg")
-    for extra in ("icon-192.png", "icon-512.png", "apple-touch-icon.png", "og-fr.jpg", "og-en.jpg"):
+    for extra in ["icon-192.png", "icon-512.png", "apple-touch-icon.png"] + [f"og-{l}.jpg" for l in LANGS]:
         if (SRC / "assets" / extra).exists():
             shutil.copyfile(SRC / "assets" / extra, DIST / extra)
-    (DIST / "manifest.webmanifest").write_text(json.dumps({
-        "name": cfg["site_name"], "short_name": cfg["site_name"], "lang": LANGS[0],
-        "description": I18N[LANGS[0]]["home"]["description"], "start_url": "/", "scope": "/", "display": "standalone",
-        "background_color": "#f8f5ee", "theme_color": "#0b5d4b",
-        "icons": [{"src": "/icon-192.png", "sizes": "192x192", "type": "image/png"},
-                  {"src": "/icon-512.png", "sizes": "512x512", "type": "image/png"},
-                  {"src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}]},
-        ensure_ascii=False, indent=1), encoding="utf-8")
+    # Pages officielles du Mushaf de Médine (Complexe du Roi Fahd), converties par tools/render_mushaf.py
+    mushaf = sorted((SRC / "mushaf").glob("*.webp"))
+    if len(mushaf) != 604:
+        sys.exit(f"src/mushaf: {len(mushaf)} pages au lieu de 604")
+    (DIST / "mushaf").mkdir()
+    for f in mushaf:
+        shutil.copyfile(f, DIST / "mushaf" / f.name)
+    for l in LANGS:  # un manifeste par langue : l'icône d'écran d'accueil rouvre la bonne langue
+        dest = DIST / home_url(l).strip("/") / "manifest.webmanifest"
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_text(json.dumps({
+            "name": cfg["site_name"], "short_name": cfg["site_name"], "lang": hl(l), "dir": I18N[l]["meta"]["dir"],
+            "description": I18N[l]["home"]["description"], "start_url": home_url(l), "scope": "/", "display": "standalone",
+            "background_color": "#f8f5ee", "theme_color": "#0b5d4b",
+            "icons": [{"src": "/icon-192.png", "sizes": "192x192", "type": "image/png"},
+                      {"src": "/icon-512.png", "sizes": "512x512", "type": "image/png"},
+                      {"src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}]},
+            ensure_ascii=False, indent=1), encoding="utf-8")
     sitemap = []
     home_alts = {l: home_url(l) for l in LANGS}
 
     for lang in LANGS:
         h = I18N[lang]["home"]
         jsonld = {"@context": "https://schema.org", "@type": "WebApplication", "name": cfg["site_name"], "url": DOMAIN + home_url(lang),
-                  "description": h["description"], "inLanguage": lang, "applicationCategory": "EducationalApplication",
+                  "description": h["description"], "inLanguage": hl(lang), "applicationCategory": "EducationalApplication",
                   "operatingSystem": "Any (web browser)", "isAccessibleForFree": True, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}
         write(home_url(lang), page_shell(lang, h["title"], h["description"], home_url(lang), home_content(lang), home_alts, jsonld=jsonld, with_app=True))
         sitemap.append(home_url(lang))
@@ -285,17 +349,26 @@ def main():
     todo = [k for k, v in cfg.items() if isinstance(v, str) and "TO COMPLETE" in v]
     cfg_vals = {k: (f'<mark class="todo">{esc(v)}</mark>' if "TO COMPLETE" in v else esc(v)) for k, v in cfg.items() if isinstance(v, str)}
     mail = esc(cfg["contact_email"])
-    if cfg.get("editor_mode", "particulier") == "particulier":
-        cfg_vals["editor_block_fr"] = (f"<p>Site édité par un particulier, à titre non professionnel. Conformément à l’article 1-1, II de la LCEN, "
-                                       f"l’éditeur a choisi de préserver son anonymat ; ses coordonnées ont été communiquées à l’hébergeur ci-dessous.<br>Contact : {mail}</p>")
-        cfg_vals["editor_block_en"] = (f"<p>This site is published by a private individual on a non-professional basis. As permitted by French law (LCEN, art. 1-1, II), "
-                                       f"the publisher remains anonymous; their identity has been provided to the hosting provider below.<br>Contact: {mail}</p>")
-        cfg_vals["controller"] = "l’éditeur du site (particulier)"
+    private = cfg.get("editor_mode", "particulier") == "particulier"
+    if private:
         todo = [k for k in todo if not k.startswith("editor_")]
-    else:
-        cfg_vals["editor_block_fr"] = f"<p>{cfg_vals['editor_name']}<br>{cfg_vals['editor_status']}<br>{cfg_vals['editor_address']}<br>Téléphone : {cfg_vals['editor_phone']}<br>E-mail : {mail}</p><h2>Directeur de la publication</h2><p>{cfg_vals['editor_name']}</p>"
-        cfg_vals["editor_block_en"] = f"<p>{cfg_vals['editor_name']}<br>{cfg_vals['editor_status']}<br>{cfg_vals['editor_address']}<br>Phone: {cfg_vals['editor_phone']}<br>Email: {mail}</p><h2>Publication director</h2><p>{cfg_vals['editor_name']}</p>"
-        cfg_vals["controller"] = f"{cfg_vals['editor_name']}, {cfg_vals['editor_address']}"
+
+    def legal_vals(lang):
+        g = I18N[lang]["legal"]
+        v = dict(cfg_vals)
+        mt = I18N[lang]["meta"]
+        y, mo, d = (int(x) for x in cfg["last_updated"].split("-"))
+        v["updated"] = mt["date_fmt"].format(y=y, mo=mo, d=d, m=mt["months"][mo - 1])
+        if mt.get("digits"):
+            v["updated"] = v["updated"].translate(str.maketrans("0123456789", mt["digits"]))
+        if private:
+            v["editor_block"] = "<p>" + g["private"].replace("{mail}", mail) + "</p>"
+            v["controller"] = g["controller"]
+        else:
+            v["editor_block"] = (f"<p>{v['editor_name']}<br>{v['editor_status']}<br>{v['editor_address']}<br>{g['phone']} {v['editor_phone']}<br>{g['email']} {mail}</p>"
+                                 f"<h2>{g['director']}</h2><p>{v['editor_name']}</p>")
+            v["controller"] = f"{v['editor_name']}, {v['editor_address']}"
+        return v
     for lang_dir in sorted((SRC / "pages").iterdir()):
         lang = lang_dir.name
         if lang not in LANGS:
@@ -304,9 +377,7 @@ def main():
             text = f.read_text(encoding="utf-8")
             mm = META.match(text)
             meta = json.loads(mm.group(1))
-            vals = dict(cfg_vals)
-            if lang == "en" and cfg.get("editor_mode", "particulier") == "particulier":
-                vals["controller"] = "the site publisher (private individual)"
+            vals = legal_vals(lang)
             body = TOKEN.sub(lambda m: vals.get(m.group(2), m.group(0)), text[mm.end():])
             slug = meta.get("slug")
             path = (home_url(lang) + slug + "/") if slug else "/404.html"
@@ -325,10 +396,19 @@ def main():
     (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {DOMAIN}/sitemap.xml\n", encoding="utf-8")
     if cfg.get("adsense_client"):
         (DIST / "ads.txt").write_text(f"google.com, {cfg['adsense_client'].replace('ca-', '')}, DIRECT, f08c47fec0942fa0\n", encoding="utf-8")
-    (DIST / "_headers").write_text("/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n\n/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  X-Frame-Options: DENY\n  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()\n", encoding="utf-8")
+    (DIST / "_headers").write_text("/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n\n/mushaf/*\n  Cache-Control: public, max-age=31536000\n\n/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  X-Frame-Options: DENY\n  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()\n", encoding="utf-8")
     if todo:
         print("⚠️  Fields to complete in config.json before going live:", ", ".join(todo))
-    print(f"✅ {len(sitemap)} indexable pages in {len(LANGS)} languages → dist/")
+    print(f"✅ {len(sitemap)} indexable pages in {len(LANGS)} languages + 604 mushaf pages → dist/")
+    if "--zip" in sys.argv:  # fichier à téléverser sur Cloudflare Pages
+        import zipfile
+        out = ROOT / "publication" / "ourqurantime-site.zip"
+        out.parent.mkdir(exist_ok=True)
+        files = sorted(x for x in DIST.rglob("*") if x.is_file())
+        with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
+            for x in files:
+                z.write(x, x.relative_to(DIST).as_posix(), compress_type=zipfile.ZIP_STORED if x.suffix in (".webp", ".jpg", ".png") else zipfile.ZIP_DEFLATED)
+        print(f"📦 {out.relative_to(ROOT)} ({len(files)} files, {out.stat().st_size // 2**20} MB)")
 
 
 if __name__ == "__main__":

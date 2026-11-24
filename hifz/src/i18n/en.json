@@ -2,7 +2,23 @@
  "meta": {
   "lang_name": "English",
   "dir": "ltr",
-  "og_locale": "en_US"
+  "og_locale": "en_US",
+  "suggest": "This site is available in English.",
+  "date_fmt": "{m} {d}, {y}",
+  "months": [
+   "January",
+   "February",
+   "March",
+   "April",
+   "May",
+   "June",
+   "July",
+   "August",
+   "September",
+   "October",
+   "November",
+   "December"
+  ]
  },
  "ui": {
   "skip": "Skip to content",
@@ -56,7 +72,6 @@
   "stat_streak": "sessions in a row",
   "stat_end": "estimated finish",
   "stat_end_done": "all learned",
-  "pace": "Pace: {n} new ayah(s) per session.",
   "target_ok": "Goal of {d}: on track (estimated finish {e}).",
   "target_impossible": "The goal of {d} cannot be met even at 20 ayahs per session (estimated finish {e}). Choose a later date.",
   "rest": "Rest",
@@ -69,7 +84,7 @@
   "btn_print": "Print the sheet",
   "btn_copy_week": "Copy the sheet for the teacher",
   "sheet_title": "Weekly hifz sheet",
-  "hafs_note": "ayah numbering: Hafs, Madani mushaf",
+  "hafs_note": "Madinah Mushaf, Hafs ʿan ʿĀṣim (King Fahd Complex)",
   "sheet_teacher_note": "Teacher's note:",
   "m_known": "already known",
   "m_done": "learned ✓",
@@ -120,7 +135,6 @@
   "copied": "Copied ✓",
   "reminder_title": "Quran session",
   "reminder_desc": "Time for the hifz session.",
-  "import_q": "This link contains a plan with {n} ayahs learned. Add it to this phone?",
   "import_yes": "Add the plan",
   "card_head": "Surah learned",
   "card_text": "Alhamdulillah! Surah {s} learned 🌙",
@@ -129,13 +143,31 @@
   "surah_full": "{s} (whole surah)",
   "surah_ayah": "{s}, ayah {a}",
   "surah_ayahs": "{s}, ayahs {a}–{b}",
-  "and_more": "and {n} more"
+  "and_more": "and {n} more",
+  "pace_one": "Pace: {n} new ayah per session.",
+  "pace_other": "Pace: {n} new ayahs per session.",
+  "import_q_one": "This link contains a plan with {n} ayah learned. Add it to this phone?",
+  "import_q_other": "This link contains a plan with {n} ayahs learned. Add it to this phone?",
+  "mushaf_btn": "Mushaf p. {p}",
+  "mushaf_title": "Madinah Mushaf, page {p}",
+  "mushaf_next": "Next page",
+  "mushaf_prev": "Previous page",
+  "mushaf_credit": "Madinah Mushaf (Hafs) · King Fahd Glorious Qur'an Printing Complex",
+  "mushaf_error": "This page could not be loaded. Check your connection.",
+  "mushaf_preview_only": "This preview only includes Al-Fatiha and Juz ʿAmma. All 604 pages are on the published site."
  },
  "home": {
   "title": "Our Quran Time — a Quran memorization planner for families",
   "description": "Know every day what to learn and what to revise with your child. Juz ʿAmma, short surahs, a weekly sheet for the teacher. Free, no account.",
   "h1": "Tonight, you know what to recite",
   "lead": "A hifz notebook for parents: every day, your child's new passage and revisions, adapted to their pace. Missed a session? The plan simply picks up where you left off.",
-  "content": "<h2>How it works</h2><ul class=\"trio\"><li class=\"t-sabaq\"><b>New</b>A small passage to learn, often 2 to 5 ayahs (the <em>sabaq</em>).</li><li class=\"t-sabqi\"><b>Recent revision</b>The passages of the last sessions, until they are solid (the <em>sabqi</em>).</li><li class=\"t-manzil\"><b>Old revision</b>One or two known surahs in rotation, so nothing is forgotten (the <em>manzil</em>).</li></ul><p>You tick what your child actually recited. If they hesitate, tap “To repeat”: the passage comes back next session. Skip a day and nothing is lost: the plan resumes where you were.</p><h2>A typical session (10 to 15 minutes)</h2><ol><li>Listen to the new passage three times with the “Listen” button.</li><li>Repeat ayah by ayah, then link the ayahs together.</li><li>Your child recites without looking: “Recited” or “To repeat”.</li><li>Do the recent revision, then the old revision.</li></ol><h2>Tips for parents</h2><ul><li><strong>Short and regular</strong>: 10 minutes every day beat an hour at the weekend.</li><li><strong>Same time</strong>: after a prayer or before bedtime. The calendar reminder helps a lot.</li><li><strong>Encourage</strong>: every recited passage is a star, every learned surah is a celebration.</li><li><strong>Recite in prayer</strong>: it is the best revision.</li></ul><h2>For the teacher</h2><p>The weekly sheet sums up the planned passages and what was actually recited. Print it or paste it into WhatsApp: the teacher sees at a glance where the child is and can add a note.</p><p class=\"note\">This notebook organises memorization; it does not replace a teacher who listens to the child and corrects their recitation (tajweed).</p><h2>Frequently asked questions</h2><div class=\"faq\"><details><summary>Where is my child's data saved?</summary><p>Only on your phone. No account, no server. The first name is optional.</p></details><details><summary>I have several children.</summary><p>Add one plan per child with “+ Add a child”. Each plan has its own progress.</p></details><details><summary>We missed several days.</summary><p>No problem: today's session resumes exactly where you stopped, and the estimated finish date is recalculated.</p></details><details><summary>I'm changing phones.</summary><p>In “Settings”, copy the backup link and open it on the new phone.</p></details><details><summary>Which ayah numbering?</summary><p>The Hafs reading (Madani mushaf), the most widespread.</p></details><details><summary>Is it free?</summary><p>Yes, free and ad-free during the test phase.</p></details></div>"
+  "content": "<h2>How it works</h2><ul class=\"trio\"><li class=\"t-sabaq\"><b>New</b>A small passage to learn, often 2 to 5 ayahs (the <em>sabaq</em>).</li><li class=\"t-sabqi\"><b>Recent revision</b>The passages of the last sessions, until they are solid (the <em>sabqi</em>).</li><li class=\"t-manzil\"><b>Old revision</b>One or two known surahs in rotation, so nothing is forgotten (the <em>manzil</em>).</li></ul><p>You tick what your child actually recited. If they hesitate, tap “To repeat”: the passage comes back next session. Skip a day and nothing is lost: the plan resumes where you were.</p><h2>A typical session (10 to 15 minutes)</h2><ol><li>Open the passage in the Madinah Mushaf (📖 button) and read it together.</li><li>Listen to the new passage three times with the “Listen” button.</li><li>Repeat ayah by ayah, then link the ayahs together.</li><li>Your child recites without looking: “Recited” or “To repeat”.</li><li>Do the recent revision, then the old revision.</li></ol><h2>Tips for parents</h2><ul><li><strong>Short and regular</strong>: 10 minutes every day beat an hour at the weekend.</li><li><strong>Same time</strong>: after a prayer or before bedtime. The calendar reminder helps a lot.</li><li><strong>Encourage</strong>: every recited passage is a star, every learned surah is a celebration.</li><li><strong>Recite in prayer</strong>: it is the best revision.</li></ul><h2>For the teacher</h2><p>The weekly sheet sums up the planned passages and what was actually recited. Print it or paste it into WhatsApp: the teacher sees at a glance where the child is and can add a note.</p><p class=\"note\">This notebook organises memorization; it does not replace a teacher who listens to the child and corrects their recitation (tajweed).</p><h2>Frequently asked questions</h2><div class=\"faq\"><details><summary>Where is my child's data saved?</summary><p>Only on your phone. No account, no server. The first name is optional.</p></details><details><summary>I have several children.</summary><p>Add one plan per child with “+ Add a child”. Each plan has its own progress.</p></details><details><summary>We missed several days.</summary><p>No problem: today's session resumes exactly where you stopped, and the estimated finish date is recalculated.</p></details><details><summary>I'm changing phones.</summary><p>In “Settings”, copy the backup link and open it on the new phone.</p></details><details><summary>Which mushaf is the reference?</summary><p>The Madinah Mushaf in the Hafs ʿan ʿĀṣim narration, printed by the King Fahd Glorious Qur'an Printing Complex: 604 pages and 6,236 ayahs. Ayah numbers and pages match this mushaf, the most widespread in the world.</p></details><details><summary>Is it free?</summary><p>Yes, free and ad-free during the test phase.</p></details></div>"
+ },
+ "legal": {
+  "private": "This site is published by a private individual on a non-professional basis. As permitted by French law (LCEN, art. 1-1, II), the publisher remains anonymous; their identity has been provided to the hosting provider below.<br>Contact: {mail}",
+  "controller": "the site publisher (private individual)",
+  "phone": "Phone:",
+  "email": "Email:",
+  "director": "Publication director"
  }
 }

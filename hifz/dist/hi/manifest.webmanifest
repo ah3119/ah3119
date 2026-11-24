@@ -1,0 +1,30 @@
+{
+ "name": "Our Quran Time",
+ "short_name": "Our Quran Time",
+ "lang": "hi",
+ "dir": "ltr",
+ "description": "हर दिन जानिए कि बच्चे के साथ क्या याद करना है और क्या दोहराना है। अम्मा पारा, छोटी सूरतें और उस्ताद के लिए हफ़्तावार शीट। मुफ़्त, कोई अकाउंट नहीं।",
+ "start_url": "/hi/",
+ "scope": "/",
+ "display": "standalone",
+ "background_color": "#f8f5ee",
+ "theme_color": "#0b5d4b",
+ "icons": [
+  {
+   "src": "/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

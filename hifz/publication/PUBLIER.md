@@ -2,7 +2,9 @@
 
 **Durée** : environ 45 minutes. **Coût** : le prix du domaine, environ 10-12 € par an (⚠️ prix exact affiché par Cloudflare au moment de l'achat). L'hébergement est gratuit.
 **À préparer** : une carte bancaire et ton adresse e-mail personnelle.
-**Fichier à envoyer** : `ourqurantime-site.zip`, qui se trouve dans ce dossier. C'est le site complet.
+**Fichier à envoyer** : `ourqurantime-site.zip` (56 Mo, 675 fichiers). C'est le site complet : 10 langues, et les 604 pages du Mushaf de Médine du Complexe du Roi Fahd. Il est fourni à part (trop lourd pour le dépôt) ; pour le refaire : `python3 build.py --zip`.
+
+**Adresses** : l'anglais est à la racine (`ourqurantime.com`), les autres langues ont leur dossier : `/fr/`, `/ar/`, `/zh/`, `/hi/`, `/es/`, `/bn/`, `/pt/`, `/ru/`, `/id/`. **Pour les familles du pilote, partage `https://ourqurantime.com/fr/`.**
 
 > Vérification du 24 novembre 2026 : **ourqurantime.com n'était pas enregistré**. Le registre officiel des .com (Verisign) répondait « introuvable », alors qu'il répond normalement pour un domaine existant. Achète-le rapidement : un domaine libre peut partir à tout moment.
 >
@@ -27,6 +29,8 @@ Ce compte porte ton identité : c'est ce qui permet au site d'afficher des menti
 3. Dépose le fichier **`ourqurantime-site.zip`**, puis **Deploy site**.
 4. Ouvre l'adresse provisoire affichée (du type `https://ourqurantime.pages.dev`) : le site doit apparaître.
 
+⚠️ Limites annoncées par Cloudflare : 20 000 fichiers par site et 25 Mo par fichier ([documentation](https://developers.cloudflare.com/pages/platform/limits/)). Le zip reste bien en dessous (675 fichiers, 104 Ko maximum chacun). Si le glisser-déposer refuse quand même le zip, décompresse-le et dépose le **dossier** à la place.
+
 ## Étape 4 — Brancher le domaine (5 min, puis quelques minutes d'attente)
 1. Dans le projet : **Custom domains → Set up a custom domain**.
 2. Saisis `ourqurantime.com`, puis **Continue** et **Activate domain**. Les réglages DNS se font automatiquement, puisque le domaine est chez Cloudflare.
@@ -40,8 +44,10 @@ Ce compte porte ton identité : c'est ce qui permet au site d'afficher des menti
 4. Teste en écrivant à `contact@ourqurantime.com` depuis une autre adresse. Le message doit arriver dans ta boîte personnelle.
 
 ## Étape 6 — Vérifier avant d'annoncer (10 min)
-- [ ] `https://ourqurantime.com` s'ouvre en français ; `https://ourqurantime.com/en/` en anglais.
-- [ ] Sur ton téléphone : créer un plan « Al-Fatiha et les 3 Qul », puis toucher « Récité ».
+- [ ] `https://ourqurantime.com` s'ouvre en anglais ; `https://ourqurantime.com/fr/` en français.
+- [ ] Bouton 🌐 en haut à droite → « العربية » : tout le site passe en arabe, de droite à gauche ; ton plan est toujours là.
+- [ ] Sur ton téléphone (`/fr/`) : créer un plan « Al-Fatiha et les 3 Qul », puis toucher « Récité ».
+- [ ] Toucher « 📖 Mushaf p. 1 » : la page officielle d'Al-Fatiha s'affiche ; glisser vers la droite pour passer à la page suivante.
 - [ ] « Ajouter un rappel à l'agenda » : l'événement apparaît dans ton agenda.
 - [ ] « Copier la fiche pour l'enseignant », puis la coller dans WhatsApp : c'est lisible.
 - [ ] Sur un ordinateur, « Imprimer la fiche » : une seule page.

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{lang}}" dir="{{dir}}" data-site="{{site_name}}">
+<html lang="{{lang}}" dir="{{dir}}" data-lang="{{code}}" data-root="{{root_lang}}" data-site="{{site_name}}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{{favicon}}" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="manifest" href="/manifest.webmanifest">
+<link rel="manifest" href="{{manifest}}">
 <meta name="apple-mobile-web-app-title" content="{{site_name}}">
 <meta property="og:image" content="{{og_image}}">
 <meta property="og:image:width" content="1200">
@@ -36,7 +36,7 @@
       <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0b5d4b"/><path d="M8 10.5c2.6-.9 5.3-.6 8 1v12c-2.7-1.6-5.4-1.9-8-1z" fill="#f6ead0"/><path d="M24 10.5c-2.6-.9-5.3-.6-8 1v12c2.7-1.6 5.4-1.9 8-1z" fill="#fff"/><circle cx="23" cy="7" r="2.2" fill="#e2b85c"/></svg>
       <span class="brand-text"><span class="brand-name">{{site_name}}</span><span class="brand-tag">{{t:tagline}}</span></span>
     </a>
-    <nav class="lang" aria-label="{{t:language}}">{{lang_links}}</nav>
+    {{lang_menu}}
   </div>
 </header>
 <main id="main" class="wrap">
@@ -48,6 +48,7 @@
     <p>© {{year}} {{site_name}}{{signature}} — {{t:footer_note}}</p>
   </div>
 </footer>
+{{lang_script}}
 {{scripts}}
 </body>
 </html>

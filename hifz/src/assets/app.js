@@ -5,11 +5,18 @@
 (function () {
   'use strict';
   const I = JSON.parse(document.getElementById('i18n').textContent);
-  const LANG = document.documentElement.lang || 'fr';
-  const LOC = LANG === 'ar' ? 'ar-u-nu-latn' : LANG;
+  const LANG = document.documentElement.dataset.lang || document.documentElement.lang || 'en';
+  const LOC = { ar: 'ar-u-nu-latn', zh: 'zh-Hans' }[LANG] || LANG;
+  const PR = new Intl.PluralRules(LOC);
   const SITE = document.documentElement.dataset.site || 'Our Quran Time';
   const SIGN = (document.getElementById('hz') || { dataset: {} }).dataset.signature || '';
-  const T = (k, v) => { let s = I[k] != null ? I[k] : k; if (v) for (const a in v) s = s.split('{' + a + '}').join(v[a]); return s; };
+  // Traductions : pluriels selon la langue (clé_one, clé_few, clé_many…), nombres écrits avec les chiffres de la langue.
+  const T = (k, v) => {
+    if (v && typeof v.n === 'number') { const r = PR.select(v.n); if (I[k + '_' + r] != null) k += '_' + r; else if (I[k + '_other'] != null) k += '_other'; }
+    let s = I[k] != null ? I[k] : k;
+    if (v) for (const a in v) s = s.split('{' + a + '}').join(typeof v[a] === 'number' ? nf.format(v[a]) : v[a]);
+    return s;
+  };
   const $ = (s, r) => (r || document).querySelector(s);
   const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -34,17 +41,20 @@
   const fDate = (ms) => fmt(ms, { day: 'numeric', month: 'long', year: 'numeric' });
 
   /* ---------------- Coran (mushaf de Médine, numérotation Hafs) ---------------- */
-  let Q = null, SS = [];
+  let Q = null, SS = [], PG = [];
   async function loadQuran() {
     const inline = document.getElementById('quran-data');
     Q = inline ? JSON.parse(inline.textContent) : await (await fetch(app.dataset.quran)).json();
     let g = 0; SS = [0];
     Q.surahs.forEach((s, i) => { SS[i + 1] = g; g += s.n; });
     SS.push(g);
+    PG = Q.pages.map((x) => SS[x[0]] + x[1] - 1);
   }
   const gOf = (s, a) => SS[s] + a - 1;
   function surahOf(g) { let lo = 1, hi = 114; while (lo < hi) { const m = (lo + hi + 1) >> 1; if (SS[m] <= g) lo = m; else hi = m - 1; } return lo; }
-  const sName = (s) => { const x = Q.surahs[s - 1]; return (LANG === 'ar' || LANG === 'ur') ? x.ar : x.tr_en; };
+  const sName = (s) => { const x = Q.surahs[s - 1]; return x['name_' + LANG] || (LANG === 'ar' ? x.ar : x.tr_en); };
+  // Page du Mushaf de Médine (604 pages) qui contient le verset global g
+  function pageOf(g) { let lo = 0, hi = PG.length - 1; while (lo < hi) { const m = (lo + hi + 1) >> 1; if (PG[m] <= g) lo = m; else hi = m - 1; } return lo + 1; }
   const ayahsOf = (s) => Array.from({ length: Q.surahs[s - 1].n }, (_, i) => SS[s] + i);
 
   /* ---------------- Stockage ---------------- */
@@ -210,8 +220,9 @@
   function block(kind, title, ayahs, actions, note) {
     if (!ayahs.length) return '';
     const link = listenLink(ayahs);
+    const pg = pageOf(Math.min(...ayahs));
     return `<div class="hz-block b-${kind}">
-      <div class="hz-block-head"><span class="hz-tag">${esc(title)}</span>${link ? `<a class="hz-listen" href="${esc(link)}" target="_blank" rel="noopener">${esc(T('listen'))}</a>` : ''}</div>
+      <div class="hz-block-head"><span class="hz-tag">${esc(title)}</span><span class="hz-links"><button type="button" class="hz-mushaf" data-page="${pg}">📖 ${esc(T('mushaf_btn', { p: pg }))}</button>${link ? `<a class="hz-listen" href="${esc(link)}" target="_blank" rel="noopener">${esc(T('listen'))}</a>` : ''}</span></div>
       <p class="hz-passage">${esc(label(ayahs, 5))}</p>${note ? `<p class="hz-note">${esc(note)}</p>` : ''}
       <div class="hz-btns">${actions}</div></div>`;
   }
@@ -517,7 +528,7 @@
     const start = new Date(todayMs());
     const d8 = start.toISOString().slice(0, 10).replace(/-/g, '');
     const esc2 = (s) => String(s).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
-    const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//OurQuranTime//FR', 'BEGIN:VEVENT', `UID:${c.id}-${d8}@ourqurantime`,
+    const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//OurQuranTime//' + LANG.toUpperCase(), 'BEGIN:VEVENT', `UID:${c.id}-${d8}@ourqurantime`,
       'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, ''), `DTSTART:${d8}T${h}${m}00`, `DURATION:PT15M`,
       `RRULE:FREQ=WEEKLY;BYDAY=${by}`, 'SUMMARY:' + esc2(T('reminder_title') + (c.name ? ' — ' + c.name : '')),
       'DESCRIPTION:' + esc2(T('reminder_desc') + ' ' + location.origin + location.pathname),
@@ -566,13 +577,15 @@
     for (let yy = 90; yy < 1350; yy += 180) for (let xx = (yy / 180) % 2 ? 0 : 90; xx < 1170; xx += 180) for (let r = 0; r < 2; r++) { x.save(); x.translate(xx, yy); x.rotate(r * Math.PI / 4); x.strokeRect(-34, -34, 68, 68); x.restore(); }
     x.textAlign = 'center';
     x.fillStyle = '#d6b25e'; x.font = '700 96px "Noto Naskh Arabic", "Geeza Pro", serif'; x.fillText('الحمد لله', 540, 330);
-    x.fillStyle = '#fff'; x.font = '700 60px system-ui, -apple-system, "Segoe UI", sans-serif'; x.fillText(T('card_head'), 540, 520);
-    x.fillStyle = '#d6b25e'; x.font = '800 100px system-ui, -apple-system, "Segoe UI", sans-serif'; x.fillText(Q.surahs[su - 1].tr_en, 540, 680);
-    x.font = '700 80px "Noto Naskh Arabic", "Geeza Pro", serif'; x.fillText(Q.surahs[su - 1].ar, 540, 820);
+    const fit = (txt, w, size, y) => { let z = size; do { x.font = `${w} ${z}px system-ui, -apple-system, "Segoe UI", sans-serif`; z -= 4; } while (x.measureText(txt).width > 960 && z > 36); x.fillText(txt, 540, y); };
+    x.fillStyle = '#fff'; fit(T('card_head'), 700, 60, 520);
+    x.fillStyle = '#d6b25e';
+    if (LANG === 'ar') { x.font = '700 110px "Noto Naskh Arabic", "Geeza Pro", serif'; x.fillText('سورة ' + Q.surahs[su - 1].ar, 540, 740); }
+    else { fit(sName(su), 800, 100, 680); x.font = '700 80px "Noto Naskh Arabic", "Geeza Pro", serif'; x.fillText(Q.surahs[su - 1].ar, 540, 820); }
     x.fillStyle = '#fff'; x.font = '700 44px system-ui, sans-serif'; x.fillText(SITE, 540, 1220);
     if (SIGN) { x.fillStyle = 'rgba(255,255,255,.75)'; x.font = '500 32px system-ui, sans-serif'; x.fillText(SIGN, 540, 1272); }
     const blob = await new Promise((r) => cv.toBlob(r, 'image/png'));
-    const file = new File([blob], 'sourate-terminee.png', { type: 'image/png' });
+    const file = new File([blob], 'surah-' + su + '.png', { type: 'image/png' });
     if (!PREVIEW && navigator.canShare && navigator.canShare({ files: [file] })) { try { await navigator.share({ files: [file], text: T('card_text', { s: sName(su) }) }); return; } catch (e) { /* annulé */ } }
     const ov = document.createElement('div'); ov.className = 'hz-overlay';
     ov.innerHTML = `<figure><img alt="" src="${URL.createObjectURL(blob)}"><figcaption>${esc(T('card_save'))}</figcaption>${btn('close', T('close'), 'primary')}</figure>`;
@@ -580,10 +593,55 @@
     document.body.appendChild(ov);
   }
 
+  /* ---------------- Mushaf de Médine (pages officielles du Complexe du Roi Fahd) ---------------- */
+  const MUSHAF = app.dataset.mushaf || '/mushaf/';
+  const pad3 = (n) => String(n).padStart(3, '0');
+  function openMushaf(page, opener) {
+    let p = page;
+    const ov = document.createElement('div');
+    ov.className = 'hz-overlay hz-mushaf-view'; ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-modal', 'true');
+    ov.innerHTML = `<figure>
+      <div class="hz-mv-bar"><b class="hz-mv-title"></b>${btn('close', T('close'), 'small')}</div>
+      <div class="hz-mv-page" dir="rtl"><img alt="" decoding="async"><p class="hz-mv-err" hidden></p></div>
+      <div class="hz-mv-nav" dir="ltr"><button type="button" class="hz-btn small" data-go="1"></button><button type="button" class="hz-btn small" data-go="-1"></button></div>
+      <figcaption>${esc(T('mushaf_credit'))}</figcaption></figure>`;
+    const img = $('img', ov), err = $('.hz-mv-err', ov), title = $('.hz-mv-title', ov);
+    const show = () => {
+      title.textContent = T('mushaf_title', { p });
+      ov.setAttribute('aria-label', title.textContent);
+      err.hidden = true; img.hidden = false;
+      img.src = MUSHAF + pad3(p) + '.webp'; img.alt = title.textContent;
+      const [nx, pv] = $$('[data-go]', ov);
+      nx.disabled = p >= 604; pv.disabled = p <= 1;
+      nx.textContent = '‹ ' + nf.format(Math.min(604, p + 1)); nx.setAttribute('aria-label', T('mushaf_next'));
+      pv.textContent = nf.format(Math.max(1, p - 1)) + ' ›'; pv.setAttribute('aria-label', T('mushaf_prev'));
+      [p + 1, p - 1].forEach((q) => { if (q >= 1 && q <= 604) { const im = new Image(); im.src = MUSHAF + pad3(q) + '.webp'; } });
+    };
+    img.addEventListener('error', () => { img.hidden = true; err.hidden = false; err.textContent = T(PREVIEW ? 'mushaf_preview_only' : 'mushaf_error'); });
+    const go = (d) => { const q = p + d; if (q >= 1 && q <= 604) { p = q; show(); } };
+    const close = () => { document.removeEventListener('keydown', onKey); if (ov.parentNode) ov.parentNode.removeChild(ov); if (opener) opener.focus(); };
+    const onKey = (e) => { if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') go(1); else if (e.key === 'ArrowRight') go(-1); };
+    ov.addEventListener('click', (e) => {
+      const g = e.target.closest('[data-go]');
+      if (g) { go(+g.dataset.go); return; }
+      if (e.target === ov || e.target.closest('[data-act="close"]')) close();
+    });
+    // Comme dans un mushaf : la page suivante est à gauche ; glisser vers la droite pour avancer.
+    let x0 = null;
+    ov.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+    ov.addEventListener('touchend', (e) => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 50) go(dx > 0 ? 1 : -1); });
+    document.addEventListener('keydown', onKey);
+    document.body.appendChild(ov);
+    show();
+    $('[data-act="close"]', ov).focus();
+  }
+
   /* ---------------- Événements ---------------- */
   app.addEventListener('click', (ev) => {
     const tab = ev.target.closest('[data-child]');
     if (tab) { S.cur = tab.dataset.child; app.dataset.editing = ''; app.dataset.extra = ''; save(); render(); return; }
+    const mp = ev.target.closest('[data-page]');
+    if (mp) { openMushaf(+mp.dataset.page, mp); return; }
     const card = ev.target.closest('[data-card]');
     if (card) { shareCard(+card.dataset.card, card); return; }
     const b = ev.target.closest('[data-act]');
@@ -601,5 +659,5 @@
     checkImport();
     render();
     app.classList.remove('is-loading');
-  }).catch((err) => { app.textContent = 'Erreur : ' + err.message; });
+  }).catch((err) => { app.textContent = '⚠️ ' + err.message; });
 })();

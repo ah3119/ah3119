@@ -1,8 +1,9 @@
 {
  "name": "Our Quran Time",
  "short_name": "Our Quran Time",
- "lang": "fr",
- "description": "Chaque jour, sachez quoi apprendre et quoi réviser avec votre enfant. Juz ʿAmma, sourates courtes, fiche de la semaine pour l’enseignant. Gratuit, sans compte.",
+ "lang": "en",
+ "dir": "ltr",
+ "description": "Know every day what to learn and what to revise with your child. Juz ʿAmma, short surahs, a weekly sheet for the teacher. Free, no account.",
  "start_url": "/",
  "scope": "/",
  "display": "standalone",

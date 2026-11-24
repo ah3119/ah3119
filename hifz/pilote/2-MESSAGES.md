@@ -1,6 +1,6 @@
 # Messages prêts à copier — pilote Our Quran Time
 
-Remplace `[LIEN]` par l'adresse du site et `[DATE]` si besoin. Ton : simple, chaleureux, sans promesse excessive.
+Remplace `[LIEN]` par **`https://ourqurantime.com/fr/`** (version française ; la racine du site est en anglais) et `[DATE]` si besoin. Ton : simple, chaleureux, sans promesse excessive.
 
 ---
 

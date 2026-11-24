@@ -1,0 +1,30 @@
+{
+ "name": "Our Quran Time",
+ "short_name": "Our Quran Time",
+ "lang": "bn",
+ "dir": "ltr",
+ "description": "প্রতিদিন জানুন সন্তানের সঙ্গে কী মুখস্থ করবেন আর কী রিভিশন দেবেন। আমপারা, ছোট সূরা, আর উস্তাদের জন্য সাপ্তাহিক শিট। বিনামূল্যে, কোনো অ্যাকাউন্ট লাগে না।",
+ "start_url": "/bn/",
+ "scope": "/",
+ "display": "standalone",
+ "background_color": "#f8f5ee",
+ "theme_color": "#0b5d4b",
+ "icons": [
+  {
+   "src": "/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

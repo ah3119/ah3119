@@ -53,10 +53,33 @@ a { color: var(--brand); text-underline-offset: .15em; }
 .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 60px; flex-wrap: wrap; }
 .brand { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 800; font-size: 1.15rem; }
 .brand svg { width: 32px; height: 32px; flex: none; }
-.lang { display: flex; flex-wrap: wrap; gap: 4px; font-size: .88rem; }
-.lang a { color: var(--muted); text-decoration: none; padding: 4px 8px; border-radius: 8px; font-weight: 600; }
-.lang a:hover { background: var(--surface-2); color: var(--text); }
-.lang a[aria-current="true"] { color: var(--brand); background: var(--brand-soft); }
+/* Menu des langues */
+.site-header .wrap { position: relative; flex-wrap: nowrap; }
+.brand { min-width: 0; }
+.lang-menu { position: static; flex: none; }
+.lang-menu summary { display: flex; align-items: center; gap: 6px; list-style: none; cursor: pointer; padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--text); font-size: .9rem; font-weight: 700; min-height: 40px; box-sizing: border-box; }
+.lang-menu summary::-webkit-details-marker { display: none; }
+.lang-menu summary::after { content: ""; width: 7px; height: 7px; border: solid currentColor; border-width: 0 2px 2px 0; transform: translateY(-2px) rotate(45deg); margin-inline-start: 2px; opacity: .6; }
+.lang-menu[open] summary { border-color: var(--brand); color: var(--brand); }
+.lang-menu summary:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+.lang-menu svg { color: var(--brand); }
+.lang-menu ul { position: absolute; inset-inline-end: 16px; top: calc(100% - 2px); z-index: 40; margin: 0; padding: 6px; list-style: none; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 12px 32px rgba(0, 0, 0, .16); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px; width: min(360px, calc(100vw - 32px)); box-sizing: border-box; }
+.lang-menu li { margin: 0; }
+.lang-menu a { display: block; padding: 10px 12px; border-radius: 10px; color: var(--text); text-decoration: none; font-weight: 600; text-align: start; }
+.lang-menu a:hover, .lang-menu a:focus-visible { background: var(--surface-2); }
+.lang-menu a[aria-current="page"] { background: var(--brand-soft); color: var(--brand); }
+.lang-suggest { background: var(--brand-soft); border-bottom: 1px solid var(--line); font-size: .92rem; }
+.lang-suggest .wrap { display: flex; align-items: center; gap: 10px; padding-block: 6px; }
+.lang-suggest p { margin: 0; flex: 1; min-width: 0; }
+.lang-suggest a { font-weight: 800; }
+.lang-suggest button { flex: none; border: 0; background: none; font-size: 1.3rem; line-height: 1; color: var(--muted); cursor: pointer; padding: 4px 8px; }
+@media (max-width: 480px) { .lang-menu summary span { display: none; } .lang-menu summary { padding: 8px 10px; } }
+/* Écritures : polices et interlignes adaptés */
+:lang(hi) body, body:lang(hi) { font-family: system-ui, -apple-system, "Segoe UI", "Noto Sans Devanagari", "Nirmala UI", "Kohinoor Devanagari", sans-serif; line-height: 1.75; }
+:lang(bn) body, body:lang(bn) { font-family: system-ui, -apple-system, "Segoe UI", "Noto Sans Bengali", "Nirmala UI", "Kohinoor Bangla", sans-serif; line-height: 1.75; }
+:lang(zh) body, body:lang(zh) { font-family: system-ui, -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", sans-serif; line-height: 1.75; }
+html:lang(zh) em, html:lang(zh) i { font-style: normal; }
+html:lang(zh) .brand-tag, html:lang(hi) .brand-tag, html:lang(bn) .brand-tag { letter-spacing: 0; }
 
 /* Hero */
 .hero { padding: 30px 0 4px; }
@@ -190,6 +213,7 @@ form .hz-btn.primary { width: 100%; padding: 12px; font-size: 1rem; }
 /* Print: only the plan table */
 #hz-print { display: none; }
 @media print {
+  .lang-menu, .lang-suggest { display: none !important; }
   body { background: #fff; color: #000; font-size: 11px; }
   .site-header, .site-footer, main > *:not(#hz-print), .skip { display: none !important; }
   #hz-print { display: block; }
@@ -219,6 +243,19 @@ form .hz-btn.primary { width: 100%; padding: 12px; font-size: 1rem; }
 .b-recent .hz-tag { background: var(--sabqi-bg); color: var(--sabqi); }
 .b-old .hz-tag { background: var(--manzil-bg); color: var(--manzil); }
 .hz-listen { font-weight: 700; font-size: .9rem; white-space: nowrap; }
+.hz-links { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
+.hz-mushaf { font: inherit; font-weight: 700; font-size: .9rem; white-space: nowrap; color: var(--brand); background: none; border: 0; padding: 4px 0; cursor: pointer; text-decoration: underline; text-underline-offset: .15em; }
+/* Visionneuse du mushaf */
+.hz-overlay.hz-mushaf-view { background: rgba(6, 20, 16, .94); }
+.hz-mushaf-view figure { max-width: min(560px, 100%); width: 100%; gap: 8px; }
+.hz-mv-bar, .hz-mv-nav { display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%; }
+.hz-mv-title { color: #fff; font-size: 1rem; }
+.hz-mv-page { width: 100%; background: #fff; border-radius: 12px; overflow: hidden; display: grid; place-items: center; min-height: 200px; }
+.hz-mushaf-view img { width: 100%; height: auto; max-height: calc(100vh - 170px); object-fit: contain; border-radius: 0; box-shadow: none; background: #fff; }
+.hz-mv-err { color: #333; padding: 24px; text-align: center; margin: 0; }
+.hz-mv-nav .hz-btn { min-width: 96px; }
+.hz-mv-nav .hz-btn[disabled] { visibility: hidden; }
+.hz-mushaf-view figcaption { font-size: .8rem; opacity: .85; }
 .hz-passage { font-size: 1.15rem; font-weight: 700; margin: 8px 0; }
 .hz-note { color: var(--muted); font-size: .9rem; margin: 0 0 6px; }
 .hz-btns { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }

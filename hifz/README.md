@@ -10,14 +10,17 @@
 | Questionnaires J7 / J14 / enseignants | `pilote/3-QUESTIONNAIRES.md` |
 | Tableau de suivi (sans prénoms) | `pilote/4-suivi-pilote.csv` |
 | **Publier le site (guide pas à pas, 45 min)** | **`publication/PUBLIER.md`** |
-| Le site prêt à téléverser | `publication/ourqurantime-site.zip` (contenu de `dist/`) |
+| Le site prêt à téléverser | `publication/ourqurantime-site.zip` (56 Mo, fourni à part ; `python3 build.py --zip` pour le refaire) |
 | Réglages (nom, domaine, éditeur, langues, liens d'écoute) | `config.json`, puis `python3 build.py` et refaire le zip |
 
 ## Prêt à publier (24/11/2026)
+- **10 langues** (top 10 mondial, Ethnologue 2025) : anglais à la racine, puis `/zh/` `/hi/` `/es/` `/ar/` `/fr/` `/bn/` `/pt/` `/ru/` `/id/`. Menu 🌐 dans l'en-tête : tout le site change de langue et le plan de l'enfant suit. Bandeau discret qui propose la langue du téléphone, seulement sur l'accueil anglais. Arabe de droite à gauche ; noms des sourates dans l'écriture locale en chinois, hindi, bengali et russe ; pluriels et chiffres propres à chaque langue. Relecture par des locuteurs natifs : voir `TRADUCTIONS.md`.
+- **Mushaf de Médine officiel** (Complexe du Roi Fahd, Hafs) : les 604 pages sont intégrées. Le bouton « 📖 Mushaf p. N » ouvre la page exacte du passage du jour. Source et contrôles : `../REFERENCE_CORAN.md`.
 - Domaine `ourqurantime.com` : non enregistré le 24/11 (registre .com de Verisign, réponse « introuvable »). À acheter.
-- Mentions légales en mode « particulier » (éditeur non professionnel anonyme, hébergeur Cloudflare). À passer en « professionnel » dès le premier revenu (`editor_mode` dans `config.json`).
-- Icônes (onglet, écran d'accueil iPhone/Android), manifeste, images d'aperçu WhatsApp/réseaux (FR et EN), en-têtes de sécurité (`_headers`), sitemap, robots.
-- Pages : accueil FR (`/`) et EN (`/en/`), À propos, Confidentialité, Mentions légales, 404.
+- Mentions légales en mode « particulier » dans les 10 langues. À passer en « professionnel » dès le premier revenu (`editor_mode` dans `config.json`).
+- Icônes, un manifeste par langue (l'icône d'écran d'accueil rouvre la bonne langue), images d'aperçu WhatsApp dans les 10 langues, en-têtes de sécurité, sitemap, hreflang.
+- Tests : 18 scénarios du carnet + 32 contrôles multilingues + 3 contrôles d'affichage, tous réussis (iPhone SE et iPhone 13).
+- Monétisation : `pilote/5-MONETISATION.md`.
 
 ## Le produit
 Chaque jour, le parent voit la séance de son enfant :

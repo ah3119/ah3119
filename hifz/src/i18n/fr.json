@@ -2,7 +2,23 @@
  "meta": {
   "lang_name": "Français",
   "dir": "ltr",
-  "og_locale": "fr_FR"
+  "og_locale": "fr_FR",
+  "suggest": "Ce site existe en français.",
+  "date_fmt": "{d} {m} {y}",
+  "months": [
+   "janvier",
+   "février",
+   "mars",
+   "avril",
+   "mai",
+   "juin",
+   "juillet",
+   "août",
+   "septembre",
+   "octobre",
+   "novembre",
+   "décembre"
+  ]
  },
  "ui": {
   "skip": "Aller au contenu",
@@ -56,7 +72,6 @@
   "stat_streak": "séances d’affilée",
   "stat_end": "fin estimée",
   "stat_end_done": "tout est appris",
-  "pace": "Rythme : {n} verset(s) nouveaux par séance.",
   "target_ok": "Objectif du {d} : tenu (fin estimée le {e}).",
   "target_impossible": "Objectif du {d} impossible à tenir même à 20 versets par séance (fin estimée le {e}). Choisissez une date plus lointaine.",
   "rest": "Repos",
@@ -69,7 +84,7 @@
   "btn_print": "Imprimer la fiche",
   "btn_copy_week": "Copier la fiche pour l’enseignant",
   "sheet_title": "Fiche de hifz de la semaine",
-  "hafs_note": "numérotation des versets : Hafs, mushaf de Médine",
+  "hafs_note": "Mushaf de Médine, Hafs ʿan ʿĀṣim (Complexe du Roi Fahd)",
   "sheet_teacher_note": "Remarque de l’enseignant :",
   "m_known": "déjà connue",
   "m_done": "apprise ✓",
@@ -120,7 +135,6 @@
   "copied": "Copié ✓",
   "reminder_title": "Séance de Coran",
   "reminder_desc": "C’est l’heure de la séance de hifz.",
-  "import_q": "Ce lien contient un plan avec {n} versets acquis. L’ajouter sur ce téléphone ?",
   "import_yes": "Ajouter le plan",
   "card_head": "Sourate apprise",
   "card_text": "Alhamdulillah ! Sourate {s} apprise 🌙",
@@ -129,13 +143,31 @@
   "surah_full": "{s} (sourate entière)",
   "surah_ayah": "{s}, verset {a}",
   "surah_ayahs": "{s}, versets {a} à {b}",
-  "and_more": "et {n} autre(s)"
+  "and_more": "et {n} autre(s)",
+  "pace_one": "Rythme : {n} nouveau verset par séance.",
+  "pace_other": "Rythme : {n} nouveaux versets par séance.",
+  "import_q_one": "Ce lien contient un plan avec {n} verset acquis. L’ajouter sur ce téléphone ?",
+  "import_q_other": "Ce lien contient un plan avec {n} versets acquis. L’ajouter sur ce téléphone ?",
+  "mushaf_btn": "Mushaf p. {p}",
+  "mushaf_title": "Mushaf de Médine, page {p}",
+  "mushaf_next": "Page suivante",
+  "mushaf_prev": "Page précédente",
+  "mushaf_credit": "Mushaf de Médine (Hafs) · Complexe du Roi Fahd pour l’impression du Saint Coran",
+  "mushaf_error": "Impossible de charger cette page. Vérifiez votre connexion.",
+  "mushaf_preview_only": "Cet aperçu ne contient qu’Al-Fatiha et le Juz ʿAmma. Les 604 pages sont sur le site publié."
  },
  "home": {
   "title": "Our Quran Time — le carnet de mémorisation du Coran pour les familles",
   "description": "Chaque jour, sachez quoi apprendre et quoi réviser avec votre enfant. Juz ʿAmma, sourates courtes, fiche de la semaine pour l’enseignant. Gratuit, sans compte.",
   "h1": "Ce soir, on sait quoi réciter",
   "lead": "Un carnet de hifz pour les parents : chaque jour, le nouveau passage et les révisions de votre enfant, adaptés à son rythme. Une séance manquée ? Le programme se recale tout seul.",
-  "content": "<h2>Comment ça marche ?</h2><ul class=\"trio\"><li class=\"t-sabaq\"><b>Nouveau</b>Un petit passage à apprendre, souvent 2 à 5 versets (le <em>sabaq</em>).</li><li class=\"t-sabqi\"><b>Révision récente</b>Les passages des dernières séances, pour qu’ils deviennent solides (le <em>sabqi</em>).</li><li class=\"t-manzil\"><b>Révision ancienne</b>Une ou deux sourates déjà connues, à tour de rôle, pour ne rien oublier (le <em>manzil</em>).</li></ul><p>Vous cochez ce que votre enfant a réellement récité. S’il hésite, « À revoir » : le passage revient à la séance suivante. Si vous sautez un jour, rien n’est perdu, le programme reprend où vous en étiez.</p><h2>Une séance type (10 à 15 minutes)</h2><ol><li>Écoutez le nouveau passage trois fois avec le bouton « Écouter ».</li><li>Répétez verset par verset, puis enchaînez les versets.</li><li>Votre enfant récite sans regarder : « Récité » ou « À revoir ».</li><li>Faites la révision récente, puis la révision ancienne.</li></ol><h2>Conseils pour les parents</h2><ul><li><strong>Court et régulier</strong> : 10 minutes chaque jour valent mieux qu’une heure le week-end.</li><li><strong>Même moment</strong> : après une prière ou avant le coucher. Le rappel dans l’agenda aide beaucoup.</li><li><strong>Encouragez</strong> : chaque passage récité est une étoile, chaque sourate apprise se fête.</li><li><strong>Faites-le réciter en prière</strong> : c’est la meilleure des révisions.</li></ul><h2>Pour l’enseignant</h2><p>La fiche de la semaine résume les passages prévus et ceux réellement récités. Imprimez-la ou copiez-la dans WhatsApp : l’enseignant voit d’un coup d’œil où en est l’enfant et peut écrire sa remarque.</p><p class=\"note\">Ce carnet organise la mémorisation ; il ne remplace pas un enseignant qui écoute l’enfant et corrige sa récitation (tajwid).</p><h2>Questions fréquentes</h2><div class=\"faq\"><details><summary>Où sont enregistrées les données de mon enfant ?</summary><p>Uniquement sur votre téléphone. Aucun compte, aucun serveur. Le prénom est facultatif.</p></details><details><summary>J’ai plusieurs enfants.</summary><p>Ajoutez un plan par enfant avec « + Ajouter un enfant ». Chaque plan a sa propre progression.</p></details><details><summary>Nous avons manqué plusieurs jours.</summary><p>Aucun souci : la séance du jour reprend exactement là où vous vous êtes arrêtés, et la date de fin estimée se recalcule.</p></details><details><summary>Je change de téléphone.</summary><p>Dans « Réglages », copiez le lien de sauvegarde et ouvrez-le sur le nouveau téléphone.</p></details><details><summary>Quelle numérotation des versets ?</summary><p>Celle de la lecture Hafs (mushaf de Médine), la plus répandue.</p></details><details><summary>Est-ce gratuit ?</summary><p>Oui, gratuit et sans publicité pendant la phase de test.</p></details></div>"
+  "content": "<h2>Comment ça marche ?</h2><ul class=\"trio\"><li class=\"t-sabaq\"><b>Nouveau</b>Un petit passage à apprendre, souvent 2 à 5 versets (le <em>sabaq</em>).</li><li class=\"t-sabqi\"><b>Révision récente</b>Les passages des dernières séances, pour qu’ils deviennent solides (le <em>sabqi</em>).</li><li class=\"t-manzil\"><b>Révision ancienne</b>Une ou deux sourates déjà connues, à tour de rôle, pour ne rien oublier (le <em>manzil</em>).</li></ul><p>Vous cochez ce que votre enfant a réellement récité. S’il hésite, « À revoir » : le passage revient à la séance suivante. Si vous sautez un jour, rien n’est perdu, le programme reprend où vous en étiez.</p><h2>Une séance type (10 à 15 minutes)</h2><ol><li>Ouvrez le passage dans le Mushaf de Médine (bouton 📖) et lisez-le ensemble.</li><li>Écoutez le nouveau passage trois fois avec le bouton « Écouter ».</li><li>Répétez verset par verset, puis enchaînez les versets.</li><li>Votre enfant récite sans regarder : « Récité » ou « À revoir ».</li><li>Faites la révision récente, puis la révision ancienne.</li></ol><h2>Conseils pour les parents</h2><ul><li><strong>Court et régulier</strong> : 10 minutes chaque jour valent mieux qu’une heure le week-end.</li><li><strong>Même moment</strong> : après une prière ou avant le coucher. Le rappel dans l’agenda aide beaucoup.</li><li><strong>Encouragez</strong> : chaque passage récité est une étoile, chaque sourate apprise se fête.</li><li><strong>Faites-le réciter en prière</strong> : c’est la meilleure des révisions.</li></ul><h2>Pour l’enseignant</h2><p>La fiche de la semaine résume les passages prévus et ceux réellement récités. Imprimez-la ou copiez-la dans WhatsApp : l’enseignant voit d’un coup d’œil où en est l’enfant et peut écrire sa remarque.</p><p class=\"note\">Ce carnet organise la mémorisation ; il ne remplace pas un enseignant qui écoute l’enfant et corrige sa récitation (tajwid).</p><h2>Questions fréquentes</h2><div class=\"faq\"><details><summary>Où sont enregistrées les données de mon enfant ?</summary><p>Uniquement sur votre téléphone. Aucun compte, aucun serveur. Le prénom est facultatif.</p></details><details><summary>J’ai plusieurs enfants.</summary><p>Ajoutez un plan par enfant avec « + Ajouter un enfant ». Chaque plan a sa propre progression.</p></details><details><summary>Nous avons manqué plusieurs jours.</summary><p>Aucun souci : la séance du jour reprend exactement là où vous vous êtes arrêtés, et la date de fin estimée se recalcule.</p></details><details><summary>Je change de téléphone.</summary><p>Dans « Réglages », copiez le lien de sauvegarde et ouvrez-le sur le nouveau téléphone.</p></details><details><summary>Quel mushaf sert de référence ?</summary><p>Le Mushaf de Médine dans la lecture Hafs ʿan ʿĀṣim, imprimé par le Complexe du Roi Fahd pour l’impression du Saint Coran : 604 pages et 6 236 versets. Les numéros de versets et les pages correspondent à ce mushaf, le plus répandu au monde.</p></details><details><summary>Est-ce gratuit ?</summary><p>Oui, gratuit et sans publicité pendant la phase de test.</p></details></div>"
+ },
+ "legal": {
+  "private": "Site édité par un particulier, à titre non professionnel. Conformément à l’article 1-1, II de la LCEN, l’éditeur a choisi de préserver son anonymat ; ses coordonnées ont été communiquées à l’hébergeur ci-dessous.<br>Contact : {mail}",
+  "controller": "l’éditeur du site (particulier)",
+  "phone": "Téléphone :",
+  "email": "E-mail :",
+  "director": "Directeur de la publication"
  }
 }
