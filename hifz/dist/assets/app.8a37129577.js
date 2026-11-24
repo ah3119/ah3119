@@ -1,4 +1,4 @@
-/* Sakina Quran Planner — carnet de mémorisation du Coran pour les familles.
+/* Our Quran Time — carnet de mémorisation du Coran pour les familles.
    Le plan suit ce que l'enfant a réellement récité (versets acquis), pas le calendrier.
    Les dates ne sont que des projections recalculées chaque jour.
    Tout reste dans le navigateur : pas de compte, pas de serveur. */
@@ -7,7 +7,7 @@
   const I = JSON.parse(document.getElementById('i18n').textContent);
   const LANG = document.documentElement.lang || 'fr';
   const LOC = LANG === 'ar' ? 'ar-u-nu-latn' : LANG;
-  const SITE = document.documentElement.dataset.site || 'Sakina Quran Planner';
+  const SITE = document.documentElement.dataset.site || 'Our Quran Time';
   const SIGN = (document.getElementById('hz') || { dataset: {} }).dataset.signature || '';
   const T = (k, v) => { let s = I[k] != null ? I[k] : k; if (v) for (const a in v) s = s.split('{' + a + '}').join(v[a]); return s; };
   const $ = (s, r) => (r || document).querySelector(s);
@@ -517,7 +517,7 @@
     const start = new Date(todayMs());
     const d8 = start.toISOString().slice(0, 10).replace(/-/g, '');
     const esc2 = (s) => String(s).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
-    const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//SakinaQuranPlanner//FR', 'BEGIN:VEVENT', `UID:${c.id}-${d8}@sakinaquranplan`,
+    const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//OurQuranTime//FR', 'BEGIN:VEVENT', `UID:${c.id}-${d8}@ourqurantime`,
       'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, ''), `DTSTART:${d8}T${h}${m}00`, `DURATION:PT15M`,
       `RRULE:FREQ=WEEKLY;BYDAY=${by}`, 'SUMMARY:' + esc2(T('reminder_title') + (c.name ? ' — ' + c.name : '')),
       'DESCRIPTION:' + esc2(T('reminder_desc') + ' ' + location.origin + location.pathname),

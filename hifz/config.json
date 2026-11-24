@@ -1,8 +1,8 @@
 {
-  "site_name": "Sakina Quran Planner",
-  "domain": "https://sakinaquranplan.com",
-  "contact_email": "contact@sakinaquranplan.com",
-  "sister_name": "Sakina Kids",
+  "site_name": "Our Quran Time",
+  "domain": "https://ourqurantime.com",
+  "contact_email": "contact@ourqurantime.com",
+  "sister_name": "",
   "sister_url": "",
   "support_url": "",
   "editor_name": "TO COMPLETE — your full name or company name",
@@ -22,6 +22,6 @@
   ],
   "surah_pages": false,
   "listen": {},
-  "_listen_aide": "Pour relier une sourate à une récitation (ex. Sakina Kids) : \"114\": \"https://...\"",
-  "signature": "by Sakina Kids"
+  "_listen_aide": "Pour remplacer Quran.com par une autre récitation : \"114\": \"https://...\"",
+  "signature": ""
 }

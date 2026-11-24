@@ -1,4 +1,4 @@
-# Pilote Sakina Quran Planner — déroulé complet
+# Pilote Our Quran Time — déroulé complet
 
 **Objectif du pilote** : savoir si des parents utilisent le carnet **plusieurs fois par semaine pendant 2 semaines** avec leur enfant, et s'ils reprennent après une séance manquée. Ce n'est pas un test de trafic ni de revenus.
 
@@ -13,7 +13,7 @@
 | Partie | Période | Qui | Temps pour toi |
 |---|---|---|---|
 | 1. Mise en ligne | 24 → 27 nov. | Toi, avec Claude | ≈ 2 h |
-| 2. Recrutement | 25 nov. → 4 déc. | Toi | ≈ 2-3 h |
+| 2. Recrutement | 25 nov. → 4 déc. | Toi | ≈ 3-4 h |
 | 3. Démarrage | lun. 7 déc. | Toi | ≈ 30 min |
 | 4. Pilote | 7 → 20 déc. | Familles ; toi pour les messages | ≈ 15 min/jour au maximum |
 | 5. Bilan et décision | 21 → 23 déc. | Toi, avec Claude | ≈ 2 h |
@@ -25,14 +25,14 @@ Coût : **≈ 10-15 € par an** (nom de domaine). L'hébergement Cloudflare Pag
 
 ## Partie 1 — Mise en ligne (24 → 27 novembre)
 
-1. **Nom** : « Sakina Quran Planner », signé « by Sakina Kids ». Vérifier :
-   - que le domaine est libre : sakinaquranplan.com (adresse principale) et, conseillé, sakinaquranplanner.com en redirection ;
+1. **Nom** : « Our Quran Time », projet indépendant. Vérifier :
+   - que le domaine ourqurantime.com est libre, et qu'aucune marque « QURAN TIME » ou « OUR QURAN TIME » n'est déposée (une appli iOS « Quran Time » existe déjà) ;
    - qu'aucune marque identique n'est déposée pour des services éducatifs : recherche gratuite sur [data.inpi.fr](https://data.inpi.fr) et [euipo.europa.eu](https://euipo.europa.eu/eSearch/).
 2. **M'envoyer** :
    - le domaine choisi ;
    - les informations d'éditeur pour les mentions légales (nom, statut / SIRET, adresse, téléphone) ;
    - l'e-mail de contact ;
-   - en option, les liens de récitations Sakina Kids par sourate, pour remplacer Quran.com.
+   - en option, d'autres liens de récitation par sourate, pour remplacer Quran.com.
 
    Je mets à jour `config.json` et je régénère le site.
 3. **Cloudflare Pages** :
@@ -52,13 +52,15 @@ Coût : **≈ 10-15 € par an** (nom de domaine). L'hébergement Cloudflare Pag
 
 - **Cible** : 10 familles, plus 2 ou 3 de réserve (certaines abandonnent avant de commencer). Les enfants apprennent ou veulent apprendre Juz ʿAmma. Les deux parents n'ont pas besoin de parler arabe.
 - **2 enseignants** (madrasa, école du week-end, enseignant particulier) qui suivent au moins un des enfants.
-- **Canaux**, par ordre d'efficacité attendue ⚠️ :
-  1. **ta communauté Sakina Kids** (story, post, communauté WhatsApp) : des parents qui te font déjà confiance ;
-  2. **les enseignants** : chacun peut proposer le pilote à 3 à 5 familles de ses élèves ;
-  3. les mosquées et écoles du week-end (affichette, avec l'accord du responsable) ;
-  4. ton réseau personnel.
+- **Canaux, menés en parallèle** :
+  1. **les enseignants d'abord** : chacun peut proposer le pilote à 3 à 5 familles de ses élèves ;
+  2. **ton réseau personnel** ;
+  3. **les groupes de parents** (WhatsApp, Facebook) et les mosquées ou écoles du week-end, avec l'accord de l'administrateur ou du responsable.
 
-  Textes prêts dans `2-MESSAGES.md`.
+  Textes prêts dans `2-MESSAGES.md`. Vise 13 à 14 inscriptions pour obtenir 10 familles réellement confirmées.
+- **Critère de démarrage, à trancher le vendredi 4 décembre** :
+  - **10 familles confirmées ou plus** : le pilote démarre le lundi 7 décembre comme prévu. Les 2 enseignants restent l'objectif, pour recueillir leurs avis, mais ne bloquent pas le départ.
+  - **Moins de 10** : semaine de prétest de prise en main du 7 au 13 décembre avec les familles déjà inscrites (création du plan, premières séances, blocages), recrutement poursuivi, puis pilote de 2 semaines **du 4 au 17 janvier 2027**, après les vacances de Noël. Le bilan tombe alors le 18-20 janvier, environ 3 semaines avant le Ramadan.
 - **Organisation** :
   - Utilise une **liste de diffusion WhatsApp** ou une communauté avec un canal d'annonces, **pas un groupe** : dans un groupe, chaque participant voit les numéros des autres.
   - Donne à chaque famille un code (F01 à F12) dans `4-suivi-pilote.csv`. N'écris pas les prénoms des enfants dans le fichier.
@@ -109,7 +111,7 @@ Envoie-moi le suivi et les réponses : je fais l'analyse et la liste des correct
 
 1. Corrections issues du pilote.
 2. Relecture de l'anglais (et de l'arabe si on l'ajoute) par des locuteurs natifs.
-3. Lancement public **avant le Ramadan** (⚠️ début estimé vers le 8 février 2027, à confirmer) : vidéos Sakina Kids, enseignants partenaires, Search Console.
+3. Lancement public **avant le Ramadan** (⚠️ début estimé vers le 8 février 2027, à confirmer) : enseignants partenaires, groupes de parents, réseaux sociaux du projet, Search Console.
 4. Puis, seulement si l'usage se confirme :
    - le carnet guidé facultatif (exercices de révision, bilan hebdomadaire) ;
    - ensuite, une version pour les enseignants.
