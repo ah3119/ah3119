@@ -12,7 +12,10 @@ AVANT DE COMMENCER
    > Débogage USB.
 
 LANCEMENT
-- Windows  : décompressez TOUT le ZIP, puis double-cliquez sur LANCER-WINDOWS.bat
+- Windows  : double-cliquez sur LANCER-WINDOWS.bat. Ce fichier est autonome : il
+  contient tout, aucun autre fichier n'est nécessaire.
+  Si Windows affiche « Windows a protégé votre ordinateur », cliquez sur
+  « Informations complémentaires », puis « Exécuter quand même ».
 - Mac/Linux: ouvrez un terminal dans le dossier, puis tapez : sh lancer-mac-linux.sh
 
 Si ADB n'est pas installé, le lanceur le télécharge depuis le site officiel
