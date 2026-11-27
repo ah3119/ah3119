@@ -34,15 +34,35 @@ pause
 exit /b 1
 
 :adb_ok
-rem --- 3. Attendre le telephone ---
+rem --- 3. Attendre le telephone (et dire precisement ce qui bloque) ---
 %ADB% start-server >nul 2>&1
 echo Branchez le telephone en USB (debogage USB active).
 echo Sur le telephone, acceptez "Autoriser le debogage USB".
 echo.
+set /a TRIES=0
+set "LAST="
 :wait
-%ADB% get-state 2>nul | find "device" >nul
-if not errorlevel 1 goto connected
-echo   En attente du telephone...
+set "STATE=aucun"
+for /f "skip=1 tokens=2" %%s in ('%ADB% devices 2^>nul') do set "STATE=%%s"
+if "%STATE%"=="device" goto connected
+set /a TRIES+=1
+if "%STATE%"=="%LAST%" goto wait_tip
+set "LAST=%STATE%"
+if "%STATE%"=="aucun" echo   Aucun telephone detecte : verifiez le cable, le mode "Transfert de fichiers" et le debogage USB.
+if "%STATE%"=="unauthorized" echo   Telephone detecte mais NON AUTORISE : deverrouillez-le et acceptez "Autoriser le debogage USB".
+if "%STATE%"=="offline" echo   Telephone hors ligne : debranchez puis rebranchez le cable.
+if not "%STATE%"=="aucun" if not "%STATE%"=="unauthorized" if not "%STATE%"=="offline" echo   Etat du telephone : %STATE%
+:wait_tip
+if %TRIES%==20 (
+  echo.
+  echo   Toujours rien apres 1 minute. A verifier :
+  echo    - Options pour les developpeurs : Debogage USB active
+  echo    - Notification USB du telephone : choisir "Transfert de fichiers"
+  echo    - Autre cable ^(celui d'origine^) sur un port USB direct du PC
+  echo    - Le telephone apparait-il dans "Ce PC" ? Sinon : cable ou port en cause.
+  echo   La fenetre continue d'attendre.
+  echo.
+)
 timeout /t 3 >nul
 goto wait
 
