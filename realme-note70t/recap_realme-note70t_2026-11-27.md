@@ -14,14 +14,14 @@
 - La source principale des pubs est la soixantaine de petits jeux gratuits installés, pas le système realme.
 
 ## Points en suspens
-- Jeux : choisir lesquels garder, puis supprimer les autres (Play Store › Gérer, sélection multiple).
+- Décision : supprimer Temu, Amazon et les 63 jeux (option 8 du lanceur, 65 paquets vérifiés un à un). À lancer.
 - `com.crypto.exchange` : appli non identifiée. À vérifier ; la supprimer si elle est inconnue.
 - Option 3 (liste optionnelle, dont `com.oplus.commercial` au rôle non documenté) : non appliquée.
 - Vérifier, après un redémarrage, que les retraits tiennent (option 1 = simulation).
 
 ## Prochaines étapes
 1. Redémarrer le téléphone.
-2. Faire le tri des jeux.
+2. Lancer l'option 8 (jeux, Temu, Amazon), puis redémarrer.
 3. Le lendemain : relancer l'option 1 et vérifier que rien n'est revenu.
 
 ## Retour arrière
