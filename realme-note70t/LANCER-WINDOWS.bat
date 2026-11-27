@@ -126,8 +126,10 @@ echo   4. Tout restaurer (annule le nettoyage)
 echo   5. Quitter
 echo   6. Exporter la liste des applis (pour analyse)
 echo   7. Supprimer les applis gadgets a pubs (lampe, scanner, farces...)
+echo   8. Supprimer TOUS les jeux + Temu + Amazon
 echo ----------------------------------------------------------
-choice /c 1234567 /n /m "Votre choix : "
+choice /c 12345678 /n /m "Votre choix : "
+if errorlevel 8 goto jeux
 if errorlevel 7 goto gadgets
 if errorlevel 6 goto export
 if errorlevel 5 goto end
@@ -182,6 +184,23 @@ if errorlevel 2 goto menu
 pause
 goto menu
 
+:jeux
+echo.
+echo Jeux, Temu et Amazon trouves sur le telephone :
+%ADB% shell sh /data/local/tmp/debloat.sh listjeux
+echo.
+echo NON touches : banque, CAF, Doctolib, WhatsApp, CapCut, ChatGPT, Duolingo,
+echo Booking, Heetch, Bolt, Wecasa, Carrefour, Facebook, TikTok, Netflix, Zepeto.
+echo.
+echo ATTENTION : suppression DEFINITIVE. La progression des jeux est perdue,
+echo sauf si elle est liee a un compte. Reinstallables depuis le Play Store.
+choice /c ON /n /m "Supprimer ces applis ? (O/N) "
+if errorlevel 2 goto menu
+echo Suppression en cours, cela peut prendre quelques minutes...
+%ADB% shell sh /data/local/tmp/debloat.sh jeux
+pause
+goto menu
+
 :extract_fail
 echo ERREUR : impossible de preparer le script. Copiez ce fichier dans un
 echo dossier ou vous avez le droit d'ecrire (Bureau, Documents) et relancez.
@@ -208,6 +227,7 @@ __DEBLOAT_SH_CI_DESSOUS__
 #   adb shell sh /data/local/tmp/debloat.sh optional   -> applique aussi la liste optionnelle
 #   adb shell sh /data/local/tmp/debloat.sh restore    -> remet tout comme avant
 #   adb shell sh /data/local/tmp/debloat.sh gadgets    -> SUPPRIME les applis gadgets (definitif)
+#   adb shell sh /data/local/tmp/debloat.sh jeux       -> SUPPRIME les jeux, Temu, Amazon (definitif)
 # ============================================================================
 
 MODE="${1:-dry}"
@@ -272,6 +292,80 @@ com.lip.pose.filter.challenge
 com.trending.tik.tap.game.challenge
 "
 
+# --- Jeux + Temu + Amazon (demande explicite du proprietaire, 27/11/2026) ----
+# Suppression DEFINITIVE (reinstallation possible depuis le Play Store).
+# Non touches volontairement : banque, CAF, Doctolib, WhatsApp, CapCut,
+# ChatGPT, Gemini, Duolingo, Booking, Heetch, Bolt, Wecasa, Carrefour,
+# Facebook, Messenger, TikTok, Netflix, Zepeto, com.playtk.skit_cine,
+# com.crypto.exchange, Canta, Shizuku, applis Google.
+JEUX="
+com.einnovation.temu
+com.amazon.appmanager
+casual.tung.sahur.mukbang.asmr
+com.ag.fashion.catwalk.show
+com.beat.cat.dancing.hop.tiles.music.game
+com.block.juggle
+com.bravestars.savethedog.drawgame
+com.bunbunstudio.magicblocktiles
+com.crazylabs.acrylic.nails
+com.dino.moto.race.master
+com.dino.race.master
+com.domin.tgrow
+com.drawhome.drawgame.drawpuzzle.rushtohome
+com.emoji.fun.puzzle
+com.fc.p.gp.skincare.makeup.makeover.asmr.game
+com.fcg.badmom.goodmom.rungames
+com.fcg.bakery.stack.maker.game
+com.fp.helpmeplease.trickystories
+com.fullmetalgamedev.aquablockspuzzleseas
+com.fullmetalgamedev.coffeerun3d
+com.fullmetalgamedev.fruitshooting
+com.fullmetalgamedev.ultimatecruises
+com.fullmetalgamedev.zombieDefence
+com.Garawell.BridgeRace
+com.Hadiz.Pillowchase
+com.hg.FishEaterPro
+com.hide.ball
+com.htt.alpha.shooter.fps
+com.jess.makeup
+com.katanlabs.bridgebuildguys
+com.katanlabs.bubblepop
+com.katanlabs.matchballgame
+com.KatanLabs.tilematchpuzzlemaster
+com.katanlabs.wordconnectwondersofview
+com.katanlabs.worm.ioeatemall
+com.kayac.breakragdoll
+com.king.candycrushsaga
+com.manekigames.fashionqueen
+com.match.hollywood
+com.matchingham.flashback.tricky.riddles
+com.MegaJoy.LoveStory68
+com.newnormalgames.phonecasediy
+com.oakever.tiletrip
+com.playflock.family.hospital.operate.makeover.doctor.match.heart
+com.playflock.family.town.makeover.home.mansion.story.garden.decoration.puzzle.match
+com.playrix.fishdomdd.gplay
+com.playstrom.dop4
+com.Polystation.BuildABabe
+com.ps.build.a.dream.queen.race.game
+com.seenax.HideAndSeek
+com.sgs.sniper.agent.agenthunt.shootergame.snipergame.gun.game
+com.sh.tricky.relax.ticktock.mini.challenges.puzzle.games
+com.smartfunapps.crazyhospital
+com.smashing.draw2
+com.syubestgames.teachersimulator
+com.taymay.haircut
+com.tp.pmu3d
+com.tripledot.solitaire
+com.vitastudio.mahjong
+com.weegoon.thiefpuzzle
+com.wn.hairtattoo
+diy.makeup.master.artist.stylist
+dop.draw.one.part.puzzle.story
+net.wooga.junes_journey_hidden_object_mystery_game
+surf.beats.magic.song.game
+"
+
 # Etat reel d'un paquet : absent | retire | off | actif
 state() {
   pm list packages -u "$1" 2>/dev/null | grep -qx "package:$1" || { echo absent; return; }
@@ -280,31 +374,42 @@ state() {
   echo actif
 }
 
-# --- Modes "gadgets" : liste puis suppression definitive des applis gadgets ---
-if [ "$MODE" = listgadgets ] || [ "$MODE" = gadgets ]; then
+# --- Suppression definitive d'une liste d'applis installees ------------------
+# $1 = list | remove ; $2 = liste de paquets
+remove_list() {
   n=0; f=0
-  for p in $GADGETS; do
+  for p in $2; do
     pm list packages "$p" 2>/dev/null | grep -qx "package:$p" || continue
-    if [ "$MODE" = listgadgets ]; then
+    if [ "$1" = list ]; then
       echo "  - $p"; n=$((n+1)); continue
     fi
     pm uninstall "$p" >/dev/null 2>&1
+    # appli preinstallee : retrait pour l'utilisateur en secours
+    if pm list packages "$p" 2>/dev/null | grep -qx "package:$p"; then
+      pm uninstall -k --user 0 "$p" >/dev/null 2>&1
+    fi
     if pm list packages "$p" 2>/dev/null | grep -qx "package:$p"; then
       echo "[echec]        $p"; f=$((f+1))
     else
       echo "[OK supprime]  $p"; n=$((n+1))
     fi
   done
-  if [ "$MODE" = listgadgets ]; then echo "  ($n applis presentes)"
+  if [ "$1" = list ]; then echo "  ($n applis presentes)"
   else echo "== Supprimees : $n | Echecs : $f =="; fi
-  exit 0
-fi
+}
+
+case "$MODE" in
+  listgadgets) remove_list list "$GADGETS"; exit 0 ;;
+  gadgets)     remove_list remove "$GADGETS"; exit 0 ;;
+  listjeux)    remove_list list "$JEUX"; exit 0 ;;
+  jeux)        remove_list remove "$JEUX"; exit 0 ;;
+esac
 
 case "$MODE" in
   dry|apply)       LIST="$CORE" ;;
   optional)        LIST="$CORE $OPTIONAL" ;;
   restore)         LIST="$CORE $OPTIONAL" ;;
-  *) echo "Mode inconnu : $MODE (dry | apply | optional | restore | listgadgets | gadgets)"; exit 1 ;;
+  *) echo "Mode inconnu : $MODE (dry | apply | optional | restore | listgadgets | gadgets | listjeux | jeux)"; exit 1 ;;
 esac
 
 ok=0; skip=0; fail=0
