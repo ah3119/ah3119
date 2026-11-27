@@ -1,8 +1,10 @@
 #!/system/bin/sh
 # ============================================================================
 # Nettoyage realme Note 70T (RMX5313) - realme UI, sans root
-# Methode : retrait pour l'utilisateur (pm uninstall -k --user 0), avec
-# desactivation en secours. Chaque action est VERIFIEE apres coup.
+# Methode : desactivation (pm disable-user), avec retrait pour l'utilisateur
+# (pm uninstall -k --user 0) en secours. Chaque action est VERIFIEE apres coup.
+# Constat sur RMX5313 (Android 16) : la desactivation resiste au redemarrage,
+# le retrait pas toujours (Taboola reinstalle par le systeme).
 # 100 % reversible avec "restore" : rien n'est efface du systeme.
 # Ne touche PAS aux mises a jour systeme, au Play Store, a l'appareil photo,
 # au telephone, aux SMS, au clavier ni au launcher.
@@ -220,13 +222,15 @@ for p in $LIST; do
         retire) echo "[deja retire]  $p"; ok=$((ok+1)); continue ;;
         off)    echo "[deja off]     $p"; ok=$((ok+1)); continue ;;
       esac
-      pm uninstall -k --user 0 "$p" >/dev/null 2>&1
-      if [ "$(state "$p")" = retire ]; then
-        echo "[OK retire]    $p"; ok=$((ok+1)); continue
-      fi
+      # 1) desactivation : constatee persistante apres redemarrage sur RMX5313
       pm disable-user --user 0 "$p" >/dev/null 2>&1
       if [ "$(state "$p")" = off ]; then
-        echo "[OK off]       $p"; ok=$((ok+1))
+        echo "[OK off]       $p"; ok=$((ok+1)); continue
+      fi
+      # 2) secours : retrait pour l'utilisateur
+      pm uninstall -k --user 0 "$p" >/dev/null 2>&1
+      if [ "$(state "$p")" = retire ]; then
+        echo "[OK retire]    $p"; ok=$((ok+1))
       else
         echo "[bloque]       $p (protege par realme, ignore)"; fail=$((fail+1))
       fi ;;
