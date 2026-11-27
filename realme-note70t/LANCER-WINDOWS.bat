@@ -39,6 +39,8 @@ rem --- 3. Attendre le telephone (et dire precisement ce qui bloque) ---
 echo Branchez le telephone en USB (debogage USB active).
 echo Sur le telephone, acceptez "Autoriser le debogage USB".
 echo.
+echo   Le telephone n'est pas reconnu en USB ? Appuyez sur W pour le connecter en Wi-Fi.
+echo.
 set /a TRIES=0
 set "LAST="
 :wait
@@ -60,10 +62,38 @@ if %TRIES%==20 (
   echo    - Notification USB du telephone : choisir "Transfert de fichiers"
   echo    - Autre cable ^(celui d'origine^) sur un port USB direct du PC
   echo    - Le telephone apparait-il dans "Ce PC" ? Sinon : cable ou port en cause.
+  echo    - OU appuyez sur W pour connecter le telephone en Wi-Fi, sans cable ni pilote.
   echo   La fenetre continue d'attendre.
   echo.
 )
-timeout /t 3 >nul
+choice /c AW /t 3 /d A /n >nul
+if errorlevel 2 goto wifi
+goto wait
+
+:wifi
+echo.
+echo ===================== CONNEXION WI-FI =====================
+echo  Le PC et le telephone doivent etre sur le MEME reseau Wi-Fi.
+echo  Sur le telephone : Options pour les developpeurs ^> Debogage sans fil
+echo  ^> activez-le, puis touchez "Associer l'appareil avec un code d'association".
+echo.
+set "PAIR="
+set "CODE="
+set "CONN="
+set /p "PAIR=Adresse IP et port affiches SOUS le code (ex. 192.168.1.20:37123) : "
+if "%PAIR%"=="" goto wifi
+set /p "CODE=Code d'association a 6 chiffres : "
+%ADB% pair %PAIR% %CODE%
+echo.
+echo  Fermez la petite fenetre du code. Sur l'ecran "Debogage sans fil",
+echo  lisez "Adresse IP et port" en haut (le port est DIFFERENT du precedent).
+set /p "CONN=Adresse IP et port : "
+if "%CONN%"=="" goto wifi
+%ADB% connect %CONN%
+echo.
+echo  Si une fenetre s'affiche sur le telephone, acceptez-la.
+set /a TRIES=0
+set "LAST="
 goto wait
 
 :connected
