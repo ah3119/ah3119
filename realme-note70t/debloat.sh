@@ -1,16 +1,18 @@
 #!/system/bin/sh
 # ============================================================================
 # Nettoyage realme Note 70T (RMX5313) - realme UI, sans root
-# Methode : DESACTIVATION (pm disable-user). 100 % reversible avec "restore".
+# Methode : retrait pour l'utilisateur (pm uninstall -k --user 0), avec
+# desactivation en secours. Chaque action est VERIFIEE apres coup.
+# 100 % reversible avec "restore" : rien n'est efface du systeme.
 # Ne touche PAS aux mises a jour systeme, au Play Store, a l'appareil photo,
 # au telephone, aux SMS, au clavier ni au launcher.
 #
-# Utilisation (PC + ADB, depuis le dossier du script) :
+# Utilisation (PC + ADB) :
 #   adb push debloat.sh /data/local/tmp/
 #   adb shell sh /data/local/tmp/debloat.sh            -> SIMULATION (rien n'est modifie)
 #   adb shell sh /data/local/tmp/debloat.sh apply      -> applique
-#   adb shell sh /data/local/tmp/debloat.sh restore    -> reactive tout
 #   adb shell sh /data/local/tmp/debloat.sh optional   -> applique aussi la liste optionnelle
+#   adb shell sh /data/local/tmp/debloat.sh restore    -> remet tout comme avant
 # ============================================================================
 
 MODE="${1:-dry}"
@@ -47,11 +49,13 @@ com.coloros.gamespaceui
 com.heytap.cloud
 "
 
-INSTALLED="$(pm list packages 2>/dev/null)"
-ENABLED_ONLY="$(pm list packages -e 2>/dev/null)"
-
-is_installed() { echo "$INSTALLED" | grep -qx "package:$1"; }
-is_enabled()   { echo "$ENABLED_ONLY" | grep -qx "package:$1"; }
+# Etat reel d'un paquet : absent | retire | off | actif
+state() {
+  pm list packages -u "$1" 2>/dev/null | grep -qx "package:$1" || { echo absent; return; }
+  pm list packages "$1" 2>/dev/null | grep -qx "package:$1" || { echo retire; return; }
+  pm list packages -d "$1" 2>/dev/null | grep -qx "package:$1" && { echo off; return; }
+  echo actif
+}
 
 case "$MODE" in
   dry|apply)       LIST="$CORE" ;;
@@ -64,29 +68,48 @@ ok=0; skip=0; fail=0
 echo "== Mode : $MODE =="
 
 for p in $LIST; do
-  if ! is_installed "$p"; then
-    skip=$((skip+1)); continue
-  fi
+  st="$(state "$p")"
+  if [ "$st" = absent ]; then skip=$((skip+1)); continue; fi
+
   case "$MODE" in
     dry)
-      if is_enabled "$p"; then echo "[a desactiver] $p"; else echo "[deja off]    $p"; fi
+      case "$st" in
+        actif)  echo "[a retirer]    $p" ;;
+        off)    echo "[deja off]     $p" ;;
+        retire) echo "[deja retire]  $p" ;;
+      esac
       ok=$((ok+1)) ;;
+
     apply|optional)
-      if ! is_enabled "$p"; then echo "[deja off]    $p"; ok=$((ok+1)); continue; fi
-      if pm disable-user --user 0 "$p" >/dev/null 2>&1; then
-        echo "[OK off]      $p"; ok=$((ok+1))
+      case "$st" in
+        retire) echo "[deja retire]  $p"; ok=$((ok+1)); continue ;;
+        off)    echo "[deja off]     $p"; ok=$((ok+1)); continue ;;
+      esac
+      pm uninstall -k --user 0 "$p" >/dev/null 2>&1
+      if [ "$(state "$p")" = retire ]; then
+        echo "[OK retire]    $p"; ok=$((ok+1)); continue
+      fi
+      pm disable-user --user 0 "$p" >/dev/null 2>&1
+      if [ "$(state "$p")" = off ]; then
+        echo "[OK off]       $p"; ok=$((ok+1))
       else
-        echo "[refuse]      $p (protege par le systeme, ignore)"; fail=$((fail+1))
+        echo "[bloque]       $p (protege par realme, ignore)"; fail=$((fail+1))
       fi ;;
+
     restore)
-      if pm enable "$p" >/dev/null 2>&1; then
-        echo "[OK on]       $p"; ok=$((ok+1))
+      if [ "$st" = retire ]; then
+        cmd package install-existing --user 0 "$p" >/dev/null 2>&1 \
+          || pm install-existing --user 0 "$p" >/dev/null 2>&1
+      fi
+      pm enable "$p" >/dev/null 2>&1
+      if [ "$(state "$p")" = actif ]; then
+        echo "[OK actif]     $p"; ok=$((ok+1))
       else
-        echo "[echec]       $p"; fail=$((fail+1))
+        echo "[echec]        $p"; fail=$((fail+1))
       fi ;;
   esac
 done
 
-echo "== Traites : $ok | Absents (ignores) : $skip | Refuses/echecs : $fail =="
+echo "== Traites : $ok | Absents (ignores) : $skip | Bloques/echecs : $fail =="
 [ "$MODE" = "dry" ] && echo "Simulation seulement. Pour appliquer : option 2 du menu (ou argument 'apply')."
 exit 0
