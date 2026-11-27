@@ -13,6 +13,7 @@
 #   adb shell sh /data/local/tmp/debloat.sh apply      -> applique
 #   adb shell sh /data/local/tmp/debloat.sh optional   -> applique aussi la liste optionnelle
 #   adb shell sh /data/local/tmp/debloat.sh restore    -> remet tout comme avant
+#   adb shell sh /data/local/tmp/debloat.sh gadgets    -> SUPPRIME les applis gadgets (definitif)
 # ============================================================================
 
 MODE="${1:-dry}"
@@ -35,18 +36,46 @@ com.facebook.appmanager
 com.facebook.services
 com.facebook.system
 com.netflix.partner.activation
+com.taboola.scoop
+com.taboola.mip
+com.amazon.appmanager
 "
 
 # --- Liste optionnelle : utile mais avec effets de bord possibles ------------
-# themestore    : peut empecher de changer de theme / certains fonds d'ecran
-# quicksearchbox: la recherche en glissant vers le bas sur l'accueil disparait
-# gamespaceui   : espace jeux (perte du mode performance en jeu)
-# heytap.cloud  : sauvegarde cloud realme (la sauvegarde Google reste active)
+# themestore / customization : changer de theme peut ne plus marcher
+# quicksearchbox : la recherche en glissant vers le bas sur l'accueil disparait
+# gamespace      : espace jeux (perte du mode performance en jeu)
+# heytap.cloud   : sauvegarde cloud realme (la sauvegarde Google reste active)
+# as.music       : lecteur de musique realme
+# oplus.commercial : "contenus commerciaux" realme, role exact non documente
+# oplus.stdid    : identifiant publicitaire realme (OAID)
 OPTIONAL="
 com.heytap.themestore
 com.heytap.quicksearchbox
+com.oppo.quicksearchbox
 com.coloros.gamespaceui
+com.oplus.gamespace
 com.heytap.cloud
+com.realme.as.music
+com.oplus.commercial
+com.oplus.stdid
+"
+
+# --- Applis gadgets installees, typiques des pubs plein ecran ----------------
+# Suppression DEFINITIVE (reinstallation possible depuis le Play Store).
+GADGETS="
+com.flashlight.nova.launcher.zoom.version.light.dark
+com.emoticon.diyer.qpjgn.free.game.launcher
+com.perfect.asmr.tidy.free.aspgg.game.launcher
+com.track.phone.locate.device.clap.hand
+com.smart.tool.instant.scan
+com.facechanger.agingapp.futureself
+com.timewarp.scanface.selfiephotoeditor.videopopulartiktok
+com.scary.prankcall.horror.fake.video
+video.clip.call.fake.chat.message.prank
+com.finger.spinner.glow.magic
+com.lip.pose.filter.challenge
+com.trending.tik.tap.game.challenge
 "
 
 # Etat reel d'un paquet : absent | retire | off | actif
@@ -57,11 +86,31 @@ state() {
   echo actif
 }
 
+# --- Modes "gadgets" : liste puis suppression definitive des applis gadgets ---
+if [ "$MODE" = listgadgets ] || [ "$MODE" = gadgets ]; then
+  n=0; f=0
+  for p in $GADGETS; do
+    pm list packages "$p" 2>/dev/null | grep -qx "package:$p" || continue
+    if [ "$MODE" = listgadgets ]; then
+      echo "  - $p"; n=$((n+1)); continue
+    fi
+    pm uninstall "$p" >/dev/null 2>&1
+    if pm list packages "$p" 2>/dev/null | grep -qx "package:$p"; then
+      echo "[echec]        $p"; f=$((f+1))
+    else
+      echo "[OK supprime]  $p"; n=$((n+1))
+    fi
+  done
+  if [ "$MODE" = listgadgets ]; then echo "  ($n applis presentes)"
+  else echo "== Supprimees : $n | Echecs : $f =="; fi
+  exit 0
+fi
+
 case "$MODE" in
   dry|apply)       LIST="$CORE" ;;
   optional)        LIST="$CORE $OPTIONAL" ;;
   restore)         LIST="$CORE $OPTIONAL" ;;
-  *) echo "Mode inconnu : $MODE (dry | apply | optional | restore)"; exit 1 ;;
+  *) echo "Mode inconnu : $MODE (dry | apply | optional | restore | listgadgets | gadgets)"; exit 1 ;;
 esac
 
 ok=0; skip=0; fail=0
