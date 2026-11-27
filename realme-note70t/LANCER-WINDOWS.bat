@@ -124,8 +124,10 @@ echo   2. Appliquer le nettoyage
 echo   3. Appliquer + liste optionnelle (Themes, recherche, Jeux, Cloud)
 echo   4. Tout restaurer (annule le nettoyage)
 echo   5. Quitter
+echo   6. Exporter la liste des applis (pour analyse)
 echo ----------------------------------------------------------
-choice /c 12345 /n /m "Votre choix : "
+choice /c 123456 /n /m "Votre choix : "
+if errorlevel 6 goto export
 if errorlevel 5 goto end
 if errorlevel 4 (set "MODE=restore" & goto run)
 if errorlevel 3 (set "MODE=optional" & goto run)
@@ -138,6 +140,31 @@ echo.
 echo.
 if /i "%MODE%"=="apply" echo Termine. Redemarrez le telephone pour finir.
 if /i "%MODE%"=="optional" echo Termine. Redemarrez le telephone pour finir.
+pause
+goto menu
+
+:export
+set "OUTF=liste-applis-note70t.txt"
+echo.
+echo Export en cours...
+(
+  echo === TELEPHONE ===
+  %ADB% shell getprop ro.product.model
+  %ADB% shell getprop ro.build.display.id
+  %ADB% shell getprop ro.build.version.release
+  echo.
+  echo === APPLIS INSTALLEES PAR L'UTILISATEUR ===
+  %ADB% shell pm list packages -3 | sort
+  echo.
+  echo === APPLIS DESACTIVEES ===
+  %ADB% shell pm list packages -d | sort
+  echo.
+  echo === APPLIS SYSTEME ===
+  %ADB% shell pm list packages -s | sort
+) > "%OUTF%" 2>&1
+echo Liste enregistree dans %CD%\%OUTF%
+echo Elle s'ouvre dans le Bloc-notes : Ctrl+A puis Ctrl+C pour la copier.
+start "" notepad "%OUTF%"
 pause
 goto menu
 
