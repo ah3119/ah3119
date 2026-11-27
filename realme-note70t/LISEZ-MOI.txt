@@ -1,0 +1,54 @@
+NETTOYAGE REALME NOTE 70T (RMX5313) - sans root, 100 % réversible
+====================================================================
+
+AVANT DE COMMENCER
+1. Faites la mise à jour système du téléphone :
+   Paramètres > À propos de l'appareil > Mise à jour logicielle.
+2. Activez les options développeur :
+   Paramètres > À propos de l'appareil > Version > appuyez 7 fois sur
+   « Numéro de version ».
+3. Activez le débogage USB :
+   Paramètres > Paramètres supplémentaires > Options pour les développeurs
+   > Débogage USB.
+
+LANCEMENT
+- Windows  : décompressez TOUT le ZIP, puis double-cliquez sur LANCER-WINDOWS.bat
+- Mac/Linux: ouvrez un terminal dans le dossier, puis tapez : sh lancer-mac-linux.sh
+
+Si ADB n'est pas installé, le lanceur le télécharge depuis le site officiel
+de Google (dl.google.com).
+
+Branchez le téléphone en USB et acceptez « Autoriser le débogage USB » sur
+l'écran du téléphone. Choisissez ensuite dans le menu :
+  1 = Simulation : n'applique rien. À faire en premier.
+  2 = Appliquer le nettoyage
+  3 = Appliquer + liste optionnelle (voir plus bas)
+  4 = Tout restaurer
+Redémarrez le téléphone après l'option 2 ou 3.
+
+CE QUE LE NETTOYAGE DÉSACTIVE
+- Service publicitaire realme (com.opos.ads) et statistiques d'usage
+- App Market, Game Center, Navigateur realme, Musique realme
+- Carrousel de l'écran de verrouillage, Glance
+- Composants Facebook et Netflix préinstallés
+Avant de lancer : si le navigateur realme est votre navigateur par défaut,
+installez Chrome ou Firefox et mettez-le par défaut.
+
+LISTE OPTIONNELLE (option 3), avec effets de bord possibles
+- Thèmes          : changer de thème ou de fond d'écran peut ne plus marcher
+- Recherche       : la recherche en glissant vers le bas sur l'accueil disparaît
+- Espace jeux     : perte du mode performance en jeu
+- Cloud realme    : la sauvegarde Google reste active
+
+CE QUI N'EST JAMAIS TOUCHÉ
+Mises à jour système, Play Store, appareil photo, téléphone, SMS, clavier,
+écran d'accueil.
+
+EN CAS DE PROBLÈME
+Relancez le lanceur et choisissez 4 (Tout restaurer). Toutes les applis
+désactivées reviennent.
+
+APRÈS CHAQUE GROSSE MISE À JOUR
+Relancez l'option 2 : une mise à jour peut réactiver certaines applis.
+
+Le script ne fonctionne que sur le téléphone lui-même et n'envoie rien sur Internet.

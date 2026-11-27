@@ -88,5 +88,5 @@ for p in $LIST; do
 done
 
 echo "== Traites : $ok | Absents (ignores) : $skip | Refuses/echecs : $fail =="
-[ "$MODE" = "dry" ] && echo "Simulation seulement. Relancer avec 'apply' pour appliquer."
+[ "$MODE" = "dry" ] && echo "Simulation seulement. Pour appliquer : option 2 du menu (ou argument 'apply')."
 exit 0
